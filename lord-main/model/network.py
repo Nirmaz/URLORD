@@ -112,6 +112,7 @@ class Lord:
 
 		model.compile(
 			optimizer=LRMultiplier(
+
 				optimizer=optimizers.Adam(beta_1=0.5, beta_2=0.999),
 				multipliers={
 					'content-embedding': 10,
@@ -287,7 +288,7 @@ class Lord:
 			x = Lambda(lambda t: tf.tile(t, multiples=(1, 1, 1, 3)))(img)
 		else:
 			x = img
-
+		print(x.shape, "x shape")
 		x = VggNormalization()(x)
 		features = feature_extractor(x)
 

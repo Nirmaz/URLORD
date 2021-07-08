@@ -81,17 +81,19 @@ class embryos_dataset(DataSet):
 		with open(os.path.join(self._base_dir,'TRUFI','fetal_data_patches.h5'), "rb") as opened_file:
 			trufi_dataset = pickle.load(opened_file)
 
+		# print(np.unique(trufi_dataset), " trufi dataset unique")
 		imgs_fiesta = np.array(list(fiesta_dataset.values()))
 		print(imgs_fiesta.shape, "img fiest shape")
 		imgs_fiesta = imgs_fiesta.transpose((0, 3,1,2))
 		data_size = imgs_fiesta.shape[0] * imgs_fiesta.shape[1]
-		print(data_size, "data size")
 		imgs_fiesta = imgs_fiesta.reshape((data_size, imgs_fiesta.shape[2],imgs_fiesta.shape[3]))
 		print(imgs_fiesta.shape, "imgs fiesta shpe")
 		class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
 		print(class_id_fiesta.shape, "class fiesta shape")
-		plt.imshow(imgs_fiesta[0], cmap='gray')
-		plt.show()
+		num_f1 = 3001
+		plt.title(f"imgs_fiesta_{num_f1}")
+		plt.imshow(imgs_fiesta[num_f1], cmap='gray')
+		# plt.show()
 
 
 		imgs_trufi = np.array(list(trufi_dataset.values()))
@@ -101,24 +103,60 @@ class embryos_dataset(DataSet):
 		data_size = imgs_trufi.shape[0] * imgs_trufi.shape[1]
 		print(data_size, "data size")
 		imgs_trufi = imgs_trufi.reshape((data_size, imgs_trufi.shape[2],imgs_trufi.shape[3]))
-		plt.imshow(imgs_trufi[1], cmap='gray')
-		plt.show()
-		class_id_trufi = np.zeros((imgs_trufi.shape[0]))
+		num_tr1 = 1001
+		plt.title(f"imgs_trufi_{num_tr1}")
+		plt.imshow(imgs_trufi[num_tr1], cmap='gray')
+		# plt.show()
+		class_id_trufi = np.ones((imgs_trufi.shape[0]))
 		print(class_id_trufi.shape, "class_id shape")
-		print(imgs_trufi.shape, "imgs trufi shpe")
-		plt.imshow(imgs_trufi[0], cmap='gray')
-		plt.show()
+		num_tr2 = 2002
+		plt.title(f"imgs_trufi_{num_tr2}")
+		plt.imshow(imgs_trufi[num_tr2], cmap='gray')
+		# plt.show()
+
 
 		class_id = np.concatenate((class_id_fiesta, class_id_trufi),axis=0)
 		imgs = np.concatenate((imgs_fiesta, imgs_trufi),axis=0)
-
 		contents = np.empty(shape=(imgs.shape[0], ), dtype=np.uint32)
-
 		imgs = np.expand_dims(imgs,axis=-1)
-		print(class_id.shape, "class_id")
-		print(imgs.shape, "imgs")
 
-		return imgs, class_id , contents
+
+		# testing2
+		# data_small
+		num_samples = 10
+		# data_med
+		# num_samples = 100
+		# data_large
+		# num_samples = 1000
+		# data_all
+		# num_samples = 7000
+
+		imgs_testing = np.concatenate((imgs_fiesta[0: num_samples],imgs_trufi[0: num_samples]), axis=0)
+		class_id_testing = np.concatenate((class_id_fiesta[0: num_samples],  class_id_trufi[0: num_samples]),axis = 0)
+		contents_testing = np.empty(shape=(imgs_testing.shape[0], ), dtype=np.uint32)
+		imgs_testing = np.expand_dims(imgs_testing,axis=-1)
+
+		print(imgs_testing.shape, "img testing shape")
+		print(class_id_testing.shape, "class testing shape")
+
+		testing = True
+
+		if testing:
+			print(f'max_value: {np.max(imgs_testing)}', f'min_value: {np.min(imgs_testing)}')
+			imgs_testing = imgs_testing - np.min(imgs_testing)
+			imgs_testing = imgs_testing / np.max(imgs_testing)
+			print(f'max_value: {np.max(imgs_testing)}', f'min_value: {np.min(imgs_testing)}' )
+
+			plt.title(f"imgs_testing no afraid")
+			plt.imshow(imgs_testing[6], cmap='gray')
+			plt.show()
+			return imgs_testing, class_id_testing , contents_testing
+		else:
+			return imgs, class_id , contents
+
+
+
+
 
 
 

@@ -11,7 +11,7 @@ from config import default_config
 import os
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 def preprocess(args):
 	assets = AssetManager(args.base_dir)
@@ -55,6 +55,8 @@ def split_samples(args):
 	data = np.load(assets.get_preprocess_file_path(args.input_data_name))
 	imgs, classes, contents = data['imgs'], data['classes'], data['contents']
 	print(imgs.shape, "img shape")
+	print(classes.shape, "img shape")
+	print(contents.shape, "img shape")
 	n_classes = np.unique(classes).size
 	n_samples = imgs.shape[0]
 
@@ -75,35 +77,50 @@ def split_samples(args):
 
 
 def train(args):
-	print("NIRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
+
 	assets = AssetManager(args.base_dir)
-	model_dir = assets.recreate_model_dir(args.model_name)
-	tensorboard_dir = assets.recreate_tensorboard_dir(args.model_name)
+
 
 	data = np.load(assets.get_preprocess_file_path(args.data_name))
+	print("min: ",np.min(data['imgs']), "max:", np.max(data['imgs']) )
 	imgs = data['imgs'].astype(np.float32)
 	print(imgs.shape, "img shape train")
-	config = Config(
-		img_shape=imgs.shape[1:],
-		n_imgs=imgs.shape[0],
-		n_classes=data['n_classes'].item(),
 
-		content_dim=default_config['content_dim'],
-		class_dim=default_config['class_dim'],
 
-		content_std=default_config['content_std'],
-		content_decay=default_config['content_decay'],
+	# if you want to keep training your model from the same spot you ended
+	print(args.load_model, "args load")
 
-		n_adain_layers=default_config['n_adain_layers'],
+	if args.load_model:
+		model_dir = assets.get_model_dir(args.model_name)
+		tensorboard_dir = assets.get_tensorboard_dir(args.model_name)
+		lord = Lord.load(model_dir, include_encoders=False)
 
-		adain_dim=default_config['adain_dim'],
+	else:
+		model_dir = assets.recreate_model_dir(args.model_name)
+		tensorboard_dir = assets.recreate_tensorboard_dir(args.model_name)
+		config = Config(
+			img_shape=imgs.shape[1:],
+			n_imgs=imgs.shape[0],
+			n_classes=data['n_classes'].item(),
 
-		perceptual_loss_layers=default_config['perceptual_loss']['layers'],
-		perceptual_loss_weights=default_config['perceptual_loss']['weights'],
-		perceptual_loss_scales=default_config['perceptual_loss']['scales']
-	)
+			content_dim=default_config['content_dim'],
+			class_dim=default_config['class_dim'],
 
-	lord = Lord.build(config)
+			content_std=default_config['content_std'],
+			content_decay=default_config['content_decay'],
+
+			n_adain_layers=default_config['n_adain_layers'],
+
+			adain_dim=default_config['adain_dim'],
+
+			perceptual_loss_layers=default_config['perceptual_loss']['layers'],
+			perceptual_loss_weights=default_config['perceptual_loss']['weights'],
+			perceptual_loss_scales=default_config['perceptual_loss']['scales']
+		)
+		print(f"class_dim{default_config['class_dim']}", f"___{default_config['train']['batch_size']}")
+		lord = Lord.build(config)
+
+
 	lord.train(
 		imgs=imgs,
 		classes=data['classes'],
@@ -180,6 +197,7 @@ def main():
 	train_parser = action_parsers.add_parser('train')
 	train_parser.add_argument('-dn', '--data-name', type=str, required=True)
 	train_parser.add_argument('-mn', '--model-name', type=str, required=True)
+	train_parser.add_argument('-lm', '--load-model', type=int, required=True)
 	train_parser.set_defaults(func=train)
 
 	train_encoders_parser = action_parsers.add_parser('train-encoders')
