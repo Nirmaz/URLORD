@@ -150,11 +150,13 @@ def extract_3D_patches(im: np.ndarray,
 
 
 
+
+
 def create_and_store_training_patches(case: np.array, gt: np.array,
                             patchs_storage: dict ,
                             patchs_dict_with_gt: dict ,subject_id: str ,
-                            model_original_dim: Tuple[int, int, int] = (128, 128, 20),
-                            patch_stride: Tuple[int, int, int] = (32, 32, 28), with_without_body:bool = True, min_num_of_body_voxels:int = 50*50, min_num_of_plcenta_voxels:int = 32*32, with_plcenta = True):
+                            model_original_dim: Tuple[int, int, int] = (128, 128, 16),
+                            patch_stride: Tuple[int, int, int] = (32, 32, 8), with_without_body:bool = True, min_num_of_body_voxels:int = 1, min_num_of_plcenta_voxels:int = 32*32*3,num_slice_cri: int = 10, with_plcenta = True, dim: int = 3):
     """
     Creating and saving patches for model training purpose with a shape (x+y, y+x, z) where (x, y ,z) is the original
     patches shape the model needs.
@@ -175,6 +177,8 @@ def create_and_store_training_patches(case: np.array, gt: np.array,
         to False, the result patches will be those that have not lesions in them.
     :param min_num_of_lesion_voxels: The minimum number of lesion voxels in order to be considered as a patch that has
         lesions in it.
+    :param num_slice_cri: if we work in 3D the demand is te number of slices that fit the critra of number of pixels with body or placenta
+
     """
 
     patch_size = model_original_dim
@@ -201,20 +205,30 @@ def create_and_store_training_patches(case: np.array, gt: np.array,
             current_x_coord = 0 + patches_coords[j, 0]
             current_y_coord = 0 + patches_coords[j, 1]
             current_z_coord = 0 + patches_coords[j, 2]
+            if dim == 2:
+                for k in range(patch.shape[2]):
+                    body_pixels = np.zeros((patch.shape[0], patch.shape[1]))
+                    body_pixels[patch[:,:,k] > 0.1] = 1
+                    num_of_body_voxels = body_pixels.sum()
+                    num_of_plcenta_voxels = patches_gt[j][:,:,k].sum()
 
-            for k in range(patch.shape[2]):
-                body_pixels = np.zeros((patch.shape[0], patch.shape[1]))
-                body_pixels[patch[:,:,k] > 0.1] = 1
+                    print(num_of_body_voxels)
+                    if (with_without_body and num_of_body_voxels < min_num_of_body_voxels) or (num_of_plcenta_voxels < min_num_of_plcenta_voxels and with_plcenta):
+                        continue
+
+                    patchs_storage[f'{subject_id}_{current_x_coord}_{current_y_coord}_{current_z_coord}_{k}'] = patch[:,:,k]
+                    patchs_dict_with_gt[f'{subject_id}_{current_x_coord}_{current_y_coord}_{current_z_coord}_{k}'] = patches_gt[j][:,:,k]
+            else:
+
+                body_pixels = np.zeros_like((patch))
+                body_pixels[patch > -100] = 1
                 num_of_body_voxels = body_pixels.sum()
-                num_of_plcenta_voxels = patches_gt[j][:,:,k].sum()
+                num_of_plcenta_voxels = patches_gt[j].sum()
 
-                print(num_of_body_voxels)
-                if (with_without_body and num_of_body_voxels < min_num_of_body_voxels) or (num_of_plcenta_voxels < min_num_of_plcenta_voxels and with_plcenta):
+                if (with_without_body and (num_of_body_voxels < min_num_of_body_voxels*num_slice_cri)) or (num_of_plcenta_voxels < (min_num_of_plcenta_voxels*num_slice_cri) and with_plcenta):
                     continue
-
-                patchs_storage[f'{subject_id}_{current_x_coord}_{current_y_coord}_{current_z_coord}_{k}'] = patch[:,:,k]
-                patchs_dict_with_gt[f'{subject_id}_{current_x_coord}_{current_y_coord}_{current_z_coord}_{k}'] = patches_gt[j][:,:,k]
-
+                patchs_storage[f'{subject_id}_{current_x_coord}_{current_y_coord}_{current_z_coord}'] = patch
+                patchs_dict_with_gt[f'{subject_id}_{current_x_coord}_{current_y_coord}_{current_z_coord}'] = patches_gt[j]
 
 
 
@@ -301,7 +315,7 @@ def normalize_data_storage_each(data_dict: dict, train: bool = True):
         data_dict[key] = normalize_data(data, mean, std)
     return data_dict, None, None
 
-def write_data_to_file(training_data_files, out_file,out_file_patchs ,out_file_patchs_gt,subject_ids = None, normalize='all', scale=None, preproc=None, rescale_res=None, metadata_path=None, train = True, store_patches = True):
+def write_data_to_file(training_data_files, out_file,out_file_patchs ,out_file_patchs_gt,subject_ids = None, normalize='all', scale=None, preproc=None, rescale_res=None, metadata_path=None, train = True, store_patches = True, dim = 3):
     """
     Takes in a set of training images and writes those images to an hdf5 file.
     :param data_files: List of tuples containing the training data files. The modalities should be listed in
@@ -341,7 +355,7 @@ def write_data_to_file(training_data_files, out_file,out_file_patchs ,out_file_p
             subject_data =  data_with_gt_a[subject_id]['data']
             subject_gt =  data_with_gt_a[subject_id]['truth']
 
-            create_and_store_training_patches(subject_data ,subject_gt ,  patchs_dict, patchs_gt, subject_id)
+            create_and_store_training_patches(subject_data ,subject_gt ,  patchs_dict, patchs_gt, subject_id, dim = dim)
 
     # no norm
     # if isinstance(normalize, str):
@@ -363,7 +377,7 @@ def write_data_to_file(training_data_files, out_file,out_file_patchs ,out_file_p
 def open_data_file(filename):
     return pickle_load(filename)
 
-def create_load_hdf5(normalization, data_dir, scans_dir, train_modalities, ext, overwrite = False, preprocess=None, scale= None, rescale_res=None, metadata_path=None, train = True, store_patches = True):
+def create_load_hdf5(normalization, data_dir, scans_dir, train_modalities, ext, overwrite = False, preprocess=None, scale= None, rescale_res=None, metadata_path=None, train = True, store_patches = True, dim = 3):
     """
     This function normalizes raw data and creates hdf5 file if needed
     Returns loaded hdf5 file
@@ -381,7 +395,7 @@ def create_load_hdf5(normalization, data_dir, scans_dir, train_modalities, ext, 
         else:
             preproc_func = None
 
-        _, (mean, std) = write_data_to_file(training_files, data_file, data_file_patchs, data_file_patchs_gt, subject_ids=subject_ids, normalize=normalization, preproc=preproc_func, scale = scale, rescale_res = rescale_res, metadata_path = metadata_path, train = train, store_patches = store_patches)
+        _, (mean, std) = write_data_to_file(training_files, data_file, data_file_patchs, data_file_patchs_gt, subject_ids=subject_ids, normalize=normalization, preproc=preproc_func, scale = scale, rescale_res = rescale_res, metadata_path = metadata_path, train = train, store_patches = store_patches, dim = dim)
 
         with open(os.path.join(data_dir, 'norm_params.json'), mode='w') as f:
             json.dump({'mean': mean, 'std': std}, f)
@@ -395,12 +409,14 @@ def create_load_hdf5(normalization, data_dir, scans_dir, train_modalities, ext, 
 
 
 if __name__ == '__main__':
-    # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS1/placenta/' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =False, preprocess = "window_1_99", scale = None, train = True, store_patches= True)
-    # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS1/TRUFI/' , scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = False, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True)
+    create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA3D_SPLIT/TRAIN/Labeled/placenta/' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_RAW_SPLIT/TRAIN/Labeled/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =False, preprocess = "window_1_99", scale = None, train = True, store_patches= True, dim = 3)
+    create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA3D_SPLIT/TRAIN/Labeled/TRUFI/' , scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_RAW_SPLIT/TRAIN/Labeled/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = False, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
+    create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA3D_SPLIT/TRAIN/Unlabeled/TRUFI/' , scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_RAW_SPLIT/TRAIN/Unlabeled/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = False, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
+    create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA3D_SPLIT/VALIDATION/TRUFI/' , scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_RAW_SPLIT/VALIDATION/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = False, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
 
     # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/placenta' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =True, preprocess = "window_1_99", scale = None, train = True, store_patches= True)
     # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/TRUFI', scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True)
-
+    exit()
     with open(os.path.join('/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS1/', 'placenta', 'fetal_data_patches.h5'), "rb") as opened_file:
         fiesta_dataset = pickle.load(opened_file)
 
@@ -423,8 +439,8 @@ if __name__ == '__main__':
     #
 
 # ---------------------------DATA _NEWLS-----------------------------------------------------------------------------
- # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS/placenta/' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =False, preprocess = "window_1_99", scale = None, train = True, store_patches= True)
-    # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS/TRUFI/' , scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = False, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True)
+# create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS/placenta/' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =False, preprocess = "window_1_99", scale = None, train = True, store_patches= True)
+# create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS/TRUFI/' , scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = False, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True)
 # model_original_dim: Tuple[int, int, int] = (128, 128, 20),
 #                             patch_stride: Tuple[int, int, int] = (32, 32, 28), with_without_body:bool = True, min_num_of_body_voxels:int = 32*32, min_num_of_plcenta_voxels:int = 4*4, with_plcenta = True):
 

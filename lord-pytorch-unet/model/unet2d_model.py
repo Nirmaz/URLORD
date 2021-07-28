@@ -142,7 +142,8 @@ class DownBlock(nn.Module):
                  activation: str = 'relu',
                  normalization: str = None,
                  dim: str = 2,
-                 conv_mode: str = 'same'):
+                 conv_mode: str = 'same',
+                 droupout: int = 0.1):
         super().__init__()
 
         self.in_channels = in_channels
@@ -155,6 +156,7 @@ class DownBlock(nn.Module):
             self.padding = 0
         self.dim = dim
         self.activation = activation
+        self.dropout = nn.Dropout(droupout)
 
         # conv layers
         self.conv1 = get_conv_layer(self.in_channels, self.out_channels, kernel_size=3, stride=1, padding=self.padding,
@@ -181,13 +183,15 @@ class DownBlock(nn.Module):
         y = self.conv1(x)  # convolution 1
         if self.normalization:
             y = self.norm1(y)
-        y = self.act1(y)  # activation 1
+        y = self.act1(y) # activation 1
+        y = self.dropout(y)
           # normalization 1
         y = self.conv2(y)
         if self.normalization:
             y = self.norm2(y)
         # convolution 2
         y = self.act2(y)  # activation 2
+        y = self.dropout(y)
        # normalization 2
 
         before_pooling = y  # save the outputs before the pooling operation
@@ -212,7 +216,8 @@ class UpBlock(nn.Module):
                  conv_mode: str = 'same',
                  up_mode: str = 'transposed',
                  activation_upsample = 'leaky',
-                 normalization_upsample = 'instance'
+                 normalization_upsample = 'instance',
+                 droupout: int = 0.1
                  ):
         super().__init__()
 
@@ -228,6 +233,7 @@ class UpBlock(nn.Module):
         self.up_mode = up_mode
         self.activation_upsample = activation_upsample
         self.normalization_upsample = normalization_upsample
+        self.dropout = nn.Dropout(droupout)
 
         # upconvolution/upsample layer
         self.up = get_up_layer(self.in_channels, self.out_channels, kernel_size=2, stride=2, dim=self.dim,
@@ -275,6 +281,7 @@ class UpBlock(nn.Module):
         # print(up_layer.size(), "up_layer")
         cropped_encoder_layer, dec_layer = autocrop(encoder_layer, up_layer)  # cropping
 
+
         # if self.up_mode != 'transposed':
         #     # We need to reduce the channel dimension with a conv layer
         up_layer = self.conv0(up_layer)  # convolution 0
@@ -288,12 +295,14 @@ class UpBlock(nn.Module):
         y = self.conv1(merged_layer)
         if self.normalization:
             y = self.norm1(y)
-        y = self.act1(y)  # activation 1
+        y = self.act1(y)# activation 1
+        y = self.dropout(y)
         # normalization 1
         y = self.conv2(y)  # convolution 2
         if self.normalization:
             y = self.norm2(y)
         y = self.act2(y)  # acivation 2
+        y = self.dropout(y)
           # normalization 2
         return y
 
@@ -327,7 +336,8 @@ class UNet(nn.Module):
                                    activation=self.activation,
                                    normalization=self.normalization,
                                    conv_mode=self.conv_mode,
-                                   dim = self.dim)
+                                   dim = self.dim,
+                                   droupout = config_unet['droupout'])
 
             self.down_blocks.append(down_block)
 
@@ -344,7 +354,8 @@ class UNet(nn.Module):
                                dim = self.dim,
                                up_mode = self.up_mode,
                                activation_upsample = config_unet['activation_upsample'],
-                               normalization_upsample = config_unet['normalization_upsample'])
+                               normalization_upsample = config_unet['normalization_upsample'],
+                               droupout = config_unet['droupout'])
 
             self.up_blocks.append(up_block)
 
@@ -422,8 +433,13 @@ class Segmentntor(nn.Module):
             self.act1 = nn.LeakyReLU(negative_slope=0.1)
             self.act2 = nn.LeakyReLU(negative_slope=0.1)
             self.act3 = nn.Sigmoid()
-            self.normalize1 = nn.BatchNorm2d(config_unet['start_filters'])
-            self.normalize2 = nn.BatchNorm2d(config_unet['start_filters'])
+            if config_unet['dim'] == 3:
+                self.normalize1 = nn.BatchNorm3d(config_unet['start_filters'])
+                self.normalize2 = nn.BatchNorm3d(config_unet['start_filters'])
+            else:
+                self.normalize1 = nn.BatchNorm2d(config_unet['start_filters'])
+                self.normalize2 = nn.BatchNorm2d(config_unet['start_filters'])
+
 
         def forward(self, x):
             # print(x.size(), "start")
@@ -437,4 +453,6 @@ class Segmentntor(nn.Module):
             x = self.act3(x)
             # print(x.size(), "end")
             return x
+
+
 
