@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="all">
-      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/training_comp_unet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/unet_latent_old.py" afterDir="false" />
+    <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/embryo_main/create_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/create_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/config_umodel_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/config_umodel_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/unet2d_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/unet2d_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,7 +374,7 @@
       <workItem from="1625597840917" duration="63134000" />
       <workItem from="1626598267487" duration="11333000" />
       <workItem from="1626682113796" duration="103253000" />
-      <workItem from="1627199029995" duration="96757000" />
+      <workItem from="1627199029995" duration="98120000" />
     </task>
     <task id="LOCAL-00001" summary="all">
       <created>1625765445775</created>
@@ -388,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625765445775</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="all">
+      <created>1627489800193</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1627489800193</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,10 +429,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="950" y="325" width="326" height="442" key="#com.intellij.ide.macro.MacrosDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1624871109185" />
-    <state x="582" y="32" width="788" height="1023" key="CommitChangelistDialog2" timestamp="1625765519696">
+    <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2" timestamp="1627489799549">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="582" y="32" width="788" height="1023" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1625765519696" />
+    <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1627489799549" />
     <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl" timestamp="1626878423075">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
@@ -487,10 +489,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="599" y="108" width="788" height="552" key="SettingsEditor/0.25.1920.1030@0.25.1920.1030" timestamp="1626879703603" />
-    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2" timestamp="1625766546565">
+    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2" timestamp="1627489802164">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1625766546565" />
+    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1627489802164" />
     <state x="0" y="92" width="1824" height="833" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1625473458867">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
