@@ -36,7 +36,7 @@ config_unet_nn_3d = dict(
     droupout = 0.1
 
 )
-
+# unet to cpmpare
 config_unet_nn_3d_c = dict(
     # in channel, anatomy rep and out channel came together
 	in_channels = 1,

@@ -223,16 +223,17 @@ class embryos_dataset_onegr(DataSet):
 				fiesta_dataset_gt = pickle.load(opened_file)
 
 
-
+			print(self._base_dir, "base dir chech ")
 			imgs_fiesta = np.array(list(fiesta_dataset.values()))
 			imgs_fiesta_gt = np.array(list(fiesta_dataset_gt.values()))
+			# print(imgs_fiesta_gt , "img fiesta gt")
 			class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
-			print(f"shape fiesta: {class_id_fiesta.shape}")
-			imgs_fiesta = imgs_fiesta - np.min(imgs_fiesta)
-			imgs_fiesta = imgs_fiesta / np.max(imgs_fiesta)
+			# print(f"unique:: {np.unique(imgs_fiesta)}")
+			# imgs_fiesta = imgs_fiesta - np.min(imgs_fiesta)
+			# imgs_fiesta = imgs_fiesta / np.max(imgs_fiesta)
 
 			if show_images:
-				num_f1 = 10
+				num_f1 = 0
 				for i in range(3):
 					plt.title(f"imgs_fiesta_{num_f1 + i}")
 					plt.imshow(imgs_fiesta[num_f1 + i][:, :, 0], cmap='gray')
@@ -251,8 +252,8 @@ class embryos_dataset_onegr(DataSet):
 			imgs_trufi_gt = np.array(list(trufi_dataset_gt.values()))
 			class_id_trufi = np.ones((imgs_trufi.shape[0]))
 			print(f"shape trufi: {class_id_trufi.shape}")
-			imgs_trufi = imgs_trufi - np.min(imgs_trufi)
-			imgs_trufi = imgs_trufi / np.max(imgs_trufi)
+			# imgs_trufi = imgs_trufi - np.min(imgs_trufi)
+			# imgs_trufi = imgs_trufi / np.max(imgs_trufi)
 
 
 			if show_images:

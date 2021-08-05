@@ -4,21 +4,33 @@ import numpy as np
 import dataset_unet
 from assets import AssetManager
 from model.training_unet import Lord
-from config_unet import base_config, base_config_3d, base_config_unet
+from config_unet import base_config, base_config_3d
 from model.config_umodel_unet import config_unet_nn, config_unet_nn_3d, config_unet_nn_3d_c
 from model.training_comp_unet import UNet3D
 import os
 import torch
-from experiments_unet import init_expe_directory, EXP_PATH, write_arguments_to_file, jason_dump, init_expe_directoryc, EXP_PATH_C
+from model.modules_unet import VGGDistance, ULordModel, UnetLatentModel, Segmentntor, ULordModel3D
+from experiments_unet import init_expe_directory, EXP_PATH, write_arguments_to_file, jason_dump, init_expe_directoryc, EXP_PATH_C, init_expe_directory_n, EXP_FP
+# from embryo_main.post_pro import PostProcessingSeg
 import sys
 from os.path import join
 import pickle
 import json
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-
+from os import listdir, mkdir
+from os.path import join
+import logging
 CUDA_LAUNCH_BLOCKING=1
 import wandb
+
+def define_logger(loger_name, file_path):
+	logger = logging.getLogger(loger_name)
+	logger.setLevel(logging.INFO)
+	file_handler = logging.FileHandler(file_path)
+	logger.addHandler(file_handler)
+	return logger
+
 
 def preprocess(args):
 
@@ -203,23 +215,20 @@ def train_unetlatent_model(args):
 	lord.save(model_dir, unetlatent = True)
 
 
-def train_ulord(args):
+def train_ulord(args, num_exp = None, path_exp = None):
 
-	num_exp = init_expe_directory()
-	write_arguments_to_file(sys.argv[4:], join(EXP_PATH, str(num_exp), 'config'))
+	if num_exp == None:
+		num_exp = init_expe_directory()
+	if path_exp == None:
+		path_exp = EXP_PATH
+
+	write_arguments_to_file(sys.argv[4:], join(path_exp, str(num_exp), 'config'))
 
 	assets = AssetManager(args.base_dir)
 	data = np.load(assets.get_preprocess_file_path(args.data_l_name))
 	data_u = np.load(assets.get_preprocess_file_path(args.data_u_name))
 	imgs = data['imgs'].astype(np.float32)
 	imgs_u = data_u['imgs'].astype(np.float32)
-
-	if args.g_config:
-		with open(os.path.join(args.p_config, 'config.pkl'), 'rb') as config_fd:
-			base_config = pickle.load(config_fd)
-
-		with open(os.path.join(args.p_uconfig, 'config_unet.pkl'), 'rb') as config_fd:
-			config_unet_nn = pickle.load(config_fd)
 
 	if args.g_config and args.load_model == 0:
 		with open(os.path.join(args.p_config, 'config.pkl'), 'rb') as config_fd:
@@ -228,14 +237,14 @@ def train_ulord(args):
 		with open(os.path.join(args.p_uconfig, 'config_unet.pkl'), 'rb') as config_fd:
 			c_config_unet_nn = pickle.load(config_fd)
 	else:
-		c_base_config_3d = base_config_3d
-		c_config_unet_nn_3d = config_unet_nn_3d
+		c_base_config= base_config
+		c_config_unet_nn = config_unet_nn
 
 	if args.load_model:
 		model_dir = assets.get_model_dir(args.model_name)
 		tensorboard_dir = assets.get_tensorboard_dir(args.model_name)
 		lord = Lord()
-		lord.load(model_dir,ulord= True,ulord3d = False, num_exp = str(num_exp))
+		lord.load(model_dir,ulord= True,ulord3d = False, num_exp = str(num_exp), path_exp=path_exp)
 	else:
 		model_dir = assets.recreate_model_dir(args.model_name)
 		tensorboard_dir = assets.recreate_tensorboard_dir(args.model_name)
@@ -245,19 +254,15 @@ def train_ulord(args):
 
 		config = dict(
 			num_exp=str(num_exp),
+			path_exp = path_exp,
 			img_shape=imgs.shape[1:],
 			n_imgs=n_imgs,
 			n_classes=n_classes,
-			seg_loss= args.seg_loss,
-			segmentor_gard = args.seg_gard,
-			recon_loss=args.recon_loss,
-			Regularized_content=args.r_content,
-			Regularized_class=args.r_rclass,
 		)
 
 		config.update(c_base_config)
-		path_config = join(EXP_PATH, str(num_exp), 'config', 'config.jason')
-		path_config_unet = join(EXP_PATH, str(num_exp), 'config', 'config_unet.jason')
+		path_config = join(path_exp, str(num_exp), 'config', 'config.jason')
+		path_config_unet = join(path_exp, str(num_exp), 'config', 'config_unet.jason')
 		jason_dump(config, path_config)
 		jason_dump(c_config_unet_nn, path_config_unet)
 
@@ -277,18 +282,31 @@ def train_ulord(args):
 
 	lord.save(model_dir, ulord= True,ulord3d = False )
 
-def train_ulord3d(args):
+def train_ulord3d(args, num_exp = None, path_exp = None, return_model = False, t_l = True, new_model_name = None):
 
-	num_exp = init_expe_directory()
-	write_arguments_to_file(sys.argv[4:], join(EXP_PATH, str(num_exp), 'config'))
+	if num_exp == None:
+		num_exp = init_expe_directory()
+	if path_exp == None:
+		path_exp = EXP_PATH
+
+	write_arguments_to_file(sys.argv[4:], join(path_exp, str(num_exp), 'config'))
 
 	assets = AssetManager(args.base_dir)
 	data = np.load(assets.get_preprocess_file_path(args.data_l_name))
 	data_u = np.load(assets.get_preprocess_file_path(args.data_u_name))
 	data_v = np.load(assets.get_preprocess_file_path(args.data_v_name))
+	data_t = np.load(assets.get_preprocess_file_path(args.data_t_name))
 	imgs = data['imgs'].astype(np.float32)
 	imgs_u = data_u['imgs'].astype(np.float32)
 	imgs_v = data_v['imgs'].astype(np.float32)
+	imgs_t = data_t['imgs'].astype(np.float32)
+
+	if new_model_name == None and args.load_model == 0:
+		model_name = args.model_name + '_' + str(num_exp)
+	elif new_model_name == None:
+		model_name = args.model_name
+	else:
+		model_name = new_model_name
 
 	if args.g_config and args.load_model == 0:
 
@@ -305,65 +323,82 @@ def train_ulord3d(args):
 
 
 	if args.load_model:
-		model_dir = assets.get_model_dir(args.model_name)
-		tensorboard_dir = assets.get_tensorboard_dir(args.model_name)
+		model_dir = assets.get_model_dir(model_name)
+		tensorboard_dir = assets.get_tensorboard_dir(model_name)
 		lord = Lord()
-		lord.load(model_dir,ulord= False ,ulord3d = True, num_exp = str(num_exp))
+		lord.load(model_dir,ulord= False ,ulord3d = True, num_exp = str(num_exp), path_exp = path_exp)
 	else:
-		model_dir = assets.recreate_model_dir(args.model_name)
-		tensorboard_dir = assets.recreate_tensorboard_dir(args.model_name)
+		model_dir = assets.recreate_model_dir(model_name)
+		tensorboard_dir = assets.recreate_tensorboard_dir(model_name)
 
 		n_imgs = imgs.shape[0]
 		n_classes = data['n_classes'].item()
 
 		config = dict(
 			num_exp=str(num_exp),
+			path_exp=path_exp,
 			img_shape=imgs.shape[1:],
 			n_imgs=n_imgs,
 			n_classes=n_classes,
-			seg_loss= args.seg_loss,
-			segmentor_gard = args.seg_gard,
-			recon_loss=args.recon_loss,
-			Regularized_content=args.r_content,
-			Regularized_class=args.r_rclass,
 		)
 
 
 		config.update(c_base_config_3d)
-		path_config = join(EXP_PATH, str(num_exp), 'config', 'config.jason')
-		path_config_unet = join(EXP_PATH, str(num_exp), 'config', 'config_unet.jason')
+		path_config = join(path_exp, str(num_exp), 'config', 'config.jason')
+		path_config_unet = join(path_exp, str(num_exp), 'config', 'config_unet.jason')
 		jason_dump(config, path_config)
 		jason_dump(c_config_unet_nn_3d, path_config_unet)
 		lord = Lord(config, c_config_unet_nn_3d)
 
-	lord.train_ULordModel3D(
-		imgs=imgs,
-		segs = data['segs'],
-		classes=data['classes'],
-		imgs_u=imgs_u,
-		segs_u = data_u['segs'],
-		classes_u = data_u['classes'],
-		imgs_v = imgs_v,
-		segs_v = data_v['segs'],
-		classes_v = data_v['classes'],
-		model_dir = model_dir,
-		tensorboard_dir=tensorboard_dir,
-		loaded_model= args.load_model
-	)
+	if t_l:
+		lord.train_ULordModel3D(
+			imgs=imgs,
+			segs = data['segs'],
+			classes=data['classes'],
+			imgs_u=imgs_u,
+			segs_u = data_u['segs'],
+			classes_u = data_u['classes'],
+			imgs_v = imgs_v,
+			segs_v = data_v['segs'],
+			classes_v = data_v['classes'],
+			imgs_t = imgs_t,
+			segs_t = data_t['segs'],
+			classes_t = data_t['classes'],
+			model_dir = model_dir,
+			tensorboard_dir=tensorboard_dir,
+			loaded_model= args.load_model
+		)
 
-	lord.save(model_dir, ulord = False, ulord3d = True)
+		lord.save(model_dir, ulord = False, ulord3d = True)
+
+	if return_model:
+		return lord
 
 
-def train_unet3D(args):
 
-	num_exp = init_expe_directoryc()
-	write_arguments_to_file(sys.argv[4:], join(EXP_PATH_C, str(num_exp), 'config'))
+def train_unet3D(args, num_exp = None, path_exp = None, return_model = False,t_u = True, new_model_name = None):
+	if num_exp == None:
+		num_exp = init_expe_directoryc()
+
+	if path_exp == None:
+		path_exp = EXP_PATH_C
+
+	write_arguments_to_file(sys.argv[4:], join(path_exp, str(num_exp), 'config'))
 
 	assets = AssetManager(args.base_dir)
 	data = np.load(assets.get_preprocess_file_path(args.data_l_name))
 	data_v = np.load(assets.get_preprocess_file_path(args.data_v_name))
+	data_t = np.load(assets.get_preprocess_file_path(args.data_t_name))
 	imgs = data['imgs'].astype(np.float32)
 	imgs_v = data_v['imgs'].astype(np.float32)
+	imgs_t = data_t['imgs'].astype(np.float32)
+
+	if new_model_name == None and args.load_model == 0:
+		model_name = args.model_name + '_' + str(num_exp)
+	elif new_model_name == None:
+		model_name = args.model_name
+	else:
+		model_name = new_model_name
 
 	if args.g_config and args.load_model == 0:
 		with open(os.path.join(args.p_config, 'config.jason'), 'rb') as config_fd:
@@ -376,42 +411,151 @@ def train_unet3D(args):
 		c_config_unet_nn_3d = config_unet_nn_3d_c
 
 	if args.load_model:
-		model_dir = assets.get_model_dir(args.model_name)
-		tensorboard_dir = assets.get_tensorboard_dir(args.model_name)
+		model_dir = assets.get_model_dir(model_name)
+		tensorboard_dir = assets.get_tensorboard_dir(model_name)
 		unet = UNet3D()
-		unet.load(model_dir,unet = True, num_exp = str(num_exp))
+		unet.load(model_dir,unet = True, num_exp = str(num_exp), path_exp = path_exp)
 	else:
-		model_dir = assets.recreate_model_dir(args.model_name)
-		tensorboard_dir = assets.recreate_tensorboard_dir(args.model_name)
+		model_dir = assets.recreate_model_dir(model_name)
+		tensorboard_dir = assets.recreate_tensorboard_dir(model_name)
 
 		n_imgs = imgs.shape[0]
 		n_classes = data['n_classes'].item()
 
 		config = dict(
 			num_exp=str(num_exp),
+			path_exp = path_exp
 		)
 
 		config.update(c_base_config_3d)
-		path_config = join(EXP_PATH_C, str(num_exp), 'config', 'config.jason')
-		path_config_unet = join(EXP_PATH_C, str(num_exp), 'config', 'config_unet.jason')
+		path_config = join(path_exp, str(num_exp), 'config', 'config.jason')
+		path_config_unet = join(path_exp, str(num_exp), 'config', 'config_unet.jason')
 		jason_dump(config, path_config)
 		jason_dump(c_config_unet_nn_3d, path_config_unet)
 
 		unet = UNet3D(config, c_config_unet_nn_3d)
 
-	unet.train_UNet3D(
-		imgs=imgs,
-		segs = data['segs'],
-		classes=data['classes'],
-		imgs_v = imgs_v,
-		segs_v = data_v['segs'],
-		classes_v = data_v['classes'],
-		model_dir = model_dir,
-		tensorboard_dir=tensorboard_dir,
-		loaded_model= args.load_model
-	)
+	if t_u:
+		unet.train_UNet3D(
+			imgs=imgs,
+			segs = data['segs'],
+			classes=data['classes'],
+			imgs_v = imgs_v,
+			segs_v = data_v['segs'],
+			classes_v = data_v['classes'],
+			imgs_t = imgs_t,
+			segs_t = data_t['segs'],
+			classes_t = data_t['classes'],
+			model_dir = model_dir,
+			tensorboard_dir=tensorboard_dir,
+			loaded_model= args.load_model
+		)
 
-	unet.save(model_dir, unet = True)
+		unet.save(model_dir, unet = True)
+	if return_model:
+		return unet
+
+def t_and_c_ULord3D(args):
+	# get paths
+	num_exp = init_expe_directory_n(EXP_FP, init_dir = False)
+	assets = AssetManager(args.base_dir)
+
+	# build path
+	mkdir(join(EXP_FP, str(num_exp)))
+	mkdir(join(EXP_FP, str(num_exp), 'UNet3D'))
+	mkdir(join(EXP_FP, str(num_exp), 'ULord3D'))
+	mkdir(join(EXP_FP, str(num_exp), 'result'))
+
+
+	# for unet
+	mkdir(join(EXP_FP, str(num_exp), 'UNet3D', 'results'))
+	mkdir(join(EXP_FP, str(num_exp), 'UNet3D', 'config'))
+	mkdir(join(EXP_FP, str(num_exp), 'UNet3D', 'logging'))
+	path_results_unet = join(EXP_FP, str(num_exp), 'UNet3D')
+	exp_path_unet3d = join(EXP_FP, str(num_exp))
+	num_exp_unet3d = 'UNet3D'
+
+	# for ulord
+	mkdir(join(EXP_FP, str(num_exp), 'ULord3D', 'results'))
+	mkdir(join(EXP_FP, str(num_exp), 'ULord3D', 'config'))
+	mkdir(join(EXP_FP, str(num_exp), 'ULord3D', 'logging'))
+	path_results_lord  = join(EXP_FP, str(num_exp), 'ULord3D')
+	exp_path_ulord3d = join(EXP_FP, str(num_exp))
+	num_exp_ulord3d = 'ULord3D'
+
+	if args.load_model == 0:
+		model_name_lord = args.model_name_l + '_u3dc_' + str(num_exp)
+		model_name_unet = args.model_name_u + '_l3d_' + str(num_exp)
+	elif args.load_model == 1:
+
+		model_name_lord = args.model_name_l
+		model_name_unet = args.model_name_u
+
+
+
+
+	if args.lord:
+		train_ulord3d(args, num_exp = num_exp_ulord3d, path_exp = exp_path_ulord3d, return_model = True,t_l = args.t_l, new_model_name = model_name_lord)
+		model_dir = assets.get_model_dir(model_name_lord)
+		lord3d = Lord()
+		lord3d.load(model_dir,ulord= False ,ulord3d = True, num_exp = None, path_exp = None)
+
+	# train networks
+	if args.unet:
+		train_unet3D(args, num_exp = num_exp_unet3d, path_exp = exp_path_unet3d, return_model = True,t_u = args.t_u, new_model_name = model_name_unet)
+		model_dir = assets.get_model_dir(model_name_unet)
+		unet = UNet3D()
+		unet.load(model_dir, unet=True, num_exp= None, path_exp = None)
+
+	model_dir_lord = assets.get_model_dir(model_name_lord)
+	model_dir_unet = assets.get_model_dir(model_name_unet)
+	# get weights
+	path_to_weights_unet = join(model_dir_unet, 'best_unet.pth')
+	path_to_weights_lord = join(model_dir_lord, 'best_ulord3d_epoch.pth')
+
+	# load data set
+	with open(os.path.join(args.p_dataparam, 'patches_param.h5'), 'rb') as patches_param_file:
+		data_param = pickle.load(patches_param_file)
+	# print(data_param, "data_param")
+
+	with open(os.path.join(args.p_dataparam, 'fetal_data_withgt.h5'), 'rb') as patches_param_file:
+		data_with_gt = pickle.load(patches_param_file)
+	# print(data_with_gt, "data_with_gt")
+	if args.lord:
+		lord3d.evaluate(path_to_weights_lord ,data_param, data_with_gt, path_results_lord, ulord = False, ulord3d =True)
+
+	if args.unet:
+		unet.evaluate(path_to_weights_unet ,data_param, data_with_gt, path_results_unet)
+
+	# post_processing = PostProcessingSeg(ulord_model3d, data_with_gt, patches_param['margin'], patches_param['patch_stride'], patches_param['model_original_dim'])
+	# dict_prediction = dict()
+	# post_processing.predict_on_validation(dict_prediction)
+	#
+	#
+	# for th in range(0, post_processing.max_over_lap):
+	# 	logname_result = join(path_results, 'logging', f'uLord3d_pre_th_{th}.log')
+	# 	logname_dice = f'uLord3d_pre_th_{th}'
+	# 	logger_dice = define_logger(logname_dice, logname_result)
+	# 	dice_arr = list()
+	# 	for subject_id in dict_prediction.keys():
+
+
+
+
+
+	# TODO calculate mesh and debug and finish
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def train_encoders(args):
@@ -514,6 +658,7 @@ def main():
 	train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
 	train_semi_parser.add_argument('-dun', '--data-u-name', type=str, required=True)
 	train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
+	train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
 	train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
 	train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
 	train_semi_parser.add_argument('-sl', '--seg-loss', type=int, required=True)
@@ -532,6 +677,7 @@ def main():
 	train_semi_parser = action_parsers.add_parser('train_unet3D')
 	train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
 	train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
+	train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
 	train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
 	train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
 	train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
@@ -540,6 +686,28 @@ def main():
 	# train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
 	# train_parser.add_argument('-sc', '--source-class', type=str, required=False)
 	train_semi_parser.set_defaults(func = train_unet3D)
+
+	train_semi_parser = action_parsers.add_parser('t_and_c_ULord3D')
+	train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
+	train_semi_parser.add_argument('-dun', '--data-u-name', type=str, required=True)
+	train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
+	train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
+	train_semi_parser.add_argument('-mnu', '--model-name-u', type=str, required=True)
+	train_semi_parser.add_argument('-mnl', '--model-name-l', type=str, required=True)
+	train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
+	train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
+	train_semi_parser.add_argument('-pc', '--p-config', type=str, required=True)
+	train_semi_parser.add_argument('-pu', '--p-uconfig', type=str, required=True)
+	train_semi_parser.add_argument('-pd', '--p-dataparam', type=str, required=True)
+	train_semi_parser.add_argument('-u', '--unet', type=int, required=True)
+	train_semi_parser.add_argument('-l', '--lord', type=int, required=True)
+	train_semi_parser.add_argument('-tu', '--t-u', type=int, required=True)
+	train_semi_parser.add_argument('-tl', '--t-l', type=int, required=True)
+	# train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
+	# train_parser.add_argument('-sc', '--source-class', type=str, required=False)
+	train_semi_parser.set_defaults(func=t_and_c_ULord3D)
+
+
 
 
 

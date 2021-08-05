@@ -31,6 +31,9 @@ class MyRotationTransform3D:
 	def __call__(self, x):
 		angle = random.choice(self.angles)
 		# print((x['img'].dim()), "dimmmm")
+
+
+		# rotation
 		if x['img'].dim() == 5:
 			# print(x['img'].size(),"size")
 			x_tr = torch.squeeze(x['img'],dim=1)

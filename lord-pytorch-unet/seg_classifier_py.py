@@ -209,10 +209,37 @@ model = torch.nn.Sequential(
 
 
 if __name__ == '__main__':
-    a = torch.tensor([1,1,1,0,0,1,0,1])
-    print(a)
-    a = a.repeat_interleave(20)
-    print(a)
+    a = torch.tensor([[[[0,0],[1,1]],[[2,2],[3,3]], [[4,4],[5,5]], [[-1,-1],[-2,2]]]])
+    b = torch.tensor([[0.5,1],[-1,0.5]])
+    w = torch.tensor([[2,2],[0.5,0.5]])
+    b = b.contiguous().view(-1)
+    w = w.contiguous().view(-1)
+
+    w = w.unsqueeze(dim=0)
+    w = w.unsqueeze(dim=2)
+    w = w.unsqueeze(dim=3)
+
+    b = b.unsqueeze(dim=0)
+    b = b.unsqueeze(dim=2)
+    b = b.unsqueeze(dim=3)
+
+    r = torch.mul(a, w)
+    result = torch.add(r, b)
+    print(b.size())
+    print(w.size())
+    print(a.size(), "b size")
+
+    print(r,"\n\n\n\n\n\n")
+
+    result = torch.add(r, b)
+    for c in range(result.size()[1]):
+        print(f"channel{c}")
+        print(result[:,c,: ,:])
+
+
+    # print(a)
+    # a = a.repeat_interleave(20)
+    # print(a)
     exit()
  
  

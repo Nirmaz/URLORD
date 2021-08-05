@@ -3,14 +3,28 @@ import torch.nn.functional as F
 from torch import nn
 from torchvision import models
 import pickle
+from torch.autograd import Function
 from model.unet2d_model import UNet, Segmentntor
 import numpy as np
+import time
+
 CUDA_LAUNCH_BLOCKING=1
 
 def pickle_load(in_file):
 	with open(in_file, "rb") as opened_file:
 		return pickle.load(opened_file)
 
+class my_round_func(Function):
+
+	@staticmethod
+	def forward(ctx, input):
+		ctx.input = input
+		return torch.round(input)
+
+	@staticmethod
+	def backward(ctx, grad_output):
+		grad_input = grad_output.clone()
+		return grad_input
 
 class ClassEmbeddingFromSource(nn.Module):
 	"""
@@ -26,6 +40,18 @@ class ClassEmbeddingFromSource(nn.Module):
 		x = self.class_embedding_tesnor[x]
 		return x
 
+def conv_layer(dim: int):
+	if dim == 3:
+		return nn.Conv3d
+	elif dim == 2:
+		return nn.Conv2d
+
+
+def get_conv_layer(in_channels: int, out_channels: int, kernel_size: int = 3, stride: int = 1, padding: int = 1, bias: bool = True, dim: int = 2):
+	return conv_layer(dim)(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding, bias=bias)
+
+
+
 class UNetC(nn.Module):
 
 	def __init__(self, config_unet):
@@ -33,9 +59,18 @@ class UNetC(nn.Module):
 
 		self.config_unet = config_unet
 		self.unet = UNet(self.config_unet)
-
+		self.act = nn.ReLU()
+		self.last_conv = get_conv_layer(self.config_unet['out_channels'], 1, kernel_size = 3, stride = 1, padding = 1,
+									bias = True, dim=config_unet['dim'])
+		self.last_act = nn.Sigmoid()
 	def forward(self, img):
+
 		x = self.unet(img)
+		x = self.act(x)
+		x = self.last_conv(x)
+		x = self.last_act(x)
+
+		# print("--- %s unetd time ---" % (time.time() - start_time))
 		return {
 			'mask': x
 		}
@@ -227,17 +262,21 @@ class ULordModel3D(nn.Module):
 		self.generator_antomy = UNet(self.config_unet)
 		self.segmentor = Segmentntor(self.config_unet)
 		# self.generator = Generator(config['n_adain_layers'], config['adain_dim'], 1, self.config_unet['out_channels'])
-		self.generator = Generator3D(config['n_adain_layers'], config['adain_dim'], 1, self.config_unet['out_channels'])
+		self.generator = Generator3D(config['n_adain_layers'], config['adain_dim'], 1, self.config_unet['out_channels'], config['film_layer'])
 		# self.round_act = nn.ReLU()
 		self.rounding = Rounding()
+		# self.rounding = my_round_func
 		self.softmax = nn.Softmax(dim = 1)
 		self.flatten = nn.Flatten()
-
+		self.last_act = nn.Softmax(dim = 1)
 	def forward(self, img, class_id, img_u, class_id_u):
 		depth = img.size()[2]
 		class_id = class_id.repeat_interleave(depth)
 		class_id_u = class_id_u.repeat_interleave(depth)
+
+
 		anatomy_img = self.generator_antomy(img)
+		anatomy_img = self.last_act(anatomy_img)
 		class_code = self.class_embedding(class_id)
 
 		s_a_img = anatomy_img.size()
@@ -247,6 +286,7 @@ class ULordModel3D(nn.Module):
 		# anatomy_img = torch.reshape(anatomy_img, (s_a_img[0], s_a_img[1], s_a_img[2], s_a_img[3]))
 
 		anatomy_img_u = self.generator_antomy(img_u)
+		anatomy_img_u = self.last_act(anatomy_img_u)
 		class_code_u = self.class_embedding(class_id_u)
 		s_a_img_u = anatomy_img_u.size()
 
@@ -262,7 +302,6 @@ class ULordModel3D(nn.Module):
 
 		# apply rounding
 		if self.config['round']:
-
 			anatomy_img = self.rounding(anatomy_img)
 			anatomy_img_u = self.rounding(anatomy_img_u)
 
@@ -313,6 +352,91 @@ class ULordModel3D(nn.Module):
 			'content_code': content_code,
 			'content_code_u': content_code_u
 		}
+
+	# def forward(self, img, class_id, img_u, class_id_u):
+	# 	img_batch_size = img.size()[0]
+	# 	img_u_batch_size = img_u.size()[0]
+	# 	# start_time0 = time.time()
+	# 	depth = img.size()[2]
+	# 	class_id = class_id.repeat_interleave(depth)
+	# 	class_id_u = class_id_u.repeat_interleave(depth)
+	# 	# anatomy_img = self.generator_antomy(img)
+	# 	class_code = self.class_embedding(class_id)
+	#
+	# 	# anatomy_img_u = self.generator_antomy(img_u)
+	# 	class_code_u = self.class_embedding(class_id_u)
+	# 	# start_time0_1 = time.time()
+	# 	anatomy = self.generator_antomy(torch.cat([img, img_u], dim=0))
+	# 	anatomy_img, anatomy_img_u = anatomy[:img_batch_size, :], anatomy[img_batch_size: img_batch_size + img_u_batch_size  , :]
+	#
+	# 	# s_a_img_u = anatomy_img_u.size()
+	# 	# apply softmax on the z axis
+	# 	# anatomy_img_u = torch.reshape(anatomy_img_u, (s_a_img_u[0] * self.config_unet['in_channels'], self.config_unet['anatomy_rep'], s_a_img_u[2], s_a_img_u[3]))
+	# 	# anatomy_img_u = self.softmax(anatomy_img_u)
+	# 	# anatomy_img_u = torch.reshape(anatomy_img_u, (s_a_img_u[0], s_a_img_u[1], s_a_img_u[2], s_a_img_u[3]))
+	# 	#
+	# 	# anatomy_img = torch.reshape(anatomy_img, (
+	# 	# s_a_img[0] * self.config_unet['in_channels'], self.config_unet['anatomy_rep'], s_a_img[2], s_a_img[3]))
+	# 	# anatomy_img = self.softmax(anatomy_img)
+	# 	# anatomy_img = torch.reshape(anatomy_img, (s_a_img[0], s_a_img[1], s_a_img[2], s_a_img[3]))
+	#
+	# 	# apply rounding
+	# 	if self.config['round']:
+	#
+	# 		anatomy_img = self.rounding(anatomy_img)
+	# 		anatomy_img_u = self.rounding(anatomy_img_u)
+	#
+	# 		# anatomy_img = self.rounding.apply(anatomy_img)
+	# 		# anatomy_img_u = self.rounding.apply(anatomy_img_u)
+	#
+	# 	# get the full image
+	# 	content_code = self.flatten(anatomy_img)
+	# 	content_code_u = self.flatten(anatomy_img_u)
+	# 	class_adain_params = self.modulation(class_code)
+	# 	class_adain_params_u = self.modulation(class_code_u)
+	# 	start_time0_2 = time.time()
+	# 	# print("--- %s modu time ---" % (time.time() - start_time1))
+	# 	# inp_gen = anatomy_img.contiguous().view(s_a_img[0] * s_a_img[2],s_a_img[1], s_a_img[3],s_a_img[4])
+	# 	# inp_gen_u = anatomy_img_u.contiguous().view(s_a_img_u[0] * s_a_img_u[2],s_a_img_u[1], s_a_img_u[3],s_a_img_u[4])
+	# 	# #
+	# 	inp_gen = anatomy_img
+	# 	inp_gen_u = anatomy_img_u
+	# 	generated_img = self.generator(inp_gen, class_adain_params)
+	# 	generated_img_u = self.generator(inp_gen_u, class_adain_params_u)
+	# 	# start_time0_3 = time.time()
+	# 	# print("--- %s genret time ---" % (time.time() - start_time2))
+	# 	# print(generated_img_u.size(), " generated_img usizeeeee anat")
+	#
+	# 	# generated_img = generated_img.contiguous().view(s_a_img[0], 1, s_a_img[2],s_a_img[3], s_a_img[4])
+	# 	# generated_img_u = generated_img_u.contiguous().view(s_a_img_u[0] , 1, s_a_img_u[2], s_a_img_u[3], s_a_img_u[4])
+	# 	# start_time3 = time.time()
+	# 	if self.config['segmentor_gard']:
+	# 		segmentor_input = anatomy_img
+	# 		segmentor_input_u = anatomy_img_u
+	# 		# print("here")
+	# 	else:
+	# 		segmentor_input = anatomy_img.detach()
+	# 		segmentor_input_u = anatomy_img_u.detach()
+	#
+	# 	mask = self.segmentor(segmentor_input)
+	# 	mask_u = self.segmentor(segmentor_input_u)
+	# 	# print("--- %s seg time ---" % (time.time() - start_time3))
+	# 	# print("--- %s seg time alll ---" % (time.time() - start_time0))
+	# 	# print("--- %s seg time alll 0_1 ---" % (time.time() - start_time0_1))
+	# 	# print("--- %s seg time alll 0_2 ---" % (time.time() - start_time0_2))
+	# 	# print("--- %s seg time alll 0_3 ---" % (time.time() - start_time0_3))
+	# 	return {
+	# 		'img': generated_img,
+	# 		'img_u': generated_img_u,
+	# 		'anatomy_img': anatomy_img,
+	# 		'anatomy_img_u': anatomy_img_u,
+	# 		'mask': mask,
+	# 		'mask_u': mask_u,
+	# 		'class_code': class_code,
+	# 		'class_code_u': class_code_u,
+	# 		'content_code': content_code,
+	# 		'content_code_u': content_code_u
+	# 	}
 
 	def init(self):
 		self.apply(self.weights_init)
@@ -420,7 +544,7 @@ class Rounding(nn.Module):
 
 	def forward(self, x):
 
-		Rounding_factor = torch.zeros_like(x, requires_grad= False)
+		Rounding_factor = torch.zeros_like(x.detach(), requires_grad = False)
 		tensor = torch.tensor(x, requires_grad = False)
 		# print(tensor.size(), "tensor")
 		Rounding_factor[tensor <= 0.5] = tensor[tensor <= 0.5] * (-1)
@@ -448,7 +572,10 @@ class Modulation(nn.Module):
 	def forward(self, x):
 
 		adain_all = torch.cat([f(x) for f in self.adain_per_layer], dim = -1)
+		# print(adain_all.size(), "size(")
 		adain_params = adain_all.reshape(-1, self.__n_adain_layers, self.__adain_dim, 2)
+		# print(adain_params.size(), "adsin parms size(")
+
 
 		return adain_params
 
@@ -497,7 +624,7 @@ class Generator(nn.Module):
 
 class Generator3D(nn.Module):
 
-	def __init__(self, n_adain_layers, adain_dim, out_channel, in_channel):
+	def __init__(self, n_adain_layers, adain_dim, out_channel, in_channel, film_layer):
 		super().__init__()
 
 		self.__adain_dim = adain_dim
@@ -510,9 +637,9 @@ class Generator3D(nn.Module):
 				in_channels_adain = adain_dim
 
 			self.adain_conv_layers += [
-				nn.Conv3d(in_channels=in_channels_adain, out_channels=adain_dim, padding=1, kernel_size=3),
+				nn.Conv3d(in_channels=in_channels_adain, out_channels=adain_dim, padding=1, kernel_size = 3),
 				nn.LeakyReLU(),
-				AdaptiveInstanceNorm3d(adain_layer_idx=i)
+				AdaptiveInstanceNorm3d(adain_layer_idx=i, film_layer = film_layer)
 			]
 
 		self.adain_conv_layers = nn.Sequential(*self.adain_conv_layers)
@@ -521,7 +648,7 @@ class Generator3D(nn.Module):
 			nn.Conv3d(in_channels=adain_dim, out_channels=64, padding=2, kernel_size=5),
 			nn.LeakyReLU(),
 
-			nn.Conv3d(in_channels=64, out_channels=out_channel, padding=3, kernel_size=7),
+			nn.Conv3d(in_channels = 64, out_channels = out_channel, padding=3, kernel_size=7),
 			nn.Sigmoid()
 		)
 
@@ -579,23 +706,40 @@ class Encoder(nn.Module):
 
 class AdaptiveInstanceNorm3d(nn.Module):
 
-	def __init__(self, adain_layer_idx):
+	def __init__(self, adain_layer_idx, film_layer):
 		super().__init__()
 		self.weight = None
 		self.bias = None
 		self.adain_layer_idx = adain_layer_idx
+		self.film_layer = film_layer
 
 	def forward(self, x):
 		b, c, D = x.shape[0], x.shape[1], x.shape[2]
 
 		x_reshaped = x.contiguous().view(1, b * c * D , *x.shape[3:])
+		# print(self.weight.size(), "weights size")
 		weight = self.weight.contiguous().view(-1)
 		bias = self.bias.contiguous().view(-1)
+		if self.film_layer:
+			weight = weight.unsqueeze(dim=0)
+			weight = weight.unsqueeze(dim=2)
+			weight = weight.unsqueeze(dim=3)
 
-		out = F.batch_norm(
-			x_reshaped, running_mean=None, running_var=None,
-			weight=weight, bias=bias, training=True
-		)
+			bias = bias.unsqueeze(dim=0)
+			bias = bias.unsqueeze(dim=2)
+			bias = bias.unsqueeze(dim=3)
+
+			r = torch.mul(x_reshaped, weight)
+			out = torch.add(r, bias)
+		else:
+			out = F.batch_norm(
+				x_reshaped, running_mean=None, running_var=None,
+				weight=weight, bias=bias, training=True
+			)
+
+
+		# print(weight.size(), "weights size")
+		# exit()
 
 		out = out.view(b, c, D,  *x.shape[3:])
 		return out

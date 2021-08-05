@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def window_1_99(data, min_percent=2, max_percent=99):
-    print(data,"data")
+    print(np.unique(data).shape,"unique 6")
     image = sitk.GetImageFromArray(data)
     image = sitk.IntensityWindowing(image,
                                     np.percentile(data, min_percent),

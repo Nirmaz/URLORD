@@ -21,11 +21,12 @@ import matplotlib.pyplot as plt
 from os.path import join
 from experiments_unet import EXP_PATH, jason_dump, EXP_PATH_C
 from scipy.spatial import distance
-
+from post_pro import PostProcessingSeg, postprocess_prediction
 CUDA_LAUNCH_BLOCKING = 1
 import wandb
 import logging
-
+import time
+from measure import dice_func, dice_loss
 
 def define_logger(loger_name, file_path):
     logger = logging.getLogger(loger_name)
@@ -35,20 +36,20 @@ def define_logger(loger_name, file_path):
     return logger
 
 
-def dice_loss(inputs, targets, smooth=1):
-    """This definition generalize to real valued pred and target vector.
-    This should be differentiable.
-    pred: tensor with first dimension as batch
-    target: tensor with first dimension as batch
-    """
-
-    # inputs = F.sigmoid(inputs)
-    # flatten label and prediction tensors
-    inputs = inputs.view(-1)
-    targets = targets.view(-1)
-    intersection = (inputs * targets).sum()
-    dice = (2. * intersection + smooth) / (inputs.sum() + targets.sum() + smooth)
-    return 1 - dice
+# def dice_loss(inputs, targets, smooth=1):
+#     """This definition generalize to real valued pred and target vector.
+#     This should be differentiable.
+#     pred: tensor with first dimension as batch
+#     target: tensor with first dimension as batch
+#     """
+#
+#     # inputs = F.sigmoid(inputs)
+#     # flatten label and prediction tensors
+#     inputs = inputs.view(-1)
+#     targets = targets.view(-1)
+#     intersection = (inputs * targets).sum()
+#     dice = (2. * intersection + smooth) / (inputs.sum() + targets.sum() + smooth)
+#     return 1 - dice
 
 
 def parts(path):
@@ -82,7 +83,7 @@ class UNet3D:
 
         self.UNet = None
 
-    def load(self, model_dir, unet = True, num_exp=None):
+    def load(self, model_dir, unet = True, num_exp=None, path_exp = None):
 
         with open(os.path.join(model_dir, 'config.pkl'), 'rb') as config_fd:
             self.config = pickle.load(config_fd)
@@ -92,14 +93,15 @@ class UNet3D:
 
         if num_exp != None:
             self.config['num_exp'] = num_exp
-            path_config_unet = join(EXP_PATH, num_exp, 'config', 'config_unet.jason')
-            path_config = join(EXP_PATH, num_exp, 'config', 'config.jason')
+            self.config['path_exp'] = path_exp
+            path_config_unet = join(path_exp, num_exp, 'config', 'config_unet.jason')
+            path_config = join(path_exp, num_exp, 'config', 'config.jason')
             jason_dump(self.config, path_config)
             jason_dump(self.config_unet, path_config_unet)
 
         if unet:
             self.UNet = UNetC(self.config_unet)
-            self.UNet.load_state_dict(torch.load(os.path.join(model_dir, 'unet.pth')))
+            self.UNet.load_state_dict(torch.load(os.path.join(model_dir, 'ulord.pth')))
 
 
     def save_best_model(self, model_dir, unet = True):
@@ -120,16 +122,49 @@ class UNet3D:
             print("saving model......................................................")
             torch.save(self.UNet.state_dict(), os.path.join(model_dir, 'ulord.pth'))
 
+    def evaluate(self, path_to_weights, param_data, data_with_gt, path_result, unet3d = True):
+        if unet3d:
+            self.UNet.load_state_dict(torch.load(path_to_weights))
+            post_processing = PostProcessingSeg(self.UNet, data_with_gt, param_data['margin'],
+                                                param_data['patch_stride'], param_data['model_original_dim'], unet = True)
+            dict_prediction = dict()
+            post_processing.predict_on_validation(dict_prediction)
 
-    def train_UNet3D(self, imgs, segs,classes, imgs_v, segs_v,classes_v, model_dir, tensorboard_dir, loaded_model):
+            print(post_processing.max_over_lap, "post_processing.max_over_lap")
+            for th in range(0, int(post_processing.max_over_lap)):
 
+                logname_result = join(path_result, 'logging', f'unet3d_pre_th_{th}.log')
+                logname_dice = f'unet3d_pre_th_{th}'
+                logger_dice = define_logger(logname_dice, logname_result)
+                dice_score = AverageMeter()
+                for i, subject_id in enumerate(dict_prediction.keys()):
+                    gt = dict_prediction[subject_id]['truth']
+                    pred = dict_prediction[subject_id]['pred']
+                    if i == 0:
+                        print(np.unique(pred), "unique pred")
+
+                    res = np.zeros_like(pred)
+                    res[pred > th] = 1
+                    # res = postprocess_prediction(res)
+                    score = dice_func(gt, res)
+                    dice_score.update(score)
+                    logger_dice.info(f'subject id {subject_id} dice score {score}')
+
+                logger_dice.info(f'average dice score {dice_score.avg}')
+
+    def train_UNet3D(self, imgs, segs,classes, imgs_v, segs_v,classes_v, imgs_t, segs_t,classes_t,  model_dir, tensorboard_dir, loaded_model):
+
+        print(f"shapes: sh_img: {imgs_t.shape[0]}, sh_seg: {segs_t.shape[0]}, sh_class: {classes_t.shape[0]}")
+        print(f"shapes: sh_img: {imgs.shape[0]}, sh_seg: {segs.shape[0]}, sh_class: {classes.shape[0]}")
+        print(f"shapes: sh_img: {imgs_v.shape[0]}, sh_seg: {segs_v.shape[0]}, sh_class: {classes_v.shape[0]}")
         model_name = parts(tensorboard_dir)[-1]
-        path_result_train = join( EXP_PATH_C , self.config['num_exp'], 'results', model_name, 'train')
-        path_result_val = join( EXP_PATH_C , self.config['num_exp'], 'results', model_name, 'val')
-        path_result_loss = join( EXP_PATH_C , self.config['num_exp'], 'results', model_name, 'loss')
+        path_result_train = join( self.config['path_exp'] , self.config['num_exp'], 'results', model_name, 'train')
+        path_result_val = join( self.config['path_exp'] , self.config['num_exp'], 'results', model_name, 'val')
+        path_result_test = join( self.config['path_exp'] , self.config['num_exp'], 'results', model_name, 'test')
+        path_result_loss = join( self.config['path_exp'] , self.config['num_exp'], 'results', model_name, 'loss')
 
         # define logger
-        logname_dice = join(EXP_PATH_C , self.config['num_exp'], 'logging', 'unet_dice.log')
+        logname_dice = join(self.config['path_exp'] , self.config['num_exp'], 'logging', 'unet_dice.log')
 
 
         logger_dice = define_logger('loger_dice', logname_dice)
@@ -150,9 +185,16 @@ class UNet3D:
             class_id=torch.from_numpy(classes_v.astype(np.int64))
         )
 
+        data_t = dict(
+            img = torch.from_numpy(imgs_t).permute(0, 4, 3, 1, 2),
+            seg=torch.from_numpy(segs_t).permute(0, 4, 3, 1, 2),
+            class_id=torch.from_numpy(classes_t.astype(np.int64))
+        )
+
         rotation_transform = MyRotationTransform3D(angles=[-90, 0, 90])
         dataset = NamedTensorDataset(data, transform = rotation_transform)
         dataset_v = NamedTensorDataset(data_v)
+        dataset_t = NamedTensorDataset(data_t)
         sampler_l = ImbalancedDatasetSampler(dataset, classes, percent_list=self.config['train']['percent_list'])
 
         data_loader_t = DataLoader(
@@ -162,6 +204,12 @@ class UNet3D:
 
         data_loader_val = DataLoader(
             dataset_v, batch_size=self.config['train']['batch_size'],
+            shuffle=True, sampler=None, batch_sampler=None,
+            num_workers=10, pin_memory=True, drop_last=True
+        )
+
+        data_loader_test = DataLoader(
+            dataset_t, batch_size=self.config['train']['batch_size'],
             shuffle=True, sampler=None, batch_sampler=None,
             num_workers=10, pin_memory=True, drop_last=True
         )
@@ -188,31 +236,37 @@ class UNet3D:
         train_loss = AverageMeter()
         train_loss_epoch = AverageMeter()
         dice_loss_epoch_val = AverageMeter()
-
+        dice_loss_epoch_test = AverageMeter()
         # dice loss
         dice_loss_train = list()
         dice_loss_val = list()
+        dice_loss_test = list()
 
         self.generate_samples_unetc(dataset, 0, path_result_train, shape=(1, imgs.shape[1], imgs.shape[2]),
                                       randomized=False)
 
         min_dice_loss = 1
+
         for epoch in range(self.config['train']['n_epochs']):
             self.UNet.train()
             train_loss.reset()
             train_loss_epoch.reset()
             pbar_t = tqdm(iterable=data_loader_t)
             pbar_val = tqdm(iterable=data_loader_val)
+            pbar_test = tqdm(iterable=data_loader_test)
+            start_time0 = time.time()
             for i, batch in enumerate(pbar_t):
                 batch = {name: tensor.to(self.device) for name, tensor in batch.items()}
                 optimizer.zero_grad()
-                # print(batch_t['img'].size(), "batch seg id")
+                # print(batch['img'].size(), batch['seg'].size(), "batch seg id")
                 out = self.UNet(batch['img'])
                 loss = dice_loss(out['mask'], batch['seg'])
                 # print(f"loss{loss}")
                 loss.backward()
                 optimizer.step()
-                scheduler.step()
+
+                if self.config['sch']:
+                    scheduler.step()
 
                 train_loss_epoch.update(loss.item())
                 pbar_t.set_description_str('epoch #{}'.format(epoch))
@@ -231,11 +285,24 @@ class UNet3D:
                 loss_val = dice_loss(out['mask'], batch_v['seg'])
                 dice_loss_epoch_val.update(loss_val.item())
 
+            for batch_t in pbar_test:
+                # print("here")
+                self.UNet.eval()
+                batch_t = {name: tensor.to(self.device) for name, tensor in batch_t.items()}
+                out = self.UNet(batch_t['img'])
+                loss_test = dice_loss(out['mask'], batch_t['seg'])
+                dice_loss_epoch_test.update(loss_test.item())
+
             # dice_txt.write('val: ' +  f'# {dice_loss_epoch_val.avg}')
             logger_dice.info(f'val epoch {epoch} # dice {dice_loss_epoch_val.avg}')
+            logger_dice.info(f'test epoch {epoch} # dice {dice_loss_epoch_test.avg}')
+
             dice_loss_val.append(dice_loss_epoch_val.avg)
+            dice_loss_test.append(dice_loss_epoch_test.avg)
+
             if dice_loss_epoch_val.avg < min_dice_loss:
-                self.save_best_model(join(EXP_PATH_C, self.config['num_exp'], 'config'), unet = True)
+                min_dice_loss = dice_loss_epoch_val.avg
+                self.save_best_model(model_dir , unet = True)
 
             if min_dice_loss:
                 os.makedirs(path_result_loss, exist_ok=True)
@@ -245,13 +312,15 @@ class UNet3D:
                 plt.figure()
                 plt.plot(x, dice_loss_train)
                 plt.plot(x, dice_loss_val)
+                plt.plot(x, dice_loss_test)
                 plt.title(f'Loss vs. epochs {epoch}')
                 plt.ylabel('Loss')
                 plt.xlabel('Epoch')
-                plt.legend(['Training', 'Validation'], loc='upper right')
+                plt.legend(['Training', 'Validation', 'test'], loc='upper right')
                 plt.savefig(join(path_result_loss, f'loss_for_epoch{epoch}.jpeg'))
                 print('done')
 
+            print("------------ %s seg time alll -------------------------------" % (time.time() - start_time0))
             self.save(model_dir, unet = True)
 
 
@@ -266,6 +335,12 @@ class UNet3D:
 
             self.generate_samples_unetc(dataset_v, epoch, path_result_val,
                                                               shape=(1, imgs.shape[1], imgs.shape[2]), randomized=True)
+
+            self.generate_samples_unetc(dataset_t, epoch, path_result_test,
+                                        shape=(1, imgs.shape[1], imgs.shape[2]), randomized=False)
+
+            self.generate_samples_unetc(dataset_t, epoch, path_result_test,
+                                        shape=(1, imgs.shape[1], imgs.shape[2]), randomized=True)
 
 
 
@@ -303,7 +378,7 @@ class UNet3D:
         # print(cloned_all_samples.size(), "cloned all samples first step.............................................")
         cloned_all_samples = torch.squeeze(cloned_all_samples, dim=1)
         cloned_all_samples = cloned_all_samples[:, num_slice, :, :]
-        print(cloned_all_samples.size(), "cloned all samples next step.............................................")
+        # print(cloned_all_samples.size(), "cloned all samples next step.............................................")
 
         blank = torch.ones(shape)
         blank[:, :] = 0.5
@@ -319,17 +394,17 @@ class UNet3D:
             else:
                 class_id = torch.zeros(shape)
 
-            print(class_id.size, "len output 1")
+            # print(class_id.size, "len output 1")
             output1.append(class_id.detach().cpu())
 
-        print(output1, "output")
+        # print(output1, "output")
         output.append(torch.cat(output1, dim=2))
 
         # add samples
         output1 = [blank.detach()]
         classes = np.zeros((n_samples))
         for k in range(n_samples):
-            print(torch.unsqueeze(cloned_all_samples[k], dim=0).size(), "cloned")
+            # print(torch.unsqueeze(cloned_all_samples[k], dim=0).size(), "cloned")
             output1.append(torch.unsqueeze(cloned_all_samples[k], dim=0).detach().cpu())
         output.append(torch.cat(output1, dim=2))
 

@@ -407,8 +407,8 @@ class UNet(nn.Module):
             x = module(before_pool, x)
 
         x = self.conv_final(x)
-        if self.apply_last_act:
-            x = self.last_activation(x)
+        # if self.apply_last_act:
+        #     x = self.last_activation(x)
             # print(x[0,:,0,0], "after_softmax")
 
 
