@@ -322,7 +322,8 @@ class UNet(nn.Module):
         self.up_mode = config_unet['up_mode']
         self.down_blocks = []
         self.up_blocks = []
-        self.apply_last_act = config_unet['apply_last_act']
+        # self.apply_last_act = config_unet['apply_last_act']
+        self.apply_last_act = False
 
         # create encoder path
         for i in range(self.n_blocks):
@@ -407,8 +408,8 @@ class UNet(nn.Module):
             x = module(before_pool, x)
 
         x = self.conv_final(x)
-        # if self.apply_last_act:
-        #     x = self.last_activation(x)
+        if self.apply_last_act:
+            x = self.last_activation(x)
             # print(x[0,:,0,0], "after_softmax")
 
 

@@ -27,6 +27,7 @@ import wandb
 import logging
 import time
 from measure import dice_func, dice_loss
+from sklearn.metrics import recall_score, precision_score
 
 def define_logger(loger_name, file_path):
     logger = logging.getLogger(loger_name)
@@ -108,7 +109,7 @@ class UNet3D:
 
         if unet:
             print("saving model......................................................")
-            torch.save(self.UNet.state_dict(), os.path.join(model_dir, 'best_unet.pth'))
+            torch.save(self.UNet.state_dict(), os.path.join(model_dir, 'best_model.pth'))
 
     def save(self, model_dir, unet = True):
 
@@ -125,8 +126,7 @@ class UNet3D:
     def evaluate(self, path_to_weights, param_data, data_with_gt, path_result, unet3d = True):
         if unet3d:
             self.UNet.load_state_dict(torch.load(path_to_weights))
-            post_processing = PostProcessingSeg(self.UNet, data_with_gt, param_data['margin'],
-                                                param_data['patch_stride'], param_data['model_original_dim'], unet = True)
+            post_processing = PostProcessingSeg(self.UNet,  data_with_gt, param_data['margin'],self.config['train']['batch_size'], param_data['patch_stride'], param_data['model_original_dim'], bb = param_data['from_bb'], unet = True)
             dict_prediction = dict()
             post_processing.predict_on_validation(dict_prediction)
 
@@ -137,6 +137,8 @@ class UNet3D:
                 logname_dice = f'unet3d_pre_th_{th}'
                 logger_dice = define_logger(logname_dice, logname_result)
                 dice_score = AverageMeter()
+                pre_score = AverageMeter()
+                rec_score = AverageMeter()
                 for i, subject_id in enumerate(dict_prediction.keys()):
                     gt = dict_prediction[subject_id]['truth']
                     pred = dict_prediction[subject_id]['pred']
@@ -145,12 +147,19 @@ class UNet3D:
 
                     res = np.zeros_like(pred)
                     res[pred > th] = 1
-                    # res = postprocess_prediction(res)
-                    score = dice_func(gt, res)
-                    dice_score.update(score)
-                    logger_dice.info(f'subject id {subject_id} dice score {score}')
+                    res = postprocess_prediction(res)
+                    dice = dice_func(gt, res)
+                    res_1d = res.flatten()
+                    gt_1d = gt.flatten()
+                    rec = recall_score(gt_1d, res_1d)
+                    pre = precision_score(gt_1d, res_1d)
+                    dice_score.update(dice)
+                    pre_score.update(pre)
+                    rec_score.update(rec)
 
-                logger_dice.info(f'average dice score {dice_score.avg}')
+                    logger_dice.info(f'subject id {subject_id} dice score {dice}, recall score: {rec}, precision score: {pre} ')
+
+                logger_dice.info(f'avg dice score {dice_score.avg} , avg recall score: {rec_score.avg}, precision score: {pre_score.avg}')
 
     def train_UNet3D(self, imgs, segs,classes, imgs_v, segs_v,classes_v, imgs_t, segs_t,classes_t,  model_dir, tensorboard_dir, loaded_model):
 

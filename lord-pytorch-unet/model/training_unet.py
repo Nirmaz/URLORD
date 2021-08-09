@@ -26,34 +26,9 @@ import wandb
 import logging
 import time
 from measure import dice_func, dice_loss
+from sklearn.metrics import recall_score, precision_score
 
 
-def build_data_set_3d(imgs ,segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t):
-	data = dict(
-		img=torch.from_numpy(imgs).permute(0, 4, 3, 1, 2),
-		seg=torch.from_numpy(segs).permute(0, 4, 3, 1, 2),
-		class_id=torch.from_numpy(classes.astype(np.int64))
-	)
-
-	data_u = dict(
-		img=torch.from_numpy(imgs_u).permute(0, 4, 3, 1, 2),
-		seg=torch.from_numpy(segs_u).permute(0, 4, 3, 1, 2),
-		class_id=torch.from_numpy(classes_u.astype(np.int64))
-	)
-
-	data_v = dict(
-		img=torch.from_numpy(imgs_v).permute(0, 4, 3, 1, 2),
-		seg=torch.from_numpy(segs_v).permute(0, 4, 3, 1, 2),
-		class_id=torch.from_numpy(classes_v.astype(np.int64))
-	)
-
-	data_t = dict(
-		img=torch.from_numpy(imgs_t).permute(0, 4, 3, 1, 2),
-		seg=torch.from_numpy(segs_t).permute(0, 4, 3, 1, 2),
-		class_id=torch.from_numpy(classes_t.astype(np.int64))
-	)
-
-	return data , data_u, data_v, data_t
 
 
 
@@ -96,9 +71,41 @@ class Lord:
 		self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 		self.ulord_model = None
-		self.ulord_model3d = None
+		self.genrate_sample_func = None
 
-	def load(self, model_dir, ulord = True, ulord3d = True, num_exp = None, path_exp = None):
+		self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = None, None, None, None, None, None, None, None, None, None, None, None
+		self.data, self.data_u, self.data_v, self.data_t = None, None, None, None
+		self.rotation_transform = None
+
+	def build_data_set_3d(self):
+		data = dict(
+			img=torch.from_numpy(self.imgs).permute(0, 4, 3, 1, 2),
+			seg=torch.from_numpy(self.segs).permute(0, 4, 3, 1, 2),
+			class_id=torch.from_numpy(self.classes.astype(np.int64))
+		)
+
+		data_u = dict(
+			img=torch.from_numpy(self.imgs_u).permute(0, 4, 3, 1, 2),
+			seg=torch.from_numpy(self.segs_u).permute(0, 4, 3, 1, 2),
+			class_id=torch.from_numpy(self.classes_u.astype(np.int64))
+		)
+
+		data_v = dict(
+			img=torch.from_numpy(self.imgs_v).permute(0, 4, 3, 1, 2),
+			seg=torch.from_numpy(self.segs_v).permute(0, 4, 3, 1, 2),
+			class_id=torch.from_numpy(self.classes_v.astype(np.int64))
+		)
+
+		data_t = dict(
+			img=torch.from_numpy(self.imgs_t).permute(0, 4, 3, 1, 2),
+			seg=torch.from_numpy(self.segs_t).permute(0, 4, 3, 1, 2),
+			class_id=torch.from_numpy(self.classes_t.astype(np.int64))
+		)
+
+		return data, data_u, data_v, data_t
+
+
+	def load(self, model_dir, model_id, num_exp = None, path_exp = None):
 
 		with open(os.path.join(model_dir, 'config.pkl'), 'rb') as config_fd:
 			self.config = pickle.load(config_fd)
@@ -116,27 +123,20 @@ class Lord:
 			jason_dump(self.config, path_config)
 			jason_dump(self.config_unet, path_config_unet)
 
-		if ulord:
+		if model_id == 'ULord3D':
 			self.ulord_model = ULordModel(self.config, self.config_unet)
 			self.ulord_model .load_state_dict(torch.load(os.path.join(model_dir, 'ulord.pth')))
 
-		if ulord3d:
-			self.ulord_model3d = ULordModel3D(self.config, self.config_unet)
-			self.ulord_model3d.load_state_dict(torch.load(os.path.join(model_dir, 'ulord3d.pth')))
 
 
 
-	def save_best_model(self, model_dir, epoch, ulord = True, ulord3d = True):
 
-		if ulord:
-			print("saving model......................................................")
-			torch.save(self.ulord_model.state_dict(), os.path.join(model_dir, f'best_ulord_epoch.pth'))
+	def save_best_model(self, model_dir):
 
-		if ulord3d:
-			print("saving model......................................................")
-			torch.save(self.ulord_model3d.state_dict(), os.path.join(model_dir, f'best_ulord3d_epoch.pth'))
+		print("saving model......................................................")
+		torch.save(self.ulord_model.state_dict(), os.path.join(model_dir, 'best_model.pth'))
 
-	def save(self, model_dir, ulord = True, ulord3d = True):
+	def save(self, model_dir):
 
 		with open(os.path.join(model_dir, 'config_unet.pkl'), 'wb') as config_fd:
 			pickle.dump(self.config_unet, config_fd)
@@ -144,52 +144,56 @@ class Lord:
 		with open(os.path.join(model_dir, 'config.pkl'), 'wb') as config_fd:
 			pickle.dump(self.config, config_fd)
 
-		if ulord:
-			print("saving model......................................................")
-			torch.save(self.ulord_model.state_dict(), os.path.join(model_dir, 'ulord.pth'))
 
-		if ulord3d:
-			print("saving model......................................................")
-			torch.save(self.ulord_model3d.state_dict(), os.path.join(model_dir, 'ulord3d.pth'))
+		print("saving model......................................................")
+		torch.save(self.ulord_model.state_dict(), os.path.join(model_dir, 'ulord.pth'))
 
-	def evaluate(self, path_to_weights ,param_data,data_with_gt, path_result, ulord = False, ulord3d = True ):
-		if ulord3d:
-			self.ulord_model3d.load_state_dict(torch.load(path_to_weights))
+	def evaluate(self, path_to_weights ,param_data,data_with_gt, path_result):
 
-			post_processing = PostProcessingSeg(self.ulord_model3d, data_with_gt, param_data['margin'],
-												param_data['patch_stride'], param_data['model_original_dim'])
-			dict_prediction = dict()
-			post_processing.predict_on_validation(dict_prediction)
+		self.ulord_model.load_state_dict(torch.load(path_to_weights))
+		post_processing = PostProcessingSeg(self.ulord_model ,param_data['min_val'], param_data['max_val'], data_with_gt, param_data['margin'],self.config['train']['batch_size'], param_data['patch_stride'], param_data['model_original_dim'], bb = param_data['from_bb'])
+		dict_prediction = dict()
+		post_processing.predict_on_validation(dict_prediction)
 
 
-			print(post_processing.max_over_lap, "post_processing.max_over_lap")
-			for th in range(0, int(post_processing.max_over_lap)):
+		print(post_processing.max_over_lap, "post_processing.max_over_lap")
+		for th in range(0, int(post_processing.max_over_lap)):
 
-				logname_result = join(path_result, 'logging', f'uLord3d_pre_th_{th}.log')
-				logname_dice = f'uLord3d_pre_th_{th}'
-				logger_dice = define_logger(logname_dice, logname_result)
-				dice_score = AverageMeter()
-				for i, subject_id in enumerate(dict_prediction.keys()):
-					gt = dict_prediction[subject_id]['truth']
-					pred = dict_prediction[subject_id]['pred']
-					if i == 0:
-						print(np.unique(pred), "unique pred")
+			logname_result = join(path_result, 'logging', f'uLord3d_pre_th_{th}.log')
+			logname_dice = f'uLord3d_pre_th_{th}'
+			logger_dice = define_logger(logname_dice, logname_result)
+			dice_score = AverageMeter()
+			pre_score = AverageMeter()
+			rec_score = AverageMeter()
+			for i, subject_id in enumerate(dict_prediction.keys()):
+				gt = dict_prediction[subject_id]['truth']
+				pred = dict_prediction[subject_id]['pred']
+				if i == 0:
+					print(np.unique(pred), "unique pred")
 
-					res = np.zeros_like(pred)
-					res[pred > th] = 1
-					res = postprocess_prediction(res)
-					score = dice_func(gt, res)
-					dice_score.update(score)
-					logger_dice.info(f'subject id {subject_id} dice score {score}')
+				res = np.zeros_like(pred)
+				res[pred > th] = 1
+				res = postprocess_prediction(res)
+				dice = dice_func(gt, res)
+				res_1d = res.flatten()
+				gt_1d = gt.flatten()
+				rec = recall_score(gt_1d, res_1d)
+				pre = precision_score(gt_1d, res_1d)
+				dice_score.update(dice)
+				pre_score.update(pre)
+				rec_score.update(rec)
 
-				logger_dice.info(f'average dice score {dice_score.avg}')
+				logger_dice.info(f'subject id {subject_id} dice score {dice}, recall score: {rec}, precision score: {pre} ')
+
+			logger_dice.info(f'avg dice score {dice_score.avg} , avg recall score: {rec_score.avg}, precision score: {pre_score.avg}')
 
 
 
 
 
-	def train_ULordModel(self, imgs ,segs, classes, imgs_u, segs_u, classes_u, model_dir, tensorboard_dir, loaded_model):
-		print(segs)
+
+	def train_ULordModel2D(self, imgs ,segs, classes, imgs_u, segs_u, classes_u, model_dir, tensorboard_dir, loaded_model):
+
 		model_name = parts(tensorboard_dir)[-1]
 		path_result_train = join(self.config['path_exp'], self.config['num_exp'], 'results', model_name, 'train')
 		path_result_val = join(self.config['path_exp'], self.config['num_exp'], 'results', model_name, 'val')
@@ -414,7 +418,20 @@ class Lord:
 			# summary.add_image(tag='sample-random', img_tensor=random_sample_img, global_step = epoch)
 
 		summary.close()
-	def train_ULordModel3D(self, imgs ,segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t, model_dir, tensorboard_dir, loaded_model):
+
+
+	def train_ULordModel3D(self,  imgs ,segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t, model_dir, tensorboard_dir, loaded_model):
+		self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t =  imgs ,segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
+		self.data, self.data_u, self.data_v, self.data_t = self.build_data_set_3d()
+		self.rotation_transform = MyRotationTransform3D(angles=[-90, 0, 90])
+		if not loaded_model:
+			self.ulord_model = ULordModel3D(self.config, self.config_unet)
+
+		self.genrate_sample_func = self.generate_samples_ulord3d
+		self.train_ULordModel(model_dir, tensorboard_dir)
+
+
+	def train_ULordModel(self, model_dir, tensorboard_dir):
 
 		model_name = parts(tensorboard_dir)[-1]
 		path_result_train = join(self.config['path_exp'], self.config['num_exp'], 'results', model_name, 'train')
@@ -434,18 +451,18 @@ class Lord:
 		logger_recon = define_logger('loger_recon', logname_recon)
 		logger_recon_with_a = define_logger('loger_recon_witha', logname_recon_with_a)
 
-		if not loaded_model:
-			self.ulord_model3d = ULordModel3D(self.config, self.config_unet)
+		# if not loaded_model:
+		# 	self.ulord_model3d = ULordModel3D(self.config, self.config_unet)
 
-		data , data_u, data_v, data_t = build_data_set_3d(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,classes_t)
+		# data, data_u, data_v, data_t = build_data_set_3d(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t)
 
-		rotation_transform = MyRotationTransform3D(angles=[-90, 0, 90])
-		dataset = NamedTensorDataset(data, transform = rotation_transform )
-		dataset_u = NamedTensorDataset(data_u, transform = rotation_transform )
-		dataset_v = NamedTensorDataset(data_v)
-		dataset_t = NamedTensorDataset(data_t)
-		sampler_l = ImbalancedDatasetSampler( dataset,classes ,percent_list = self.config['train']['percent_list'])
-		sampler_u = ImbalancedDatasetSampler( dataset_u , classes_u,int((len(dataset)//self.config['train']['batch_size']) * self.config['train']['batch_size_u']))
+		# rotation_transform = MyRotationTransform3D(angles=[-90, 0, 90])
+		dataset = NamedTensorDataset(self.data, transform = self.rotation_transform )
+		dataset_u = NamedTensorDataset(self.data_u, transform = self.rotation_transform )
+		dataset_v = NamedTensorDataset(self.data_v)
+		dataset_t = NamedTensorDataset(self.data_t)
+		sampler_l = ImbalancedDatasetSampler( dataset,self.classes ,percent_list = self.config['train']['percent_list'])
+		sampler_u = ImbalancedDatasetSampler( dataset_u , self.classes_u,int((len(dataset)//self.config['train']['batch_size']) * self.config['train']['batch_size_u']))
 
 		data_loader_t = DataLoader(
 			dataset,  sampler = sampler_l, batch_size = self.config['train']['batch_size'],
@@ -469,8 +486,8 @@ class Lord:
 			num_workers=10, pin_memory=True, drop_last=True
 		)
 
-		self.ulord_model3d.init()
-		self.ulord_model3d.to(self.device)
+		self.ulord_model.init()
+		self.ulord_model.to(self.device)
 		# criterion = VGGDistance(self.config['perceptual_loss']['layers']).to(self.device)
 		criterion = nn.MSELoss()
 		# criterion = nn.L1Loss()
@@ -486,14 +503,14 @@ class Lord:
 		# ])
 		optimizer = Adam([
 			{
-				'params': itertools.chain(self.ulord_model3d.modulation.parameters(),
-										  self.ulord_model3d.generator_antomy.parameters(),
-										  self.ulord_model3d.segmentor.parameters(),
-										  self.ulord_model3d.generator.parameters()),
+				'params': itertools.chain(self.ulord_model.modulation.parameters(),
+										  self.ulord_model.generator_antomy.parameters(),
+										  self.ulord_model.segmentor.parameters(),
+										  self.ulord_model.generator.parameters()),
 				'lr': self.config['train']['learning_rate']['generator']
 			},
 			{
-				'params': itertools.chain(self.ulord_model3d.class_embedding.parameters()),
+				'params': itertools.chain(self.ulord_model.class_embedding.parameters()),
 				'lr': self.config['train']['learning_rate']['latent']
 			}
 		], betas=(0.5, 0.999))
@@ -544,12 +561,12 @@ class Lord:
 			recon_decay = self.config['recon_decay']
 
 
-		fixed_sample_img = self.generate_samples_ulord3d(dataset, 0, path_result_train,shape=(1, imgs.shape[1],imgs.shape[2]), randomized = False)
+		fixed_sample_img = self.genrate_sample_func(dataset, 0, path_result_train,shape=(1, self.imgs.shape[1],self.imgs.shape[2]), randomized = False)
 
 		min_dice_loss = 1
 		early_stop = 0
 		for epoch in range(self.config['train']['n_epochs']):
-			self.ulord_model3d.train()
+			self.ulord_model.train()
 			train_loss.reset()
 			dice_loss_epoch_train.reset()
 			pbar_t = tqdm(iterable = data_loader_t)
@@ -573,7 +590,7 @@ class Lord:
 				optimizer.zero_grad()
 				# print(batch_t['img'].size(), "batch seg id")
 				start_time_model= time.time()
-				out = self.ulord_model3d(batch_t['img'], batch_t['class_id'], batch_u['img'], batch_u['class_id'])
+				out = self.ulord_model(batch_t['img'], batch_t['class_id'], batch_u['img'], batch_u['class_id'])
 				start_time_else = time.time()
 				class_penalty = torch.sum(out['class_code'] ** 2, dim=1).mean()
 				content_penalty = torch.sum(out['content_code'] ** 2, dim=1).mean()
@@ -612,17 +629,17 @@ class Lord:
 
 			for batch_v in pbar_val:
 				# print("here")
-				self.ulord_model3d.eval()
+				self.ulord_model.eval()
 				batch_v = {name: tensor.to(self.device) for name, tensor in batch_v.items()}
-				out = self.ulord_model3d(batch_v['img'], batch_v['class_id'], batch_v['img'], batch_v['class_id'])
+				out = self.ulord_model(batch_v['img'], batch_v['class_id'], batch_v['img'], batch_v['class_id'])
 				loss_val = dice_loss(out['mask'], batch_v['seg'])
 				dice_loss_epoch_val.update(loss_val.item())
 
 			for batch_t in pbar_test:
 				# print("here")
-				self.ulord_model3d.eval()
+				self.ulord_model.eval()
 				batch_t = {name: tensor.to(self.device) for name, tensor in batch_t.items()}
-				out = self.ulord_model3d(batch_t['img'], batch_t['class_id'], batch_t['img'], batch_t['class_id'])
+				out = self.ulord_model(batch_t['img'], batch_t['class_id'], batch_t['img'], batch_t['class_id'])
 				loss_test = dice_loss(out['mask'], batch_t['seg'])
 				dice_loss_epoch_test.update(loss_test.item())
 
@@ -635,8 +652,8 @@ class Lord:
 			if  dice_loss_epoch_val.avg < min_dice_loss:
 				early_stop = 0
 				min_dice_loss = dice_loss_epoch_val.avg
-				self.save_best_model(model_dir ,epoch, ulord = False, ulord3d = True)
-			elif early_stop > 3:
+				self.save_best_model(model_dir)
+			elif early_stop > 10:
 				break
 			else:
 				early_stop = early_stop + 1
@@ -668,23 +685,23 @@ class Lord:
 				print('done')
 
 			print("------------ %s seg time alll epoch -------------------------------" % (time.time() - start_time0))
-			self.save(model_dir, ulord = False, ulord3d = True )
+			self.save(model_dir )
 			summary.add_scalar(tag='loss', scalar_value=train_loss.avg, global_step=epoch)
 			print("here1")
-			fixed_sample_img = self.generate_samples_ulord3d(dataset, epoch,path_result_train,shape=(1, imgs.shape[1],imgs.shape[2]),  randomized=False)
-			random_sample_img = self.generate_samples_ulord3d(dataset, epoch,path_result_train,shape=(1, imgs.shape[1],imgs.shape[2]), randomized=True)
+			self.genrate_sample_func(dataset, epoch,path_result_train,shape=(1, self.imgs.shape[1],self.imgs.shape[2]),  randomized=False)
+			self.genrate_sample_func(dataset, epoch,path_result_train,shape=(1, self.imgs.shape[1],self.imgs.shape[2]), randomized=True)
 
-			fixed_sample_img = self.generate_samples_ulord3d(dataset_u, epoch, path_result_u,shape=(1, imgs.shape[1],imgs.shape[2]), randomized=False)
-			random_sample_img = self.generate_samples_ulord3d(dataset_u, epoch, path_result_u,shape=(1, imgs.shape[1],imgs.shape[2]), randomized=True)
+			self.genrate_sample_func(dataset_u, epoch, path_result_u,shape=(1, self.imgs.shape[1],self.imgs.shape[2]), randomized=False)
+			self.genrate_sample_func(dataset_u, epoch, path_result_u,shape=(1, self.imgs.shape[1],self.imgs.shape[2]), randomized=True)
 
-			fixed_sample_img = self.generate_samples_ulord3d(dataset_v, epoch, path_result_val,shape=(1, imgs.shape[1], imgs.shape[2]), randomized=False)
-			random_sample_img = self.generate_samples_ulord3d(dataset_v, epoch, path_result_val,shape=(1, imgs.shape[1], imgs.shape[2]), randomized=True)
+			self.genrate_sample_func(dataset_v, epoch, path_result_val,shape=(1, self.imgs.shape[1], self.imgs.shape[2]), randomized=False)
+			self.genrate_sample_func(dataset_v, epoch, path_result_val,shape=(1, self.imgs.shape[1], self.imgs.shape[2]), randomized=True)
 
-			fixed_sample_img = self.generate_samples_ulord3d(dataset_t, epoch, path_result_test,
-															 shape=(1, imgs.shape[1], imgs.shape[2]), randomized=False)
+			self.genrate_sample_func(dataset_t, epoch, path_result_test,
+															 shape=(1, self.imgs.shape[1], self.imgs.shape[2]), randomized=False)
 
-			random_sample_img = self.generate_samples_ulord3d(dataset_t, epoch, path_result_test,
-															  shape=(1, imgs.shape[1], imgs.shape[2]), randomized=True)
+			self.genrate_sample_func(dataset_t, epoch, path_result_test,
+															  shape=(1, self.imgs.shape[1], self.imgs.shape[2]), randomized=True)
 
 		# summary.add_image(tag='sample-fixed', img_tensor=fixed_sample_img, global_step = epoch)
 			# summary.add_image(tag='sample-random', img_tensor=random_sample_img, global_step = epoch)
@@ -853,7 +870,7 @@ class Lord:
 		else:
 			rnd = 'not_random'
 
-		self.ulord_model3d.eval()
+		self.ulord_model.eval()
 		if randomized:
 			random = np.random
 		else:
@@ -898,7 +915,7 @@ class Lord:
 			converted_imgs = [class_id.detach().cpu()]
 			# print(class_id.size(), "class_id")
 			converted_imgs.append(torch.unsqueeze(samples['img'][[i]][0][0][num_slice], 0).detach().cpu())
-			out = self.ulord_model3d(samples['img'][[i]], samples['class_id'][[i]], samples['img'][[i]], samples['class_id'][[i]])
+			out = self.ulord_model(samples['img'][[i]], samples['class_id'][[i]], samples['img'][[i]], samples['class_id'][[i]])
 			for j in range(self.config_unet['out_channels']):
 				print(out['anatomy_img'][0][j].size())
 
@@ -945,7 +962,7 @@ class Lord:
 			torch_2 = torch.zeros_like(class_0)
 			torch_2[:] = 2
 			for i in range(n_samples):
-				out = self.ulord_model3d(samples['img'][[i]], class_0, samples['img'][[i]], class_0)
+				out = self.ulord_model(samples['img'][[i]], class_0, samples['img'][[i]], class_0)
 				converted_imgs.append(torch.unsqueeze(out['img'][0][0][num_slice],0).detach().cpu())
 
 			output.append(torch.cat(converted_imgs, dim=2))
@@ -956,7 +973,7 @@ class Lord:
 			converted_imgs = [class_1_img.detach().cpu()]
 			for i in range(n_samples):
 				# class_1 = torch.divide(class_1, torch_2).to(self.device)
-				out = self.ulord_model3d(samples['img'][[i]], class_1, samples['img'][[i]], class_1)
+				out = self.ulord_model(samples['img'][[i]], class_1, samples['img'][[i]], class_1)
 				converted_imgs.append(torch.unsqueeze(out['img'][0][0][num_slice],0).detach().cpu())
 
 			output.append(torch.cat(converted_imgs, dim=2))
@@ -978,7 +995,7 @@ class Lord:
 
 			converted_imgs = [blank]
 			for i in range(n_samples):
-				out =  self.ulord_model3d(samples['img'][[i]], samples['class_id'][[i]], samples['img'][[i]], samples['class_id'][[i]])
+				out =  self.ulord_model(samples['img'][[i]], samples['class_id'][[i]], samples['img'][[i]], samples['class_id'][[i]])
 				mask = torch.round(out['mask'][0])
 				converted_imgs.append(torch.unsqueeze(mask[0][num_slice],0).detach().cpu())
 				output_dice.append(dice_loss(torch.unsqueeze(mask[0][num_slice],0), torch.unsqueeze(samples['seg'][[i]][0][0][num_slice],0)))
@@ -988,7 +1005,7 @@ class Lord:
 
 			converted_imgs = [blank.detach().cpu()]
 			for i in range(n_samples):
-				out = self.ulord_model3d(samples['img'][[i]], samples['class_id'][[i]], samples['img'][[i]], samples['class_id'][[i]])
+				out = self.ulord_model(samples['img'][[i]], samples['class_id'][[i]], samples['img'][[i]], samples['class_id'][[i]])
 				mask = out['mask'][0]
 
 				converted_imgs.append(torch.unsqueeze(mask[0][num_slice],0).detach().cpu())

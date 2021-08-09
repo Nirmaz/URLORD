@@ -282,38 +282,47 @@ def train_ulord(args, num_exp = None, path_exp = None):
 
 	lord.save(model_dir, ulord= True,ulord3d = False )
 
-def train_ulord3d(args, num_exp = None, path_exp = None, return_model = False, t_l = True, new_model_name = None):
+def train_ulord3d(args, base_dir = None, num_exp = None, path_exp = None,  t_l = True, model_name = None, data_l_name = None, data_u_name = None, data_v_name = None,
+				  data_t_name = None, load_model = None,use_out_config = None, path_config = None, path_unet_config = None, take_from_arg = True):
 
-	if num_exp == None:
+	if take_from_arg:
+		base_dir = args.base_dir
 		num_exp = init_expe_directory()
-	if path_exp == None:
 		path_exp = EXP_PATH
+		model_name = args.model_name
+		data_l_name = args.data_l_name
+		data_u_name = args.data_u_name
+		data_v_name = args.data_v_name
+		data_t_name = args.data_t_name
+		load_model = args.load_model
+		path_config = args.p_config
+		path_unet_config = args.p_uconfig
+		use_out_config = args.g_config
+
+
+
 
 	write_arguments_to_file(sys.argv[4:], join(path_exp, str(num_exp), 'config'))
 
-	assets = AssetManager(args.base_dir)
-	data = np.load(assets.get_preprocess_file_path(args.data_l_name))
-	data_u = np.load(assets.get_preprocess_file_path(args.data_u_name))
-	data_v = np.load(assets.get_preprocess_file_path(args.data_v_name))
-	data_t = np.load(assets.get_preprocess_file_path(args.data_t_name))
+	assets = AssetManager(base_dir)
+	data = np.load(assets.get_preprocess_file_path(data_l_name))
+	data_u = np.load(assets.get_preprocess_file_path(data_u_name))
+	data_v = np.load(assets.get_preprocess_file_path(data_v_name))
+	data_t = np.load(assets.get_preprocess_file_path(data_t_name))
 	imgs = data['imgs'].astype(np.float32)
 	imgs_u = data_u['imgs'].astype(np.float32)
 	imgs_v = data_v['imgs'].astype(np.float32)
 	imgs_t = data_t['imgs'].astype(np.float32)
 
-	if new_model_name == None and args.load_model == 0:
-		model_name = args.model_name + '_' + str(num_exp)
-	elif new_model_name == None:
-		model_name = args.model_name
-	else:
-		model_name = new_model_name
+	if take_from_arg and load_model == 0:
+		model_name = model_name + '_' + str(num_exp)
 
-	if args.g_config and args.load_model == 0:
+	if use_out_config and load_model == 0:
 
-		with open(os.path.join(args.p_config, 'config.jason'), 'rb') as config_fd:
+		with open(os.path.join(path_config, 'config.jason'), 'rb') as config_fd:
 			c_base_config_3d = json.load(config_fd)
 
-		with open(os.path.join(args.p_uconfig, 'config_unet.jason'), 'rb') as config_fd:
+		with open(os.path.join(path_unet_config, 'config_unet.jason'), 'rb') as config_fd:
 			c_config_unet_nn_3d = json.load(config_fd)
 	else:
 		c_base_config_3d = base_config_3d
@@ -322,11 +331,11 @@ def train_ulord3d(args, num_exp = None, path_exp = None, return_model = False, t
 
 
 
-	if args.load_model:
+	if load_model:
 		model_dir = assets.get_model_dir(model_name)
 		tensorboard_dir = assets.get_tensorboard_dir(model_name)
 		lord = Lord()
-		lord.load(model_dir,ulord= False ,ulord3d = True, num_exp = str(num_exp), path_exp = path_exp)
+		lord.load(model_dir,model_id = 'ULord3D', num_exp = str(num_exp), path_exp = path_exp)
 	else:
 		model_dir = assets.recreate_model_dir(model_name)
 		tensorboard_dir = assets.recreate_tensorboard_dir(model_name)
@@ -366,51 +375,54 @@ def train_ulord3d(args, num_exp = None, path_exp = None, return_model = False, t
 			classes_t = data_t['classes'],
 			model_dir = model_dir,
 			tensorboard_dir=tensorboard_dir,
-			loaded_model= args.load_model
+			loaded_model= load_model
 		)
 
-		lord.save(model_dir, ulord = False, ulord3d = True)
-
-	if return_model:
-		return lord
+		lord.save(model_dir)
 
 
 
-def train_unet3D(args, num_exp = None, path_exp = None, return_model = False,t_u = True, new_model_name = None):
-	if num_exp == None:
-		num_exp = init_expe_directoryc()
 
-	if path_exp == None:
-		path_exp = EXP_PATH_C
+def train_unet3D(args,  base_dir = None, num_exp = None, path_exp = None,  t_u = True, model_name = None, data_l_name = None, data_v_name = None,
+				  data_t_name = None, load_model = None,use_out_config = None, path_config = None, path_unet_config = None, take_from_arg = True):
+
+	if take_from_arg:
+		base_dir = args.base_dir
+		num_exp = init_expe_directory()
+		path_exp = EXP_PATH
+		model_name = args.model_name
+		data_l_name = args.data_l_name
+		data_v_name = args.data_v_name
+		data_t_name = args.data_t_name
+		load_model = args.load_model
+		path_config = args.p_config
+		path_unet_config = args.p_uconfig
+		use_out_config = args.g_config
 
 	write_arguments_to_file(sys.argv[4:], join(path_exp, str(num_exp), 'config'))
 
-	assets = AssetManager(args.base_dir)
-	data = np.load(assets.get_preprocess_file_path(args.data_l_name))
-	data_v = np.load(assets.get_preprocess_file_path(args.data_v_name))
-	data_t = np.load(assets.get_preprocess_file_path(args.data_t_name))
+	assets = AssetManager(base_dir)
+	data = np.load(assets.get_preprocess_file_path(data_l_name))
+	data_v = np.load(assets.get_preprocess_file_path(data_v_name ))
+	data_t = np.load(assets.get_preprocess_file_path(data_t_name))
 	imgs = data['imgs'].astype(np.float32)
 	imgs_v = data_v['imgs'].astype(np.float32)
 	imgs_t = data_t['imgs'].astype(np.float32)
 
-	if new_model_name == None and args.load_model == 0:
-		model_name = args.model_name + '_' + str(num_exp)
-	elif new_model_name == None:
-		model_name = args.model_name
-	else:
-		model_name = new_model_name
+	if take_from_arg and load_model == 0:
+		model_name = model_name + '_' + str(num_exp)
 
-	if args.g_config and args.load_model == 0:
-		with open(os.path.join(args.p_config, 'config.jason'), 'rb') as config_fd:
+	if use_out_config and load_model == 0:
+		with open(os.path.join(path_config, 'config.jason'), 'rb') as config_fd:
 			c_base_config_3d = json.load(config_fd)
 
-		with open(os.path.join(args.p_uconfig, 'config_unet.jason'), 'rb') as config_fd:
+		with open(os.path.join(path_unet_config, 'config_unet.jason'), 'rb') as config_fd:
 			c_config_unet_nn_3d = json.load(config_fd)
 	else:
-		c_base_config_3d = base_config_unet
+		c_base_config_3d = base_config
 		c_config_unet_nn_3d = config_unet_nn_3d_c
 
-	if args.load_model:
+	if load_model:
 		model_dir = assets.get_model_dir(model_name)
 		tensorboard_dir = assets.get_tensorboard_dir(model_name)
 		unet = UNet3D()
@@ -448,12 +460,11 @@ def train_unet3D(args, num_exp = None, path_exp = None, return_model = False,t_u
 			classes_t = data_t['classes'],
 			model_dir = model_dir,
 			tensorboard_dir=tensorboard_dir,
-			loaded_model= args.load_model
+			loaded_model= load_model
 		)
 
 		unet.save(model_dir, unet = True)
-	if return_model:
-		return unet
+
 
 def t_and_c_ULord3D(args):
 	# get paths
@@ -495,17 +506,18 @@ def t_and_c_ULord3D(args):
 
 
 	if args.lord:
-		train_ulord3d(args, num_exp = num_exp_ulord3d, path_exp = exp_path_ulord3d, return_model = True,t_l = args.t_l, new_model_name = model_name_lord)
+		train_ulord3d(None ,base_dir = args.base_dir, num_exp = num_exp_ulord3d, path_exp = exp_path_ulord3d, t_l = args.t_l, model_name = model_name_lord, data_l_name = args.data_l_name, data_u_name = args.data_u_name, data_v_name = args.data_v_name,
+				  data_t_name = args.data_t_name, load_model = args.load_model,use_out_config = True, path_config = args.p_uconfig, path_unet_config = args.p_uconfig, take_from_arg = False)
 		model_dir = assets.get_model_dir(model_name_lord)
 		lord3d = Lord()
 		lord3d.load(model_dir,ulord= False ,ulord3d = True, num_exp = None, path_exp = None)
 
 	# train networks
 	if args.unet:
-		train_unet3D(args, num_exp = num_exp_unet3d, path_exp = exp_path_unet3d, return_model = True,t_u = args.t_u, new_model_name = model_name_unet)
+		train_unet3D(args, num_exp = num_exp_unet3d, path_exp = exp_path_unet3d, t_u = args.t_u, model_name = model_name_unet)
 		model_dir = assets.get_model_dir(model_name_unet)
 		unet = UNet3D()
-		unet.load(model_dir, unet=True, num_exp= None, path_exp = None)
+		unet.load(model_dir, unet = True, num_exp = None, path_exp = None)
 
 	model_dir_lord = assets.get_model_dir(model_name_lord)
 	model_dir_unet = assets.get_model_dir(model_name_unet)
@@ -580,7 +592,7 @@ def train_encoders(args):
 
 def main():
 	print(torch.cuda.is_available(), "cuda")
-
+	print("nir")
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-bd', '--base-dir', type=str, required=True)
 
@@ -737,6 +749,7 @@ def main():
 
 
 if __name__ == '__main__':
+	print("nir")
 	# wandb.login(key=[your_api_key])
 	wandb.init(reinit=True)
 	main()

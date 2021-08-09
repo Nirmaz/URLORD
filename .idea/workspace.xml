@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/measure.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/post_processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/embryo_main/create_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/create_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/embryo_main/data_generation/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/data_generation/preprocess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/config_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/config_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/experiments_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/experiments_unet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/config_umodel_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/config_umodel_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/modules_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/modules_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/training_comp_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/training_comp_unet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/unet2d_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/unet2d_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/utils_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/utils_unet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/seg_classifier_py.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/seg_classifier_py.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -392,7 +378,7 @@
       <workItem from="1625597840917" duration="63134000" />
       <workItem from="1626598267487" duration="11333000" />
       <workItem from="1626682113796" duration="103253000" />
-      <workItem from="1627199029995" duration="249803000" />
+      <workItem from="1627199029995" duration="252971000" />
     </task>
     <task id="LOCAL-00001" summary="all">
       <created>1625765445775</created>
@@ -422,7 +408,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627549083796</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="all_second_batch">
+      <created>1628171534115</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1628171534115</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,14 +439,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="all_second_batch" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="82" y="25" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1628149477260">
+    <state x="82" y="25" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1628179536191">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="102" y="31" width="1071" height="679" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1623564099684" />
     <state x="20" y="157" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1626617396273" />
     <state x="187" y="31" width="1071" height="654" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1625307816465" />
     <state x="-666" y="80" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3200.864@0.0.3200.864" timestamp="1625319307003" />
-    <state x="82" y="25" width="1649" height="1015" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1628149477260" />
+    <state x="82" y="25" width="1649" height="1015" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1628179536191" />
     <state x="712" y="358" width="493" height="363" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1628082902795">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
@@ -462,10 +455,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="950" y="325" width="326" height="442" key="#com.intellij.ide.macro.MacrosDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1624871109185" />
-    <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2" timestamp="1627549083509">
+    <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2" timestamp="1628171528380">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1627549083509" />
+    <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1628171528380" />
     <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl" timestamp="1628090882390">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
@@ -522,10 +515,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="599" y="108" width="788" height="552" key="SettingsEditor/0.25.1920.1030@0.25.1920.1030" timestamp="1627988197538" />
-    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2" timestamp="1627549085163">
+    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2" timestamp="1628171544586">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1627549085163" />
+    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1628171544586" />
     <state width="964" height="516" key="XDebugger.FullValuePopup" timestamp="1628001078286">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>

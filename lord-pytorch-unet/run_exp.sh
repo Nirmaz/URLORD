@@ -3,7 +3,11 @@ cd /cs/casmip/nirm/embryo_project_version1/venu-pytorch/bin
 source activate.csh
 cd /cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet
 
-python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data t_and_c_ULord3D --data-l-name DSRA_1_TL --data-u-name DSRA_1_TU --data-v-name DSRA_1_VA --data-t-name DSRA_1_TE  --model-name-u u --model-name-l ulord3d_model_film_sf_16 --load-model 0 --g-config 1 --p-config /cs/casmip/nirm/embryo_project_version1/config_for_many_runs/film_sf_16 --p-uconfig /cs/casmip/nirm/embryo_project_version1/config_for_many_runs/film_sf_16 --p-dataparam /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TEST/TRUFI --unet 1 --lord 1 --t-u 1 --t-l 1
+python lord_exp.py --base-dir /cs/labs/josko/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2 run_exp --exp-dict-dir /cs/labs/josko/nirm/embryo_project_version1/EXP_FOLDER/exp_config/exp_1
+#cd /cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/embryo_main
+#nohup python3 create_data.py
+
+#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data t_and_c_ULord3D --data-l-name DSRA_1_TL --data-u-name DSRA_1_TU --data-v-name DSRA_1_VA --data-t-name DSRA_1_TE  --model-name-u u --model-name-l ulord3d_model_film_sf_16 --load-model 0 --g-config 1 --p-config /cs/casmip/nirm/embryo_project_version1/config_for_many_runs/film_sf_16 --p-uconfig /cs/casmip/nirm/embryo_project_version1/config_for_many_runs/film_sf_16 --p-dataparam /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TEST/TRUFI --unet 1 --lord 1 --t-u 1 --t-l 1
 
 
 #python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data t_and_c_ULord3D --data-l-name DSRA_1_TL --data-u-name DSRA_1_TU --data-v-name DSRA_1_VA --model-name ulord3d_model_film_sf_8 --load-model 1 --seg-loss 1 --seg-gard 1 --recon-loss 1 --r-content 0 --r-rclass 0 --g-config 0 --p-config '' --p-uconfig '' --p-dataparam '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TRAIN/Labeled/placenta' --unet 0 --lord 1 --t-u 1 ----t-l 0
@@ -13,11 +17,6 @@ python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_da
 #python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TEST --data-name DSRA_1_TE --t 1 --f 0
 #python3 lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data train_ulord3d --data-l-name DSRA_1_TL --data-u-name DSRA_1_TU --data-v-name DSRA_1_VA --data-t-name DSRA_1_TE --model-name ulord3d_model_film_sf_8 --load-model 0 --seg-loss 1 --seg-gard 1 --recon-loss 1 --r-content 0 --r-rclass 0 --g-config 1 --p-config /cs/casmip/nirm/embryo_project_version1/config_for_many_runs/film_sf_8 --p-uconfig /cs/casmip/nirm/embryo_project_version1/config_for_many_runs/film_sf_8/
 #python3 lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data train_unet3D --data-l-name DSRA_1_TL --data-v-name DSRA_1_VA --data-t-name DSRA_1_TE --model-name unet3d_model --load-model 0 --g-config 1 --p-config /cs/casmip/nirm/embryo_project_version1/config_for_many_run_U/lr_6_sf_8/ --p-uconfig /cs/casmip/nirm/embryo_project_version1/config_for_many_run_U/lr_6_sf_8/
-
-#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TRAIN/Labeled --data-name DSRA_1_TL --t 1 --f 1
-#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TRAIN/Unlabeled --data-name DSRA_1_TU --t 1 --f 0
-#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/VALIDATION --data-name DSRA_1_VA --t 1 --f 1
-#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TEST --data-name DSRA_1_TE --t 1 --f 0
 
 
 
