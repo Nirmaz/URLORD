@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" afterDir="false" />
-    </list>
+    <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -379,6 +374,7 @@
       <workItem from="1626598267487" duration="11333000" />
       <workItem from="1626682113796" duration="103253000" />
       <workItem from="1627199029995" duration="252971000" />
+      <workItem from="1628494435808" duration="409000" />
     </task>
     <task id="LOCAL-00001" summary="all">
       <created>1625765445775</created>
@@ -415,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628171534115</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="לפני השינויים הגדולי">
+      <created>1628494731588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1628494731588</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +439,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="all" />
     <MESSAGE value="all_second_batch" />
-    <option name="LAST_COMMIT_MESSAGE" value="all_second_batch" />
+    <MESSAGE value="לפני השינויים הגדולי" />
+    <option name="LAST_COMMIT_MESSAGE" value="לפני השינויים הגדולי" />
   </component>
   <component name="WindowStateProjectService">
     <state x="82" y="25" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1628179536191">
@@ -455,9 +459,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="950" y="325" width="326" height="442" key="#com.intellij.ide.macro.MacrosDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1624871109185" />
-    <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2" timestamp="1628171528380">
-      <screen x="0" y="25" width="1920" height="1030" />
+    <state x="353" y="31" width="879" height="732" key="CommitChangelistDialog2" timestamp="1628494730201">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="353" y="31" width="879" height="732" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494730201" />
     <state x="406" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1628171528380" />
     <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl" timestamp="1628090882390">
       <screen x="0" y="25" width="1920" height="1030" />
@@ -515,9 +520,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="599" y="108" width="788" height="552" key="SettingsEditor/0.25.1920.1030@0.25.1920.1030" timestamp="1627988197538" />
-    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2" timestamp="1628171544586">
-      <screen x="0" y="25" width="1920" height="1030" />
+    <state x="524" y="263" width="515" height="338" key="Vcs.Push.Dialog.v2" timestamp="1628494832058">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="524" y="263" width="515" height="338" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494832058" />
     <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1628171544586" />
     <state width="964" height="516" key="XDebugger.FullValuePopup" timestamp="1628001078286">
       <screen x="0" y="25" width="1920" height="1030" />
@@ -580,11 +586,6 @@
           <url>file://$PROJECT_DIR$/lord-pytorch-main/lord.py</url>
           <line>19</line>
           <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
