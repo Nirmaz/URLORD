@@ -1,0 +1,9 @@
+{"exp_name": "exp1_dat1",
+"data_l_name": "DSRA_1_TL",
+"data_u_name": "DSRA_1_TU",
+"data_v_name": "DSRA_1_VA",
+"data_t_name": "DSRA_1_TE",
+"path_d": "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/TEST/TRUFI",
+"base_dir":"/cs/casmip/nirm/embryo_project_version1/embryo_data",
+"models_path":"/cs/labs/josko/nirm/embryo_project_version1/EXP_FOLDER/exp_config/exp_1/data_1/",
+"models": ["ULord3D_dict.jason"]}
