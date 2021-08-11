@@ -308,7 +308,7 @@ class UpBlock(nn.Module):
 
 
 class UNet(nn.Module):
-    def __init__(self,config_unet):
+    def __init__(self,config_unet, dim):
         super().__init__()
         # print(f'in channel:', config_unet)
         self.in_channels = config_unet['in_channels']
@@ -318,12 +318,12 @@ class UNet(nn.Module):
         self.activation = config_unet['activation']
         self.normalization = config_unet['normalization']
         self.conv_mode = config_unet['conv_mode']
-        self.dim = config_unet['dim']
+        self.dim = dim
         self.up_mode = config_unet['up_mode']
         self.down_blocks = []
         self.up_blocks = []
-        # self.apply_last_act = config_unet['apply_last_act']
-        self.apply_last_act = False
+        self.apply_last_act = config_unet['apply_last_act']
+
 
         # create encoder path
         for i in range(self.n_blocks):
@@ -423,18 +423,18 @@ class UNet(nn.Module):
 
 class Segmentntor(nn.Module):
 
-        def __init__(self, config_unet):
+        def __init__(self, config_unet, dim):
             super().__init__()
 
-            self.conv1 = get_conv_layer(config_unet['out_channels'], config_unet['start_filters'] , kernel_size = 3, stride = 1, padding = 1, bias=True, dim = config_unet['dim'])
-            self.conv2 = get_conv_layer(config_unet['start_filters'], config_unet['start_filters'], kernel_size=3, stride=1, padding = 1,bias = True, dim = config_unet['dim'])
+            self.conv1 = get_conv_layer(config_unet['out_channels'], config_unet['start_filters'] , kernel_size = 3, stride = 1, padding = 1, bias=True, dim = dim)
+            self.conv2 = get_conv_layer(config_unet['start_filters'], config_unet['start_filters'], kernel_size=3, stride=1, padding = 1,bias = True, dim = dim)
             self.conv3 = get_conv_layer(config_unet['start_filters'], 1, kernel_size = 1,
-                                        stride=1, padding=0, bias=True, dim=config_unet['dim'])
+                                        stride=1, padding=0, bias=True, dim = dim)
 
             self.act1 = nn.LeakyReLU(negative_slope=0.1)
             self.act2 = nn.LeakyReLU(negative_slope=0.1)
             self.act3 = nn.Sigmoid()
-            if config_unet['dim'] == 3:
+            if dim == 3:
                 self.normalize1 = nn.BatchNorm3d(config_unet['start_filters'])
                 self.normalize2 = nn.BatchNorm3d(config_unet['start_filters'])
             else:

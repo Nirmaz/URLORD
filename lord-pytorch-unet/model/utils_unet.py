@@ -6,6 +6,21 @@ import numpy as np
 import torchvision.transforms.functional as TF
 import random
 
+
+class MyRotationTransformC:
+	"""Rotate by one of the given angles."""
+
+	def __init__(self):
+		pass
+
+	def __call__(self, x, angle):
+
+		x= TF.rotate(x, angle)
+		x = TF.rotate(x, angle)
+
+		return x
+
+
 class MyRotationTransform:
 	"""Rotate by one of the given angles."""
 
@@ -25,26 +40,24 @@ class MyRotationTransform:
 class MyRotationTransformCL3D:
 	"""Rotate by one of the given angles."""
 
+	def __init__(self):
+		pass
 
 	def __call__(self, x, angle):
 		# print((x['img'].dim()), "dimmmm"
 		# rotation
-		if x['img'].dim() == 5:
-			# print(x['img'].size(),"size")
-			x_tr = torch.squeeze(x['img'],dim=1)
-			seg_tr = torch.squeeze(x['seg'],dim=1)
+
+		if x.dim() == 5:
+			# print(x.size(),"size")
+			x_tr = torch.squeeze(x,dim=1)
 			# print(x_tr.size(), "x_tr before")
 			# print(seg_tr.size(), "seg_tr before")
 			x_tr = TF.rotate(x_tr, angle)
-			seg_tr = TF.rotate(seg_tr, angle)
-			x['img'] = torch.unsqueeze(x_tr, dim=1)
-			x['seg'] = torch.unsqueeze(seg_tr, dim=1)
-			# print(x['img'].size(), "x_tr after")
+			x = torch.unsqueeze(x_tr, dim=1)
+			# print(x.size(), "x_tr after")
 			# print(x['seg'].size(), "seg_tr")
 		else:
-			x['img'] = TF.rotate(x['img'], angle)
-			x['seg'] = TF.rotate(x['seg'], angle)
-
+			x = TF.rotate(x, angle)
 		return x
 
 class MyRotationTransform3D:

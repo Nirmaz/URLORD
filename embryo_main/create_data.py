@@ -14,6 +14,8 @@ from data_curation.helper_functions import move_smallest_axis_to_z, get_resoluti
 import matplotlib.pyplot as plt
 import pickle
 from math import ceil
+from configd import config_data_set, config_data_set_2d
+from os import listdir, mkdir
 
 def fetch_data_files(scans_dir, train_modalities, ext, return_subject_ids=False):
     data_files = list()
@@ -209,7 +211,7 @@ def create_and_store_training_patches(case: np.array, gt: np.array,
                             patchs_dict_with_gt: dict ,subject_id: str ,
                             model_original_dim: Tuple[int, int, int] = (128, 128, 16),
                             patch_stride: Tuple[int, int, int] = (32, 32, 8), with_without_body:bool = True, min_num_of_body_voxels:int = 1, min_num_of_plcenta_voxels:int = 32*32,num_slice_cri: int = 10,
-                                      with_plcenta = True, dim: int = 3, from_bb: bool = False, margin: int = 100):
+                                      with_plcenta = True, dim: int = 3, from_bb: bool = False, from_h_bb = False, margin: int = 100):
     """
     Creating and saving patches for model training purpose with a shape (x+y, y+x, z) where (x, y ,z) is the original
     patches shape the model needs.
@@ -233,37 +235,19 @@ def create_and_store_training_patches(case: np.array, gt: np.array,
     :param num_slice_cri: if we work in 3D the demand is te number of slices that fit the critra of number of pixels with body or placenta
 
     """
-    # print("here 1")
     patch_size = model_original_dim
-
-    dict_parameters = dict(
-        model_original_dim = model_original_dim,
-        patch_stride = patch_stride,
-        with_without_body = with_without_body,
-        min_num_of_body_voxels = min_num_of_body_voxels,
-        min_num_of_plcenta_voxels = min_num_of_plcenta_voxels,
-        num_slice_cri = num_slice_cri,
-        with_plcenta =with_plcenta,
-        dim = dim,
-        from_bb = from_bb,
-        margin = margin
-    )
-    # print("here 2")
-    # cropping the cases to the bbox of the ROI
+    mask_labels, num = label(gt, return_num=True, connectivity=1)
+    region = regionprops(mask_labels)
+    reg = sorted(region, key=lambda x: x.area)[-1]
+    xmin, xmax, ymin, ymax, z_min, z_max = get_borders(reg, case, patch_size, margin, subject_id)
     if from_bb:
-        mask_labels, num = label(gt, return_num=True, connectivity=1)
-        region = regionprops(mask_labels)
-        reg = sorted(region, key=lambda x: x.area)[-1]
-        # print(f"len{len(regionprops(mask_labels))}")
-        print(subject_id, "subject id")
-        # print(reg.bbox[4] - reg.bbox[1],"dif cols", 'diff_row', reg.bbox[3] - reg.bbox[0])
-        # print(f"x:{reg.bbox[0]}:{reg.bbox[3]}",f"y:{reg.bbox[1]}:{reg.bbox[4]}",f"z:{reg.bbox[2]}:{reg.bbox[5]}" )
-        xmin, xmax, ymin, ymax, z_min, z_max = get_borders(reg, case, patch_size, margin, subject_id)
+        crop_slice = np.s_[xmin:xmax, ymin: ymax, z_min: z_max]
+    elif from_h_bb:
+        crop_slice = np.s_[0:case.shape[0],  0:case.shape[1], z_min: z_max]
     else:
-        xmin, xmax, ymin, ymax, z_min, z_max = 0, case.shape[0], 0, case.shape[1], 0, case.shape[2]
-        # print("here 3")
+        crop_slice = np.s_[0:case.shape[0], 0:case.shape[1], 0: case.shape[2]]
 
-    crop_slice = np.s_[xmin:xmax, ymin: ymax, z_min: z_max]
+
 
     new_case = case[crop_slice]
     gt_slice = gt[crop_slice]
@@ -279,6 +263,7 @@ def create_and_store_training_patches(case: np.array, gt: np.array,
     # plt.title(f"case 0")
     # plt.imshow(new_case[:,:,16], cmap='gray')
     # plt.show()
+    print(patches1.shape[0], "patches shpe o")
     for (patches, patches_gt, patches_coords) in [(patches1, patches_gt1, patches_coords1)]:
         print("Im in the loop")
         for j, patch in enumerate(patches):
@@ -300,10 +285,10 @@ def create_and_store_training_patches(case: np.array, gt: np.array,
             else:
                 # print("go into 3d world")
                 body_pixels = np.zeros_like((patch))
-                body_pixels[patch > -100] = 1
+                body_pixels[patch > 1] = 1
                 num_of_body_voxels = body_pixels.sum()
                 num_of_plcenta_voxels = patches_gt[j].sum()
-
+                # print(f"num_of_plcenta_voxels:{num_of_plcenta_voxels}", f"  num_voxels needed:{min_num_of_plcenta_voxels*num_slice_cri}")
                 if (with_without_body and (num_of_body_voxels < min_num_of_body_voxels*num_slice_cri)) or (num_of_plcenta_voxels < (min_num_of_plcenta_voxels*num_slice_cri) and with_plcenta):
                     # print("continue that bum")
                     continue
@@ -314,7 +299,7 @@ def create_and_store_training_patches(case: np.array, gt: np.array,
                 # print("hopa hey finish savesave")
 
         # print("finish all")
-        return dict_parameters
+
 
 
 
@@ -367,9 +352,9 @@ def write_image_data_to_file(image_files,data_with_gt_a, data_storage, subject_i
 
     return data_storage
 
-def normalize_data(data, min, max):
-    data -= min
-    data /= max
+def normalize_data(data, mean, std):
+    data -= mean
+    data /= std
     print(np.max(data), "max data", np.min(data), "min data", "after normlziation")
     return data
 
@@ -428,23 +413,38 @@ def write_data_to_file(training_data_files,data_withgt_file, out_file,out_file_p
 
         # print(np.max(subject_data_2), "subject data max")
 
-
-    if isinstance(normalize, str):
-        _, mean, std = {
-            'all': normalize_data_storage,
-            'each': normalize_data_storage_each
-        }[normalize](data_dict, train)
-    else:
-        mean, std = None, None
-
-    if isinstance(normalize, str):
-        _, mean, std = {
-            'all': normalize_data_storage,
-            'each': normalize_data_storage_each
-        }[normalize](data_with_gt_a, False)
-    else:
-        mean, std = None, None
-
+    #
+    # if isinstance(normalize, str):
+    #     _, mean, std = {
+    #         'all': normalize_data_storage,
+    #         'each': normalize_data_storage_each
+    #     }[normalize](data_dict, train)
+    # else:
+    #     mean, std = None, None
+    # if isinstance(normalize, str):
+    #     _, mean, std = {
+    #         'all': normalize_data_storage,
+    #         'each': normalize_data_storage_each
+    #     }[normalize](data_with_gt_a, False)
+    # else:
+    #     mean, std = None, None
+    #
+    # data_arr = np.array(data_dict.values())
+    # print(np.unique(data_arr), "unique")
+    # min_val = np.min(data_arr)
+    # print(min_val, "min_val")
+    # data_arr = data_arr - min_val
+    # max_val = np.max(data_arr)
+    # print(max_val, "min_val")
+    #
+    # for subject_id in data_dict.keys():
+    #     data_arr[subject_id] = data_arr[subject_id] - min_val
+    #     data_arr[subject_id] = data_arr[subject_id] / max_val
+    #
+    #     data_with_gt_a[subject_id]['data'] = data_with_gt_a[subject_id]['data'] - min_val
+    #     data_with_gt_a[subject_id]['data'] = data_with_gt_a[subject_id]['data'] / max_val
+    #
+    mean, std = 0, 0
     patches_parameters  = None
     if store_patches:
 
@@ -456,36 +456,22 @@ def write_data_to_file(training_data_files,data_withgt_file, out_file,out_file_p
             patches_parameters = create_and_store_training_patches(subject_data ,subject_gt ,  patchs_dict, patchs_gt, subject_id, dim = dim)
 
 
-    # no norm
-    # if isinstance(normalize, str):
-    #     _, _, _ = {
-    #         'all': normalize_data_storage,
-    #         'each': normalize_data_storage_each
-    #     }[normalize](patchs_dict, train)
-    # else:
-    #     mean, std = None, None
-    #
-    #
     if patches_parameters != None:
-        print("dump 1")
         pickle_dump(patches_parameters, patches_param_file)
-    print("dump 2")
-    # print(f"data_withgt_file{data_withgt_file}")
-    # print(f"data_withgt_file{data_with_gt_a}")
+
     pickle_dump(data_with_gt_a, data_withgt_file)
-    print("dump 3")
     pickle_dump(data_dict, out_file)
-    print("dump 4")
-    pickle_dump(patchs_dict, out_file_patchs)
-    print("dump 5")
-    pickle_dump(patchs_gt, out_file_patchs_gt)
+
+    if store_patches:
+        pickle_dump(patchs_dict, out_file_patchs)
+        pickle_dump(patchs_gt, out_file_patchs_gt)
 
     return out_file, (mean, std)
 
 def open_data_file(filename):
     return pickle_load(filename)
 
-def create_load_hdf5(normalization, data_dir, scans_dir, train_modalities, ext, overwrite = False, preprocess=None, scale= None, rescale_res=None, metadata_path=None, train = True, store_patches = True, dim = 3):
+def create_load_hdf5( normalization, data_dir, scans_dir, train_modalities, ext, overwrite = False, preprocess=None, scale= None, rescale_res=None, metadata_path=None, train = True, store_patches = True, dim = 3):
     """
     This function normalizes raw data and creates hdf5 file if needed
     Returns loaded hdf5 file
@@ -515,28 +501,166 @@ def create_load_hdf5(normalization, data_dir, scans_dir, train_modalities, ext, 
     data_file_opened = open_data_file(data_file)
     return data_file_opened
 
+def get_path_f_t_cr(path):
+    print("steo2.3")
+    path_t = os.path.join(path, 'TRUFI')
+    print("steo2.6")
+    path_f = os.path.join(path, 'placenta')
+    os.makedirs(path_t, exist_ok=True)
+    print("steo2.8")
+    os.makedirs(path_f , exist_ok=True)
+    print("steo2.9")
+    return path_t, path_f
+
+def create_training_pathes(config, case,gt, patchs_storage, patchs_dict_with_gt, subject_id ):
+    create_and_store_training_patches(case, gt, patchs_storage, patchs_dict_with_gt, subject_id, model_original_dim = config['patches_params']['model_original_dim'],
+                                               patch_stride = config['patches_params']['patch_stride'] , with_without_body = config['patches_params']['with_without_body'] , min_num_of_body_voxels = config['patches_params']['min_num_of_body_voxels'],
+                                                min_num_of_plcenta_voxels = config['patches_params']['min_num_of_plcenta_voxels'], num_slice_cri = config['patches_params']['num_slice_cri'], with_plcenta = config['patches_params']['with_plcenta'], dim= config['patches_params']['dim'], from_bb = config['patches_params']['from_bb'], from_h_bb = config['patches_params']['from_h_bb'], margin = config['patches_params']['margin'])
+
+
+def dump_dict_patches(path, dict_data, dict_gt):
+    keys = dict_data.keys()
+    keys_un = np.unique(np.array(keys))
+    keys_g = dict_gt.keys()
+    keys_un_g = np.unique(np.array(keys_g))
+    pickle_dump(dict_data, os.path.join(path, 'patches_dict.h5'))
+    pickle_dump(dict_gt, os.path.join(path, 'patches_dict_gt.h5'))
+    # with open(os.path.join(path, 'keys_in_dict.json'), mode='w') as f:
+    #     json.dump({'keys': list(keys_un), 'keys_g': list(keys_un_g)}, f)
 
 
 
 
+def build_data_set(path, config_data_set):
+    print("starting")
+    path_d = os.path.join(path, config_data_set['data_set_name'])
+    path_d_train = os.path.join(path_d, 'TRAIN')
+    path_d_train_l = os.path.join(path_d_train, 'Labeled')
+    path_d_train_u = os.path.join(path_d_train, 'ULabeled')
+    path_d_val = os.path.join(path_d, 'VALIDATION')
+    path_d_test = os.path.join(path_d, 'TEST')
+    print("step1")
+    os.makedirs(path_d, exist_ok=True)
+    os.makedirs(path_d_train, exist_ok=True)
+    os.makedirs(path_d_train_l, exist_ok = True)
+    os.makedirs(path_d_train_u, exist_ok = True)
+    os.makedirs(path_d_val, exist_ok = True)
+    os.makedirs(path_d_test, exist_ok = True)
+    print("step2")
+    path_d_train_l_t, path_d_train_l_f = get_path_f_t_cr(path_d_train_l)
+    path_d_train_u_t, path_d_train_u_f = get_path_f_t_cr(path_d_train_u)
+    path_d_val_t, path_d_val_f = get_path_f_t_cr(path_d_val)
+    path_d_test_t, path_d_test_f = get_path_f_t_cr(path_d_test)
+
+    with open(os.path.join(path, 'TRUFI', 'fetal_data_withgt.h5'), "rb") as opened_file:
+        data_withgt_t = pickle.load(opened_file)
+
+    with open(os.path.join(path, 'placenta', 'fetal_data_withgt.h5'), "rb") as opened_file:
+        data_withgt_f = pickle.load(opened_file)
+
+    d_train_l_f_gt = dict()
+    d_train_u_f_gt = dict()
+    d_train_l_t_gt = dict()
+    d_train_u_t_gt = dict()
+    d_val_t_gt = dict()
+    d_val_f_gt = dict()
+    d_test_t_gt = dict()
+    d_test_f_gt = dict()
+
+    d_train_l_f_data = dict()
+    d_train_u_f_data = dict()
+    d_train_l_t_data = dict()
+    d_train_u_t_data = dict()
+    d_val_t_data = dict()
+    d_val_f_data = dict()
+    d_test_t_data = dict()
+    d_test_f_data = dict()
+    print("step3")
+    for subject_id in data_withgt_t.keys():
+        print(f'subject_id: {subject_id}')
+        if subject_id in config_data_set['cases_train_T_l']:
+            print(f'subject_id: {subject_id}, cases_trainT_l')
+
+            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_train_l_t_data , d_train_l_t_gt, subject_id)
+
+        elif subject_id in config_data_set['cases_train_T_u']:
+            print(f'subject_id: {subject_id}, cases_train_T_u')
+            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_train_u_t_data , d_train_u_t_gt, subject_id)
+
+        elif subject_id in config_data_set['cases_val_T']:
+            print(f'subject_id: {subject_id}, cases_val_T')
+            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_val_t_data , d_val_t_gt, subject_id)
+
+        elif subject_id in config_data_set['cases_test_T']:
+            print(f'subject_id: {subject_id}, cases_test_T')
+            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'], data_withgt_t[subject_id]['truth'], d_test_t_data, d_test_t_gt, subject_id)
+
+        else:
+            raise Exception(f'key is not in data {subject_id}')
+
+    for subject_id in data_withgt_f.keys():
+        print(f'subject_id: {subject_id}')
+        if subject_id in config_data_set['cases_train_F_l']:
+            print(f'subject_id: {subject_id}, cases_train_F_l')
+            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_train_l_f_data,
+                                   d_train_l_f_gt, subject_id)
+
+        elif subject_id in config_data_set['cases_train_F_u']:
+            print(f'subject_id: {subject_id}, cases_train_F_u')
+            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_train_u_f_data,
+                                   d_train_u_f_gt, subject_id)
+
+        elif subject_id in config_data_set['cases_val_F']:
+            print(f'subject_id: {subject_id}, cases_val_F')
+            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_val_f_data,
+                                   d_val_f_gt, subject_id)
+
+        elif subject_id in config_data_set['cases_test_F']:
+            print(f'subject_id: {subject_id}, cases_test_F')
+            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_test_f_data,
+                                   d_test_f_gt, subject_id)
+
+        else:
+            raise Exception(f'key is not in data {subject_id}')
+
+    dump_dict_patches(path_d_train_l_t, d_train_l_t_data, d_train_l_t_gt)
+    dump_dict_patches(path_d_train_l_f, d_train_l_f_data, d_train_l_f_gt)
+    dump_dict_patches(path_d_train_u_t, d_train_u_t_data, d_train_u_t_gt)
+    dump_dict_patches(path_d_train_u_f, d_train_u_f_data, d_train_u_f_gt)
+    dump_dict_patches(path_d_val_f, d_val_f_data, d_val_f_gt)
+    dump_dict_patches(path_d_val_t, d_val_t_data, d_val_t_gt)
+    dump_dict_patches(path_d_test_t, d_test_t_data, d_test_t_gt)
+    dump_dict_patches(path_d_test_t, d_test_t_data, d_test_t_gt)
+    with open(os.path.join(path_d, 'param_dict.json'), mode='w') as f:
+        json.dump(config_data_set, f)
 
 if __name__ == '__main__':
-    # create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/TRAIN/Labeled/placenta/' ,data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/TRAIN/Labeled/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =True, preprocess = "window_1_99", scale = None, train = True, store_patches= True, dim = 3)
-    print("finish 1")
-    # create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/TRAIN/Labeled/TRUFI/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/TRAIN/Labeled/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
-    print("finish 2")
-    # create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/TRAIN/Unlabeled/TRUFI/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/TRAIN/Unlabeled/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
-    print("finish 3")
-    # create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/VALIDATION/placenta/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/VALIDATION/placenta', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
-    create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_2/VALIDATION/placenta/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_2/VALIDATION/placenta', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
-    create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_1/VALIDATION/placenta/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_1/VALIDATION/placenta', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
-    print("finish 5")
-    # create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/VALIDATION/TRUFI/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/VALIDATION/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
-    print("finish 6")
-    # create_load_hdf5(normalization = "all", scans_dir= '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/TEST/TRUFI/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/TEST/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
-    print("finish 7")
-    # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/placenta' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =True, preprocess = "window_1_99", scale = None, train = True, store_patches= True)
-    # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/TRUFI', scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True)
+    create_data = False
+    if create_data:
+        # create_load_hdf5(normalization="all", data_dir='/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/placenta',
+        #                  scans_dir='/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/placenta',
+        #                  train_modalities=["volume", "truth"], ext="", overwrite=True, preprocess="window_1_99",
+        #                  scale=None, train=True, store_patches=False)
+        create_load_hdf5(normalization="all",
+                         data_dir='/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/TRUFI',
+                         scans_dir= '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/TRUFI',
+                         train_modalities=["volume", "truth"], ext="", overwrite=True, preprocess="window_1_99",
+                         scale=[0.5, 0.5, 1], rescale_res=[1.56, .56, 3], metadata_path=None, train=True,
+                         store_patches=False, dim=3)
+    else:
+        path = "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess"
+        path_scan = "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess"
+        build_data_set(path, config_data_set)
+        # build_data_set(path, config_data_set_2d)
+
+        print("finish 5")
+        # create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/VALIDATION/TRUFI/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/VALIDATION/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
+        print("finish 6")
+        # create_load_hdf5(normalization = "all", scans_dir= '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/TEST/TRUFI/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/TEST/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)
+        print("finish 7")
+        # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/placenta' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =True, preprocess = "window_1_99", scale = None, train = True, store_patches= True)
+        # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/TRUFI', scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True)
+
     exit()
     with open(os.path.join('/cs/casmip/nirm/embryo_project_version1/DATA_NEWLS1/', 'placenta', 'fetal_data_patches.h5'), "rb") as opened_file:
         fiesta_dataset = pickle.load(opened_file)

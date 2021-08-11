@@ -217,35 +217,21 @@ class embryos_dataset_onegr(DataSet):
 
 	def read_images(self, load_trufi = True, load_fiesta = False):
 		# print(os.path.join(self._base_dir,'plcenta','fetal_data.h5'), "aaaa")
-		show_images = False
+		show_images = True
 		# load data set
 		if load_fiesta:
-			with open(os.path.join(self._base_dir, 'placenta', 'fetal_data_patches.h5'), "rb") as opened_file:
+			with open(os.path.join(self._base_dir, 'placenta', 'patches_dict.h5'), "rb") as opened_file:
 				fiesta_dataset = pickle.load(opened_file)
 
-			with open(os.path.join(self._base_dir, 'placenta', 'fetal_data_patches_gt.h5'), "rb") as opened_file:
+			with open(os.path.join(self._base_dir, 'placenta', 'patches_dict_gt.h5'), "rb") as opened_file:
 				fiesta_dataset_gt = pickle.load(opened_file)
 
-			with open(os.path.join(self._base_dir, 'placenta', 'patches_param.h5'), "rb") as opened_file:
-				patches_params = pickle.load(opened_file)
-
-			path_param = os.path.join(self._base_dir, 'placenta', 'patches_param.h5')
 			print(self._base_dir, "base dir chech ")
 			imgs_fiesta = np.array(list(fiesta_dataset.values()))
 			imgs_fiesta_gt = np.array(list(fiesta_dataset_gt.values()))
 			# print(imgs_fiesta_gt , "img fiesta gt")
 			class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
-			# print(f"unique:: {np.unique(imgs_fiesta)}")
-			min_fiesta_vals = np.min(imgs_fiesta)
-			patches_params['min_val'] = min_fiesta_vals
-			imgs_fiesta = imgs_fiesta - min_fiesta_vals
-			max_fiesta_vals = np.max(imgs_fiesta)
-			patches_params['max_val'] = max_fiesta_vals
-			imgs_fiesta = imgs_fiesta / max_fiesta_vals
-			print(patches_params, "pathc parame fiesta")
-
-			pickle_dump(patches_params, path_param)
-
+			print("imgs_fiesta unique:", np.unique(imgs_fiesta))
 			if show_images:
 				num_f1 = 0
 				for i in range(3):
@@ -255,30 +241,17 @@ class embryos_dataset_onegr(DataSet):
 
 		if load_trufi:
 
-			with open(os.path.join(self._base_dir, 'TRUFI', 'fetal_data_patches.h5'), "rb") as opened_file:
+			with open(os.path.join(self._base_dir, 'TRUFI', 'patches_dict.h5'), "rb") as opened_file:
 				trufi_dataset = pickle.load(opened_file)
 
-			with open(os.path.join(self._base_dir, 'TRUFI', 'fetal_data_patches_gt.h5'), "rb") as opened_file:
+			with open(os.path.join(self._base_dir, 'TRUFI', 'patches_dict_gt.h5'), "rb") as opened_file:
 				trufi_dataset_gt = pickle.load(opened_file)
 
-			with open(os.path.join(self._base_dir, 'TRUFI', 'patches_param.h5'), "rb") as opened_file:
-				patches_params = pickle.load(opened_file)
 
-			# load trufi
-			path_param = os.path.join(self._base_dir, 'TRUFI',
-									  'patches_param.h5')
 			imgs_trufi = np.array(list(trufi_dataset.values()))
 			imgs_trufi_gt = np.array(list(trufi_dataset_gt.values()))
 			class_id_trufi = np.ones((imgs_trufi.shape[0]))
 			print(f"shape trufi: {class_id_trufi.shape}")
-			min_trufi = np.min(imgs_trufi)
-			patches_params['min_val'] = min_trufi
-			imgs_trufi = imgs_trufi - min_trufi
-			max_trufi = np.max(imgs_trufi)
-			patches_params['max_val'] = max_trufi
-			imgs_trufi = imgs_trufi / max_trufi
-			print(patches_params, "pathc parame trufi")
-			pickle_dump(patches_params, path_param)
 
 
 			if show_images:

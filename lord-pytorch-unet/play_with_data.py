@@ -1,7 +1,9 @@
 import torch
-
+from os import listdir
 if __name__ == '__main__':
-    a = torch.tensor([[[6,6],[2,2]]])
-    b = torch.tensor([[[3,3],[1/2,1/2]]])
-    c = a*b
-    print(c)
+    path = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/placenta'
+    a = listdir(path)
+    print(a)
+    path =  '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/TRUFI'
+    b = listdir(path)
+    print(b)
