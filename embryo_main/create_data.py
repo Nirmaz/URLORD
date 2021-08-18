@@ -14,7 +14,7 @@ from data_curation.helper_functions import move_smallest_axis_to_z, get_resoluti
 import matplotlib.pyplot as plt
 import pickle
 from math import ceil
-from configd import config_data_set, config_data_set_2d
+from configd import DF_1_2d_dict , DF_2_2d_dict, DF_all_2d_dict, DS_2d_dict, D_0_2d_dict, D_1_2d_dict
 from os import listdir, mkdir
 
 def fetch_data_files(scans_dir, train_modalities, ext, return_subject_ids=False):
@@ -525,13 +525,50 @@ def dump_dict_patches(path, dict_data, dict_gt):
     keys_un_g = np.unique(np.array(keys_g))
     pickle_dump(dict_data, os.path.join(path, 'patches_dict.h5'))
     pickle_dump(dict_gt, os.path.join(path, 'patches_dict_gt.h5'))
-    # with open(os.path.join(path, 'keys_in_dict.json'), mode='w') as f:
-    #     json.dump({'keys': list(keys_un), 'keys_g': list(keys_un_g)}, f)
+
+def build_data_set_of_patches(path, config_training_patches):
+    path_d = os.path.join(path, config_training_patches['data_set_name'])
+    path_d_trufi = os.path.join(path_d, 'TRUFI')
+    path_d_placenta = os.path.join(path_d, 'placenta')
+
+    os.makedirs(path_d, exist_ok=True)
+    os.makedirs(path_d_trufi, exist_ok=True)
+    os.makedirs(path_d_placenta, exist_ok=True)
+
+    with open(os.path.join(path, 'TRUFI', 'fetal_data_withgt.h5'), "rb") as opened_file:
+        data_withgt_t = pickle.load(opened_file)
+
+    with open(os.path.join(path, 'placenta', 'fetal_data_withgt.h5'), "rb") as opened_file:
+        data_withgt_f = pickle.load(opened_file)
+
+    d_train_t_data = dict()
+    d_train_t_gt = dict()
+    dsubjects_t = dict()
+    for i, subject_id in enumerate(data_withgt_t.keys()):
+        dsubjects_t[str(i)] = subject_id
+        create_training_pathes(config_training_patches, data_withgt_t[subject_id]['data'], data_withgt_t[subject_id]['truth'], d_train_t_data, d_train_t_gt, subject_id)
+
+    d_train_f_data = dict()
+    d_train_f_gt = dict()
+    dsubjects_f = dict()
+    for i, subject_id in enumerate(data_withgt_f.keys()):
+        dsubjects_f[str(i)] = subject_id
+        create_training_pathes(config_training_patches, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_train_f_data, d_train_f_gt, subject_id)
+
+    dump_dict_patches(path_d_trufi , d_train_t_data, d_train_t_gt)
+    dump_dict_patches( path_d_placenta , d_train_f_data, d_train_f_gt)
+
+    with open(os.path.join(path_d_trufi, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_t, f)
+
+    with open(os.path.join(path_d_placenta, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_f, f)
+
+    with open(os.path.join(path_d, 'config.json'), mode='w') as f:
+        json.dump(config_training_patches, f)
 
 
-
-
-def build_data_set(path, config_data_set):
+def build_data_set(path, config_data_set, dim):
     print("starting")
     path_d = os.path.join(path, config_data_set['data_set_name'])
     path_d_train = os.path.join(path_d, 'TRAIN')
@@ -552,11 +589,17 @@ def build_data_set(path, config_data_set):
     path_d_val_t, path_d_val_f = get_path_f_t_cr(path_d_val)
     path_d_test_t, path_d_test_f = get_path_f_t_cr(path_d_test)
 
-    with open(os.path.join(path, 'TRUFI', 'fetal_data_withgt.h5'), "rb") as opened_file:
-        data_withgt_t = pickle.load(opened_file)
+    with open(os.path.join(path, config_data_set['data_set_name_patches_name'], 'TRUFI', 'patches_dict.h5'), "rb") as opened_file:
+        patches_dict_T = pickle.load(opened_file)
 
-    with open(os.path.join(path, 'placenta', 'fetal_data_withgt.h5'), "rb") as opened_file:
-        data_withgt_f = pickle.load(opened_file)
+    with open(os.path.join(path, config_data_set['data_set_name_patches_name'], 'TRUFI', 'patches_dict_gt.h5'), "rb") as opened_file:
+        patches_dict_T_gt = pickle.load(opened_file)
+
+    with open(os.path.join(path,config_data_set['data_set_name_patches_name'], 'placenta', 'patches_dict.h5'), "rb") as opened_file:
+        patches_dict_F = pickle.load(opened_file)
+
+    with open(os.path.join(path,config_data_set['data_set_name_patches_name'], 'placenta', 'patches_dict_gt.h5'), "rb") as opened_file:
+        patches_dict_F_gt = pickle.load(opened_file)
 
     d_train_l_f_gt = dict()
     d_train_u_f_gt = dict()
@@ -575,53 +618,71 @@ def build_data_set(path, config_data_set):
     d_val_f_data = dict()
     d_test_t_data = dict()
     d_test_f_data = dict()
-    print("step3")
-    for subject_id in data_withgt_t.keys():
-        print(f'subject_id: {subject_id}')
-        if subject_id in config_data_set['cases_train_T_l']:
-            print(f'subject_id: {subject_id}, cases_trainT_l')
 
-            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_train_l_t_data , d_train_l_t_gt, subject_id)
+    dsubjects_l_f = dict()
+    dsubjects_u_f = dict()
+    dsubjects_v_f = dict()
+    dsubjects_t_f = dict()
+    dsubjects_l_t = dict()
+    dsubjects_u_t = dict()
+    dsubjects_v_t = dict()
+    dsubjects_t_t = dict()
+
+    print("step3")
+    for i, key in enumerate(patches_dict_T.keys()):
+        subject_id = '_'.join(key.split('_')[:len(key.split('_')) - (dim + 1)])
+        print(f'subject_id: {subject_id}, cases_trainT_l')
+        if subject_id in config_data_set['cases_train_T_l']:
+
+            d_train_l_t_data[key] = patches_dict_T[key]
+            d_train_l_t_gt[key] = patches_dict_T_gt[key]
+            dsubjects_l_t[str(i)] = subject_id
+
 
         elif subject_id in config_data_set['cases_train_T_u']:
-            print(f'subject_id: {subject_id}, cases_train_T_u')
-            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_train_u_t_data , d_train_u_t_gt, subject_id)
+            d_train_u_t_data[key] = patches_dict_T[key]
+            d_train_u_t_gt[key] = patches_dict_T_gt[key]
+            dsubjects_u_t[str(i)] = subject_id
 
         elif subject_id in config_data_set['cases_val_T']:
-            print(f'subject_id: {subject_id}, cases_val_T')
-            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_val_t_data , d_val_t_gt, subject_id)
+            d_val_t_data[key] = patches_dict_T[key]
+            d_val_t_gt[key] = patches_dict_T_gt[key]
+            dsubjects_v_t[str(i)] = subject_id
 
         elif subject_id in config_data_set['cases_test_T']:
-            print(f'subject_id: {subject_id}, cases_test_T')
-            create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'], data_withgt_t[subject_id]['truth'], d_test_t_data, d_test_t_gt, subject_id)
+            d_test_t_data[key] = patches_dict_T[key]
+            d_test_t_gt[key] = patches_dict_T_gt[key]
+            dsubjects_t_t[str(i)] = subject_id
+        # else:
+        #     raise Exception(f'key is not in data {subject_id}')
 
-        else:
-            raise Exception(f'key is not in data {subject_id}')
-
-    for subject_id in data_withgt_f.keys():
-        print(f'subject_id: {subject_id}')
+    for i, key in enumerate(patches_dict_F.keys()):
+        print(f'key {key}, cases_trainT_l')
+        subject_id = '_'.join(key.split('_')[:len(key.split('_')) - (dim + 1)])
+        print(f'subject_id: {subject_id}, cases_trainF_l')
         if subject_id in config_data_set['cases_train_F_l']:
-            print(f'subject_id: {subject_id}, cases_train_F_l')
-            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_train_l_f_data,
-                                   d_train_l_f_gt, subject_id)
+            print(f'subject_id: {subject_id}, cases_trainF_l')
+            d_train_l_f_data[key] = patches_dict_F[key]
+            d_train_l_f_gt[key] = patches_dict_F_gt[key]
+            dsubjects_l_f[str(i)] = subject_id
+
 
         elif subject_id in config_data_set['cases_train_F_u']:
-            print(f'subject_id: {subject_id}, cases_train_F_u')
-            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_train_u_f_data,
-                                   d_train_u_f_gt, subject_id)
+            d_train_u_f_data[key] = patches_dict_F[key]
+            d_train_u_f_gt[key] = patches_dict_F_gt[key]
+            dsubjects_u_f[str(i)] = subject_id
 
         elif subject_id in config_data_set['cases_val_F']:
-            print(f'subject_id: {subject_id}, cases_val_F')
-            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_val_f_data,
-                                   d_val_f_gt, subject_id)
+            d_val_f_data[key] = patches_dict_F[key]
+            d_val_f_gt[key] = patches_dict_F_gt[key]
+            dsubjects_v_f[str(i)] = subject_id
 
         elif subject_id in config_data_set['cases_test_F']:
-            print(f'subject_id: {subject_id}, cases_test_F')
-            create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_test_f_data,
-                                   d_test_f_gt, subject_id)
-
-        else:
-            raise Exception(f'key is not in data {subject_id}')
+            d_test_f_data[key] = patches_dict_F[key]
+            d_test_f_gt[key] = patches_dict_F_gt[key]
+            dsubjects_t_f[str(i)] = subject_id
+        # else:
+        #     raise Exception(f'key is not in data {subject_id}')
 
     dump_dict_patches(path_d_train_l_t, d_train_l_t_data, d_train_l_t_gt)
     dump_dict_patches(path_d_train_l_f, d_train_l_f_data, d_train_l_f_gt)
@@ -630,28 +691,166 @@ def build_data_set(path, config_data_set):
     dump_dict_patches(path_d_val_f, d_val_f_data, d_val_f_gt)
     dump_dict_patches(path_d_val_t, d_val_t_data, d_val_t_gt)
     dump_dict_patches(path_d_test_t, d_test_t_data, d_test_t_gt)
-    dump_dict_patches(path_d_test_t, d_test_t_data, d_test_t_gt)
+    dump_dict_patches(path_d_test_f, d_test_f_data, d_test_f_gt)
+
     with open(os.path.join(path_d, 'param_dict.json'), mode='w') as f:
         json.dump(config_data_set, f)
+
+    with open(os.path.join(path_d_train_l_t, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_l_t, f)
+
+    with open(os.path.join(path_d_train_l_f, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_l_f, f)
+
+    with open(os.path.join(path_d_train_u_t, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_u_t, f)
+
+    with open(os.path.join(path_d_train_u_f, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_u_f, f)
+
+    with open(os.path.join(path_d_val_f, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_v_f, f)
+
+    with open(os.path.join(path_d_val_t, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_v_t, f)
+
+    with open(os.path.join(path_d_test_f, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_t_f, f)
+
+    with open(os.path.join(path_d_test_f, 'subject_id_dict.json'), mode='w') as f:
+        json.dump(dsubjects_t_f, f)
+
+
+#
+# def build_data_set(path, config_data_set):
+#     print("starting")
+#     path_d = os.path.join(path, config_data_set['data_set_name'])
+#     path_d_train = os.path.join(path_d, 'TRAIN')
+#     path_d_train_l = os.path.join(path_d_train, 'Labeled')
+#     path_d_train_u = os.path.join(path_d_train, 'ULabeled')
+#     path_d_val = os.path.join(path_d, 'VALIDATION')
+#     path_d_test = os.path.join(path_d, 'TEST')
+#     print("step1")
+#     os.makedirs(path_d, exist_ok=True)
+#     os.makedirs(path_d_train, exist_ok=True)
+#     os.makedirs(path_d_train_l, exist_ok = True)
+#     os.makedirs(path_d_train_u, exist_ok = True)
+#     os.makedirs(path_d_val, exist_ok = True)
+#     os.makedirs(path_d_test, exist_ok = True)
+#     print("step2")
+#     path_d_train_l_t, path_d_train_l_f = get_path_f_t_cr(path_d_train_l)
+#     path_d_train_u_t, path_d_train_u_f = get_path_f_t_cr(path_d_train_u)
+#     path_d_val_t, path_d_val_f = get_path_f_t_cr(path_d_val)
+#     path_d_test_t, path_d_test_f = get_path_f_t_cr(path_d_test)
+#
+#     with open(os.path.join(path, 'TRUFI', 'fetal_data_withgt.h5'), "rb") as opened_file:
+#         data_withgt_t = pickle.load(opened_file)
+#
+#     with open(os.path.join(path, 'placenta', 'fetal_data_withgt.h5'), "rb") as opened_file:
+#         data_withgt_f = pickle.load(opened_file)
+#
+#     d_train_l_f_gt = dict()
+#     d_train_u_f_gt = dict()
+#     d_train_l_t_gt = dict()
+#     d_train_u_t_gt = dict()
+#     d_val_t_gt = dict()
+#     d_val_f_gt = dict()
+#     d_test_t_gt = dict()
+#     d_test_f_gt = dict()
+#
+#     d_train_l_f_data = dict()
+#     d_train_u_f_data = dict()
+#     d_train_l_t_data = dict()
+#     d_train_u_t_data = dict()
+#     d_val_t_data = dict()
+#     d_val_f_data = dict()
+#     d_test_t_data = dict()
+#     d_test_f_data = dict()
+#     print("step3")
+#     for subject_id in data_withgt_t.keys():
+#         print(f'subject_id: {subject_id}')
+#         if subject_id in config_data_set['cases_train_T_l']:
+#             print(f'subject_id: {subject_id}, cases_trainT_l')
+#
+#             create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_train_l_t_data , d_train_l_t_gt, subject_id)
+#
+#         elif subject_id in config_data_set['cases_train_T_u']:
+#             print(f'subject_id: {subject_id}, cases_train_T_u')
+#             create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_train_u_t_data , d_train_u_t_gt, subject_id)
+#
+#         elif subject_id in config_data_set['cases_val_T']:
+#             print(f'subject_id: {subject_id}, cases_val_T')
+#             create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'],data_withgt_t[subject_id]['truth'],  d_val_t_data , d_val_t_gt, subject_id)
+#
+#         elif subject_id in config_data_set['cases_test_T']:
+#             print(f'subject_id: {subject_id}, cases_test_T')
+#             create_training_pathes(config_data_set, data_withgt_t[subject_id]['data'], data_withgt_t[subject_id]['truth'], d_test_t_data, d_test_t_gt, subject_id)
+#
+#         else:
+#             raise Exception(f'key is not in data {subject_id}')
+#
+#     for subject_id in data_withgt_f.keys():
+#         print(f'subject_id: {subject_id}')
+#         if subject_id in config_data_set['cases_train_F_l']:
+#             print(f'subject_id: {subject_id}, cases_train_F_l')
+#             create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_train_l_f_data,
+#                                    d_train_l_f_gt, subject_id)
+#
+#         elif subject_id in config_data_set['cases_train_F_u']:
+#             print(f'subject_id: {subject_id}, cases_train_F_u')
+#             create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_train_u_f_data,
+#                                    d_train_u_f_gt, subject_id)
+#
+#         elif subject_id in config_data_set['cases_val_F']:
+#             print(f'subject_id: {subject_id}, cases_val_F')
+#             create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_val_f_data,
+#                                    d_val_f_gt, subject_id)
+#
+#         elif subject_id in config_data_set['cases_test_F']:
+#             print(f'subject_id: {subject_id}, cases_test_F')
+#             create_training_pathes(config_data_set, data_withgt_f[subject_id]['data'], data_withgt_f[subject_id]['truth'], d_test_f_data,
+#                                    d_test_f_gt, subject_id)
+#
+#         else:
+#             raise Exception(f'key is not in data {subject_id}')
+#
+#     dump_dict_patches(path_d_train_l_t, d_train_l_t_data, d_train_l_t_gt)
+#     dump_dict_patches(path_d_train_l_f, d_train_l_f_data, d_train_l_f_gt)
+#     dump_dict_patches(path_d_train_u_t, d_train_u_t_data, d_train_u_t_gt)
+#     dump_dict_patches(path_d_train_u_f, d_train_u_f_data, d_train_u_f_gt)
+#     dump_dict_patches(path_d_val_f, d_val_f_data, d_val_f_gt)
+#     dump_dict_patches(path_d_val_t, d_val_t_data, d_val_t_gt)
+#     dump_dict_patches(path_d_test_t, d_test_t_data, d_test_t_gt)
+#     dump_dict_patches(path_d_test_t, d_test_t_data, d_test_t_gt)
+#     with open(os.path.join(path_d, 'param_dict.json'), mode='w') as f:
+#         json.dump(config_data_set, f)
 
 if __name__ == '__main__':
     create_data = False
     if create_data:
-        # create_load_hdf5(normalization="all", data_dir='/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/placenta',
-        #                  scans_dir='/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/placenta',
-        #                  train_modalities=["volume", "truth"], ext="", overwrite=True, preprocess="window_1_99",
-        #                  scale=None, train=True, store_patches=False)
+        create_load_hdf5(normalization="all", data_dir= '/mnt/local/nirm/placenta',
+                         scans_dir='/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/placenta',
+                         train_modalities=["volume", "truth"], ext="", overwrite=True, preprocess="window_1_99",
+                         scale=None, train=True, store_patches=False)
         create_load_hdf5(normalization="all",
-                         data_dir='/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/TRUFI',
-                         scans_dir= '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/TRUFI',
+                         data_dir='/mnt/local/nirm/TRUFI',
+                         scans_dir= '//cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/TRUFI',
                          train_modalities=["volume", "truth"], ext="", overwrite=True, preprocess="window_1_99",
                          scale=[0.5, 0.5, 1], rescale_res=[1.56, .56, 3], metadata_path=None, train=True,
                          store_patches=False, dim=3)
     else:
-        path = "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess"
-        path_scan = "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess"
-        build_data_set(path, config_data_set)
-        # build_data_set(path, config_data_set_2d)
+        # path = "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess"
+        # path_scan = "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess"
+        path = '/mnt/local/nirm/'
+        # build_data_set_of_patches(path, config_patches3d)
+        # build_data_set_of_patches(path, config_patches2d)
+        # build_data_set(path, config_data_set_exp2, 2)
+        build_data_set(path, DF_1_2d_dict, 3)
+        build_data_set(path, DF_2_2d_dict, 3)
+        build_data_set(path, DF_all_2d_dict, 3)
+        build_data_set(path, DS_2d_dict, 3)
+        build_data_set(path, D_0_2d_dict, 3)
+        build_data_set(path, D_1_2d_dict, 3)
 
         print("finish 5")
         # create_load_hdf5(normalization = "all", scans_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/DRS_3/VALIDATION/TRUFI/' , data_dir = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA_3/VALIDATION/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True, dim = 3)

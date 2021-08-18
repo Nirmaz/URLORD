@@ -2,13 +2,14 @@
 cd /cs/casmip/nirm/embryo_project_version1/venu-pytorch/bin
 source activate.csh
 cd /cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet
+#python lord_exp.py --base-dir /cs/labs/josko/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2 run_exp --exp-dict-dir /cs/labs/josko/nirm/embryo_project_version1/EXP_FOLDER/exp_config/exp_1
 
-python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA13d/TRAIN/Labeled --data-name DSRA13d_TL --t 1 --f 1
-python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA13d/TRAIN/ULabeled --data-name DSRA13d_TU --t 1 --f 0
-python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA13d/VALIDATION --data-name DSRA13d_VA --t 1 --f 1
-python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA13d/TEST --data-name DSRA13d_TE --t 1 --f 0
-
-
+#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d/TRAIN/Labeled --data-name DSRA12d_TL --t 1 --f 1
+#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d/TRAIN/ULabeled --data-name DSRA12d_TU --t 1 --f 0
+#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d/VALIDATION --data-name DSRA12d_VA --t 1 --f 1
+#python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d/TEST --data-name DSRA12d_TE --t 1 --f 0
+#
+#
 #python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d/TRAIN/Labeled --data-name DSRA12d_TL --t 1 --f 1
 #python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d/TRAIN/Unlabeled --data-name DSRA12d_TU --t 1 --f 0
 #python lord_unet.py --base-dir /cs/casmip/nirm/embryo_project_version1/embryo_data preprocess_onegr --dataset-id embryos_dataset_onegr --dataset-path /cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d/VALIDATION --data-name DSRA12d_VA --t 1 --f 1

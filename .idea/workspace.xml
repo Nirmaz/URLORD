@@ -2,23 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/loaders/embryo_data_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/embryo_main/configd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exp_config/exp_testing/old_data_set_exp/UCLord3D_dict.jason" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exp_config/exp_testing/old_data_set_exp/ULord3D_dict.jason" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exp_config/exp_testing/old_data_set_exp/UNet3D_dict.jason" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exp_config/exp_testing/old_data_set_exp/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_embryo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/exp_c.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/model_executors/embryo_sdnet_exec.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/aaa" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/loaders/embryo_data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/loaders/embryo_data_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/embryo_main/configd.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/configd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/embryo_main/create_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/create_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_1/ULord3D_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_1/UNet3D_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_1/exp_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_2/ULord3D_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_2/UNet3D_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_2/exp_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_3/ULord3D_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_3/UNet3D_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_3/exp_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/exp_dict.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/assets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/dataset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/lord_tf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/model/evaluation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/model/network.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/seq_classifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lord-main/testing.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/modules_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/modules_unet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/unet2d_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/unet2d_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/utils_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/utils_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/play_with_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/play_with_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models_config/testing/config.jason" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models_config/testing/config_unet.jason" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +82,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pancreas_project/code/Pancreatic-cysts-follow-up/shalom_code/data_generator_sh.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pancreas_project/code/Pancreatic-cysts-follow-up" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -73,6 +92,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/exp_config/exp_1/data_1" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.create_data">
     <configuration name="create_data" type="PythonConfigurationType" factoryName="Python">
@@ -177,7 +201,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lord-pytorch-unet/lord_exp.py" />
-      <option name="PARAMETERS" value="--base-dir $PROJECT_DIR$/../EXP_FOLDER/exp_fp2 run_exp --exp-dict-dir $PROJECT_DIR$/exp_config/exp_testing" />
+      <option name="PARAMETERS" value="--base-dir $PROJECT_DIR$/../EXP_FOLDER/exp_fp2 run_exp --exp-dict-dir $PROJECT_DIR$/exp_config/exp_2d/" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -404,7 +428,12 @@
       <workItem from="1626682113796" duration="103253000" />
       <workItem from="1627199029995" duration="252971000" />
       <workItem from="1628494435808" duration="409000" />
-      <workItem from="1628579799344" duration="46965000" />
+      <workItem from="1628579799344" duration="100083000" />
+      <workItem from="1628844581013" duration="12213000" />
+      <workItem from="1628860126932" duration="7741000" />
+      <workItem from="1628936862765" duration="4254000" />
+      <workItem from="1628948242906" duration="45716000" />
+      <workItem from="1629099516414" duration="49225000" />
     </task>
     <task id="LOCAL-00001" summary="all">
       <created>1625765445775</created>
@@ -455,7 +484,21 @@
       <option name="project" value="LOCAL" />
       <updated>1628579899119</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="before_all_models">
+      <created>1628679951423</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1628679951423</updated>
+    </task>
+    <task id="LOCAL-00009" summary="config">
+      <created>1628680172467</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1628680172467</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,103 +521,104 @@
     <MESSAGE value="all_second_batch" />
     <MESSAGE value="לפני השינויים הגדולי" />
     <MESSAGE value="before_all_models" />
-    <option name="LAST_COMMIT_MESSAGE" value="before_all_models" />
+    <MESSAGE value="config" />
+    <option name="LAST_COMMIT_MESSAGE" value="config" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="40" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1628608339366">
+    <state x="96" y="40" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629210187779">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="102" y="31" width="1071" height="679" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1623564099684" />
     <state x="20" y="157" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1626617396273" />
     <state x="187" y="31" width="1071" height="654" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1625307816465" />
     <state x="-666" y="80" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3200.864@0.0.3200.864" timestamp="1625319307003" />
-    <state x="96" y="40" width="1649" height="1015" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1628608339366" />
-    <state x="712" y="358" width="513" height="363" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1628609121709">
+    <state x="96" y="40" width="1649" height="1015" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1629210187779" />
+    <state x="712" y="358" width="513" height="363" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629206916445">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="712" y="358" width="513" height="363" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1920.1030@0.25.1920.1030" timestamp="1628609121709" />
+    <state x="712" y="358" width="513" height="363" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1920.1030@0.25.1920.1030" timestamp="1629206916445" />
     <state x="950" y="325" width="326" height="442" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1624871109185">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="950" y="325" width="326" height="442" key="#com.intellij.ide.macro.MacrosDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1624871109185" />
-    <state x="409" y="25" width="879" height="732" key="CommitChangelistDialog2" timestamp="1628579898709">
+    <state x="407" y="25" width="879" height="732" key="CommitChangelistDialog2" timestamp="1628680172093">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="353" y="31" width="879" height="732" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494730201" />
-    <state x="409" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1628579898709" />
-    <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl" timestamp="1628668279705">
+    <state x="407" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1628680172093" />
+    <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl" timestamp="1629115627320">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl/0.25.1920.1030@0.25.1920.1030" timestamp="1628668279705" />
-    <state width="1880" height="82" key="GridCell.Tab.0.bottom" timestamp="1628679269214">
+    <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl/0.25.1920.1030@0.25.1920.1030" timestamp="1629115627320" />
+    <state width="1880" height="278" key="GridCell.Tab.0.bottom" timestamp="1629217561249">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state width="1238" height="251" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1623569744882" />
     <state width="1494" height="128" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1626614903461" />
     <state width="1494" height="158" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1625307831320" />
     <state width="1238" height="2" key="GridCell.Tab.0.bottom/0.0.3200.720@0.0.3200.720" timestamp="1623583592207" />
-    <state width="1880" height="82" key="GridCell.Tab.0.bottom/0.25.1920.1030@0.25.1920.1030" timestamp="1628679269214" />
-    <state width="1880" height="82" key="GridCell.Tab.0.center" timestamp="1628679269214">
+    <state width="1880" height="278" key="GridCell.Tab.0.bottom/0.25.1920.1030@0.25.1920.1030" timestamp="1629217561249" />
+    <state width="1880" height="278" key="GridCell.Tab.0.center" timestamp="1629217561248">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state width="1238" height="251" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1623569744776" />
     <state width="1494" height="128" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1626614903461" />
     <state width="1494" height="158" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1625307831184" />
     <state width="1238" height="2" key="GridCell.Tab.0.center/0.0.3200.720@0.0.3200.720" timestamp="1623583592082" />
-    <state width="1880" height="82" key="GridCell.Tab.0.center/0.25.1920.1030@0.25.1920.1030" timestamp="1628679269214" />
-    <state width="1880" height="82" key="GridCell.Tab.0.left" timestamp="1628679269214">
+    <state width="1880" height="278" key="GridCell.Tab.0.center/0.25.1920.1030@0.25.1920.1030" timestamp="1629217561248" />
+    <state width="1880" height="278" key="GridCell.Tab.0.left" timestamp="1629217561248">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state width="1238" height="251" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1623569744714" />
     <state width="1494" height="128" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1626614903461" />
     <state width="1494" height="158" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1625307831087" />
     <state width="1238" height="2" key="GridCell.Tab.0.left/0.0.3200.720@0.0.3200.720" timestamp="1623583592013" />
-    <state width="1880" height="82" key="GridCell.Tab.0.left/0.25.1920.1030@0.25.1920.1030" timestamp="1628679269214" />
-    <state width="1880" height="82" key="GridCell.Tab.0.right" timestamp="1628679269214">
+    <state width="1880" height="278" key="GridCell.Tab.0.left/0.25.1920.1030@0.25.1920.1030" timestamp="1629217561248" />
+    <state width="1880" height="278" key="GridCell.Tab.0.right" timestamp="1629217561248">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state width="1238" height="251" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1623569744829" />
     <state width="1494" height="128" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1626614903461" />
     <state width="1494" height="158" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1625307831251" />
     <state width="1238" height="2" key="GridCell.Tab.0.right/0.0.3200.720@0.0.3200.720" timestamp="1623583592148" />
-    <state width="1880" height="82" key="GridCell.Tab.0.right/0.25.1920.1030@0.25.1920.1030" timestamp="1628679269214" />
-    <state width="1880" height="186" key="GridCell.Tab.1.bottom" timestamp="1628612733220">
+    <state width="1880" height="278" key="GridCell.Tab.0.right/0.25.1920.1030@0.25.1920.1030" timestamp="1629217561248" />
+    <state width="902" height="180" key="GridCell.Tab.1.bottom" timestamp="1629211570636">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state width="1880" height="186" key="GridCell.Tab.1.bottom/0.25.1920.1030@0.25.1920.1030" timestamp="1628612733220" />
-    <state width="1880" height="186" key="GridCell.Tab.1.center" timestamp="1628612733220">
+    <state width="902" height="180" key="GridCell.Tab.1.bottom/0.25.1920.1030@0.25.1920.1030" timestamp="1629211570636" />
+    <state width="902" height="180" key="GridCell.Tab.1.center" timestamp="1629211570636">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state width="1880" height="186" key="GridCell.Tab.1.center/0.25.1920.1030@0.25.1920.1030" timestamp="1628612733220" />
-    <state width="1880" height="186" key="GridCell.Tab.1.left" timestamp="1628612733220">
+    <state width="902" height="180" key="GridCell.Tab.1.center/0.25.1920.1030@0.25.1920.1030" timestamp="1629211570636" />
+    <state width="902" height="180" key="GridCell.Tab.1.left" timestamp="1629211570636">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state width="1880" height="186" key="GridCell.Tab.1.left/0.25.1920.1030@0.25.1920.1030" timestamp="1628612733220" />
-    <state width="1880" height="186" key="GridCell.Tab.1.right" timestamp="1628612733220">
+    <state width="902" height="180" key="GridCell.Tab.1.left/0.25.1920.1030@0.25.1920.1030" timestamp="1629211570636" />
+    <state width="902" height="180" key="GridCell.Tab.1.right" timestamp="1629211570636">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state width="1880" height="186" key="GridCell.Tab.1.right/0.25.1920.1030@0.25.1920.1030" timestamp="1628612733220" />
-    <state x="599" y="108" width="788" height="552" key="SettingsEditor" timestamp="1627988197538">
+    <state width="902" height="180" key="GridCell.Tab.1.right/0.25.1920.1030@0.25.1920.1030" timestamp="1629211570636" />
+    <state x="599" y="108" width="788" height="552" key="SettingsEditor" timestamp="1628964307015">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="599" y="108" width="788" height="552" key="SettingsEditor/0.25.1920.1030@0.25.1920.1030" timestamp="1627988197538" />
-    <state x="655" y="339" width="515" height="338" key="Vcs.Push.Dialog.v2" timestamp="1628580198825">
+    <state x="599" y="108" width="788" height="552" key="SettingsEditor/0.25.1920.1030@0.25.1920.1030" timestamp="1628964307015" />
+    <state x="655" y="339" width="515" height="338" key="Vcs.Push.Dialog.v2" timestamp="1628680177463">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="524" y="263" width="515" height="338" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494832058" />
-    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1628580198825" />
+    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1628680177463" />
     <state width="964" height="516" key="XDebugger.FullValuePopup" timestamp="1628001078286">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state width="964" height="516" key="XDebugger.FullValuePopup/0.25.1920.1030@0.25.1920.1030" timestamp="1628001078286" />
-    <state x="96" y="125" width="1728" height="833" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1628679920157">
+    <state x="96" y="127" width="1727" height="831" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1628963448346">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="96" y="125" width="1728" height="833" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1628679920157" />
-    <state x="0" y="147" width="1824" height="833" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1628667124513">
+    <state x="96" y="127" width="1727" height="831" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1628963448346" />
+    <state x="0" y="147" width="1824" height="833" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1628963865450">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
-    <state x="0" y="147" width="1824" height="833" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1628667124513" />
+    <state x="0" y="147" width="1824" height="833" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1628963865450" />
     <state x="785" y="470" width="347" height="139" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625499049268">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
@@ -630,19 +674,34 @@
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py</url>
-          <line>47</line>
-          <option name="timeStamp" value="74" />
+          <url>file://$PROJECT_DIR$/../../../../labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py</url>
+          <line>413</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../../labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py</url>
+          <line>427</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/anatomy_modality_decomposition-master/model_executors/embryo_sdnet_exec.py</url>
+          <line>124</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lord-pytorch-unet/lord_exp.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lord-pytorch-unet/lord_exp.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py</url>
-          <line>444</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/../../../../labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py</url>
-          <line>314</line>
-          <option name="timeStamp" value="78" />
+          <line>203</line>
+          <option name="timeStamp" value="93" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -656,8 +715,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/embyo_projects_codes$lord_unet.coverage" NAME="lord_unet Coverage Results" MODIFIED="1628606391071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lord-pytorch-unet" />
-    <SUITE FILE_PATH="coverage/embyo_projects_codes$lord_exp.coverage" NAME="lord_exp Coverage Results" MODIFIED="1628617534713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lord-pytorch-unet" />
-    <SUITE FILE_PATH="coverage/embyo_projects_codes$create_data.coverage" NAME="create_data Coverage Results" MODIFIED="1628677039185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/embryo_main" />
+    <SUITE FILE_PATH="coverage/embyo_projects_codes$lord_exp.coverage" NAME="lord_exp Coverage Results" MODIFIED="1629211501181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lord-pytorch-unet" />
+    <SUITE FILE_PATH="coverage/embyo_projects_codes$create_data.coverage" NAME="create_data Coverage Results" MODIFIED="1629217551793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/embryo_main" />
     <SUITE FILE_PATH="coverage/embyo_projects_codes$seg_classifier_py__1_.coverage" NAME="seg_classifier_py (1) Coverage Results" MODIFIED="1627807553458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lord-pytorch-unet" />
     <SUITE FILE_PATH="coverage/embyo_projects_codes$play_with_data.coverage" NAME="play_with_data Coverage Results" MODIFIED="1628599866751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lord-pytorch-unet" />
     <SUITE FILE_PATH="coverage/embyo_projects_codes$lord.coverage" NAME="lord_unet Coverage Results" MODIFIED="1625474298745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lord-pytorch-main" />

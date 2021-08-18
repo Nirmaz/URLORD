@@ -217,51 +217,51 @@ class embryos_dataset_onegr(DataSet):
 
 	def read_images(self, load_trufi = True, load_fiesta = False):
 		# print(os.path.join(self._base_dir,'plcenta','fetal_data.h5'), "aaaa")
-		show_images = True
+		show_images = False
 		# load data set
-		if load_fiesta:
-			with open(os.path.join(self._base_dir, 'placenta', 'patches_dict.h5'), "rb") as opened_file:
-				fiesta_dataset = pickle.load(opened_file)
 
-			with open(os.path.join(self._base_dir, 'placenta', 'patches_dict_gt.h5'), "rb") as opened_file:
-				fiesta_dataset_gt = pickle.load(opened_file)
+		with open(os.path.join(self._base_dir, 'placenta', 'patches_dict.h5'), "rb") as opened_file:
+			fiesta_dataset = pickle.load(opened_file)
 
-			print(self._base_dir, "base dir chech ")
-			imgs_fiesta = np.array(list(fiesta_dataset.values()))
-			imgs_fiesta_gt = np.array(list(fiesta_dataset_gt.values()))
-			# print(imgs_fiesta_gt , "img fiesta gt")
-			class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
-			print("imgs_fiesta unique:", np.unique(imgs_fiesta))
-			if show_images:
-				num_f1 = 0
-				for i in range(3):
-					plt.title(f"imgs_fiesta_{num_f1 + i}")
-					plt.imshow(imgs_fiesta[num_f1 + i][:, :, 0], cmap='gray')
-					plt.show()
+		with open(os.path.join(self._base_dir, 'placenta', 'patches_dict_gt.h5'), "rb") as opened_file:
+			fiesta_dataset_gt = pickle.load(opened_file)
 
-		if load_trufi:
-
-			with open(os.path.join(self._base_dir, 'TRUFI', 'patches_dict.h5'), "rb") as opened_file:
-				trufi_dataset = pickle.load(opened_file)
-
-			with open(os.path.join(self._base_dir, 'TRUFI', 'patches_dict_gt.h5'), "rb") as opened_file:
-				trufi_dataset_gt = pickle.load(opened_file)
+		print(self._base_dir, "base dir chech ")
+		imgs_fiesta = np.array(list(fiesta_dataset.values()))
+		imgs_fiesta_gt = np.array(list(fiesta_dataset_gt.values()))
+		# print(imgs_fiesta_gt , "img fiesta gt")
+		class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
+		print("imgs_fiesta unique:", np.unique(imgs_fiesta))
+		if show_images and imgs_fiesta.shape[0] > 0:
+			num_f1 = 0
+			for i in range(3):
+				plt.title(f"imgs_fiesta_{num_f1 + i}")
+				plt.imshow(imgs_fiesta[num_f1 + i][:, :, 0], cmap='gray')
+				plt.show()
 
 
-			imgs_trufi = np.array(list(trufi_dataset.values()))
-			imgs_trufi_gt = np.array(list(trufi_dataset_gt.values()))
-			class_id_trufi = np.ones((imgs_trufi.shape[0]))
-			print(f"shape trufi: {class_id_trufi.shape}")
+
+		with open(os.path.join(self._base_dir, 'TRUFI', 'patches_dict.h5'), "rb") as opened_file:
+			trufi_dataset = pickle.load(opened_file)
+
+		with open(os.path.join(self._base_dir, 'TRUFI', 'patches_dict_gt.h5'), "rb") as opened_file:
+			trufi_dataset_gt = pickle.load(opened_file)
 
 
-			if show_images:
-				num_f1 = 10
-				for i in range(3):
-					plt.title(f"imgs_fiesta_{num_f1 + i}")
-					plt.imshow(imgs_trufi[num_f1 + i][:, :, 0], cmap='gray')
-					plt.show()
+		imgs_trufi = np.array(list(trufi_dataset.values()))
+		imgs_trufi_gt = np.array(list(trufi_dataset_gt.values()))
+		class_id_trufi = np.ones((imgs_trufi.shape[0]))
+		print(f"shape trufi: {class_id_trufi.shape}")
 
-		if load_trufi and load_fiesta:
+
+		if show_images and imgs_trufi.shape[0] > 0:
+			num_f1 = 10
+			for i in range(3):
+				plt.title(f"imgs_fiesta_{num_f1 + i}")
+				plt.imshow(imgs_trufi[num_f1 + i][:, :, 0], cmap='gray')
+				plt.show()
+
+		if imgs_trufi.shape[0] > 0 and imgs_fiesta.shape[0] > 0:
 			class_id = np.concatenate((class_id_fiesta, class_id_trufi), axis=0)
 			imgs = np.concatenate((imgs_fiesta, imgs_trufi), axis=0)
 			segs = np.concatenate((imgs_fiesta_gt, imgs_trufi_gt), axis=0)
@@ -270,12 +270,12 @@ class embryos_dataset_onegr(DataSet):
 
 			return imgs, class_id, segs
 
-		elif load_trufi:
+		elif imgs_trufi.shape[0] > 0 and imgs_fiesta.shape[0] == 0:
 			imgs = np.expand_dims(imgs_trufi, axis=-1)
 			segs = np.expand_dims(imgs_trufi_gt, axis=-1)
 			return  imgs, class_id_trufi, segs
 
-		elif load_fiesta:
+		elif imgs_trufi.shape[0] == 0 and imgs_fiesta.shape[0] > 0:
 			imgs = np.expand_dims(imgs_fiesta , axis=-1)
 			segs = np.expand_dims(imgs_fiesta_gt, axis=-1)
 

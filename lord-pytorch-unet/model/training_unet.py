@@ -21,14 +21,14 @@ from os.path import join
 from experiments_unet import EXP_PATH, jason_dump
 from post_pro import PostProcessingSeg, postprocess_prediction
 from scipy.spatial import distance
-
+# VGGDistance(self.config['perceptual_loss']['layers'])
 CUDA_LAUNCH_BLOCKING = 1
 import wandb
 import logging
 import time
 from measure import dice_func, dice_loss
 from sklearn.metrics import recall_score, precision_score
-
+import torchvision.transforms.functional as TF
 
 def define_logger(loger_name, file_path):
     logger = logging.getLogger(loger_name)
@@ -58,6 +58,11 @@ def pickle_load(in_file):
         return pickle.load(opened_file)
 
 
+def pickle_dump(item, out_file):
+    with open(out_file, "wb") as opened_file:
+        pickle.dump(item, opened_file)
+
+
 class Lord:
 
     def __init__(self, config=None, config_unet=None):
@@ -83,6 +88,9 @@ class Lord:
         self.is_unet = None
         self.calc_rec_loss = None
         self.calc_dice_loss = None
+        self.dim = None
+        self.model_dir = None
+        self.prediction = None
 
     def build_data_set_3d(self):
         self.data = dict(
@@ -135,13 +143,14 @@ class Lord:
         )
 
     def load(self, model_dir, model_id, dim, num_exp=None, path_exp=None):
-
+        print(model_dir, "modle dir load")
         with open(os.path.join(model_dir, 'config.pkl'), 'rb') as config_fd:
             self.config = pickle.load(config_fd)
 
         with open(os.path.join(model_dir, 'config_unet.pkl'), 'rb') as config_fd:
             self.config_unet = pickle.load(config_fd)
 
+        self.model_dir = model_dir
         if num_exp != None:
             self.config['num_exp'] = num_exp
             self.config['path_exp'] = path_exp
@@ -150,16 +159,29 @@ class Lord:
             jason_dump(self.config, path_config)
             jason_dump(self.config_unet, path_config_unet)
 
-        if model_id == 'ULord':
+        if model_id == 'ULord' or model_id == 'URLord':
             self.is_unet = False
             self.ulord_model = ULordModel(self.config, self.config_unet, dim)
             self.ulord_model.load_state_dict(torch.load(os.path.join(model_dir, 'ulord.pth')))
+
+        if model_id == 'UCLord':
+            self.is_unet = False
+            self.ulord_model = UCLordModel(self.config, self.config_unet, dim)
+            self.ulord_model.load_state_dict(torch.load(os.path.join(model_dir, 'ulord.pth')))
+
 
         if model_id == 'UNet':
             self.is_unet = True
             self.ulord_model = UNetS(self.config_unet, dim)
             self.ulord_model.load_state_dict(
                 torch.load(os.path.join(model_dir, 'ulord.pth')))
+
+        if model_id == 'UNetC':
+            self.is_unet = False
+            self.ulord_model = UNetSC(self.config_unet, dim)
+            self.ulord_model.load_state_dict(
+                torch.load(os.path.join(model_dir, 'ulord.pth')))
+
 
     def save_best_model(self, model_dir):
 
@@ -177,26 +199,40 @@ class Lord:
         print("saving model......................................................")
         torch.save(self.ulord_model.state_dict(), os.path.join(model_dir, 'ulord.pth'))
 
-    def evaluate(self, path_to_weights, param_data, data_with_gt, path_result):
-
+    def evaluate(self, model_dict, exp_dict, path_to_weights, param_data, data_with_gt, path_result, split_dict):
+        # print(data_with_gt.keys())
         self.ulord_model.load_state_dict(torch.load(path_to_weights))
-        post_processing = PostProcessingSeg(self.ulord_model, param_data['min_val'], param_data['max_val'],
-                                            data_with_gt, param_data['margin'], self.config['train']['batch_size'],
-                                            param_data['patch_stride'], param_data['model_original_dim'],
-                                            unet=self.is_unet, bb=param_data['from_bb'])
-        dict_prediction = dict()
-        post_processing.predict_on_validation(dict_prediction)
+        post_processing = PostProcessingSeg(self.ulord_model, exp_dict,split_dict,param_data,0, 1,
+                                            data_with_gt, param_data['patches_params']['margin'], self.config['train']['batch_size'],
+                                            param_data['patches_params']['patch_stride'], param_data['patches_params']['model_original_dim'],
+                                            unet=self.is_unet, bb=param_data['patches_params']['from_bb'], dim = model_dict['dim'])
+
+        if os.path.exists(join(self.model_dir,'dict_pre.h5')):
+            dict_prediction = pickle_load(join(self.model_dir,'dict_pre.h5'))
+        else:
+            dict_prediction = dict()
+            post_processing.predict_on_validation(dict_prediction)
+            dict_prediction['max_overlap'] = post_processing.max_over_lap
+            out_dict_pre_file = join(self.model_dir, 'dict_pre.h5')
+            pickle_dump(dict_prediction, out_dict_pre_file)
+
 
         print(post_processing.max_over_lap, "post_processing.max_over_lap")
-        for th in range(0, int(post_processing.max_over_lap)):
 
-            logname_result = join(path_result, 'logging', f'uLord3d_pre_th_{th}.log')
-            logname_dice = f'uLord3d_pre_th_{th}'
+        best_th = -1
+        best_dice = 0
+        for th in range(0, int(dict_prediction['max_overlap'])):
+
+            logname_result = join(path_result, 'logging',parts(path_result)[-2]  + f'uLord3d_pre_th_{th}.log')
+            logname_dice = parts(path_result)[-2]  + f'uLord3d_pre_th_{th}'
             logger_dice = define_logger(logname_dice, logname_result)
             dice_score = AverageMeter()
             pre_score = AverageMeter()
             rec_score = AverageMeter()
             for i, subject_id in enumerate(dict_prediction.keys()):
+                if (subject_id not in  split_dict['cases_val_T']) and (subject_id not in  split_dict['cases_val_F']):
+                    continue
+
                 gt = dict_prediction[subject_id]['truth']
                 pred = dict_prediction[subject_id]['pred']
                 if i == 0:
@@ -204,6 +240,7 @@ class Lord:
 
                 res = np.zeros_like(pred)
                 res[pred > th] = 1
+                dice_2 = dice_func(gt, res)
                 res = postprocess_prediction(res)
                 dice = dice_func(gt, res)
                 res_1d = res.flatten()
@@ -215,10 +252,48 @@ class Lord:
                 rec_score.update(rec)
 
                 logger_dice.info(
-                    f'subject id {subject_id} dice score {dice}, recall score: {rec}, precision score: {pre} ')
+                    f'subject id {subject_id} dice score A {dice},dice score B {dice_2} , recall score: {rec}, precision score: {pre} ')
 
             logger_dice.info(
                 f'avg dice score {dice_score.avg} , avg recall score: {rec_score.avg}, precision score: {pre_score.avg}')
+
+            if dice_score.avg > best_dice:
+                best_th = th
+                best_dice = dice_score.avg
+
+        logname_result = join(path_result, 'logging', parts(path_result)[-2]  + f'uLord3d_pre_best_th_{best_th}.log')
+        logname_dice = parts(path_result)[-2]  + f'_best_th_{best_th}.log'
+        logger_dice = define_logger(logname_dice, logname_result)
+        dice_score = AverageMeter()
+        pre_score = AverageMeter()
+        rec_score = AverageMeter()
+
+        for i, subject_id in enumerate(dict_prediction.keys()):
+            if (subject_id not in split_dict['cases_test_T']) and (subject_id not in split_dict['cases_test_F']):
+                continue
+
+            gt = dict_prediction[subject_id]['truth']
+            pred = dict_prediction[subject_id]['pred']
+            if i == 0:
+                print(np.unique(pred), "unique pred")
+
+            res = np.zeros_like(pred)
+            res[pred > best_th] = 1
+            dice_2 = dice_func(gt, res)
+            res = postprocess_prediction(res)
+            dice = dice_func(gt, res)
+            res_1d = res.flatten()
+            gt_1d = gt.flatten()
+            rec = recall_score(gt_1d, res_1d)
+            pre = precision_score(gt_1d, res_1d)
+            dice_score.update(dice)
+            pre_score.update(pre)
+            rec_score.update(rec)
+
+            logger_dice.info(f'subject id {subject_id} dice score A {dice},dice score B {dice_2} , recall score: {rec}, precision score: {pre} ')
+
+        logger_dice.info(f'avg dice score {dice_score.avg} , avg recall score: {rec_score.avg}, precision score: {pre_score.avg}')
+
 
     def optimzer_ulord(self):
         self.optimizer = Adam([
@@ -259,7 +334,9 @@ class Lord:
         return self.ulord_model(images)
 
     def calc_rec_loss_unet(self, out, batch_t, batch_u, criterion):
-        return 0, 0
+        reco_loss = criterion(batch_t['img'], batch_t['img'])
+        reco_loss_u = criterion(batch_t['img'], batch_t['img'])
+        return reco_loss, reco_loss_u
 
     def calc_rec_loss_ulord(self, out, batch_t, batch_u, criterion):
         reco_loss = criterion(out['img'], batch_t['img'])
@@ -267,15 +344,26 @@ class Lord:
         return reco_loss, reco_loss_u
 
     def calc_rec_loss_urord(self, out, batch_t, batch_u, criterion):
-
-
+        start_time_preprocees = time.time()
+        seg_l = batch_t['seg'].type(torch.FloatTensor).to(self.device)
         seg = batch_t['seg'].type(torch.IntTensor).to(self.device)
         # print(torch.type(batch_t['img'] * batch_t['seg']), "type")
-        reco_loss = criterion(out['img'], batch_t['img'] * seg)
-        seg1 = out['mask_u'].detach()
-        seg1 = torch.round(seg1).type(torch.IntTensor).to(self.device)
-        reco_loss_u = criterion(out['img_u'], batch_u['img'] * seg1)
+        reco_loss = criterion(out['img'], batch_t['img'] * seg,  seg_l )
+        seg_u = out['mask_u'].detach()
+        seg1 = torch.round(seg_u).type(torch.IntTensor).to(self.device)
+        reco_loss_u = criterion(out['img_u'], batch_u['img'] * seg1, seg_u)
+        print(
+            "------------ %s loss -------------------------------" % (
+                    time.time() - start_time_preprocees))
         return reco_loss, reco_loss_u
+        # seg_l = batch_t['seg'].type(torch.FloatTensor).to(self.device)
+        # seg = batch_t['seg'].type(torch.IntTensor).to(self.device)
+        # # print(torch.type(batch_t['img'] * batch_t['seg']), "type")
+        # reco_loss = criterion(out['img'], batch_t['img'] * seg, None)
+        # seg_u = out['mask_u'].detach()
+        # seg1 = torch.round(seg_u).type(torch.IntTensor).to(self.device)
+        # reco_loss_u = criterion(out['img_u'], batch_u['img'] * seg1, None)
+        # return reco_loss, reco_loss_u
 
     def calc_dice_loss_ulord(self, out, batch_t, batch_u):
         dice_loss_l = dice_loss(out['mask'], batch_t['seg'])
@@ -283,18 +371,35 @@ class Lord:
 
     def calc_dice_loss_uclord(self, out, batch_t, batch_u):
         dice_loss_l = dice_loss(out['mask'], batch_t['seg'])
-        seg = out['mask_u_2'].detach()
-        seg = torch.round(seg)
-        dice_loss_u = dice_loss(out['mask_u_1'], seg)
+        seg1 = torch.round(out['mask_u_1'].detach())
+        seg2 = torch.round(out['mask_u_2'].detach())
+        angle1 = out['angle1']
+        angle2 = out['angle2']
+        angle_l_1 = angle1 - angle2
+        angle_l_2 = angle2 - angle1
+
+        if self.dim == 3:
+            seg2  = torch.squeeze(seg2 , dim = 1)
+            seg2 = TF.rotate(seg2, angle_l_1)
+            seg2 = torch.unsqueeze(seg2 , dim = 1)
+            seg1 = torch.squeeze(seg1, dim = 1)
+            seg1 = TF.rotate(seg1, angle_l_2)
+            seg1 = torch.unsqueeze(seg1, dim=1)
+        else:
+            seg2 = TF.rotate(seg2, angle_l_1)
+            seg1 = TF.rotate(seg2, angle_l_2)
+
+
+        dice_loss_u = (dice_loss(out['mask_u_1'], seg2) * 0.5) + (dice_loss(out['mask_u_2'], seg1) * 0.5)
         return dice_loss_l, dice_loss_u
 
     def do_step_ulord(self, epoch, recon_decay, batch, optimizer, criterion, seg_decay, class_decay, content_decay,
                       scheduler, train_loss, dice_loss_epoch_train, dice_loss_epoch_witha, reco_loss_epoch,
-                      reco_loss_epoch_witha):
+                      reco_loss_epoch_witha, num_step):
         # print(batch, 'batch')
         start_time_preprocees = time.time()
         print(recon_decay, "recon_decay")
-        if epoch % 10 == 0 and epoch > 0 and i == 2:
+        if epoch % 10 == 0 and epoch > 0 and num_step == 2:
             print("here recon decay")
             if recon_decay >= 20:
                 recon_decay = 0.5 * recon_decay
@@ -310,8 +415,10 @@ class Lord:
         out = self.ulord_model(batch_t['img'], batch_t['class_id'],
                                batch_u['img'], batch_u['class_id'])
         start_time_else = time.time()
-        class_penalty = torch.sum(out['class_code'] ** 2, dim=1).mean()
-        content_penalty = torch.sum(out['content_code'] ** 2, dim=1).mean()
+        # class_penalty = torch.sum(out['class_code'] ** 2, dim=1).mean()
+        # content_penalty = torch.sum(out['content_code'] ** 2, dim=1).mean()
+        class_penalty = 0
+        content_penalty = 0
         reco_loss_l, reco_loss_u = self.calc_rec_loss(out, batch_t, batch_u, criterion)
         reco_loss = reco_loss_l + reco_loss_u
         reco_loss_decay = recon_decay * reco_loss
@@ -336,7 +443,7 @@ class Lord:
     def do_step_unet(self, epoch, recon_decay, batch, optimizer, criterion,
                      seg_decay, class_decay, content_decay, scheduler,
                      train_loss, dice_loss_epoch_train, dice_loss_epoch_witha,
-                     reco_loss_epoch, reco_loss_epoch_witha):
+                     reco_loss_epoch, reco_loss_epoch_witha, num_step):
 
         batch = {name: tensor.to(self.device) for name, tensor in batch.items()}
         optimizer.zero_grad()
@@ -359,6 +466,7 @@ class Lord:
     def train(self, model_id, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,
               classes_t, model_dir, tensorboard_dir, loaded_model, dim):
         print("arrive train")
+        self.model_dir = model_dir
         if model_id == 'ULord':
             self.train_ULordModel(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
                                   segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
@@ -372,6 +480,11 @@ class Lord:
         elif model_id == 'UNet':
             print("arrive location")
             self.train_UNet(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,
+                            classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+
+        elif model_id == 'UNetC':
+
+            self.train_UNetSCModel(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,
                             classes_t, model_dir, tensorboard_dir, loaded_model, dim)
         else:
             raise Exception(f"no model id {model_id}")
@@ -407,6 +520,7 @@ class Lord:
 
     def train_UNetSCModel(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
                           segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim):
+        self.dim = dim
         self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
         if dim == 3:
             self.init_model3d()
@@ -428,6 +542,7 @@ class Lord:
     def train_UCLordModel(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
                           segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim):
         self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
+        self.dim = dim
         if dim == 3:
             self.init_model3d()
         else:
@@ -441,6 +556,7 @@ class Lord:
 
     def train_URLordModel(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
                           segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim):
+        self.dim = dim
         self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
         if dim == 3:
             self.init_model3d()
@@ -455,6 +571,7 @@ class Lord:
 
     def train_ULordModel(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
                          segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim):
+        self.dim = dim
         self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
         if dim == 3:
             self.init_model3d()
@@ -469,7 +586,7 @@ class Lord:
 
     def train_UNet(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,
                    classes_t, model_dir, tensorboard_dir, loaded_model, dim):
-
+        self.dim = dim
         self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
         if dim == 3:
             self.init_model3d()
@@ -482,6 +599,8 @@ class Lord:
 
     def training_model(self, model_dir, tensorboard_dir):
 
+
+        name = model_dir.split('/')
         model_name = parts(tensorboard_dir)[-1]
         path_result_train = join(self.config['path_exp'], self.config['num_exp'], 'results', model_name, 'train')
         path_result_u = join(self.config['path_exp'], self.config['num_exp'], 'results', model_name, 'unlabeled')
@@ -490,16 +609,16 @@ class Lord:
         path_result_loss = join(self.config['path_exp'], self.config['num_exp'], 'results', model_name, 'loss')
 
         # define logger
-        logname_dice = join(self.config['path_exp'], self.config['num_exp'], 'logging', 'uLord3d_dice.log')
-        logname_dice_with_a = join(self.config['path_exp'], self.config['num_exp'], 'logging', 'uLord3d_dice_witha.log')
-        logname_recon = join(self.config['path_exp'], self.config['num_exp'], 'logging', 'uLord3d_recon.log')
+        logname_dice = join(self.config['path_exp'], self.config['num_exp'], 'logging', name[-1] + '_dice.log')
+        logname_dice_with_a = join(self.config['path_exp'], self.config['num_exp'], 'logging', name[-1] + '_dice_witha.log')
+        logname_recon = join(self.config['path_exp'], self.config['num_exp'], 'logging', name[-1] + '_recon.log')
         logname_recon_with_a = join(self.config['path_exp'], self.config['num_exp'], 'logging',
-                                    'uLord3d_recon_witha.log')
+                                    name[-1] + '_recon_witha.log')
 
-        logger_dice = define_logger('loger_dice', logname_dice)
-        logger_dice_with_a = define_logger('loger_dice_witha', logname_dice_with_a)
-        logger_recon = define_logger('loger_recon', logname_recon)
-        logger_recon_with_a = define_logger('loger_recon_witha', logname_recon_with_a)
+        logger_dice = define_logger(name[-1] + '_loger_dice', logname_dice)
+        logger_dice_with_a = define_logger(name[-1] + '_loger_dice_witha', logname_dice_with_a)
+        logger_recon = define_logger(name[-1] + '_loger_recon', logname_recon)
+        logger_recon_with_a = define_logger(name[-1] + '_loger_recon_witha', logname_recon_with_a)
 
         # if not loaded_model:
         # 	self.ulord_model3d = ULordModel3D(self.config, self.config_unet)
@@ -511,9 +630,17 @@ class Lord:
         dataset_u = NamedTensorDataset(self.data_u, transform=self.rotation_transform)
         dataset_v = NamedTensorDataset(self.data_v)
         dataset_t = NamedTensorDataset(self.data_t)
-        sampler_l = ImbalancedDatasetSampler(dataset, self.classes, percent_list=self.config['train']['percent_list'])
-        sampler_u = ImbalancedDatasetSampler(dataset_u, self.classes_u, int(
-            (len(dataset) // self.config['train']['batch_size']) * self.config['train']['batch_size_u']))
+
+        if len(dataset) > len(dataset_u):
+            num_sample_l = int(len(dataset))
+            num_sample_u = int((len(dataset) // self.config['train']['batch_size']) * self.config['train']['batch_size_u'])
+        else:
+            num_sample_l = int((len(dataset_u) // self.config['train']['batch_size_u']) * self.config['train']['batch_size'])
+            num_sample_u = int(len(dataset_u))
+
+
+        sampler_l = ImbalancedDatasetSampler(dataset, self.classes, percent_list=self.config['train']['percent_list'], num_samples = num_sample_l)
+        sampler_u = ImbalancedDatasetSampler(dataset_u, self.classes_u, num_samples = num_sample_u)
 
         data_loader_t = DataLoader(
             dataset, sampler=sampler_l, batch_size=self.config['train']['batch_size'],
@@ -539,8 +666,9 @@ class Lord:
 
         self.ulord_model.init()
         self.ulord_model.to(self.device)
-        # criterion = VGGDistance(self.config['perceptual_loss']['layers']).to(self.device)
-        criterion = nn.MSELoss()
+        criterion = VGGDistance(self.config['perceptual_loss']['layers']).to(self.device)
+        # criterion = nn.MSELoss()
+        # VGGDistance(self.config['perceptual_loss']['layers'])
         # criterion = nn.L1Loss()
         # optimizer = SGD([
         # 	{
@@ -616,7 +744,7 @@ class Lord:
                 start_time_preprocees = time.time()
                 self.do_step(epoch, recon_decay, batch, self.optimizer, criterion, seg_decay, class_decay,
                              content_decay, scheduler, train_loss, dice_loss_epoch_train, dice_loss_epoch_witha,
-                             reco_loss_epoch, reco_loss_epoch_witha)
+                             reco_loss_epoch, reco_loss_epoch_witha, i)
 
                 pbar_t.set_description_str('epoch #{}'.format(epoch))
                 pbar_t.set_postfix(loss=train_loss.avg)
@@ -632,9 +760,10 @@ class Lord:
             dice_loss_train.append(dice_loss_epoch_train.avg)
             loss_list.append(train_loss.avg)
 
+            self.ulord_model.eval()
             for batch_v in pbar_val:
                 # print("here")
-                self.ulord_model.eval()
+
                 with torch.no_grad():
                     batch_v = {name: tensor.to(self.device) for name, tensor in batch_v.items()}
                     out = self.do_predict(batch_v['img'], batch_v['class_id'])
@@ -644,7 +773,6 @@ class Lord:
             for batch_t in pbar_test:
                 with torch.no_grad():
                     # print("here")
-                    self.ulord_model.eval()
                     batch_t = {name: tensor.to(self.device) for name, tensor in batch_t.items()}
                     out = self.do_predict(batch_t['img'], batch_t['class_id'])
                     loss_test = dice_loss(out['mask'], batch_t['seg'])
@@ -660,7 +788,7 @@ class Lord:
                 early_stop = 0
                 min_dice_loss = dice_loss_epoch_val.avg
                 self.save_best_model(model_dir)
-            elif early_stop > 10:
+            elif early_stop > 100:
                 break
             else:
                 early_stop = early_stop + 1
@@ -835,7 +963,7 @@ class Lord:
 
             output_antomy.append(torch.cat(converted_imgs, dim=2))
 
-        if epoch % 10 == 0:
+        if epoch % 2 == 0:
             output_img = torch.cat(output_antomy, dim=1).cpu().detach().numpy()
             output_img = np.squeeze(output_img)
             merged_img = Image.fromarray((output_img * 255).astype(np.uint8))
@@ -877,7 +1005,7 @@ class Lord:
 
             output_antomy.append(torch.cat(converted_imgs, dim=2))
 
-        if epoch % 10 == 0:
+        if epoch % 2 == 0:
             output_img = torch.cat(output_antomy, dim=1).cpu().detach().numpy()
             output_img = np.squeeze(output_img)
             merged_img = Image.fromarray((output_img * 255).astype(np.uint8))
@@ -966,7 +1094,7 @@ class Lord:
         else:
             rnd = 'not_random'
 
-        if epoch % 10 == 0:
+        if epoch % 2 == 0:
             output_img = torch.cat(output, dim=1).cpu().detach().numpy()
             output_img = np.squeeze(output_img)
             merged_img = Image.fromarray((output_img * 255).astype(np.uint8))
@@ -978,7 +1106,7 @@ class Lord:
             plt.savefig(path_image)
         # plt.show()
 
-        if epoch % 10 == 0:
+        if epoch % 2 == 0:
             output_dice = torch.tensor(output_dice).cpu().detach().numpy()
             x = np.arange(n_samples)
             path_image = join(path_results_dice,

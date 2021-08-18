@@ -18,6 +18,7 @@ import pickle
 import json
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 from os import listdir, mkdir
 from os.path import join
 import logging
@@ -238,7 +239,7 @@ def train_ulord(args, model_id = None, base_dir = None, num_exp = None, path_exp
 
 	print("args:",args, model_id, num_exp, path_exp,  t_l, model_name, data_l_name, data_u_name, data_v_name,
 				  data_t_name, load_model,use_out_config, path_config, path_unet_config)
-
+	print(model_name , "model name")
 
 	write_arguments_to_file(sys.argv[4:], join(path_exp, str(num_exp), 'config'))
 
@@ -247,10 +248,37 @@ def train_ulord(args, model_id = None, base_dir = None, num_exp = None, path_exp
 	data_u = np.load(assets.get_preprocess_file_path(data_u_name))
 	data_v = np.load(assets.get_preprocess_file_path(data_v_name))
 	data_t = np.load(assets.get_preprocess_file_path(data_t_name))
-	imgs = data['imgs'].astype(np.float32)
-	imgs_u = data_u['imgs'].astype(np.float32)
-	imgs_v = data_v['imgs'].astype(np.float32)
-	imgs_t = data_t['imgs'].astype(np.float32)
+	if np.max(data['imgs']) > 1:
+		print("dividing....")
+		imgs = data['imgs'].astype(np.float32) / 255
+		imgs_u = data_u['imgs'].astype(np.float32) / 255
+		imgs_v = data_v['imgs'].astype(np.float32)/ 255
+		imgs_t = data_t['imgs'].astype(np.float32) / 255
+		print(imgs_t.shape,"imaggggggeeeeeeeeeeeeeeee shape")
+		segs = data['segs']
+		classes = data['classes']
+		print(np.unique(classes), "unique claseesssssssssssssssssssssssssssssssssssssssssssssssss")
+		segs_u = data_u['segs']
+		classes_u = data_u['classes']
+		segs_v = data_v['segs']
+		classes_v = data_v['classes']
+		segs_t = data_t['segs']
+		classes_t = data_t['classes']
+		# print(segs )
+	else:
+		imgs = data['imgs'].astype(np.float32)
+		imgs_u = data_t['imgs'].astype(np.float32)
+		imgs_v = data_v['imgs'].astype(np.float32)
+		imgs_t = data_t['imgs'].astype(np.float32)
+		segs = data['segs']
+		classes = data['classes']
+		segs_u = data_t['segs']
+		classes_u = data_t['classes']
+		segs_v = data_v['segs']
+		classes_v = data_v['classes']
+		segs_t = data_t['segs']
+		classes_t = data_t['classes']
+
 
 	print(take_from_arg, load_model, "load_model")
 
@@ -290,7 +318,7 @@ def train_ulord(args, model_id = None, base_dir = None, num_exp = None, path_exp
 			path_exp=path_exp,
 			img_shape=imgs.shape[1:],
 			n_imgs=n_imgs,
-			n_classes=n_classes,
+			n_classes=2,
 		)
 
 
@@ -323,17 +351,17 @@ def train_ulord(args, model_id = None, base_dir = None, num_exp = None, path_exp
 			dim = dim,
 			model_id=model_id,
 			imgs=imgs,
-			segs=data['segs'],
-			classes=data['classes'],
-			imgs_u=imgs_t,
-			segs_u=data_t['segs'],
-			classes_u=data_t['classes'],
+			segs=segs,
+			classes=classes,
+			imgs_u=imgs_u,
+			segs_u=segs_u,
+			classes_u=classes_u,
 			imgs_v=imgs_v,
-			segs_v=data_v['segs'],
-			classes_v=data_v['classes'],
+			segs_v=segs_v,
+			classes_v=classes_v,
 			imgs_t=imgs_t,
-			segs_t=data_t['segs'],
-			classes_t=data_t['classes'],
+			segs_t=segs_t,
+			classes_t=classes_t,
 			model_dir=model_dir,
 			tensorboard_dir=tensorboard_dir,
 			loaded_model=load_model

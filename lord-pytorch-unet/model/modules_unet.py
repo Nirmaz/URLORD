@@ -43,8 +43,7 @@ class UNetS(nn.Module):
 		x = self.segmentor(x)
 
 		return {
-			'mask': x
-		}
+			'mask': x}
 
 	def init(self):
 		self.apply(self.weights_init)
@@ -69,17 +68,20 @@ class UNetSC(nn.Module):
 
 		self.angels = [-90, 0, 90]
 
-	def forward(self, img, img_u):
+	def forward(self, img,classes1, img_u, classes2):
 
 		if self.training:
-			angle1 = random.choice(self.angles)
-			angle2 = random.choice(self.angles)
+			angle1 = random.choice(self.angels)
+			angle2 = random.choice(self.angels)
+			img_u_1 = self.rotation_transform(img_u, angle1)
+			img_u_2 = self.rotation_transform(img_u, angle2)
 		else:
+			img_u_1 = img_u
+			img_u_2 = img_u
 			angle1 = 0
 			angle2 = 0
 
-		img_u_1 = self.rotation_transform(img_u, angle1)
-		img_u_2 = self.rotation_transform(img_u, angle2)
+
 
 		x_u_1 = self.unet(img_u_1)
 		x_u_2 = self.unet(img_u_2)
@@ -93,6 +95,8 @@ class UNetSC(nn.Module):
 			'mask': x,
 			'mask_u_1': x_u_1,
 			'mask_u_2': x_u_2,
+			'angle1': angle1,
+			'angle2': angle2,
 		}
 
 	def init(self):
@@ -112,7 +116,7 @@ class UCLordModel(nn.Module):
 		self.dim = dim
 		self.config_unet = config_unet
 		self.config = config
-		self.angles = [-90, 0, 90]
+		self.angles = [-90, 0, 90, 180]
 		self.modulation = Modulation(config['class_dim'], config['n_adain_layers'], config['adain_dim'])
 		if self.dim == 3:
 			self.generator_antomy = UNet(self.config_unet, 3)
@@ -151,7 +155,8 @@ class UCLordModel(nn.Module):
 		else:
 			img_u_1 =  img_u
 			img_u_2 = img_u
-
+			angle1 = 0
+			angle2 = 0
 
 		anatomy_img = self.generator_antomy(img)
 		class_code = self.class_embedding(class_id)
@@ -180,8 +185,7 @@ class UCLordModel(nn.Module):
 
 		generated_img = self.generator(inp_gen, class_adain_params)
 		generated_img_u = self.generator(inp_gen_u, class_adain_params_u)
-		if self.training:
-			generated_img_u = self.rotation_transform(generated_img_u, -angle1)
+
 
 		if self.config['segmentor_gard']:
 			segmentor_input = anatomy_img
@@ -197,9 +201,6 @@ class UCLordModel(nn.Module):
 		mask = self.segmentor(segmentor_input)
 		mask_u_1 = self.segmentor(segmentor_input_u_1)
 		mask_u_2 = self.segmentor(segmentor_input_u_2)
-		if self.training:
-			mask_u_1 = self.rotation_transform(mask_u_1, -angle1)
-			mask_u_2 = self.rotation_transform(mask_u_2, -angle2)
 
 		return {
 			'img': generated_img,
@@ -207,6 +208,8 @@ class UCLordModel(nn.Module):
 			'anatomy_img': anatomy_img,
 			'anatomy_img_u_1': anatomy_img_u_1,
 			'anatomy_img_u_2': anatomy_img_u_2,
+			'angle1': angle1,
+			'angle2': angle2,
 			'mask': mask,
 			'mask_u_1': mask_u_1,
 			'mask_u_2': mask_u_2,
@@ -252,6 +255,7 @@ class ULordModel(nn.Module):
 
 		self.rounding = Rounding()
 		self.flatten = nn.Flatten()
+		print(config['n_classes'], config['class_dim'], "config['n_classes'], config['class_dim']")
 		self.class_embedding = nn.Embedding(config['n_classes'], config['class_dim'])
 
 	def forward(self, img, class_id, img_u, class_id_u):
@@ -571,15 +575,71 @@ class VGGDistance(nn.Module):
 		self.vgg = NetVGGFeatures(layer_ids)
 		self.layer_ids = layer_ids
 
-	def forward(self, I1, I2):
-		b_sz = I1.size(0)
-		f1 = self.vgg(I1)
-		f2 = self.vgg(I2)
+	def forward(self, I1, I2, mask = None):
 
-		loss = torch.abs(I1 - I2).view(b_sz, -1).mean(1)
+		if mask == None:
+			b_sz = I1.size(0)
+			f1 = self.vgg(I1)
+			f2 = self.vgg(I2)
 
-		for i in range(len(self.layer_ids)):
-			layer_loss = torch.abs(f1[i] - f2[i]).view(b_sz, -1).mean(1)
-			loss = loss + layer_loss
+			# loss = torch.abs(I1 - I2).view(b_sz, -1)
+			loss = torch.abs(I1 - I2).view(b_sz, -1).mean(1)
+			print(loss.size(), "losssss")
+			for i in range(len(self.layer_ids)):
+				# layer_loss = torch.abs(f1[i] - f2[i]).view(b_sz, -1)
+				layer_loss = torch.abs(f1[i] - f2[i]).view(b_sz, -1).mean(1)
+				loss = loss + layer_loss
+				# print(loss.size(), "losssss")
+			return loss.mean()
+		else:
+			# print(mask.min(), mask.max(), "min max before 1")
+			#
+			mask = mask.detach()
+			mask_opp = 1 - mask
+			mask_opp = mask_opp.detach()
+			b_sz = I1.size(0)
+			sum_mask = mask.view(b_sz, -1).sum(1) + 1
+			sum_mask_opp = mask_opp.view(b_sz, -1).sum(1) + 1
+			f1 = self.vgg(I1)
+			f2 = self.vgg(I2)
+			# m_f = f1
+			# mo_f =f2
+			m_f = self.vgg(mask)
+			mo_f = self.vgg(mask_opp)
 
-		return loss.mean()
+			# print(sum_mask.size(), "sum mask size 1")
+
+			# loss = torch.abs(I1 - I2).view(b_sz, -1)
+			l = torch.abs((I1 * mask) - (I2 * mask)).view(b_sz, -1).sum(1)
+			# print(l.size(), "losssss")
+			loss = torch.divide(l, sum_mask)
+			# print(loss.size(), "losssss")
+			loss = loss + torch.divide(torch.abs((I1 * mask_opp) - (I2 * mask_opp)).view(b_sz, -1).sum(1), sum_mask_opp)
+			for i in range(len(self.layer_ids)):
+				# layer_loss = torch.abs(f1[i] - f2[i]).view(b_sz, -1)
+				# print("m_f check \n")
+				# print(m_f[i].min(), m_f[i].max(), "min max before")
+				m_f[i] = (m_f[i] - m_f[i].min()) / (m_f[i].max() - m_f[i].min())
+				# print(m_f[i].min(),m_f[i].max(), "min max after")
+
+				# print("mo_f check \n")
+				# print(mo_f[i].min(), mo_f[i].max(), "min max before")
+				mo_f[i] = (mo_f[i] - mo_f[i].min()) / (mo_f[i].max() - mo_f[i].min())
+				# print(mo_f[i].min(), mo_f[i].max(), "min max after\n")
+
+				mask_opp = torch.round(mo_f[i])
+				mask = torch.round(m_f[i])
+
+				sum_m_f = mask.view(b_sz, -1).sum(1) + 1
+				sum_mo_f = mask_opp.view(b_sz, -1).sum(1) + 1
+
+				# print(sum_m_f, "sum_m_f size")
+				# print(sum_mo_f, "sum_m_f size")
+
+				layer_loss = torch.divide(torch.abs((f1[i] * mask) - (f2[i] * mask)).view(b_sz, -1).sum(1), sum_m_f)
+				# print(layer_loss, "layer loss")
+				layer_loss = layer_loss + torch.divide(torch.abs((f1[i] * mask_opp) - (f2[i] * mask_opp)).view(b_sz, -1).sum(1), sum_mo_f)
+				# print(layer_loss, "layer loss 2")
+				loss = loss + layer_loss
+
+			return loss.mean()

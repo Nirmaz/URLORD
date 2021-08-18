@@ -1,8 +1,0 @@
-{"model_id": "ULord3D", 
-"add_num_exp": true, 
-"load_model": false,
-"model_name": "testing_ulord3d",
-"train_model":true,
-"evaluate_model": true, 
-"config_model": "/cs/labs/josko/nirm/embryo_project_version1/EXP_FOLDER/models_config/testing",
-"config_unet": "/cs/labs/josko/nirm/embryo_project_version1/EXP_FOLDER/models_config/testing"}
