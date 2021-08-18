@@ -1,0 +1,12 @@
+{"exp_name": "exp2d_DF_3_2d",
+"data_l_name": "DF_3_2d_TL",
+"data_u_name": "DF_3_2d_TU",
+"data_v_name": "DF_3_2d_VA",
+"data_t_name": "DF_3_2d_TE",
+"path_d": "/mnt/local/nirm/placenta",
+"path_d_dict": "/mnt/local/nirm/patch2D",
+"base_dir":"/mnt/local/nirm/data_storage",
+"path_dataset":"/mnt/local/nirm/DF_3_2d",
+"test_key":"cases_test_F",
+"models_path":"/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/data_DF_3_2d/",
+"models": ["UNet2D_dict.jason", "URLord2D_dict.jason"]}

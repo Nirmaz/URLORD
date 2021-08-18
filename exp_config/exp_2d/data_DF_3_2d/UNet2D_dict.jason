@@ -1,0 +1,9 @@
+{"model_id": "UNet",
+"dim": 2,
+"add_num_exp": false,
+"load_model": true,
+"train_model":false ,
+"evaluate_model": true,
+"model_name": "unet2d_185",
+"config_model": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d",
+"config_unet": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d"}

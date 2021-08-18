@@ -1,0 +1,12 @@
+{"exp_name": "exp2d_D_0_2d",
+"data_l_name": "D_0_2d_TL",
+"data_u_name": "D_0_2d_TU",
+"data_v_name": "D_0_2d_VA",
+"data_t_name": "D_0_2d_TE",
+"path_d": "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/TRUFI",
+"path_d_dict": "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/patch2D",
+"base_dir":"/cs/casmip/nirm/embryo_project_version1/embryo_data",
+"path_dataset":"/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/D_0_2d",
+"test_key":"cases_test_T",
+"models_path":"/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d_remote/data_D_0_2d/",
+"models": ["URLord2D_dict.jason", "ULord2D_dict.jason"]}

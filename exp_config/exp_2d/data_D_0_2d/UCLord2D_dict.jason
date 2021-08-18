@@ -1,0 +1,9 @@
+{"model_id": "UCLord",
+"dim": 2,
+"add_num_exp": true,
+"load_model": false,
+"train_model":true ,
+"evaluate_model": true,
+"model_name": "uclord3d",
+"config_model": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d",
+"config_unet": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d"}

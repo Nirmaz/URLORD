@@ -2,42 +2,84 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_embryo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/exp_c.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/model_executors/embryo_sdnet_exec.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/aaa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/loaders/embryo_data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/loaders/embryo_data_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/embryo_main/configd.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/configd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/embryo_main/create_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/create_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_1/ULord3D_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_1/UNet3D_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_1/exp_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_2/ULord3D_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_2/UNet3D_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_2/exp_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_3/ULord3D_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_3/UNet3D_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/data_3/exp_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_config/exp_1/exp_dict.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/assets.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/lord_tf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/model/evaluation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/model/network.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/seq_classifier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-main/testing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/lord_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/modules_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/modules_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models_config/testing/config.jason" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models_config/testing/config_unet.jason" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/D_1_2d/UCLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/D_1_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/D_1_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/D_1_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/D_1_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/D_1_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_1_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_1_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_1_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_1_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_1_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_3_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_3_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_3_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_3_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_3_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_all_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_all_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_all_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_all_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_DF_all_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_D_0_2d/UCLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_D_0_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_D_0_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_D_0_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_D_0_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_D_0_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_Ds_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_Ds_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_Ds_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_Ds_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/data_Ds_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/D_1_2d/UCLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/D_1_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/D_1_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/D_1_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/D_1_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/D_1_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_DF_3_2d/UCLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_DF_3_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_DF_3_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_DF_3_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_DF_3_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_DF_3_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_D_0_2d/UCLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_D_0_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_D_0_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_D_0_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_D_0_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_D_0_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_Ds_2d/UCLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_Ds_2d/ULord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_Ds_2d/UNet2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_Ds_2d/UNetC2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_Ds_2d/URLord2D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/data_Ds_2d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_2d_remote/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_1/UCLord3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_1/ULord3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_1/UNet3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_1/URLord3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_1/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_2/ULord3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_2/UNet3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_2/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_3/ULord3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_3/UNet3D_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/data_3/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_config/exp_3d/exp_dict.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/lord_exp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/post_pro.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models_config/config_2d/config.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models_config/config_2d/config_unet.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models_config/config_2d_remote/config.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models_config/config_2d_remote/config_unet.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models_config/config_3d/config.jason" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models_config/config_3d/config_unet.jason" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -434,6 +476,7 @@
       <workItem from="1628936862765" duration="4254000" />
       <workItem from="1628948242906" duration="45716000" />
       <workItem from="1629099516414" duration="49225000" />
+      <workItem from="1629268956476" duration="739000" />
     </task>
     <task id="LOCAL-00001" summary="all">
       <created>1625765445775</created>
@@ -498,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628680172467</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="full pipeline">
+      <created>1629269108197</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1629269108197</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +572,8 @@
     <MESSAGE value="לפני השינויים הגדולי" />
     <MESSAGE value="before_all_models" />
     <MESSAGE value="config" />
-    <option name="LAST_COMMIT_MESSAGE" value="config" />
+    <MESSAGE value="full pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="full pipeline" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="40" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629210187779">
@@ -541,9 +592,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="950" y="325" width="326" height="442" key="#com.intellij.ide.macro.MacrosDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1624871109185" />
-    <state x="407" y="25" width="879" height="732" key="CommitChangelistDialog2" timestamp="1628680172093">
-      <screen x="0" y="25" width="1920" height="1030" />
+    <state x="182" y="31" width="942" height="767" key="CommitChangelistDialog2" timestamp="1629269106022">
+      <screen x="0" y="0" width="1344" height="840" />
     </state>
+    <state x="182" y="31" width="942" height="767" key="CommitChangelistDialog2/0.0.1344.840@0.0.1344.840" timestamp="1629269106022" />
     <state x="353" y="31" width="879" height="732" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494730201" />
     <state x="407" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1628680172093" />
     <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl" timestamp="1629115627320">
@@ -602,9 +654,10 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="599" y="108" width="788" height="552" key="SettingsEditor/0.25.1920.1030@0.25.1920.1030" timestamp="1628964307015" />
-    <state x="655" y="339" width="515" height="338" key="Vcs.Push.Dialog.v2" timestamp="1628680177463">
-      <screen x="0" y="25" width="1920" height="1030" />
+    <state x="260" y="31" width="560" height="504" key="Vcs.Push.Dialog.v2" timestamp="1629269131516">
+      <screen x="0" y="0" width="1344" height="840" />
     </state>
+    <state x="260" y="31" width="560" height="504" key="Vcs.Push.Dialog.v2/0.0.1344.840@0.0.1344.840" timestamp="1629269131516" />
     <state x="524" y="263" width="515" height="338" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494832058" />
     <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1628680177463" />
     <state width="964" height="516" key="XDebugger.FullValuePopup" timestamp="1628001078286">
