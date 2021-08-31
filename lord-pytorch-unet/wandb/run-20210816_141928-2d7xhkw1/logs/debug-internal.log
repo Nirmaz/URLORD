@@ -1,0 +1,146 @@
+2021-08-16 14:19:29,181 INFO    MainThread:4878 [internal.py:wandb_internal():91] W&B internal server running at pid: 4878, started at: 2021-08-16 14:19:29.179669
+2021-08-16 14:19:29,182 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: check_version
+2021-08-16 14:19:29,182 INFO    WriterThread:4878 [datastore.py:open_for_write():80] open: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/run-2d7xhkw1.wandb
+2021-08-16 14:19:29,183 DEBUG   SenderThread:4878 [sender.py:send():179] send: header
+2021-08-16 14:19:29,183 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: check_version
+2021-08-16 14:19:29,426 DEBUG   SenderThread:4878 [sender.py:send():179] send: run
+2021-08-16 14:19:29,787 INFO    SenderThread:4878 [dir_watcher.py:__init__():168] watching files in: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files
+2021-08-16 14:19:29,787 INFO    SenderThread:4878 [sender.py:_start_run_threads():719] run started: 2d7xhkw1 with start time 1629112768
+2021-08-16 14:19:29,787 DEBUG   SenderThread:4878 [sender.py:send():179] send: summary
+2021-08-16 14:19:29,787 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: run_start
+2021-08-16 14:19:29,790 INFO    SenderThread:4878 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-16 14:19:29,790 DEBUG   HandlerThread:4878 [meta.py:__init__():39] meta init
+2021-08-16 14:19:29,790 DEBUG   HandlerThread:4878 [meta.py:__init__():53] meta init done
+2021-08-16 14:19:29,790 DEBUG   HandlerThread:4878 [meta.py:probe():210] probe
+2021-08-16 14:19:29,796 DEBUG   HandlerThread:4878 [meta.py:_setup_git():200] setup git
+2021-08-16 14:19:29,809 DEBUG   HandlerThread:4878 [meta.py:_setup_git():207] setup git done
+2021-08-16 14:19:29,809 DEBUG   HandlerThread:4878 [meta.py:_save_pip():57] save pip
+2021-08-16 14:19:29,814 DEBUG   HandlerThread:4878 [meta.py:_save_pip():71] save pip done
+2021-08-16 14:19:29,814 DEBUG   HandlerThread:4878 [meta.py:probe():252] probe done
+2021-08-16 14:19:29,845 DEBUG   SenderThread:4878 [sender.py:send():179] send: files
+2021-08-16 14:19:29,845 INFO    SenderThread:4878 [sender.py:_save_file():841] saving file wandb-metadata.json with policy now
+2021-08-16 14:19:29,848 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-16 14:19:29,848 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: stop_status
+2021-08-16 14:19:30,680 INFO    Thread-11 :4878 [upload_job.py:push():137] Uploaded file /tmp/tmprybwn4a_wandb/3sd5sscj-wandb-metadata.json
+2021-08-16 14:19:30,789 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/wandb-summary.json
+2021-08-16 14:19:30,789 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:30,789 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/requirements.txt
+2021-08-16 14:19:30,789 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/wandb-metadata.json
+2021-08-16 14:19:32,791 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:34,793 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:36,795 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:38,797 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:40,800 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:41,160 WARNING MainThread:4878 [internal.py:wandb_internal():147] Internal process interrupt: 1
+2021-08-16 14:19:42,803 INFO    Thread-8  :4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:43,432 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:43,432 DEBUG   SenderThread:4878 [sender.py:send():179] send: telemetry
+2021-08-16 14:19:43,432 DEBUG   SenderThread:4878 [sender.py:send():179] send: exit
+2021-08-16 14:19:43,432 INFO    SenderThread:4878 [sender.py:send_exit():287] handling exit code: 255
+2021-08-16 14:19:43,433 INFO    SenderThread:4878 [sender.py:send_exit():295] send defer
+2021-08-16 14:19:43,433 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:43,433 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:43,433 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 0
+2021-08-16 14:19:43,433 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:43,433 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 0
+2021-08-16 14:19:43,433 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 1
+2021-08-16 14:19:43,433 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:43,433 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 1
+2021-08-16 14:19:43,463 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:43,463 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 1
+2021-08-16 14:19:43,463 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 2
+2021-08-16 14:19:43,463 DEBUG   SenderThread:4878 [sender.py:send():179] send: stats
+2021-08-16 14:19:43,463 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:43,463 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 2
+2021-08-16 14:19:43,463 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:43,463 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 2
+2021-08-16 14:19:43,463 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 3
+2021-08-16 14:19:43,463 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:43,463 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 3
+2021-08-16 14:19:43,463 DEBUG   SenderThread:4878 [sender.py:send():179] send: summary
+2021-08-16 14:19:43,467 INFO    SenderThread:4878 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-16 14:19:43,467 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:43,467 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 3
+2021-08-16 14:19:43,467 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 4
+2021-08-16 14:19:43,467 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:43,467 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 4
+2021-08-16 14:19:43,467 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:43,467 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 4
+2021-08-16 14:19:43,534 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:43,801 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 5
+2021-08-16 14:19:43,801 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:43,801 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:43,801 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 5
+2021-08-16 14:19:43,801 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:43,801 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 5
+2021-08-16 14:19:43,801 INFO    SenderThread:4878 [dir_watcher.py:finish():282] shutting down directory watcher
+2021-08-16 14:19:43,803 INFO    SenderThread:4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/wandb-summary.json
+2021-08-16 14:19:43,803 INFO    SenderThread:4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:43,803 INFO    SenderThread:4878 [dir_watcher.py:_on_file_modified():229] file/dir modified: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/config.yaml
+2021-08-16 14:19:43,803 INFO    SenderThread:4878 [dir_watcher.py:finish():312] scan: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files
+2021-08-16 14:19:43,804 INFO    SenderThread:4878 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/config.yaml config.yaml
+2021-08-16 14:19:43,804 INFO    SenderThread:4878 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/wandb-metadata.json wandb-metadata.json
+2021-08-16 14:19:43,804 INFO    SenderThread:4878 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/requirements.txt requirements.txt
+2021-08-16 14:19:43,804 INFO    SenderThread:4878 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log output.log
+2021-08-16 14:19:43,805 INFO    SenderThread:4878 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/wandb-summary.json wandb-summary.json
+2021-08-16 14:19:43,807 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 6
+2021-08-16 14:19:43,809 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:43,809 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 6
+2021-08-16 14:19:43,809 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:43,809 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 6
+2021-08-16 14:19:43,809 INFO    SenderThread:4878 [file_pusher.py:finish():177] shutting down file pusher
+2021-08-16 14:19:43,902 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:43,902 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,003 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,003 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,104 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,104 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,205 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,205 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,306 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,306 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,407 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,407 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,507 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,508 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,590 INFO    Thread-12 :4878 [upload_job.py:push():137] Uploaded file /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/config.yaml
+2021-08-16 14:19:44,595 INFO    Thread-13 :4878 [upload_job.py:push():137] Uploaded file /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/requirements.txt
+2021-08-16 14:19:44,608 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,609 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,634 INFO    Thread-14 :4878 [upload_job.py:push():137] Uploaded file /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/output.log
+2021-08-16 14:19:44,640 INFO    Thread-15 :4878 [upload_job.py:push():137] Uploaded file /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/files/wandb-summary.json
+2021-08-16 14:19:44,709 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,710 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,810 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:44,810 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:44,841 INFO    Thread-7  :4878 [sender.py:transition_state():308] send defer: 7
+2021-08-16 14:19:44,841 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:44,841 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 7
+2021-08-16 14:19:44,841 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:44,841 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 7
+2021-08-16 14:19:44,911 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:45,025 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 8
+2021-08-16 14:19:45,025 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:45,026 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:45,026 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 8
+2021-08-16 14:19:45,026 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:45,026 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 8
+2021-08-16 14:19:45,026 INFO    SenderThread:4878 [sender.py:transition_state():308] send defer: 9
+2021-08-16 14:19:45,026 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: defer
+2021-08-16 14:19:45,026 INFO    HandlerThread:4878 [handler.py:handle_request_defer():141] handle defer: 9
+2021-08-16 14:19:45,026 DEBUG   SenderThread:4878 [sender.py:send():179] send: final
+2021-08-16 14:19:45,026 DEBUG   SenderThread:4878 [sender.py:send():179] send: footer
+2021-08-16 14:19:45,026 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: defer
+2021-08-16 14:19:45,026 INFO    SenderThread:4878 [sender.py:send_request_defer():304] handle sender defer: 9
+2021-08-16 14:19:45,126 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: poll_exit
+2021-08-16 14:19:45,126 DEBUG   SenderThread:4878 [sender.py:send_request():193] send_request: poll_exit
+2021-08-16 14:19:45,126 INFO    SenderThread:4878 [file_pusher.py:join():182] waiting for file pusher
+2021-08-16 14:19:45,127 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: get_summary
+2021-08-16 14:19:45,127 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: sampled_history
+2021-08-16 14:19:45,128 DEBUG   HandlerThread:4878 [handler.py:handle_request():124] handle_request: shutdown
+2021-08-16 14:19:45,128 INFO    HandlerThread:4878 [handler.py:finish():638] shutting down handler
+2021-08-16 14:19:46,026 INFO    WriterThread:4878 [datastore.py:close():288] close: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210816_141928-2d7xhkw1/run-2d7xhkw1.wandb
+2021-08-16 14:19:46,127 INFO    SenderThread:4878 [sender.py:finish():945] shutting down sender
+2021-08-16 14:19:46,127 INFO    SenderThread:4878 [file_pusher.py:finish():177] shutting down file pusher
+2021-08-16 14:19:46,127 INFO    SenderThread:4878 [file_pusher.py:join():182] waiting for file pusher
+2021-08-16 14:19:46,127 INFO    MainThread:4878 [internal.py:handle_exit():78] Internal process exited

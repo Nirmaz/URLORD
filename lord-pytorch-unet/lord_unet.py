@@ -34,36 +34,14 @@ def define_logger(loger_name, file_path):
 
 
 def preprocess(args):
-
 	assets = AssetManager(args.base_dir)
 	img_dataset = dataset_unet.get_dataset(args.dataset_id, args.dataset_path)
-	imgs, classes, segs = img_dataset.read_images(args.jumps)
+	imgs, classes, segs = img_dataset.read_images()
 	n_classes = np.unique(classes).size
 	np.savez(
 		file = assets.get_preprocess_file_path(args.data_name),
 		imgs = imgs, classes = classes, segs = segs, n_classes = n_classes
 	)
-
-def preprocess_onegr(args):
-
-	assets = AssetManager(args.base_dir)
-	img_dataset = dataset_unet.get_dataset(args.dataset_id, args.dataset_path)
-
-	Trufi = False
-	Fiesta = False
-	if args.t:
-		Trufi = True
-
-	if args.f:
-		Fiesta = True
-
-	imgs, classes, segs = img_dataset.read_images(load_trufi = Trufi, load_fiesta = Fiesta)
-	n_classes = np.unique(classes).size
-	np.savez(
-		file = assets.get_preprocess_file_path(args.data_name),
-		imgs = imgs, classes = classes, segs = segs, n_classes = n_classes
-	)
-
 
 def split_classes(args):
 	assets = AssetManager(args.base_dir)
@@ -278,8 +256,8 @@ def train_ulord(args, model_id = None, base_dir = None, num_exp = None, path_exp
 		classes_v = data_v['classes']
 		segs_t = data_t['segs']
 		classes_t = data_t['classes']
-
-
+	print(imgs.shape,imgs_u.shape,imgs_t.shape, "imgs.shape,imgs_u.shape,imgs_t.shape"  )
+	# exit()
 	print(take_from_arg, load_model, "load_model")
 
 	if take_from_arg and load_model == False:
@@ -320,6 +298,7 @@ def train_ulord(args, model_id = None, base_dir = None, num_exp = None, path_exp
 			n_imgs=n_imgs,
 			n_classes=2,
 		)
+		print(imgs.shape[1:], imgs.shape, imgs_u.shape, imgs_t.shape, "imgs.shape,imgs_u.shape,imgs_t.shape")
 
 
 		config.update(c_base_config_3d)
@@ -593,17 +572,7 @@ def main():
 	preprocess_parser.add_argument('-di', '--dataset-id', type=str, choices=dataset_unet.supported_datasets, required=True)
 	preprocess_parser.add_argument('-dp', '--dataset-path', type=str, required=False)
 	preprocess_parser.add_argument('-dn', '--data-name', type=str, required=True)
-	preprocess_parser.add_argument('-j', '--jumps', type=int, required=True)
 	preprocess_parser.set_defaults(func = preprocess)
-
-	preprocess_parser = action_parsers.add_parser('preprocess_onegr')
-	preprocess_parser.add_argument('-di', '--dataset-id', type=str, choices=dataset_unet.supported_datasets, required=True)
-	preprocess_parser.add_argument('-dp', '--dataset-path', type=str, required=False)
-	preprocess_parser.add_argument('-dn', '--data-name', type=str, required=True)
-	preprocess_parser.add_argument('-t', '--t', type=int, required=True)
-	preprocess_parser.add_argument('-f', '--f', type=int, required=True)
-	# preprocess_parser.add_argument('-j', '--jumps', type=int, required=True)
-	preprocess_parser.set_defaults(func = preprocess_onegr)
 
 	split_classes_parser = action_parsers.add_parser('split-classes')
 	split_classes_parser.add_argument('-idn', '--input-data-name', type=str, required=True)
@@ -639,101 +608,101 @@ def main():
 	# train_parser.add_argument('-ot', '--opp-t', type=int, required=False)
 	# train_parser.set_defaults(func = train)
 
-	train_semi_parser = action_parsers.add_parser('train_ulord')
-	train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
-	train_semi_parser.add_argument('-dun', '--data-u-name', type=str, required=True)
-	train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
-	train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
-	train_semi_parser.add_argument('-sl', '--seg-loss', type=int, required=True)
-	train_semi_parser.add_argument('-sg', '--seg-gard', type=int, required=True)
-	train_semi_parser.add_argument('-rl', '--recon-loss', type=int, required=True)
-	train_semi_parser.add_argument('-rc', '--r-content', type=int, required=True)
-	train_semi_parser.add_argument('-rr', '--r-rclass', type=int, required=True)
-	train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
-	train_semi_parser.add_argument('-pc', '--p-config', type=str, required=True)
-	train_semi_parser.add_argument('-pu', '--p-uconfig', type=str, required=True)
-	# train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
-	# train_parser.add_argument('-sc', '--source-class', type=str, required=False)
-	train_semi_parser.set_defaults(func = train_ulord)
-
-	train_semi_parser = action_parsers.add_parser('train_ulord3d')
-	train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
-	train_semi_parser.add_argument('-dun', '--data-u-name', type=str, required=True)
-	train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
-	train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
-	train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
-	train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
-	train_semi_parser.add_argument('-sl', '--seg-loss', type=int, required=True)
-	train_semi_parser.add_argument('-sg', '--seg-gard', type=int, required=True)
-	train_semi_parser.add_argument('-rl', '--recon-loss', type=int, required=True)
-	train_semi_parser.add_argument('-rc', '--r-content', type=int, required=True)
-	train_semi_parser.add_argument('-rr', '--r-rclass', type=int, required=True)
-	train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
-	train_semi_parser.add_argument('-pc', '--p-config', type=str, required=True)
-	train_semi_parser.add_argument('-pu', '--p-uconfig', type=str, required=True)
-	# train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
-	# train_parser.add_argument('-sc', '--source-class', type=str, required=False)
-	train_semi_parser.set_defaults(func = train_ulord)
-
-
-	# train_semi_parser = action_parsers.add_parser('train_unet3D')
+	# train_semi_parser = action_parsers.add_parser('train_ulord')
 	# train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
-	# train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
-	# train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
+	# train_semi_parser.add_argument('-dun', '--data-u-name', type=str, required=True)
 	# train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
 	# train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
+	# train_semi_parser.add_argument('-sl', '--seg-loss', type=int, required=True)
+	# train_semi_parser.add_argument('-sg', '--seg-gard', type=int, required=True)
+	# train_semi_parser.add_argument('-rl', '--recon-loss', type=int, required=True)
+	# train_semi_parser.add_argument('-rc', '--r-content', type=int, required=True)
+	# train_semi_parser.add_argument('-rr', '--r-rclass', type=int, required=True)
 	# train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
 	# train_semi_parser.add_argument('-pc', '--p-config', type=str, required=True)
 	# train_semi_parser.add_argument('-pu', '--p-uconfig', type=str, required=True)
 	# # train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
 	# # train_parser.add_argument('-sc', '--source-class', type=str, required=False)
-	# train_semi_parser.set_defaults(func = train_unet3D)
-
-	# train_semi_parser = action_parsers.add_parser('t_and_c_ULord3D')
+	# train_semi_parser.set_defaults(func = train_ulord)
+	#
+	# train_semi_parser = action_parsers.add_parser('train_ulord3d')
 	# train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
 	# train_semi_parser.add_argument('-dun', '--data-u-name', type=str, required=True)
 	# train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
 	# train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
-	# train_semi_parser.add_argument('-mnu', '--model-name-u', type=str, required=True)
-	# train_semi_parser.add_argument('-mnl', '--model-name-l', type=str, required=True)
+	# train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
 	# train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
+	# train_semi_parser.add_argument('-sl', '--seg-loss', type=int, required=True)
+	# train_semi_parser.add_argument('-sg', '--seg-gard', type=int, required=True)
+	# train_semi_parser.add_argument('-rl', '--recon-loss', type=int, required=True)
+	# train_semi_parser.add_argument('-rc', '--r-content', type=int, required=True)
+	# train_semi_parser.add_argument('-rr', '--r-rclass', type=int, required=True)
 	# train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
 	# train_semi_parser.add_argument('-pc', '--p-config', type=str, required=True)
 	# train_semi_parser.add_argument('-pu', '--p-uconfig', type=str, required=True)
-	# train_semi_parser.add_argument('-pd', '--p-dataparam', type=str, required=True)
-	# train_semi_parser.add_argument('-u', '--unet', type=int, required=True)
-	# train_semi_parser.add_argument('-l', '--lord', type=int, required=True)
-	# train_semi_parser.add_argument('-tu', '--t-u', type=int, required=True)
-	# train_semi_parser.add_argument('-tl', '--t-l', type=int, required=True)
 	# # train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
 	# # train_parser.add_argument('-sc', '--source-class', type=str, required=False)
-	# train_semi_parser.set_defaults(func=t_and_c_ULord3D)
-
-
-
-
-
-	train_semi_parser = action_parsers.add_parser('train_ulm')
-	train_semi_parser.add_argument('-dn', '--data-name', type=str, required=True)
-	train_semi_parser.add_argument('-dv', '--data-uname', type=str, required=True)
-	train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
-	train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
-	train_semi_parser.add_argument('-sl', '--seg-loss', type=int, required=True)
-	train_semi_parser.add_argument('-sg', '--seg-gard', type=int, required=True)
-	train_semi_parser.add_argument('-rl', '--recon-loss', type=int, required=True)
-	train_semi_parser.add_argument('-rc', '--r-content', type=int, required=True)
-	train_semi_parser.add_argument('-rr', '--r-rclass', type=int, required=True)
-	# train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
-	# train_parser.add_argument('-sc', '--source-class', type=str, required=False)
-	train_semi_parser.set_defaults(func = train_unetlatent_model)
-
-
-
-	train_encoders_parser = action_parsers.add_parser('train-encoders')
-	train_encoders_parser.add_argument('-dn', '--data-name', type=str, required=True)
-	train_encoders_parser.add_argument('-mn', '--model-name', type=str, required=True)
-	train_encoders_parser.set_defaults(func = train_encoders)
-
+	# train_semi_parser.set_defaults(func = train_ulord)
+	#
+	#
+	# # train_semi_parser = action_parsers.add_parser('train_unet3D')
+	# # train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
+	# # train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
+	# # train_semi_parser.add_argument('-pc', '--p-config', type=str, required=True)
+	# # train_semi_parser.add_argument('-pu', '--p-uconfig', type=str, required=True)
+	# # # train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
+	# # # train_parser.add_argument('-sc', '--source-class', type=str, required=False)
+	# # train_semi_parser.set_defaults(func = train_unet3D)
+	#
+	# # train_semi_parser = action_parsers.add_parser('t_and_c_ULord3D')
+	# # train_semi_parser.add_argument('-dn', '--data-l-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-dun', '--data-u-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-dv', '--data-v-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-dt', '--data-t-name', type=str, required=True)
+	# # train_semi_parser.add_argument('-mnu', '--model-name-u', type=str, required=True)
+	# # train_semi_parser.add_argument('-mnl', '--model-name-l', type=str, required=True)
+	# # train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
+	# # train_semi_parser.add_argument('-gc', '--g-config', type=int, required=True)
+	# # train_semi_parser.add_argument('-pc', '--p-config', type=str, required=True)
+	# # train_semi_parser.add_argument('-pu', '--p-uconfig', type=str, required=True)
+	# # train_semi_parser.add_argument('-pd', '--p-dataparam', type=str, required=True)
+	# # train_semi_parser.add_argument('-u', '--unet', type=int, required=True)
+	# # train_semi_parser.add_argument('-l', '--lord', type=int, required=True)
+	# # train_semi_parser.add_argument('-tu', '--t-u', type=int, required=True)
+	# # train_semi_parser.add_argument('-tl', '--t-l', type=int, required=True)
+	# # # train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
+	# # # train_parser.add_argument('-sc', '--source-class', type=str, required=False)
+	# # train_semi_parser.set_defaults(func=t_and_c_ULord3D)
+	#
+	#
+	#
+	#
+	#
+	# train_semi_parser = action_parsers.add_parser('train_ulm')
+	# train_semi_parser.add_argument('-dn', '--data-name', type=str, required=True)
+	# train_semi_parser.add_argument('-dv', '--data-uname', type=str, required=True)
+	# train_semi_parser.add_argument('-mn', '--model-name', type=str, required=True)
+	# train_semi_parser.add_argument('-lm', '--load-model', type=int, required=True)
+	# train_semi_parser.add_argument('-sl', '--seg-loss', type=int, required=True)
+	# train_semi_parser.add_argument('-sg', '--seg-gard', type=int, required=True)
+	# train_semi_parser.add_argument('-rl', '--recon-loss', type=int, required=True)
+	# train_semi_parser.add_argument('-rc', '--r-content', type=int, required=True)
+	# train_semi_parser.add_argument('-rr', '--r-rclass', type=int, required=True)
+	# # train_parser.add_argument('-cc', '--class-constant', type=int, required=True)
+	# # train_parser.add_argument('-sc', '--source-class', type=str, required=False)
+	# train_semi_parser.set_defaults(func = train_unetlatent_model)
+	#
+	#
+	#
+	# train_encoders_parser = action_parsers.add_parser('train-encoders')
+	# train_encoders_parser.add_argument('-dn', '--data-name', type=str, required=True)
+	# train_encoders_parser.add_argument('-mn', '--model-name', type=str, required=True)
+	# train_encoders_parser.set_defaults(func = train_encoders)
+	#
 	args = parser.parse_args()
 	args.func(args)
 
@@ -741,5 +710,5 @@ def main():
 if __name__ == '__main__':
 	print("nir")
 	# wandb.login(key=[your_api_key])
-	wandb.init(reinit=True)
+	# wandb.init(reinit=True)
 	main()

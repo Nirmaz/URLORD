@@ -70,11 +70,12 @@ class UNetSC(nn.Module):
 
 	def forward(self, img,classes1, img_u, classes2):
 
-		if self.training:
-			angle1 = random.choice(self.angels)
-			angle2 = random.choice(self.angels)
-			img_u_1 = self.rotation_transform(img_u, angle1)
-			img_u_2 = self.rotation_transform(img_u, angle2)
+		if self.training and not self.config_unet['knn']:
+			raise Exception("bad")
+			# angle1 = random.choice(self.angels)
+			# angle2 = random.choice(self.angels)
+			# img_u_1 = self.rotation_transform(img_u, angle1)
+			# img_u_2 = self.rotation_transform(img_u, angle2)
 		else:
 			img_u_1 = img_u
 			img_u_2 = img_u
@@ -237,7 +238,7 @@ class ULordModel(nn.Module):
 		self.config = config
 		self.dim = dim
 		self.modulation = Modulation(config['class_dim'], config['n_adain_layers'], config['adain_dim'])
-
+		print(config['class_dim'], config['n_adain_layers'], config['adain_dim'] , "config['class_dim'], config['n_adain_layers'], config['adain_dim']")
 		if self.dim == 3:
 			self.generator_antomy = UNet(self.config_unet, 3)
 			self.segmentor = Segmentntor(self.config_unet, 3)
@@ -259,6 +260,7 @@ class ULordModel(nn.Module):
 		self.class_embedding = nn.Embedding(config['n_classes'], config['class_dim'])
 
 	def forward(self, img, class_id, img_u, class_id_u):
+
 		depth = img.size()[2]
 		if self.dim == 3:
 			class_id = class_id.repeat_interleave(depth)
@@ -352,7 +354,7 @@ class Rounding(nn.Module):
 	def forward(self, x):
 
 		Rounding_factor = torch.zeros_like(x.detach(), requires_grad = False)
-		tensor = torch.tensor(x, requires_grad = False)
+		tensor = x.clone().detach()
 		# print(tensor.size(), "tensor")
 		Rounding_factor[tensor <= 0.5] = tensor[tensor <= 0.5] * (-1)
 		Rounding_factor[tensor > 0.5] = 1 - tensor[tensor > 0.5]
@@ -482,7 +484,8 @@ class AdaptiveInstanceNorm3d(nn.Module):
 
 	def forward(self, x):
 		b, c, D = x.shape[0], x.shape[1], x.shape[2]
-
+		# print(b, c, D, "b, c, D")
+		# exit()
 		x_reshaped = x.contiguous().view(1, b * c * D , *x.shape[3:])
 		# print(self.weight.size(), "weights size")
 		weight = self.weight.contiguous().view(-1)
@@ -565,6 +568,69 @@ class NetVGGFeatures(nn.Module):
 				output.append(x)
 
 		return output
+
+
+
+class KnnDistance(nn.Module):
+
+	def __init__(self, layer_id, num_n, num_pc, l_seg, config, device):
+		super().__init__()
+
+		self.vgg = NetVGGFeatures(layer_id)
+		self.num_n = num_n
+		self.num_pc = num_pc
+		self.fllaten = nn.Flatten()
+		l_seg = l_seg
+		print(l_seg.size())
+		with torch.no_grad():
+			for i in range(0, l_seg.size()[0], config['train']['batch_size']):
+				predictions_m = self.vgg(l_seg[i:i + config['train']['batch_size']])[0]
+				if i == 0:
+					predictions = predictions_m
+				else:
+					predictions = torch.cat((predictions, predictions_m), dim=0)
+
+			diff = l_seg.size()[0] - predictions.size()[0]
+			if diff > 0:
+				s = l_seg.size()[0] - diff
+				e = l_seg.size()[0]
+				predictions_m = self.vgg(l_seg[s:e])[0]
+				predictions = torch.cat((predictions, predictions_m), dim=0)
+			self.predictions = predictions
+
+		# print(predictions.size(), "prediction size")
+		self.predictions_vgg = self.predictions.to(device)
+		print(self.predictions_vgg.size(), "pred vgg size")
+		self.predictions_f = self.fllaten(predictions)
+		U, S, V = torch.pca_lowrank(self.predictions_f)
+		# W to dwonsample dimmension
+		self.V = V.to(device)
+		self.W = V[:, :self.num_pc].to(device)
+		self.res = torch.matmul(self.predictions_f, V[:, :self.num_pc]).to(device)
+		print(self.res.size(), "res size")
+
+	def forward(self, masks):
+		# print("here mask:", masks, "\n")
+		masks_vgg = self.vgg(masks)[0]
+		print(masks_vgg.size(), "mask vgg size")
+		masks_f = self.fllaten(masks_vgg)
+		# print("here w:",self.W)
+		masks_f = torch.matmul(masks_f, self.W)
+		# print("here masks:", masks)
+		masks_d = masks_f.detach()
+
+		loss = 0
+		for i in range(masks_d.size()[0]):
+			loss_v = torch.abs(masks_d[i] - self.res).sum(1)
+			print(f"loss size:{loss_v.size()}", f"loss max{loss_v.max()}", f"loss min{loss_v.min()}", f"loss mean{loss_v.mean()}")
+			min_indexes = torch.argsort(loss_v)
+			loss = loss + torch.abs(masks_f[i] - self.res[min_indexes[:self.num_n]]).mean() * (1 /masks_d.size()[0])
+			print( f"loss{loss}")
+
+		print(loss, "loss")
+		return loss
+
+
 
 
 class VGGDistance(nn.Module):

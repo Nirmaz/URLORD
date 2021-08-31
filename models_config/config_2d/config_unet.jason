@@ -1,1 +1,0 @@
-{"in_channels": 1, "anatomy_rep": 6, "out_channels": 6, "normalization": "batch", "activation": "relu", "n_blocks": 4, "start_filters": 16, "conv_mode": "same", "dim": 3, "up_mode": "upsample", "activation_upsample": "leaky", "normalization_upsample": "instance", "last_activation": "Softmax", "apply_last_act": true, "droupout":  0.1}

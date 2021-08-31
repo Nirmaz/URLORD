@@ -1,0 +1,44 @@
+True cuda
+args: None UNetC UNetC_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/170/exp2d_DF_3_2d True unet2dC_170 DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+here opt
+here seg decay
+here recon_loss
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+  0%|                                                                                                                                                                                                                                                                                         | 0/378 [00:00<?, ?it/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                              | 0/378 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                               | 0/45 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                              | 0/126 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+Traceback (most recent call last):
+  File "lord_exp.py", line 140, in <module>
+    main()
+  File "lord_exp.py", line 133, in main
+    args.func(args)
+  File "lord_exp.py", line 114, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 367, in train_ulord
+    loaded_model=load_model
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 434, in train
+    classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 486, in train_UNetSCModel
+    self.training_model(model_dir, tensorboard_dir)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 692, in training_model
+    reco_loss_epoch, reco_loss_epoch_witha, i)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 386, in do_step_ulord
+    reco_loss_epoch.update(reco_loss.item())
+AttributeError: 'int' object has no attribute 'item'
+10 recon_decay
+------------ 0.2580900192260742 backwards -------------------------------

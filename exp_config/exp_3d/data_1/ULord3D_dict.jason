@@ -1,9 +1,0 @@
-{"model_id": "ULord",
-"dim": 3,
-"add_num_exp": false,
-"load_model": true,
-"model_name": "ulord3d_144",
-"train_model":false ,
-"evaluate_model": true,
-"config_model": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d",
-"config_unet": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d"}

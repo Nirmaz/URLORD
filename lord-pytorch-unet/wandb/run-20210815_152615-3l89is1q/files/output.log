@@ -1,0 +1,26 @@
+True cuda
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/165/exp2d_DF_3_2d True urlord2d_165 DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+Traceback (most recent call last):
+  File "lord_exp.py", line 140, in <module>
+    main()
+  File "lord_exp.py", line 133, in main
+    args.func(args)
+  File "lord_exp.py", line 114, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 367, in train_ulord
+    loaded_model=load_model
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 419, in train
+    segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 509, in train_URLordModel
+    self.training_model(model_dir, tensorboard_dir)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 581, in training_model
+    sampler_l = ImbalancedDatasetSampler(dataset, self.classes, percent_list=self.config['train']['percent_list'], num_sample = num_sample_l)
+TypeError: __init__() got an unexpected keyword argument 'num_sample'
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+2 30 config['n_classes'], config['class_dim']

@@ -28,8 +28,8 @@ supported_datasets = [
 	'celeba',
 	'kth',
 	'rafd',
-	'embryo_dataset',
-	'embryos_dataset_onegr'
+	'embryos_dataset',
+	'brain_dataset'
 ]
 
 def pickle_dump(item, out_file):
@@ -38,13 +38,11 @@ def pickle_dump(item, out_file):
 
 def get_dataset(dataset_id, path=None):
 
-
-	if dataset_id == 'embryos_dataset_onegr':
-		return embryos_dataset_onegr(path)
-
-
-	if dataset_id == 'embryo_dataset':
+	if dataset_id == 'embryos_dataset':
 		return embryos_dataset(path)
+
+	if dataset_id == 'brain_dataset':
+		return brain_dataset(path)
 
 	if dataset_id == 'mnist':
 		return Mnist()
@@ -81,132 +79,217 @@ class DataSet(ABC):
 	def read_images(self):
 		pass
 
-class embryos_dataset(DataSet):
+class brain_dataset(DataSet):
+	"""
+	take all what you get conctante it add class and deliver
+	"""
 
 	def __init__(self, base_dir):
 		super().__init__(base_dir)
-		#TODO change size data
+
+	def load_data(self, code_word, num_id, show_images):
+		print("loading...")
+		with open(os.path.join(self._base_dir, code_word, 'patches_dict.h5'), "rb") as opened_file:
+			dataset = pickle.load(opened_file)
+
+		with open(os.path.join(self._base_dir, code_word, 'patches_dict_gt.h5'), "rb") as opened_file:
+			dataset_gt = pickle.load(opened_file)
 
 
-	def read_images(self, size_jump = 1 , dim3d = False):
-		# print(os.path.join(self._base_dir,'plcenta','fetal_data.h5'), "aaaa")
+		imgs = np.array(list(dataset.values()))
+		imgs_gt = np.array(list(dataset_gt.values()))
+		class_id = np.zeros((imgs.shape[0]))
+		class_id = class_id + num_id
 
-		# load data set
-		dim3d = True
-		show_images = False
-		# load data set
-		with open(os.path.join(self._base_dir, 'placenta', 'fetal_data_patches.h5'), "rb") as opened_file:
-			fiesta_dataset = pickle.load(opened_file)
-
-		with open(os.path.join(self._base_dir, 'TRUFI', 'fetal_data_patches.h5'), "rb") as opened_file:
-			trufi_dataset = pickle.load(opened_file)
-
-		with open(os.path.join(self._base_dir, 'placenta', 'fetal_data_patches_gt.h5'), "rb") as opened_file:
-			fiesta_dataset_gt = pickle.load(opened_file)
-
-		with open(os.path.join(self._base_dir, 'TRUFI', 'fetal_data_patches_gt.h5'), "rb") as opened_file:
-			trufi_dataset_gt = pickle.load(opened_file)
-
-
-
-		#  load fiest
-		imgs_fiesta = np.array(list(fiesta_dataset.values()))
-		imgs_fiesta_gt = np.array(list(fiesta_dataset_gt.values()))
-		class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
-		print(imgs_fiesta.shape, "imgs_fiesta.shape")
-		print(imgs_fiesta_gt.shape, "imgs_fiesta_gt.shape")
-		if show_images:
-			num_f1 = 101
-			for i in range(3):
-				if dim3d:
-					plt.title(f"imgs_fiesta_{num_f1 + i}")
-					plt.imshow(imgs_fiesta[num_f1 + i][:,:,0], cmap='gray')
+		print(f"imgs_{code_word}", np.unique(imgs), f"imgs_len_{code_word}:", imgs.shape[0])
+		num_f1 = 0
+		r = 3
+		if show_images and imgs.shape[0] > (num_f1 + r):
+			for i in range(r):
+				if len(imgs[0].shape) > 2:
+					plt.title(f"imgs_{code_word}_{num_f1 + i}")
+					plt.imshow(imgs[num_f1 + i][:, :, 0], cmap='gray')
 					plt.show()
 				else:
-					plt.title(f"imgs_fiesta_{num_f1 + i}")
-					plt.imshow(imgs_fiesta[num_f1 + i], cmap='gray')
+					plt.title(f"imgs_{code_word}_{num_f1 + i}")
+					plt.imshow(imgs[num_f1 + i], cmap='gray')
 					plt.show()
+		print("finish loading...")
+		return imgs, imgs_gt, class_id
 
-		# load trufi
-		imgs_trufi = np.array(list(trufi_dataset.values()))
-
-		imgs_trufi_gt = np.array(list(trufi_dataset_gt.values()))
-		class_id_trufi = np.ones((imgs_trufi.shape[0]))
-		print(imgs_trufi.shape, "imgs_trufi.shape")
-		print(imgs_trufi_gt.shape, "imgs_trufi_gt.shape")
-		if show_images:
-			num_t1 = 100
-			for i in range(3):
-				if dim3d:
-					plt.title(f"imgs_trufi_{num_t1  + i}")
-					plt.imshow(imgs_trufi[num_t1 + i][:, :, 0], cmap='gray')
-					plt.show()
-				else:
-					plt.title(f"imgs_trufi_{num_t1  + i}")
-					plt.imshow(imgs_trufi[num_t1  + i], cmap='gray')
-					plt.show()
-
-		# concatnate all
-		class_id = np.concatenate((class_id_fiesta, class_id_trufi),axis=0)
-		imgs = np.concatenate((imgs_fiesta, imgs_trufi),axis=0)
-		segs = np.concatenate((imgs_fiesta_gt, imgs_trufi_gt),axis=0)
-		imgs = np.expand_dims(imgs,axis=-1)
-		segs = np.expand_dims(segs,axis=-1)
-
-
-		# concatante part
-		print(imgs_fiesta[: :size_jump].shape, "imgs_fiesta[: :self.size_jump]")
-		print(imgs_trufi[: :size_jump].shape, "imgs_trufi[: :self.size_jump]")
-		print(imgs_fiesta_gt[::size_jump].shape, "imgs_fiesta_gt[::size_jump]")
-		print(imgs_trufi_gt[::size_jump].shape, "imgs_trufi_gt[: :self.size_jump]")
-
-		imgs_fiesta_part = imgs_fiesta[::size_jump]
-		class_id_fiesta_part = class_id_fiesta[::size_jump]
-		imgs_fiesta_gt_part = imgs_fiesta_gt[::size_jump]
-
-		imgs_trufi_part = imgs_trufi[: :size_jump]
-		class_id_trufi_part = class_id_trufi[::size_jump]
-		imgs_trufi_gt_part = imgs_trufi_gt[::size_jump]
-
-
-		min_size = np.min((imgs_trufi_part.shape[0], imgs_fiesta_part.shape[0]))
-		print(min_size, "min size")
-
-		imgs_part = np.concatenate((imgs_fiesta_part[: min_size],imgs_trufi_part[: min_size]), axis=0)
-		segs_part = np.concatenate((imgs_fiesta_gt_part [: min_size],imgs_trufi_gt_part[: min_size]), axis=0)
-		class_id_part = np.concatenate((class_id_fiesta_part[0: min_size],  class_id_trufi_part[0: min_size]),axis = 0)
-
-		imgs_part = np.expand_dims(imgs_part ,axis=-1)
-		segs_part = np.expand_dims(segs_part ,axis=-1)
-
-		# normlaize data
-		imgs_part = imgs_part - np.min(imgs_part)
-		imgs_part = imgs_part / np.max(imgs_part)
-
-		# if show_images:
-		img_part =  0
-		if show_images:
-			for i in range(3):
-				# plt.title(f"imgs_trufi_{img_part + i}")
-				plt.imshow(imgs_part[img_part + i][:,:,0], cmap='gray')
-				plt.show()
-				plt.imshow(segs_part[img_part + i][:,:,0], cmap='gray')
-
-				plt.show()
-
-
-		imgs = imgs - np.min(imgs)
-		imgs = imgs / np.max(imgs)
-
-
-		PART = True
-		if PART:
-			return imgs_part, class_id_part, segs_part
-
+	def concat(self, img1, img2, img3, img1_gt, img2_gt, img3_gt, class1, class2, class3 ):
+		print("start checking if the images are need to concat ...")
+		if img1.shape[0] > 0 and img2.shape[0] > 0 and img3.shape[0] > 0:
+			class_id = np.concatenate((class1, class2, class3), axis=0)
+			imgs = np.concatenate((img1, img2, img3), axis=0)
+			segs = np.concatenate((img1_gt, img2_gt,img3_gt ), axis=0)
+			imgs = np.expand_dims(imgs, axis=-1)
+			segs = np.expand_dims(segs, axis=-1)
+			return imgs, segs, class_id, True
+		elif img1.shape[0] > 0 and img2.shape[0] > 0:
+			class_id = np.concatenate((class1, class2), axis=0)
+			imgs = np.concatenate((img1, img2), axis=0)
+			segs = np.concatenate((img1_gt, img2_gt), axis=0)
+			imgs = np.expand_dims(imgs, axis=-1)
+			segs = np.expand_dims(segs, axis=-1)
+			return imgs, segs, class_id, True
+		elif img1.shape[0] > 0:
+			class_id = class1
+			imgs = np.expand_dims(img1, axis=-1)
+			segs = np.expand_dims(img1_gt, axis=-1)
+			return imgs, segs, class_id, True
 		else:
-			return imgs, class_id, segs
+			return None, None, None, False
 
-class embryos_dataset_onegr(DataSet):
+
+	def read_images(self):
+		show_images = False
+		print(self._base_dir, "base dir chech ")
+
+		imgs_fr, imgs_fr_gt, class_fr_id  = self.load_data('FR', 0, show_images)
+		imgs_trufi, imgs_trufi_gt, class_trufi_id  = self.load_data('TRUFI', 1, show_images)
+		imgs_haste, imgs_haste_gt, class_haste_id  = self.load_data('HASTE', 2, show_images)
+		print("start concat...")
+		s = False
+		if not (imgs_fr.shape[0] > 0 and imgs_haste.shape[0] > 0 and imgs_trufi.shape[0] == 0):
+			imgs, segs, class_id, s = self.concat(imgs_fr,imgs_trufi,imgs_haste,imgs_fr_gt,imgs_trufi_gt,imgs_haste_gt,class_fr_id,class_trufi_id,class_haste_id)
+			print(f"s{s}")
+		if not s:
+			imgs, segs, class_id, s = self.concat(imgs_fr,imgs_haste, imgs_trufi,  imgs_fr_gt,imgs_haste_gt, imgs_trufi_gt, class_fr_id,class_haste_id, class_trufi_id)
+		if not s:
+			imgs, segs, class_id, s = self.concat(imgs_haste, imgs_trufi,imgs_fr, imgs_haste_gt, imgs_trufi_gt, imgs_fr_gt, class_haste_id, class_trufi_id, class_fr_id)
+		if not s:
+			imgs, segs, class_id, s = self.concat( imgs_trufi, imgs_fr,imgs_haste, imgs_trufi_gt, imgs_fr_gt, imgs_haste_gt, class_trufi_id, class_fr_id, class_haste_id)
+		print("finish concat ...")
+		print(f"shape imgs:{imgs.shape}", f"shape segs:{segs.shape}", f"shape classs id:{class_id.shape}")
+		return imgs,class_id, segs
+
+# class embryos_dataset(DataSet):
+#
+# 	def __init__(self, base_dir):
+# 		super().__init__(base_dir)
+# 		#TODO change size data
+#
+#
+# 	def read_images(self, size_jump = 1 , dim3d = False):
+# 		# print(os.path.join(self._base_dir,'plcenta','fetal_data.h5'), "aaaa")
+#
+# 		# load data set
+# 		dim3d = True
+# 		show_images = False
+# 		# load data set
+# 		with open(os.path.join(self._base_dir, 'placenta', 'fetal_data_patches.h5'), "rb") as opened_file:
+# 			fiesta_dataset = pickle.load(opened_file)
+#
+# 		with open(os.path.join(self._base_dir, 'TRUFI', 'fetal_data_patches.h5'), "rb") as opened_file:
+# 			trufi_dataset = pickle.load(opened_file)
+#
+# 		with open(os.path.join(self._base_dir, 'placenta', 'fetal_data_patches_gt.h5'), "rb") as opened_file:
+# 			fiesta_dataset_gt = pickle.load(opened_file)
+#
+# 		with open(os.path.join(self._base_dir, 'TRUFI', 'fetal_data_patches_gt.h5'), "rb") as opened_file:
+# 			trufi_dataset_gt = pickle.load(opened_file)
+#
+#
+#
+# 		#  load fiest
+# 		imgs_fiesta = np.array(list(fiesta_dataset.values()))
+# 		imgs_fiesta_gt = np.array(list(fiesta_dataset_gt.values()))
+# 		class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
+# 		print(imgs_fiesta.shape, "imgs_fiesta.shape")
+# 		print(imgs_fiesta_gt.shape, "imgs_fiesta_gt.shape")
+# 		if show_images:
+# 			num_f1 = 101
+# 			for i in range(3):
+# 				if dim3d:
+# 					plt.title(f"imgs_fiesta_{num_f1 + i}")
+# 					plt.imshow(imgs_fiesta[num_f1 + i][:,:,0], cmap='gray')
+# 					plt.show()
+# 				else:
+# 					plt.title(f"imgs_fiesta_{num_f1 + i}")
+# 					plt.imshow(imgs_fiesta[num_f1 + i], cmap='gray')
+# 					plt.show()
+#
+# 		# load trufi
+# 		imgs_trufi = np.array(list(trufi_dataset.values()))
+#
+# 		imgs_trufi_gt = np.array(list(trufi_dataset_gt.values()))
+# 		class_id_trufi = np.ones((imgs_trufi.shape[0]))
+# 		print(imgs_trufi.shape, "imgs_trufi.shape")
+# 		print(imgs_trufi_gt.shape, "imgs_trufi_gt.shape")
+# 		if show_images:
+# 			num_t1 = 100
+# 			for i in range(3):
+# 				if dim3d:
+# 					plt.title(f"imgs_trufi_{num_t1  + i}")
+# 					plt.imshow(imgs_trufi[num_t1 + i][:, :, 0], cmap='gray')
+# 					plt.show()
+# 				else:
+# 					plt.title(f"imgs_trufi_{num_t1  + i}")
+# 					plt.imshow(imgs_trufi[num_t1  + i], cmap='gray')
+# 					plt.show()
+#
+# 		# concatnate all
+# 		class_id = np.concatenate((class_id_fiesta, class_id_trufi),axis=0)
+# 		imgs = np.concatenate((imgs_fiesta, imgs_trufi),axis=0)
+# 		segs = np.concatenate((imgs_fiesta_gt, imgs_trufi_gt),axis=0)
+# 		imgs = np.expand_dims(imgs,axis=-1)
+# 		segs = np.expand_dims(segs,axis=-1)
+#
+#
+# 		# concatante part
+# 		print(imgs_fiesta[: :size_jump].shape, "imgs_fiesta[: :self.size_jump]")
+# 		print(imgs_trufi[: :size_jump].shape, "imgs_trufi[: :self.size_jump]")
+# 		print(imgs_fiesta_gt[::size_jump].shape, "imgs_fiesta_gt[::size_jump]")
+# 		print(imgs_trufi_gt[::size_jump].shape, "imgs_trufi_gt[: :self.size_jump]")
+#
+# 		imgs_fiesta_part = imgs_fiesta[::size_jump]
+# 		class_id_fiesta_part = class_id_fiesta[::size_jump]
+# 		imgs_fiesta_gt_part = imgs_fiesta_gt[::size_jump]
+#
+# 		imgs_trufi_part = imgs_trufi[: :size_jump]
+# 		class_id_trufi_part = class_id_trufi[::size_jump]
+# 		imgs_trufi_gt_part = imgs_trufi_gt[::size_jump]
+#
+#
+# 		min_size = np.min((imgs_trufi_part.shape[0], imgs_fiesta_part.shape[0]))
+# 		print(min_size, "min size")
+#
+# 		imgs_part = np.concatenate((imgs_fiesta_part[: min_size],imgs_trufi_part[: min_size]), axis=0)
+# 		segs_part = np.concatenate((imgs_fiesta_gt_part [: min_size],imgs_trufi_gt_part[: min_size]), axis=0)
+# 		class_id_part = np.concatenate((class_id_fiesta_part[0: min_size],  class_id_trufi_part[0: min_size]),axis = 0)
+#
+# 		imgs_part = np.expand_dims(imgs_part ,axis=-1)
+# 		segs_part = np.expand_dims(segs_part ,axis=-1)
+#
+# 		# normlaize data
+# 		imgs_part = imgs_part - np.min(imgs_part)
+# 		imgs_part = imgs_part / np.max(imgs_part)
+#
+# 		# if show_images:
+# 		img_part =  0
+# 		if show_images:
+# 			for i in range(3):
+# 				# plt.title(f"imgs_trufi_{img_part + i}")
+# 				plt.imshow(imgs_part[img_part + i][:,:,0], cmap='gray')
+# 				plt.show()
+# 				plt.imshow(segs_part[img_part + i][:,:,0], cmap='gray')
+#
+# 				plt.show()
+#
+#
+# 		imgs = imgs - np.min(imgs)
+# 		imgs = imgs / np.max(imgs)
+#
+#
+# 		PART = True
+# 		if PART:
+# 			return imgs_part, class_id_part, segs_part
+#
+# 		else:
+# 			return imgs, class_id, segs
+
+class embryos_dataset(DataSet):
 	"""
 	take all what you get conctante it add class and deliver
 	"""
@@ -215,7 +298,7 @@ class embryos_dataset_onegr(DataSet):
 		super().__init__(base_dir)
 
 
-	def read_images(self, load_trufi = True, load_fiesta = False):
+	def read_images(self):
 		# print(os.path.join(self._base_dir,'plcenta','fetal_data.h5'), "aaaa")
 		show_images = False
 		# load data set
@@ -231,7 +314,7 @@ class embryos_dataset_onegr(DataSet):
 		imgs_fiesta_gt = np.array(list(fiesta_dataset_gt.values()))
 		# print(imgs_fiesta_gt , "img fiesta gt")
 		class_id_fiesta = np.zeros((imgs_fiesta.shape[0]))
-		print("imgs_fiesta unique:", np.unique(imgs_fiesta))
+		print("imgs_fiesta unique:", imgs_fiesta.shape)
 		if show_images and imgs_fiesta.shape[0] > 0:
 			num_f1 = 0
 			for i in range(3):

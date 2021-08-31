@@ -304,7 +304,11 @@ class PostProcessingSeg():
 
     def predict_on_validation(self, data_gt_pre: dict):
         for k, subject_id in enumerate(self.data_with_gt_a.keys()):
-            if (subject_id not in  self.split_dict['cases_test_F']) and (subject_id not in  self.split_dict['cases_test_T']) and (subject_id not in  self.split_dict['cases_val_T']) and (subject_id not in  self.split_dict['cases_val_F']):
+
+            if 'cases_test_H' not in  self.split_dict:
+                if (subject_id not in  self.split_dict['cases_test_F']) and (subject_id not in  self.split_dict['cases_test_T']) and (subject_id not in  self.split_dict['cases_val_T']) and (subject_id not in  self.split_dict['cases_val_F']):
+                    continue
+            elif (subject_id not in  self.split_dict['cases_test_F']) and (subject_id not in  self.split_dict['cases_test_T']) and (subject_id not in  self.split_dict['cases_test_H']) and (subject_id not in  self.split_dict['cases_val_T']) and (subject_id not in  self.split_dict['cases_val_F']) and (subject_id not in  self.split_dict['cases_val_H']):
                 continue
 
             # print(np.unique(self.data_with_gt_a[subject_id]['truth']), "unique values")

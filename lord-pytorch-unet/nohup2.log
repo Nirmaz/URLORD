@@ -1,0 +1,14 @@
+]2;cas603:/cs/casmip/nirm/embryo_project_version1/venu-pytorch/bin]1;cas603]2;cas603:/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet]1;cas603nir
+
+True cuda
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/183/exp2d_DF_3_2d True urlord2d_183 DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d_remote /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d_remote
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+2 30 config['n_classes'], config['class_dim']
+here seg decay
+here recon_loss
+0.5 recon_decay
+

@@ -1,9 +1,9 @@
 {"model_id": "URLord",
 "dim": 2,
-"add_num_exp": true,
-"load_model": false,
-"train_model":true ,
+"add_num_exp": false,
+"load_model": true,
+"train_model":false ,
 "evaluate_model": true,
-"model_name": "urlord2d",
+"model_name": "urlord2d_232exp2d_D_0_2d",
 "config_model": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d",
 "config_unet": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d"}

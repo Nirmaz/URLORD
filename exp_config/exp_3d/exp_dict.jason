@@ -1,4 +1,4 @@
-{"exp_name": "first_exp",
-"exps":["/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d/data_D_0_2d",
-"/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d/data_DS_2d", "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d/data_DF_3_2d"],
-}
+{"exp_name":"exp3d", "exps":[
+"/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d/data_DF_16_3d_S2",
+"/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d/data_DF_16_3d_S3"
+ ]}

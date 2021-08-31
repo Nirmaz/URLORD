@@ -22,6 +22,7 @@ import wandb
 
 def train_model(model_dict, path_exp, model_name, data_l_name, data_u_name, data_v_name, data_t_name, base_dir):
 
+	print(model_dict, path_exp, model_name, data_l_name, data_u_name, data_v_name, data_t_name, base_dir)
 
 	train_ulord(args = None ,model_id = model_dict['model_id'], base_dir = base_dir, num_exp = model_dict['model_id'] +'_'+str(model_dict['dim']), path_exp = path_exp,
 				  t_l = model_dict['train_model'], model_name = model_name, data_l_name= data_l_name,
@@ -76,6 +77,7 @@ def run_exp(args):
 		jason_dump(exp_dict, join(path_save_config, exp_dict['exp_name'] + '_exp_dict.jason'))
 
 		# load the config where the patches created
+		print(exp_dict['path_d_dict'], "path d dict")
 		with open(os.path.join(exp_dict['path_d_dict'], 'config.json'), 'rb') as patches_param_file:
 			data_param = json.load(patches_param_file)
 
@@ -135,6 +137,5 @@ def main():
 
 if __name__ == '__main__':
 	print("nir")
-	# wandb.login(key=[your_api_key])
-	# wandb.init(reinit=True)
+
 	main()

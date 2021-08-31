@@ -1,0 +1,2260 @@
+True cuda
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/205/exp2d_DF_3_2d True urlord2d_205exp2d_DF_3_2d DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+2 30 config['n_classes'], config['class_dim']
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py:356: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  tensor = torch.tensor(x, requires_grad = False)
+here seg decay
+here recon_loss
+  0%|                                                                                                                                                                                                                                                                                        | 0/378 [00:00<?, ?it/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/378 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                              | 0/45 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/126 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+epoch #0:   1%|█▎                                                                                                                                                                                                                                                          | 2/378 [00:01<04:38,  1.35it/s, loss=134]
+  1%|█▍                                                                                                                                                                                                                                                                              | 2/378 [00:01<04:38,  1.35it/s]
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2402, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2580, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([634., 189.,   1., 407.,   1.,   1., 271.,   1., 327.,   1., 303., 470.,
+        113., 194., 219.,  80.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([862., 436., 254., 636., 254., 254., 544., 254., 579., 254., 549., 679.,
+        328., 444., 412., 323.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.4504, 6.2593, 0.0000, 5.1032, 0.0000, 0.0000, 5.5145, 0.0000, 4.8697,
+        0.0000, 4.7074, 5.1788, 3.6106, 4.9986, 5.3615, 3.5940],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.5919, 8.7375, 4.2287, 6.7141, 4.2237, 4.2392, 7.5195, 4.2235, 6.7561,
+        4.2282, 6.6900, 6.6426, 6.6049, 7.4355, 7.7389, 6.9286],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(38.1027, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(38.8703, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([69., 17.,  1., 17.,  1.,  1., 35.,  1., 36.,  1., 54., 57., 27., 21.,
+        30.,  9.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([74., 11.,  1., 14.,  1.,  1., 25.,  1., 34.,  1., 46., 46., 26., 14.,
+        27.,  7.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.9745, 17.3889,  0.0000, 17.1877,  0.0000,  0.0000, 15.9916,  0.0000,
+        17.9290,  0.0000, 16.0007, 17.5477, 17.0844, 15.7535, 18.2830, 12.1217],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([28.7226, 30.3927,  0.0000, 32.5483,  0.0000,  0.0000, 27.6617,  0.0000,
+        32.8686,  0.0000, 30.5267, 30.4789, 31.5118, 26.0894, 33.9683, 21.7091],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(44.3212, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(46.9482, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([66., 28.,  1., 50.,  1.,  1., 53.,  1., 65.,  1., 41., 78., 50., 37.,
+        44., 26.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([58., 25.,  1., 29.,  1.,  1., 35.,  1., 45.,  1., 48., 58., 37., 38.,
+        41., 31.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([19.3567, 19.9008,  0.0000, 19.2739,  0.0000,  0.0000, 20.4193,  0.0000,
+        20.4705,  0.0000, 17.4649, 20.7470, 18.4988, 18.1693, 22.5674, 15.9065],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([33.8116, 33.9124,  0.0000, 37.0641,  0.0000,  0.0000, 36.2233,  0.0000,
+        38.9454,  0.0000, 28.9171, 36.6606, 35.7297, 32.6950, 43.6045, 28.0303],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.5182, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(33.8496, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([21., 11.,  1.,  6.,  1.,  1., 16.,  1., 19.,  1., 10.,  4., 19.,  7.,
+        13., 12.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([23.,  9.,  2.,  8.,  2.,  2., 35.,  2., 25.,  2., 30.,  8., 20., 11.,
+        12., 21.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([19.6461, 15.6465,  0.0000, 15.6422,  0.0000,  0.0000, 14.2454,  0.0000,
+        15.2729,  0.0000, 14.4387,  8.9094, 17.5441, 15.7690, 14.1021, 14.9247],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([38.0140, 31.0739,  3.4120, 28.7286,  3.2704,  4.4729, 26.0636,  3.3123,
+        28.3295,  3.2589, 26.5282, 19.9413, 32.4515, 28.7663, 28.5627, 26.4545],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.0012, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.0718, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([13., 13.,  1., 17.,  1.,  1.,  9.,  1., 19.,  1.,  7., 22., 14., 11.,
+         1.,  8.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([11.,  7.,  1., 31.,  1.,  1., 18.,  1., 25.,  1., 18., 11., 14., 12.,
+         1., 16.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.9345, 3.9302, 0.0000, 3.9237, 0.0000, 0.0000, 0.8540, 0.0000, 3.3975,
+        0.0000, 4.6388, 3.6093, 5.1798, 5.2952, 0.0000, 3.3604],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 8.7215,  8.3884,  0.0000,  6.8456,  0.0000,  0.0000,  2.0474,  0.0000,
+         5.5903,  0.0000,  8.7931,  8.3179,  9.5999, 10.3648,  0.0000,  6.1840],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0585, device='cuda:0') tensor(0.9844, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.5587, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.6530, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([278., 213., 171., 124., 233., 244., 166., 144., 318., 152., 122., 295.,
+        119., 208., 220., 296.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([491., 336., 313., 223., 432., 430., 316., 289., 596., 295., 250., 508.,
+        238., 388., 362., 455.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([7.5583, 6.4624, 5.8668, 5.2348, 7.0487, 8.2938, 6.3453, 5.6237, 8.8641,
+        5.9680, 5.7391, 7.1825, 6.0107, 7.0053, 6.2490, 6.6704],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([7.8998, 6.6934, 6.1730, 5.5889, 7.4002, 8.5698, 6.5499, 5.8107, 8.9015,
+        6.3321, 6.1047, 7.4149, 6.4020, 7.3660, 6.5950, 6.9411],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(18.3738, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.0251, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 65.,  58.,  72.,  62., 111.,  86.,  52.,  45.,  30.,  63.,  56.,  58.,
+         67.,  81.,  88.,  79.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([274., 324., 243., 307., 428., 287., 279., 184., 220., 242., 278., 210.,
+        279., 347., 325., 325.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([8.6075, 8.8974, 8.0798, 6.2624, 7.1330, 9.5401, 7.0125, 6.3577, 8.4255,
+        6.8582, 6.1601, 7.4564, 6.1109, 8.3760, 8.1832, 9.1363],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([13.6317, 14.5147, 12.9137, 10.6029, 12.6591, 16.7846, 12.0578, 10.3919,
+        13.5527, 11.8144, 10.6803, 12.4584, 10.6686, 14.4947, 13.4676, 15.8944],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(28.5786, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(27.8437, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 98., 115.,  99.,  91., 120.,  53., 107.,  98.,  78., 118.,  79.,  58.,
+        108., 120.,  97., 133.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([120., 149., 101., 122., 156.,  76., 140.,  97., 103., 122., 102.,  75.,
+        125., 146., 117., 168.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([11.5609, 13.0734, 11.4156,  9.7233, 14.3859, 14.0512, 12.7042, 12.7385,
+        12.5463,  9.5577, 10.4774,  7.3107, 12.1255, 12.8661, 10.8359, 16.6930],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([23.0442, 25.5761, 21.4799, 18.0386, 28.7130, 27.7092, 24.9100, 24.9315,
+        24.5721, 18.7945, 20.7612, 13.9742, 23.7432, 25.1835, 20.7185, 32.5736],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(21.0122, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.9504, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([38., 31., 28., 44., 61., 22., 44., 24., 20., 24., 35., 26., 40., 37.,
+        39., 33.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([38., 36., 46., 45., 57., 17., 46., 27., 26., 56., 39., 24., 53., 46.,
+        63., 37.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.0897, 5.9414, 5.1995, 3.5272, 9.4001, 4.3525, 5.9981, 4.8514, 6.7584,
+        4.8286, 4.5354, 3.6645, 3.8153, 6.9213, 4.2107, 5.9902],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 6.1222, 10.6289,  9.7409,  6.7859, 18.3731,  8.4825,  9.5212,  8.4642,
+        14.1366,  7.9018,  8.9531,  6.4048,  7.0396, 12.7566,  8.4465, 11.5312],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.8699, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.2596, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([25., 22., 13., 23., 32., 18., 16., 11., 17., 16., 24., 16., 19., 35.,
+        39., 17.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([14., 15.,  7., 10., 20., 12., 13.,  6., 18., 10.,  9., 12., 18., 19.,
+        24.,  8.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([2.0197, 2.2481, 1.9527, 1.5772, 2.8084, 2.7002, 2.0695, 0.8664, 2.8954,
+        1.9976, 2.3583, 3.0472, 1.4577, 2.0562, 3.0309, 1.6566],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([3.5079, 4.2532, 3.8688, 2.6926, 4.7434, 5.4890, 4.0162, 1.7089, 5.6342,
+        3.8296, 4.3581, 5.9044, 2.8311, 3.4514, 5.5355, 2.8218],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.286731481552124 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.3865, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.5428, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([441.,   1.,   1.,   1., 510., 758.,  64., 234.,   1.,  74., 555., 124.,
+         55., 784.,  80., 816.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 698.,  254.,  254.,  254.,  685.,  962.,  325.,  531.,  254.,  293.,
+         783.,  323.,  309.,  944.,  335., 1032.], device='cuda:0',
+       grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.6717, 0.0000, 0.0000, 0.0000, 4.1850, 5.3470, 4.9954, 4.9628, 0.0000,
+        4.7368, 4.5739, 3.7883, 6.0927, 5.2532, 4.0494, 4.5323],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([7.2300, 4.1922, 4.1813, 4.1942, 5.5543, 6.4080, 8.2696, 6.9751, 4.1802,
+        8.1394, 5.9653, 6.7130, 9.5350, 6.2159, 7.2526, 5.5824],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.5259, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.2607, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 43.,   1.,   1.,   1.,  44.,  53.,  17.,  48.,   1.,  13.,  79.,  27.,
+          8.,  83.,  30., 152.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 84.,   1.,   1.,   1.,  71.,  85.,  20.,  68.,   1.,  16., 114.,  38.,
+          6., 124.,  42., 218.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.2870,  0.0000,  0.0000,  0.0000, 13.5898, 17.3594, 15.8752, 15.2236,
+         0.0000, 18.6043, 15.8548, 15.3356, 15.1647, 16.4589, 16.0433, 14.6786],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([25.8039,  0.0000,  0.0000,  0.0000, 22.7334, 29.5560, 27.7985, 26.7546,
+         0.0000, 34.1411, 26.7280, 26.5273, 25.0971, 27.3874, 27.5734, 24.9090],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(48.8580, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(44.6031, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([35.,  1.,  1.,  1., 32., 56., 24., 40.,  1., 20., 50., 23., 13., 64.,
+        27., 73.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 80.,   1.,   1.,   1.,  43.,  97.,  26.,  54.,   1.,  23.,  83.,  31.,
+         20.,  96.,  39., 144.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([17.1806,  0.0000,  0.0000,  0.0000, 18.7244, 21.6622, 18.7669, 18.3367,
+         0.0000, 19.5090, 19.0486, 19.9629, 18.9485, 21.5925, 16.5830, 18.9441],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([29.0835,  0.0000,  0.0000,  0.0000, 34.3110, 37.4088, 35.0921, 32.7562,
+         0.0000, 36.2525, 33.7092, 36.5881, 31.9524, 38.9285, 29.0719, 31.5446],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.3515, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.8988, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([28.,  1.,  1.,  1., 12.,  6., 11., 16.,  1., 12., 18., 12.,  5., 13.,
+        18., 28.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([45.,  2.,  2.,  2., 13., 13., 14., 18.,  2.,  6., 19., 14.,  8., 18.,
+        13., 22.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([13.5883,  0.0000,  0.0000,  0.0000, 11.4941, 15.9229, 16.7639, 16.9343,
+         0.0000, 16.3249, 15.4986, 15.8409, 17.0703, 15.8002, 17.3643, 10.9621],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([25.9858,  3.8651,  3.1816,  3.3060, 21.9172, 26.4632, 31.3395, 33.5520,
+         3.1566, 30.7373, 29.1641, 29.2796, 31.0366, 27.7784, 33.2866, 21.1958],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.3406, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2059, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([17.,  1.,  1.,  1.,  3.,  1.,  6.,  7.,  1.,  1.,  9.,  4.,  1., 40.,
+        10.,  5.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([25.,  1.,  1.,  1., 10.,  7.,  7.,  9.,  1.,  1., 12.,  6.,  3., 21.,
+        11.,  8.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.0562, 0.0000, 0.0000, 0.0000, 1.1099, 0.0000, 4.4360, 5.4835, 0.0000,
+        0.0000, 3.3691, 4.2823, 0.0000, 4.8871, 4.8318, 1.4446],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 8.5502,  0.0000,  0.0000,  0.0000,  5.4882,  1.6686,  7.9948, 11.7003,
+         0.0000,  0.0000,  6.4777,  8.1838,  1.4840,  9.7946,  8.6918,  5.3012],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0446, device='cuda:0') tensor(0.9731, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.7202, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.7391, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 51., 194., 291., 132., 245., 116., 444., 150., 221., 279., 256., 205.,
+        225., 191., 162., 147.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 63., 201., 275., 115., 199., 113., 420., 169., 245., 296., 255., 203.,
+        200., 228., 164., 142.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.2927, 5.0342, 7.0304, 3.2641, 6.4672, 3.8001, 7.2708, 3.9249, 5.6471,
+        7.7229, 6.3180, 6.2950, 6.6519, 6.8710, 5.5125, 6.0759],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([3.6283, 5.2238, 7.2470, 3.3586, 6.7663, 4.0088, 7.3859, 4.3215, 5.7198,
+        8.1345, 6.5711, 6.3616, 6.7173, 6.9288, 5.7693, 6.3598],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(16.5161, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(16.6874, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([176., 129., 258., 201., 210., 156., 140., 151., 114., 154., 213., 134.,
+         84., 160., 171., 188.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([142., 104., 247., 150., 167., 121., 127., 126., 105., 152., 158., 123.,
+         74., 149., 159., 159.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.1145, 6.4034, 9.1788, 5.1430, 6.6940, 4.6282, 8.0476, 4.8817, 4.7944,
+        7.8882, 7.2785, 7.1878, 6.1402, 8.0008, 7.3171, 7.3089],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 5.2384, 12.5603, 16.8565,  8.7727, 11.8580,  8.0951, 13.1094,  8.1757,
+         8.2298, 14.7344, 13.4944, 13.4366, 10.1952, 13.9352, 13.0212, 13.0017],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.0653, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(27.2761, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([102.,  61.,  94., 101.,  85.,  63.,  44.,  73.,  72.,  27.,  55.,  17.,
+         40.,  48.,  56.,  61.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([154.,  82., 168., 144., 163., 117.,  79., 125., 107.,  62., 121.,  45.,
+         59.,  87., 119., 111.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 4.5771, 10.7491, 14.1334,  9.4754, 11.1453,  7.3464, 11.4007,  9.1237,
+         9.6266, 11.1550, 13.5942, 11.8769, 11.0316, 12.3346, 11.9810, 13.4474],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 9.1102, 19.9209, 26.9514, 18.2601, 22.1846, 14.6837, 21.9478, 17.8031,
+        19.0129, 21.9638, 23.5574, 22.2841, 20.9070, 22.9831, 22.6429, 25.3979],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(22.4195, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(21.2869, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([27., 17., 33., 21., 33., 17., 14., 13., 17., 12., 37., 10., 25., 20.,
+        28., 24.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([73., 29., 49., 55., 45., 47., 23., 24., 19., 23., 45.,  7., 17., 19.,
+        41., 25.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.3192, 6.2135, 8.6407, 4.4379, 8.0797, 4.2558, 7.7532, 2.7602, 5.0478,
+        4.9189, 7.8238, 4.6391, 7.9026, 7.6495, 7.3039, 4.3847],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 5.8661, 11.5714, 15.4957,  7.5576, 15.2348,  7.7946, 14.7609,  5.4712,
+         8.4420,  9.6979, 14.1437,  9.8143, 13.7135, 13.6619, 12.3261,  7.8603],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.1125, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.8187, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([25.,  7., 15., 18., 21., 20., 14.,  7.,  7., 10., 18., 19., 15., 22.,
+        17., 29.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([31.,  9., 13., 25., 29., 20., 21., 13.,  7., 16., 20.,  9.,  6., 28.,
+        13., 19.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([1.3423, 3.1163, 1.9267, 1.4153, 2.2887, 1.5695, 2.4741, 1.0103, 1.5474,
+        1.5816, 1.2017, 2.8333, 2.5363, 2.4733, 2.8537, 2.3838],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([2.6017, 5.1988, 3.2688, 2.6748, 3.6088, 3.1466, 4.7259, 1.8947, 2.4158,
+        3.2887, 2.5395, 5.3639, 3.4659, 4.2930, 4.6425, 4.0818],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.27291226387023926 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2824, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.5698, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([  1., 207., 441., 183.,   1.,  98., 354., 288., 355., 439.,   1., 487.,
+          1., 223., 605., 485.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([126., 110., 229., 107., 126., 147., 178., 166., 216., 183., 126., 224.,
+        126., 172., 223., 221.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.0000, 4.7390, 4.6217, 4.5300, 0.0000, 4.5677, 4.1073, 5.3540, 5.6931,
+        5.0611, 0.0000, 4.7224, 0.0000, 5.3058, 4.3475, 4.8876],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([4.8418, 8.3910, 7.2085, 8.5390, 4.8354, 8.7200, 7.3926, 9.0572, 8.5509,
+        7.8166, 4.8368, 7.4606, 4.8396, 8.8690, 6.6382, 7.6777],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.1096, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.9853, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 16., 38., 11.,  1., 30., 29., 40., 48., 73.,  1., 81.,  1., 20.,
+        65., 50.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1., 20., 45., 18.,  1., 32., 33., 42., 59., 89.,  1., 76.,  1., 26.,
+        80., 51.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000, 17.7219, 15.5076, 17.3461,  0.0000, 16.1374, 17.0908, 17.3776,
+        19.4041, 17.2785,  0.0000, 15.4626,  0.0000, 17.6457, 15.4372, 14.8337],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000, 32.0739, 27.0133, 33.5106,  0.0000, 28.6858, 30.0207, 28.3106,
+        34.8867, 29.8581,  0.0000, 25.9017,  0.0000, 29.5729, 24.9841, 24.3474],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(43.3736, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(51.2004, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 37., 87., 35.,  1., 42., 35., 68., 58., 83.,  1., 96.,  1., 17.,
+        87., 61.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1., 14., 33., 12.,  1., 28., 10., 24., 15., 48.,  1., 54.,  1., 14.,
+        30., 17.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000, 21.0332, 17.0505, 18.5549,  0.0000, 17.7705, 17.0230, 20.0131,
+        21.5153, 20.0059,  0.0000, 17.3510,  0.0000, 17.3950, 18.4355, 17.1351],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000, 43.7609, 34.5277, 32.8445,  0.0000, 33.2358, 31.8807, 38.6357,
+        45.6929, 36.6664,  0.0000, 30.3945,  0.0000, 29.6530, 35.7118, 33.5117],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(33.9945, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.3517, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 10., 19., 11.,  1., 24., 13., 16., 13., 11.,  1., 21.,  1.,  5.,
+        30., 18.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 2.,  6., 19., 10.,  2., 25.,  7., 21., 13., 18.,  2., 15.,  2.,  7.,
+        14., 18.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000, 14.0237, 14.7101, 14.1713,  0.0000, 18.2800, 20.2867, 19.1355,
+        17.8922, 10.1375,  0.0000, 17.4873,  0.0000,  9.3180, 14.6380, 16.4409],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 3.8514, 28.6211, 25.8957, 24.1476,  4.1438, 34.1818, 41.8148, 31.9915,
+        31.4662, 21.5774,  2.9171, 33.7292,  3.3216, 19.5606, 28.3275, 32.1295],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.1254, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.9466, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1.,  1., 16.,  4.,  1., 21., 10.,  6., 10.,  2.,  1.,  4.,  1., 10.,
+        26., 10.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1.,  2.,  9.,  3.,  1., 15.,  3.,  7.,  3.,  3.,  1.,  4.,  1.,  7.,
+        12.,  3.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.0000, 0.0000, 2.5106, 4.2466, 0.0000, 5.4919, 4.2042, 1.0813, 3.8936,
+        1.5705, 0.0000, 3.0061, 0.0000, 5.8753, 4.3467, 4.3270],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000,  2.6192,  4.7536,  8.2872,  0.0000, 11.0393,  8.4686,  1.9780,
+         5.8981,  5.4412,  0.0000,  4.0814,  0.0000, 11.8024,  9.9193,  9.1750],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0431, device='cuda:0') tensor(0.9802, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.0285, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+
+  2%|████▎                                                                                                                                                                                                                                                                           | 6/378 [00:03<03:18,  1.87it/s]
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.2694, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([481., 255., 310., 363., 332., 423., 173., 463., 347., 411., 226., 442.,
+        401., 183., 243., 632.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([394., 216., 241., 342., 276., 394., 158., 361., 310., 351., 184., 365.,
+        339., 181., 226., 521.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([7.0680, 3.5376, 4.9934, 6.7008, 5.8926, 7.1732, 4.3235, 7.0049, 5.7290,
+        6.5240, 5.2470, 7.0235, 7.8855, 4.7940, 5.8411, 6.4568],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([7.2181, 3.7828, 5.0823, 6.8683, 6.3900, 7.3410, 4.7549, 7.3275, 6.2642,
+        6.6546, 5.4007, 7.3320, 8.0795, 5.0607, 6.4445, 6.7421],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(18.7187, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(18.2742, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 79.,  61.,  76., 107.,  43.,  79.,  88.,  89.,  63.,  56.,  41.,  72.,
+         98.,  79.,  45.,  66.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 79.,  54.,  79., 101.,  55.,  84.,  74.,  94.,  61.,  60.,  39.,  84.,
+         94.,  85.,  34.,  61.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 7.1200,  5.2745,  5.2000,  8.8637,  7.2197,  9.6000,  5.7634, 10.6358,
+         7.5810,  7.3999,  5.6957,  7.2352,  8.9863,  8.1155,  7.1231,  8.5272],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([12.6033,  8.3891,  9.5484, 15.9818, 12.5579, 15.2958, 10.3206, 18.8540,
+        14.0958, 12.9157,  9.5508, 13.7742, 16.5482, 14.2183, 11.1147, 13.4819],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(31.4340, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(27.8746, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 54.,  69.,  54.,  33.,  31.,  53.,  57.,  18.,  53.,  71.,  81.,  30.,
+         23., 115.,  86.,  53.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([116., 104.,  74.,  78.,  61., 109., 109.,  58.,  98.,  98., 113.,  78.,
+         57., 156., 136.,  93.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([14.1234,  8.3483, 14.2518, 12.5405, 10.0151, 14.1622,  7.6150, 14.7796,
+         9.8921, 10.9314,  9.7036, 15.0772,  9.8827, 11.4775, 10.1715, 13.3877],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([26.7896, 15.8540, 25.8269, 23.4903, 19.7441, 26.3719, 14.2075, 26.0793,
+        18.4104, 20.5548, 18.9708, 26.5954, 19.6372, 22.3666, 20.5770, 24.9963],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.8674, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.8123, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([37., 26., 24., 25., 21., 34., 58., 19., 20., 20., 35., 22., 26., 46.,
+        38., 30.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 51.,  50.,  62.,  39.,  42.,  60., 105.,  24.,  43.,  25.,  47.,  41.,
+         31.,  49.,  60.,  50.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([6.8524, 3.8476, 4.6196, 5.4434, 4.2779, 7.2626, 4.1849, 7.7543, 3.7196,
+        6.8661, 4.6109, 7.0333, 4.9787, 4.9152, 6.5133, 8.7243],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([13.0772,  6.9187,  8.7945,  8.4023,  7.5745, 12.7245,  7.1737, 13.5230,
+         6.6952, 13.2097,  7.8258, 12.2988,  9.6620,  8.5516, 12.2302, 15.2555],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.3701, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.7901, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([26., 12.,  9.,  6.,  8., 18., 20., 10., 17.,  7.,  7., 21., 11.,  7.,
+        13., 17.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([12.,  9.,  4.,  8.,  8.,  9., 12.,  8.,  7.,  1.,  6.,  7.,  9.,  5.,
+        12., 14.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.2908, 1.7759, 2.0860, 2.0884, 1.7794, 2.1209, 1.7371, 1.5194, 1.7069,
+        2.9443, 1.8027, 3.8149, 1.4058, 1.6233, 1.4237, 2.4701],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.3788, 3.7138, 3.0738, 3.3063, 3.3233, 3.6268, 3.2918, 3.1766, 2.7329,
+        2.9443, 3.1359, 5.3931, 2.3969, 2.9417, 2.2217, 4.7749],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.2734696865081787 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(14.1952, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.1870, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 87.,  87., 201.,   9., 160.,   1., 172.,  29.,  53.,   1.,   1.,  68.,
+        129.,  59.,   1.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([150., 180., 243., 134., 283., 127., 255., 146., 176., 127., 127., 104.,
+        161., 121., 127., 127.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.6172, 4.1963, 4.8290, 6.1881, 6.1713, 0.0000, 6.0316, 5.0170, 4.6533,
+        0.0000, 0.0000, 4.3352, 3.1521, 4.0347, 0.0000, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 6.8884,  7.5893,  6.9245, 10.7543,  8.3981,  4.7730,  8.4125,  9.1969,
+         8.2138,  4.7752,  4.7825,  8.5103,  5.4418,  8.2595,  4.7707,  4.7792],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.9034, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.9520, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([41., 15., 55.,  1., 35.,  1., 36., 27., 14.,  1.,  1.,  3., 24., 23.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([41., 30., 95.,  3., 56.,  1., 56., 37., 22.,  1.,  1.,  3., 43., 36.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([12.3521, 13.2692, 16.7714,  0.0000, 17.7901,  0.0000, 17.1225, 17.2257,
+        12.9829,  0.0000,  0.0000, 11.4234, 15.1267, 14.7809,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([20.0999, 22.1828, 28.0566,  7.5725, 28.0616,  0.0000, 28.8935, 29.9037,
+        21.5082,  0.0000,  0.0000, 20.2618, 25.6652, 25.1050,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(42.1542, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(44.2143, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 84.,  83., 108.,   3.,  58.,   1.,  72.,  60.,  57.,   1.,   1.,  34.,
+         59.,  42.,   1.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 45.,  40., 106.,   6.,  63.,   2.,  57.,  43.,  32.,   2.,   2.,  27.,
+         41.,  30.,   2.,   2.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.0836, 15.0684, 15.6947,  8.7099, 16.2738,  0.0000, 18.3783, 17.1394,
+        14.4485,  0.0000,  0.0000, 17.7536, 16.3968, 18.4198,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([27.4256, 29.1959, 27.2988, 15.3901, 28.3859,  4.3021, 32.6040, 32.7963,
+        27.8545,  3.7406,  3.9771, 33.5214, 29.8954, 35.1947,  3.9835,  4.2514],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(33.2685, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.3578, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([19., 27., 22.,  3.,  9.,  1.,  8., 16., 12.,  1.,  1.,  8., 16., 13.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 8., 14., 16.,  3.,  2.,  2., 11.,  9.,  7.,  2.,  2.,  3., 11.,  7.,
+         2.,  2.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([10.4579, 15.9112, 13.7086, 10.5854, 10.6727,  0.0000, 16.0655, 15.8593,
+        13.8008,  0.0000,  0.0000, 14.1172, 13.7564, 14.6346,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([22.7392, 30.9771, 24.3988, 18.4113, 13.7303,  3.1257, 28.7194, 31.1993,
+        26.2634,  3.4169,  3.8901, 19.7053, 26.7058, 28.6087,  3.1416,  3.0397],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(8.9711, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(8.4326, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 4., 15., 10.,  1., 27.,  1., 15., 18.,  5.,  1.,  1.,  3., 14.,  9.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 6., 22., 17.,  1., 22.,  1., 17., 16.,  6.,  1.,  1.,  8., 38., 22.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([1.0335, 5.2942, 4.0549, 0.0000, 4.4220, 0.0000, 4.4725, 4.5900, 3.1862,
+        0.0000, 0.0000, 3.5633, 4.1556, 4.2397, 0.0000, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([2.9515, 9.2501, 8.2120, 0.0000, 8.5665, 0.0000, 7.6167, 8.4753, 5.7532,
+        0.0000, 0.0000, 5.7528, 7.1847, 7.3548, 0.0000, 0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0445, device='cuda:0') tensor(0.9738, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.5058, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.3911, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([465., 934., 715., 556., 221., 459., 702., 282., 434., 333., 552., 476.,
+        232., 613., 424., 877.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([218., 464., 395., 241.,  78., 229., 367.,  97., 182., 142., 280., 231.,
+         66., 296., 178., 485.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.0108, 7.1979, 6.8057, 6.3658, 3.6995, 5.8350, 6.1550, 4.1349, 5.3390,
+        5.4607, 5.8035, 6.2181, 4.3841, 5.8235, 4.8145, 7.1221],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.1611, 7.2515, 7.0062, 6.5491, 4.5251, 6.0629, 6.3050, 4.5157, 5.4729,
+        5.9591, 6.1862, 6.3142, 4.7706, 6.0253, 5.0766, 7.5799],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.3541, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.2649, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 45.,  52.,  45., 103.,  62.,  98.,  75.,  83.,  30.,  66.,  58.,  73.,
+         62.,  63.,  52.,  61.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([35., 38., 37., 88., 36., 89., 73., 63., 23., 57., 40., 59., 31., 52.,
+        35., 38.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([8.1434, 9.3669, 7.5914, 8.6221, 3.7589, 9.5497, 7.9604, 5.1670, 8.2750,
+        6.8602, 6.6849, 8.4584, 2.3663, 7.9656, 7.4345, 8.4557],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([13.3991, 16.5343, 11.2311, 15.3584,  5.6976, 16.8926, 13.4854,  8.7801,
+        15.0241, 12.3692, 10.1271, 15.6054,  4.0663, 13.6415, 12.2412, 15.0297],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(32.5607, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.9917, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([35., 46., 49., 89., 54., 38., 48., 64., 55., 36., 41., 76., 60., 66.,
+        69., 40.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([41., 57., 75., 94., 70., 58., 72., 81., 63., 50., 61., 90., 78., 79.,
+        79., 50.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 9.6244, 14.1848, 12.5112, 14.2618,  5.2898, 13.3020, 12.4623,  8.4404,
+        12.0658, 10.4994, 14.2377, 13.5171,  6.5627, 12.7259, 11.4313, 13.9421],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([19.0479, 27.4208, 24.4260, 27.6454,  9.7027, 23.6176, 23.1601, 16.2227,
+        24.0518, 19.5674, 25.4320, 26.3472, 12.2142, 25.3818, 21.5949, 26.5937],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(29.5174, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(25.5779, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([4., 2., 1., 7., 3., 5., 5., 9., 3., 5., 4., 3., 1., 3., 8., 4.],
+       device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([21., 10.,  5., 19., 14., 11.,  5., 19.,  7., 14.,  6., 13., 19., 16.,
+        11.,  6.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 4.6455,  0.9265,  0.0000,  3.9805,  0.8052,  5.0062, 10.6136,  5.0264,
+         1.0468,  3.4468,  4.9303,  4.0016,  0.0000,  4.8460, 12.3744,  5.5359],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 9.0012,  5.0333,  3.3091,  8.8016,  2.7538,  9.3934, 21.2272,  9.3128,
+         3.9066,  7.1136,  9.0000,  8.1635,  1.5121, 12.1339, 22.9260, 10.2011],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.7708, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.7336, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([17., 17., 20., 30., 29., 20., 15., 21., 10., 23., 30., 14., 24., 10.,
+        14., 16.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([20., 16., 24., 25., 26., 18., 14., 17.,  7., 20., 33., 17., 20., 17.,
+        14., 13.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([2.1064, 2.3687, 2.2702, 1.3696, 1.2063, 1.1874, 1.0158, 1.3958, 1.0686,
+        1.9127, 1.7567, 1.9602, 1.2566, 0.7567, 1.8530, 1.3790],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([3.8795, 4.3428, 4.3340, 2.6286, 1.9054, 2.2787, 2.1468, 2.5316, 2.1562,
+        2.9605, 3.4882, 3.3953, 2.4933, 1.6592, 3.8820, 2.8488],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.2720780372619629 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.5863, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.5768, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([565., 397., 450., 519.,   1.,   1., 372., 603., 425., 406., 182., 383.,
+          1.,   1.,   1.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([204., 187., 225., 233., 126., 126., 180., 247., 214., 194., 157., 188.,
+        126., 126., 126., 126.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.3147, 5.7122, 5.7203, 4.5348, 0.0000, 0.0000, 4.2669, 4.0728, 5.5188,
+        5.2670, 4.6721, 5.2769, 0.0000, 0.0000, 0.0000, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([6.5315, 8.6862, 8.3943, 7.1465, 4.6306, 4.6824, 7.7019, 6.4923, 8.2707,
+        7.9846, 8.4320, 7.5412, 4.6578, 4.6516, 4.6475, 4.6569],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.9837, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.0647, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 87.,  65.,  63.,  79.,   1.,   1.,  79., 175.,  67.,  54.,  28.,  24.,
+          1.,   1.,   1.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 97.,  87.,  71.,  88.,   1.,   1.,  69., 207.,  76.,  52.,  34.,  30.,
+          1.,   1.,   1.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([14.3521, 18.1633, 17.9607, 15.3865,  0.0000,  0.0000, 14.0533, 13.0745,
+        16.4013, 14.8304, 17.3221, 16.3606,  0.0000,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([22.3766, 29.6734, 29.6229, 25.1398,  0.0000,  0.0000, 23.3553, 23.1358,
+        27.2081, 23.4391, 29.3094, 26.5450,  0.0000,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(47.1486, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(49.1239, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([34., 43., 43., 38.,  1.,  1., 48., 77., 49., 22., 43., 53.,  1.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([28., 34., 29., 29.,  1.,  1., 29., 76., 42., 18., 20., 32.,  1.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([19.5394, 24.1402, 19.6874, 15.6469,  0.0000,  0.0000, 17.4291, 16.3620,
+        20.1530, 21.0799, 18.1680, 17.6965,  0.0000,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([35.3192, 40.4056, 37.3933, 29.5770,  0.0000,  0.0000, 31.1870, 28.3142,
+        37.1836, 40.6546, 35.4242, 32.7085,  0.0000,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(28.2661, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.7226, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([31., 27., 34., 38.,  1.,  1., 38., 66., 54., 18., 38., 59.,  1.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 6., 12., 10.,  5.,  1.,  1.,  8., 18., 20.,  9.,  3., 16.,  1.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([11.9794, 16.6838, 15.4557,  8.7854,  0.0000,  0.0000, 10.5603,  9.1300,
+        15.3539, 15.1288, 15.4806, 13.0845,  0.0000,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([23.6015, 34.1548, 32.9235, 17.1815,  0.0000,  0.0000, 21.9607, 20.4798,
+        34.2296, 31.7856, 26.7024, 27.9127,  0.0000,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.6004, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.8243, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([21.,  3., 39.,  4.,  1.,  1.,  6., 19., 32.,  6., 17.,  7.,  1.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3., 1., 9., 1., 1., 1., 1., 1., 5., 1., 1., 1., 1., 1., 1., 1.],
+       device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.2590, 3.7859, 6.0831, 1.5088, 0.0000, 0.0000, 1.8080, 2.6322, 5.9112,
+        3.4498, 5.1721, 4.0546, 0.0000, 0.0000, 0.0000, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([10.8851,  3.7859, 13.5245,  1.5088,  0.0000,  0.0000,  1.8080,  2.6322,
+        10.5947,  3.4498,  5.1721,  4.0546,  0.0000,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0781, device='cuda:0') tensor(0.9834, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.8613, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.7726, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([409., 164., 158., 416., 454., 297., 424., 204., 546., 358., 250., 299.,
+        111., 454., 448., 336.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([533., 235., 299., 533., 551., 425., 557., 311., 668., 483., 404., 352.,
+        203., 575., 587., 402.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([6.6484, 4.2826, 5.4137, 7.1629, 5.9436, 6.1096, 7.3507, 6.4204, 6.6211,
+        5.3372, 5.8637, 6.4606, 2.6331, 6.3686, 6.9865, 5.3526],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([7.5693, 6.1482, 7.3727, 8.3374, 7.0446, 7.5408, 8.3804, 8.0510, 7.4766,
+        6.4963, 7.3483, 7.7424, 5.0460, 7.2672, 8.0358, 6.5180],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(18.6355, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(16.1593, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 68.,  79.,  68.,  62.,  76.,  76.,  63., 118.,  76.,  83., 103., 137.,
+        101.,  75.,  78., 104.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([170., 200., 183., 130., 211., 209., 202., 221., 206., 211., 190., 289.,
+        247., 197., 172., 233.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([7.3929, 4.7396, 5.0482, 8.8592, 6.8940, 7.7336, 7.4185, 7.0037, 6.8870,
+        7.2853, 7.4997, 8.7817, 2.8825, 8.5026, 8.1966, 6.5679],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([11.9221,  7.7126,  7.9439, 13.8262, 11.8384, 13.2490, 12.4132, 11.8212,
+        12.1926, 11.4263, 12.4268, 14.0298,  4.6164, 13.8954, 13.2683, 11.1746],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(31.9500, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.2944, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([37., 38., 48., 53., 76., 63., 77., 57., 81., 41., 47., 86., 80., 49.,
+        67., 76.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 65.,  79.,  72.,  68.,  90.,  77.,  97.,  62., 102.,  75.,  63., 111.,
+        117.,  69.,  84.,  89.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([11.6325,  6.7788,  9.2311, 15.3953, 12.1773, 11.5162, 14.1756, 10.0188,
+        12.5183, 11.5830, 10.9437, 12.0033,  4.9317, 14.2794, 14.6909, 12.8875],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([21.7664, 12.6959, 17.9430, 28.8839, 23.9638, 21.8140, 26.7879, 17.7819,
+        24.1287, 21.6540, 20.0215, 22.6311,  9.2761, 26.4377, 28.7604, 24.5285],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(22.0866, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.4212, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([17., 23., 18., 12., 15., 20., 26., 20., 19., 18., 25., 35., 33., 21.,
+        16., 42.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([45., 93., 60., 33., 22., 64., 55., 68., 30., 41., 53., 88., 91., 49.,
+        32., 55.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.2153, 3.7688, 2.8221, 4.8851, 7.2569, 5.0587, 7.4887, 4.3300, 5.6573,
+        4.5344, 3.7964, 6.3778, 5.0681, 5.2876, 5.4903, 5.1291],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([10.1853,  5.4416,  5.3835,  9.9950, 12.2868,  8.1969, 10.9580,  6.9224,
+        10.3847,  8.8740,  7.8821,  9.8902,  7.9060,  9.6819, 10.5104,  9.3958],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.9958, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.6826, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([31.,  9.,  4.,  1.,  2.,  4.,  5.,  9.,  3.,  5.,  9., 14., 15., 24.,
+         1., 11.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([31., 18., 21.,  8., 10., 15., 20., 24., 11., 11., 22., 31., 28., 31.,
+         6., 19.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.2571, 1.4344, 0.8144, 0.0000, 3.4495, 1.0641, 1.1228, 0.9337, 0.4899,
+        3.1563, 2.0494, 2.3429, 0.9980, 2.9140, 0.0000, 1.4899],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.7979, 2.2945, 1.9719, 0.8704, 5.8365, 1.6732, 1.9591, 1.9527, 1.2721,
+        4.1517, 3.5685, 3.9669, 1.5869, 5.1592, 1.2119, 2.7583],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.27332425117492676 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2402, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.5768, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([340., 322.,   1., 589., 102., 267.,   1., 244.,   1., 463., 392.,   1.,
+          1.,   1., 443., 597.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([182., 196., 126., 166., 149., 170., 126., 190., 126., 212., 216., 126.,
+        126., 126., 171., 294.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.5309, 5.3887, 0.0000, 5.0636, 4.3505, 5.3058, 0.0000, 4.4080, 0.0000,
+        4.5936, 5.6206, 0.0000, 0.0000, 0.0000, 5.0769, 3.9883],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([8.6768, 8.3730, 4.4664, 6.1785, 8.1159, 8.7192, 4.5340, 7.4486, 4.4807,
+        7.2962, 8.3082, 4.4725, 4.5591, 4.5575, 7.8778, 6.3828],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.3834, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.0710, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([25., 38.,  1., 14., 33., 41.,  1., 35.,  1., 54., 53.,  1.,  1.,  1.,
+        51., 50.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([42., 62.,  1., 34., 52., 77.,  1., 66.,  1., 86., 91.,  1.,  1.,  1.,
+        89., 78.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([17.2822, 17.4596,  0.0000, 16.1509, 16.1239, 16.8116,  0.0000, 14.4982,
+         0.0000, 15.0685, 18.3118,  0.0000,  0.0000,  0.0000, 14.8989, 14.6954],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([28.5511, 26.7453,  0.0000, 27.1384, 27.0048, 28.8140,  0.0000, 24.1908,
+         0.0000, 24.6451, 30.9943,  0.0000,  0.0000,  0.0000, 24.6445, 25.0400],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(45.6845, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(46.4864, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([50., 24.,  1., 45., 39., 47.,  1., 38.,  1., 43., 69.,  1.,  1.,  1.,
+        70., 71.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([40., 22.,  1., 43., 31., 53.,  1., 34.,  1., 44., 62.,  1.,  1.,  1.,
+        77., 77.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([18.9785, 15.4922,  0.0000, 17.2555, 16.6481, 20.4985,  0.0000, 18.2100,
+         0.0000, 17.6216, 20.7302,  0.0000,  0.0000,  0.0000, 18.8283, 13.4319],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([34.2642, 25.2459,  0.0000, 31.1360, 29.5836, 36.4689,  0.0000, 32.7559,
+         0.0000, 32.3046, 39.0676,  0.0000,  0.0000,  0.0000, 32.0304, 24.6228],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.5089, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(29.5374, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([12.,  9.,  1.,  8., 21., 16.,  1., 10.,  1., 20.,  7.,  1.,  1.,  1.,
+         9., 29.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([44., 24.,  2., 50., 28., 50.,  2., 29.,  2., 28., 29.,  2.,  2.,  2.,
+        38., 75.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.8506, 11.9590,  0.0000, 16.9872, 17.1670, 17.5032,  0.0000, 16.7415,
+         0.0000, 13.4013, 15.9727,  0.0000,  0.0000,  0.0000, 16.8255, 10.2800],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([27.3288, 23.8405,  3.5858, 28.4505, 30.7946, 29.8874,  3.5955, 28.8840,
+         3.0515, 26.9014, 30.1366,  3.3344,  3.9640,  3.4554, 28.4439, 19.3764],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(12.2510, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.5521, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 5.,  4.,  1.,  2.,  8.,  3.,  1., 18.,  1.,  6., 20.,  1.,  1.,  1.,
+         1., 13.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([14.,  6.,  1., 12., 10.,  8.,  1., 14.,  1.,  7., 19.,  1.,  1.,  1.,
+         7., 14.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.9075, 3.7529, 0.0000, 4.0588, 5.5353, 0.4936, 0.0000, 4.4562, 0.0000,
+        1.8553, 4.8430, 0.0000, 0.0000, 0.0000, 0.0000, 6.9648],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 6.6534,  7.5218,  0.0000,  8.1357, 10.2811,  1.4575,  0.0000,  8.1178,
+         0.0000,  5.9335,  8.5146,  0.0000,  0.0000,  0.0000,  2.2148, 13.6985],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0606, device='cuda:0') tensor(0.9882, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.0190, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.6883, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([291., 802., 213., 296., 102., 325., 340., 246., 553., 253., 222., 281.,
+        349., 578., 146., 168.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([205., 569., 154., 157.,  76., 221., 241., 168., 351., 183., 142., 215.,
+        238., 418.,  89.,  96.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.7257, 6.8799, 5.2985, 4.8726, 3.9390, 5.6593, 5.7949, 5.8926, 6.1158,
+        4.8705, 5.2248, 6.3802, 6.3815, 6.1206, 3.5640, 4.7030],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.9212, 7.0294, 5.6316, 5.2931, 4.5011, 5.9572, 6.2082, 6.0100, 6.4433,
+        5.5745, 5.7954, 6.6264, 6.6942, 6.2474, 3.9294, 4.8772],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(17.6094, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(17.5035, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([124., 209., 142., 190., 162., 165., 122., 183., 131., 188.,  83., 141.,
+        124., 173., 138., 154.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([109., 213.,  97., 127., 123., 151., 111., 179., 124., 154.,  83., 116.,
+        111., 164., 107., 104.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([6.2641, 6.8712, 4.8033, 5.4409, 3.8790, 6.5376, 7.2576, 7.2495, 6.8331,
+        5.5203, 4.3984, 5.4423, 7.5323, 7.2301, 3.8336, 6.5758],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([11.4055, 11.5613,  8.3936,  9.2492,  6.3195, 11.0318, 13.8090, 12.8553,
+        11.4715,  8.5841,  7.2012, 10.7344, 13.0140, 12.1120,  5.9035, 11.6203],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(31.4348, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(28.0783, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 30.,  94.,  57., 108.,  54.,  79.,  39.,  52.,  45.,  86.,  46.,  43.,
+         24.,  89.,  82.,  93.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 66., 204., 118., 147., 118., 141.,  71., 107.,  76., 127.,  90.,  61.,
+         49., 173., 134., 129.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 9.2335, 13.0287,  8.4451,  8.6135,  6.8090,  9.1304,  9.5702, 11.7207,
+        12.2126, 10.0938,  8.7692,  7.3282, 10.9079, 10.4026,  6.7113,  8.6176],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([17.5257, 23.4015, 15.3821, 17.0509, 12.2755, 16.9104, 18.7019, 21.7927,
+        22.6466, 18.4472, 16.1309, 14.2239, 20.5109, 19.7093, 12.9187, 16.8997],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(23.4393, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(21.5873, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([18., 17., 22., 21., 26., 14.,  9., 16.,  7., 16., 10.,  9.,  6., 19.,
+        21., 23.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([27., 39., 53., 53., 69., 28., 23., 33., 16., 50., 23., 16., 17., 47.,
+        57., 34.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 3.9468, 11.9506,  4.0153,  5.5056,  2.3702, 10.8217,  8.3043,  4.5093,
+         3.5314,  4.3399,  6.5579,  5.2000,  4.7180,  5.9330,  6.8714,  4.2422],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 7.1063, 19.1028,  7.4092,  8.1582,  4.3465, 17.5782, 12.7289,  8.7224,
+         8.3253,  7.8392, 10.7539,  9.3213,  8.8706, 12.2560,  9.5400,  7.3661],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(7.0312, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.5512, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 7., 26.,  6., 11., 12.,  7.,  9.,  4.,  7.,  9., 10.,  4., 22., 31.,
+         8.,  5.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 6., 19., 16.,  8., 10.,  6.,  9.,  6.,  8., 17., 12.,  5., 25., 22.,
+        12.,  5.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([1.6539, 2.3171, 0.8398, 1.4822, 0.7511, 1.3924, 2.3677, 1.4493, 2.4207,
+        1.6344, 1.2798, 1.3200, 3.5720, 3.4635, 1.2949, 1.8479],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([2.5745, 3.5835, 1.6246, 2.5302, 1.4284, 2.6038, 4.5182, 2.5623, 4.7173,
+        2.8907, 2.4256, 2.5002, 6.5059, 6.9752, 2.5534, 2.4011],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.2727839946746826 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2402, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(12.0066, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 35., 552., 273.,   1.,   1.,   1., 353.,   1., 410., 480., 546., 719.,
+          1., 462., 292., 507.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([257., 729., 347., 253., 251., 253., 534., 253., 584., 529., 682., 859.,
+        253., 620., 451., 656.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([2.6572, 4.8747, 4.0739, 0.0000, 0.0000, 0.0000, 5.6001, 0.0000, 4.8839,
+        3.3796, 4.5567, 4.9860, 0.0000, 5.2192, 5.6737, 5.5200],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([6.3595, 6.3008, 6.1197, 3.8646, 3.7761, 3.7594, 7.4761, 3.9075, 6.6081,
+        4.9092, 5.9258, 6.3015, 3.7728, 6.7364, 7.7288, 6.9674],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.5480, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(36.0717, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 4., 59., 26.,  1.,  1.,  1., 77.,  1., 83., 76., 79., 68.,  1., 43.,
+        38., 66.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 4., 58., 26.,  1.,  1.,  1., 65.,  1., 70., 55., 69., 64.,  1., 43.,
+        37., 52.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 8.3906, 15.9217, 17.7424,  0.0000,  0.0000,  0.0000, 18.3357,  0.0000,
+        15.8047, 12.1423, 13.7265, 16.8244,  0.0000, 16.5411, 17.2137, 16.5972],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([14.6286, 27.5902, 31.8895,  0.0000,  0.0000,  0.0000, 30.4804,  0.0000,
+        26.7728, 20.9915, 23.5323, 28.5866,  0.0000, 27.2544, 31.1673, 26.7519],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(48.3634, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(47.3854, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([10., 31., 23.,  1.,  1.,  1., 50.,  1., 40., 62., 37., 45.,  1., 45.,
+        25., 35.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 7., 44., 24.,  1.,  2.,  1., 65.,  1., 54., 43., 36., 59.,  1., 48.,
+        31., 41.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 9.6038, 17.3237, 23.5527,  0.0000,  0.0000,  0.0000, 25.5326,  0.0000,
+        21.1786, 15.4909, 20.0115, 20.9037,  0.0000, 19.8836, 21.4169, 21.2184],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([16.4178, 29.0422, 44.1555,  0.0000,  2.2369,  0.0000, 41.5808,  0.0000,
+        36.1113, 29.4736, 36.4645, 37.0644,  0.0000, 36.7049, 37.5798, 37.9160],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.0866, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.8227, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 6., 25.,  7.,  1.,  1.,  1., 36.,  1., 25., 36., 28., 15.,  1., 18.,
+        27., 13.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 4., 42.,  8.,  2.,  2.,  2., 54.,  2., 38., 30., 29., 20.,  2., 25.,
+        33., 26.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 9.8461, 10.1798,  9.8618,  0.0000,  0.0000,  0.0000, 19.8384,  0.0000,
+        14.5466, 11.6909, 12.2732, 13.9519,  0.0000, 14.3435, 15.2726, 13.0710],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([17.9438, 20.7719, 21.5235,  2.1267,  2.7762,  1.1188, 34.5896,  2.7163,
+        24.7065, 24.0288, 24.2840, 25.5937,  3.0565, 27.5076, 26.5635, 24.2448],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(8.4997, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.3222, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 12.,  3.,  1.,  1.,  1., 10.,  1.,  8., 12., 19., 22.,  1.,  9.,
+        25., 18.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1., 16., 14.,  1.,  1.,  1., 21.,  1., 11.,  9., 11., 22.,  1., 14.,
+        14., 15.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.0000, 5.0412, 1.0374, 0.0000, 0.0000, 0.0000, 4.6360, 0.0000, 1.3009,
+        3.7244, 3.0947, 2.7566, 0.0000, 4.0286, 3.1996, 3.2870],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([0.0000, 8.4150, 3.5235, 0.0000, 0.0000, 0.0000, 7.0309, 0.0000, 2.5454,
+        7.2079, 7.5741, 4.2977, 0.0000, 7.6238, 6.4544, 6.4049],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0923, device='cuda:0') tensor(0.9925, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.5117, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.5432, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([310., 297., 276., 250., 198., 291., 284.,  84., 209., 161., 315., 149.,
+        103., 283., 248., 215.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([304., 293., 295., 249., 186., 305., 317.,  89., 139., 153., 279., 154.,
+        115., 292., 240., 207.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.2270, 5.4538, 5.9778, 5.6401, 6.1377, 6.5941, 6.9988, 2.9496, 4.6413,
+        4.3634, 5.2677, 3.8466, 3.5369, 7.1625, 4.1896, 5.7598],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.7690, 5.8007, 6.4490, 5.7465, 6.3772, 6.7154, 7.2428, 4.0070, 5.1633,
+        4.8510, 5.5949, 4.2782, 4.0898, 7.3071, 4.9590, 6.2889],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(17.4385, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.6332, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([128., 129., 269.,  88., 219., 139., 232., 142., 192., 118., 147., 136.,
+        244., 145., 171., 120.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([231., 232., 468., 209., 353., 334., 412., 258., 295., 206., 223., 251.,
+        387., 210., 310., 211.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.7648, 4.3752, 6.7279, 5.4703, 5.9102, 5.6908, 7.9913, 3.5286, 4.4993,
+        3.8495, 5.0839, 4.5783, 3.6692, 7.6362, 4.3522, 5.3869],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 7.9936,  7.1412, 11.1952,  8.3616,  9.8651,  9.7813, 13.3027,  5.6688,
+         7.4058,  7.0406,  8.5896,  7.4988,  6.3071, 13.2200,  6.8362,  9.4278],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(33.7136, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.7314, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([53., 48., 74., 66., 80., 55., 38., 36., 90., 70., 64., 39., 47., 19.,
+        63., 55.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 89.,  64., 116.,  79., 102.,  99.,  62.,  70.,  99.,  85.,  76.,  75.,
+         95.,  35.,  93.,  76.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 8.8747,  9.1681, 10.9091, 10.9152, 11.9433,  7.1727,  9.3935,  4.9312,
+         9.3391,  8.3007, 11.3488,  8.2479,  4.7229, 11.0500,  9.3004,  8.7003],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([17.0894, 17.2491, 21.1888, 21.2719, 22.9652, 14.0015, 18.2205,  9.7604,
+        17.7160, 16.5088, 21.5272, 15.6654,  9.7754, 21.0849, 17.8135, 17.2524],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(21.9924, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(21.4368, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([18., 17., 30., 27., 24., 24., 19., 21., 25., 32., 18., 22., 27., 19.,
+        21., 16.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([35., 24., 45., 27., 46., 37., 30., 62., 45., 40., 25., 47., 75., 31.,
+        45., 22.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.3713, 7.1150, 4.9844, 6.3734, 3.7174, 3.5280, 3.6625, 3.0427, 5.7187,
+        5.7215, 3.2487, 4.2159, 2.9523, 4.9253, 8.2745, 4.4270],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 9.9172, 10.4736,  9.1376, 10.1458,  6.2641,  6.9960,  6.9031,  5.4966,
+         7.8480, 10.7272,  6.5469,  7.4896,  5.2361,  9.1266, 12.6753,  8.5522],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.6746, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.7991, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 7.,  3., 17.,  8., 12., 19., 11., 12.,  5., 11., 13., 11., 28.,  8.,
+         9., 10.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15., 14., 22., 22., 17., 30., 18., 20., 13., 16., 22., 21., 25.,  9.,
+        18., 15.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.4656, 1.3618, 1.6784, 3.4853, 1.3723, 2.7289, 1.3658, 1.1723, 0.9125,
+        2.3601, 2.6340, 1.7870, 1.7001, 1.8341, 1.2597, 1.4676],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([1.2915, 2.2950, 2.6010, 5.5640, 2.4205, 4.6514, 2.2932, 2.0288, 1.8182,
+        3.8486, 5.0588, 2.8856, 2.9518, 2.4641, 2.3624, 2.5937],
+
+  3%|███████▏                                                                                                                                                                                                                                                                       | 10/378 [00:05<03:01,  2.02it/s]
+------------ 0.27344489097595215 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.3047, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(14.2666, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([125.,  29.,  30.,  23.,   1., 108.,  43.,  37.,  85.,   1.,   1.,   1.,
+         95., 174.,   1.,  56.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([172., 198., 126., 146., 127., 257., 137., 129., 282., 127., 127., 127.,
+        225., 334., 127., 115.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.8099, 4.4584, 4.3245, 4.4890, 0.0000, 5.3503, 3.7167, 2.5103, 5.6790,
+        0.0000, 0.0000, 0.0000, 5.3751, 5.1831, 0.0000, 4.1605],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.5974, 7.2571, 8.0311, 8.2094, 4.1475, 7.7422, 6.9757, 6.0269, 7.5961,
+        4.1949, 4.1592, 4.2546, 7.7814, 7.1130, 4.2149, 7.4536],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.2545, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.7298, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([68., 58.,  6.,  6.,  1., 20., 24.,  8., 71.,  1.,  1.,  1., 34., 42.,
+         1.,  3.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([96., 63.,  9.,  8.,  1., 22., 35.,  6., 85.,  1.,  1.,  1., 41., 58.,
+         1.,  2.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.3572, 13.5726, 14.9936, 13.9398,  0.0000, 16.0086, 14.5424, 11.0355,
+        15.6960,  0.0000,  0.0000,  0.0000, 15.9659, 17.2961,  0.0000, 11.7179],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([27.0219, 24.2798, 24.7375, 14.9685,  0.0000, 28.2284, 24.6818, 16.1710,
+        26.3536,  0.0000,  0.0000,  0.0000, 25.7658, 28.3828,  0.0000, 19.2092],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(38.9454, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(43.5992, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([126., 104.,  42.,  36.,   1.,  84.,  54.,  42., 156.,   1.,   1.,   1.,
+        130., 133.,   1.,  46.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 68.,  79.,  19.,  34.,   2.,  50.,  33.,  23., 105.,   2.,   2.,   2.,
+         91.,  86.,   2.,  28.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.6652, 13.3815, 17.6360, 13.4030,  0.0000, 16.8574, 16.5796, 12.8136,
+        15.9984,  0.0000,  0.0000,  0.0000, 17.2766, 18.6794,  0.0000, 16.8690],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([27.1597, 23.1511, 30.9807, 23.5824,  4.1775, 32.0495, 32.4027, 22.4008,
+        29.1884,  5.5278,  5.3619,  4.5257, 31.5506, 34.7625,  3.9466, 32.6289],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(32.8925, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.8317, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([12., 14., 11.,  7.,  1.,  6., 13., 10.,  9.,  1.,  1.,  1., 30., 18.,
+         1.,  8.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([10., 16.,  9.,  6.,  1.,  5.,  6.,  6.,  7.,  1.,  1.,  1., 21., 22.,
+         1.,  3.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([14.7805, 10.2015, 18.1201,  9.3292,  0.0000, 15.6422, 14.1016, 11.5950,
+        14.5579,  0.0000,  0.0000,  0.0000, 16.5987, 17.7013,  0.0000, 14.5394],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([22.4296, 19.9115, 34.4396, 17.6496,  0.0000, 30.2840, 27.5913, 23.0968,
+        28.1057,  0.0000,  0.0000,  0.0000, 33.5104, 34.0830,  0.0000, 20.1274],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.5538, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.6943, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 7.,  3.,  4.,  1.,  1., 16.,  6.,  2.,  4.,  1.,  1.,  1.,  7.,  5.,
+         1.,  2.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 8.,  7.,  5.,  2.,  1., 18.,  7.,  2.,  1.,  1.,  1.,  1., 10., 14.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.6634, 3.5128, 4.3212, 0.0000, 0.0000, 3.9627, 4.8831, 2.2057, 2.1368,
+        0.0000, 0.0000, 0.0000, 6.3803, 4.5092, 0.0000, 2.8949],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 6.1552,  6.4313,  7.9929,  0.9645,  0.0000,  7.2578,  9.1225,  4.4114,
+         2.1368,  0.0000,  0.0000,  0.0000, 11.3425,  8.2256,  0.0000,  2.8949],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0967, device='cuda:0') tensor(0.9949, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.7214, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.5894, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([220., 141., 203., 171., 154., 111.,  94., 299., 106., 276., 111.,  70.,
+        140., 107., 125., 440.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([511., 435., 468., 375., 366., 334., 274., 744., 282., 685., 333., 299.,
+        346., 311., 343., 960.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.2067, 4.7962, 5.9397, 4.2195, 3.9629, 4.1967, 2.2272, 6.8970, 4.7906,
+        5.1296, 5.5171, 3.1453, 2.9350, 4.5548, 4.3167, 5.8259],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([6.3116, 6.0997, 6.9477, 5.4207, 5.3182, 5.7904, 3.9800, 7.7052, 6.3134,
+        6.0242, 7.0001, 4.9915, 4.2836, 5.9621, 5.7053, 6.4345],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.4043, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(16.4652, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 67.,  61., 153.,  85.,  94.,  93.,  90.,  79.,  87., 114., 112., 118.,
+         75.,  95., 110., 154.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([171., 120., 331., 202., 259., 229., 238., 204., 206., 284., 201., 276.,
+        206., 208., 272., 400.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.5508, 4.6217, 6.0228, 4.7772, 6.7766, 5.2940, 3.3535, 6.6894, 4.8066,
+        5.5203, 5.0984, 3.8743, 4.7559, 4.0752, 4.6613, 6.2447],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 8.3640,  8.4057,  9.6771,  7.4548,  9.8094,  8.1675,  5.6912, 10.9524,
+         7.1154,  9.4208,  8.8575,  6.4145,  6.9889,  7.2043,  7.6647, 10.6638],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.7669, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(27.0025, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 96.,  95., 108., 111., 114., 107., 100.,  84.,  99., 117.,  61.,  79.,
+         96.,  73.,  92., 110.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([139., 126., 208., 190., 223., 168., 189., 162., 165., 235., 133., 178.,
+        177., 145., 172., 238.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 8.8021,  6.3650,  8.1666,  7.9143,  8.7079,  9.1284,  5.1801,  8.7450,
+         7.3619,  8.5869,  7.9126,  5.5920,  5.6235,  6.7403,  7.4973, 11.8967],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([16.2239, 12.3226, 15.2588, 14.3986, 15.6954, 16.4876,  9.8263, 16.6670,
+        13.6092, 15.6680, 14.6687, 10.5388, 10.4888, 12.7455, 14.2424, 21.1073],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(18.7548, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.0375, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([34., 46., 67., 86., 72., 50., 63., 54., 45., 89., 42., 56., 66., 54.,
+        59., 69.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 55.,  60., 134., 102., 103., 114., 113.,  54., 130.,  96., 110., 131.,
+        137.,  76., 142., 104.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.5812, 3.7753, 3.2584, 3.1087, 4.5561, 4.2757, 3.3380, 3.9770, 3.8740,
+        4.0291, 3.1509, 2.4888, 3.6954, 4.4546, 2.7880, 5.3468],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([6.3771, 7.0648, 5.7073, 6.1036, 7.8504, 6.2207, 5.0821, 7.3644, 6.0287,
+        7.1163, 5.0867, 4.1290, 6.2312, 7.7861, 5.0792, 9.9308],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.4889, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.8894, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 2.,  9., 33., 15., 20., 11., 13., 16., 11., 15.,  9., 16., 16.,  9.,
+        18., 26.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 9., 13., 18., 20., 13., 16., 21., 16., 26., 14., 14., 25., 15., 15.,
+        22., 36.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.1876, 1.4933, 1.4630, 1.3019, 1.8729, 1.1620, 0.4998, 2.4429, 0.6773,
+        1.3278, 0.4768, 1.0126, 1.2410, 1.6738, 1.6626, 2.6089],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([1.2967, 2.5269, 2.8811, 2.5616, 2.7367, 2.3234, 1.7754, 3.6203, 1.6790,
+        2.3793, 1.2264, 1.7250, 2.2957, 2.5450, 2.6319, 4.3478],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.27411580085754395 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2402, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.5698, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([583., 378., 169., 296.,   1., 536., 358., 792.,   1., 180., 242., 188.,
+        412.,   1.,   1.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([259., 190., 160., 196., 126., 188., 223., 331., 126., 165., 174., 161.,
+        198., 126., 126., 126.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.3468, 5.5451, 2.8974, 5.4075, 0.0000, 4.5548, 4.7102, 5.0218, 0.0000,
+        4.8381, 3.5269, 4.9037, 4.8177, 0.0000, 0.0000, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([6.5709, 7.9740, 5.9311, 8.0388, 3.6705, 6.6595, 7.2506, 6.9505, 4.1007,
+        7.9252, 6.4330, 7.9538, 7.3614, 3.6922, 3.7890, 3.7267],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.8386, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.0260, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([42., 36., 14., 42.,  1., 49., 19., 40.,  1., 23., 39., 27., 46.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([79., 66., 27., 64.,  1., 83., 20., 57.,  1., 35., 45., 33., 86.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([16.0713, 17.9029, 11.4424, 18.9889,  0.0000, 15.2611, 14.6671, 17.1067,
+         0.0000, 17.1974, 14.1171, 20.3177, 16.2543,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([26.8396, 30.0520, 20.6629, 32.8365,  0.0000, 25.0259, 26.0837, 29.2593,
+         0.0000, 28.4013, 23.8182, 34.5079, 26.8906,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(55.5698, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(48.8457, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([28., 11., 20., 27.,  1., 15., 15., 35.,  1., 15., 21., 19., 19.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([81., 41., 27., 37.,  1., 26., 23., 76.,  1., 23., 27., 23., 39.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([17.2173, 25.8681, 14.1472, 23.9813,  0.0000, 21.4753, 19.6693, 20.7702,
+         0.0000, 23.8486, 14.5695, 21.2181, 23.5969,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([28.9176, 43.8398, 26.1996, 41.5519,  0.0000, 37.2589, 37.0610, 35.8938,
+         0.0000, 43.4859, 26.7344, 40.4265, 40.8521,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(35.4443, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(31.9842, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([33.,  8., 16.,  8.,  1.,  8.,  6., 14.,  1., 15.,  9., 10., 22.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([77., 26., 22., 19.,  2., 17., 11., 51.,  2., 35., 15., 12., 42.,  2.,
+         2.,  2.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([11.9606, 12.6756, 16.1645, 17.4400,  0.0000, 12.5715, 13.3917, 14.3074,
+         0.0000, 16.8564, 10.7462, 18.1068, 17.0366,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([22.2017, 24.8348, 28.1809, 29.8055,  2.2724, 24.1552, 26.7040, 24.6305,
+         1.2566, 28.3904, 19.3536, 31.9954, 30.2564,  2.6180,  2.0169,  2.0262],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.3973, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(12.7051, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([14.,  3.,  7.,  8.,  1.,  1.,  3.,  3.,  1., 13.,  2.,  6.,  7.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([14.,  1.,  4.,  2.,  1.,  4.,  2.,  3.,  1.,  9.,  2.,  1.,  3.,  1.,
+         1.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.0372, 2.6193, 4.4956, 4.1939, 0.0000, 0.0000, 4.3007, 5.1684, 0.0000,
+        5.5891, 1.9752, 3.5792, 2.7927, 0.0000, 0.0000, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 7.6971,  2.6193,  6.7777,  8.2549,  0.0000,  5.1177,  4.3007, 10.3368,
+         0.0000, 10.4986,  2.6193,  3.5792,  5.6123,  0.0000,  0.0000,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.1010, device='cuda:0') tensor(0.9880, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.5968, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.9901, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 76., 115., 329., 201., 259., 208., 215., 157., 121., 100., 206.,  67.,
+        304., 121., 156.,  93.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 72.,  77., 250., 158., 209., 145., 172., 131.,  99.,  69., 171.,  39.,
+        243., 101., 129.,  75.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.1198, 3.2482, 5.1115, 4.7276, 5.7903, 4.5253, 5.4878, 4.2596, 3.5275,
+        2.8877, 4.6037, 2.1938, 4.6023, 3.5815, 5.0160, 2.5617],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.3753, 4.0437, 5.5850, 5.2366, 6.2084, 5.1913, 5.9917, 4.6882, 4.0579,
+        3.1255, 5.0416, 3.2059, 5.0136, 4.1561, 5.3582, 2.9717],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.4593, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(16.1593, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([126.,  83., 100., 137.,  85., 115.,  75., 143.,  82., 101.,  78.,  91.,
+         80.,  81.,  52.,  79.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([273., 224., 316., 416., 309., 378., 197., 347., 235., 286., 247., 246.,
+        248., 267., 166., 222.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.7893, 3.1309, 5.2935, 5.1674, 6.6127, 5.5705, 4.7189, 6.0696, 3.9920,
+        3.5320, 4.5409, 3.7652, 4.8590, 4.0927, 3.0892, 3.4258],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 9.4745,  5.3543,  8.2097,  8.2191, 10.4409,  8.4360,  7.6563,  9.3753,
+         6.5027,  5.4669,  7.2762,  5.9306,  8.2662,  6.2819,  5.8374,  5.4804],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(31.3919, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.1759, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 60.,  88.,  81.,  93.,  79.,  99.,  77., 119.,  75., 104.,  92.,  94.,
+         61., 121.,  91.,  90.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 80., 115., 123., 136.,  98., 128.,  82., 141.,  95., 121.,  98., 108.,
+         79., 125., 100., 101.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([6.6825, 5.1054, 7.6367, 7.3194, 8.8801, 7.6442, 7.3213, 7.1110, 5.2677,
+        5.6679, 6.1910, 5.5894, 7.6619, 5.7312, 5.9791, 4.4311],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([12.2264, 10.2656, 14.4421, 13.9550, 16.4507, 14.3511, 14.9828, 13.8069,
+         9.7709, 10.9069, 11.9216, 10.6429, 14.6091, 11.3325, 12.0757,  8.2738],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.7542, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.5084, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([23., 37., 46., 47., 29., 43., 28., 58., 33., 47., 28., 36., 23., 30.,
+        22., 28.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 85.,  77.,  75., 101.,  45.,  65.,  74., 102.,  82.,  68.,  55.,  90.,
+         34.,  41.,  20.,  46.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.2436, 3.6514, 4.5179, 3.5922, 5.0607, 5.6215, 4.1337, 4.9403, 4.1532,
+        2.7781, 4.8145, 3.6244, 5.0445, 4.2746, 5.3615, 4.0330],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 5.3125,  5.2643,  7.6389,  6.1935,  8.5101,  8.1097,  7.0583,  8.5946,
+         6.8343,  4.3775,  8.5225,  5.5664,  8.7787,  6.3086, 10.7525,  6.9174],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(8.1930, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.6270, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 7.,  2.,  9.,  6., 22.,  7.,  5.,  5.,  6.,  3., 18.,  4.,  9.,  6.,
+        12.,  8.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([13.,  9., 16., 12., 40., 13., 13., 14., 13., 15., 22., 13., 12.,  8.,
+         9.,  8.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([1.3264, 0.4552, 1.5766, 0.9398, 3.4133, 1.8024, 0.7762, 0.7458, 0.7773,
+        0.8018, 1.1961, 1.9867, 1.6264, 2.2310, 4.4573, 0.8782],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([2.4823, 0.9512, 2.7593, 2.4202, 6.4841, 3.8391, 1.7587, 1.9203, 1.6039,
+        1.4946, 2.5480, 3.2175, 3.0609, 3.4593, 7.4472, 1.6306],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.27319955825805664 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.9888, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.7584, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([451.,   1., 265., 404., 425.,  73.,   1., 187., 271.,   1., 699., 354.,
+        397.,  58., 122.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([725., 253., 364., 683., 704., 286., 253., 367., 539., 253., 993., 448.,
+        462., 281., 373., 253.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.6396, 0.0000, 3.7763, 5.6296, 5.3186, 4.6144, 0.0000, 3.5134, 6.0751,
+        0.0000, 4.4879, 4.2802, 4.4815, 3.3768, 6.2884, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.8725, 3.3397, 5.6491, 6.9964, 6.6075, 7.2501, 3.2365, 5.3561, 7.8105,
+        3.4893, 5.5101, 5.7863, 5.7148, 6.1305, 8.6306, 3.3204],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(36.4210, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.6049, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 83.,   1.,  26.,  61.,  52.,  17.,   1.,  18.,  55.,   1., 178.,  36.,
+         44.,  15.,  17.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([103.,   1.,  28.,  85.,  77.,  17.,   1.,  31.,  65.,   1., 244.,  49.,
+         47.,  17.,  14.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.7036,  0.0000, 14.6812, 18.3493, 16.6053, 16.5893,  0.0000, 12.6772,
+        18.3887,  0.0000, 13.3165, 17.5325, 17.8215, 14.1185, 15.4281,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([25.8779,  0.0000, 24.4348, 29.3743, 26.7552, 30.3474,  0.0000, 21.7400,
+        30.9668,  0.0000, 22.5581, 29.0117, 30.0918, 22.6382, 25.5631,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(47.7916, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(47.3820, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([44.,  1., 26., 52., 55., 22.,  1., 44., 45.,  1., 82., 32., 67., 23.,
+        17.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 62.,   1.,  14.,  59.,  65.,  11.,   1.,  30.,  47.,   1., 102.,  27.,
+         44.,  22.,  20.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([19.7170,  0.0000, 16.6913, 24.3131, 20.5523, 20.2573,  0.0000, 13.0467,
+        22.6795,  0.0000, 18.2598, 16.4616, 20.0129, 14.1337, 12.0271,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([35.3524,  0.0000, 31.9337, 40.2035, 36.0525, 39.8764,  0.0000, 26.0722,
+        38.9984,  0.0000, 30.9256, 29.7403, 40.4336, 27.6446, 22.7447,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(36.6685, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.4398, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([17.,  1., 11., 17.,  7.,  9.,  1., 20.,  8.,  1., 23., 15., 16.,  7.,
+        13.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([12.,  2.,  4., 17.,  6.,  9.,  2., 14., 12.,  2., 16., 11.,  6.,  8.,
+         7.,  2.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([19.0519,  0.0000, 15.9157, 22.7544, 16.3679, 16.3976,  0.0000, 16.5346,
+        20.3093,  0.0000, 11.1979, 20.6710, 17.9329, 15.4749, 15.9520,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([35.7170,  3.0064, 31.7887, 42.9741, 30.7962, 30.2527,  2.7371, 31.4199,
+        36.1503,  2.0356, 21.1756, 42.7926, 31.1710, 27.4293, 31.3005,  2.1293],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.1922, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.8387, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([10.,  1.,  8.,  4.,  9.,  3.,  1., 11.,  5.,  1., 10.,  6.,  5.,  1.,
+        11.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([10.,  1.,  2.,  7., 17., 11.,  1.,  6.,  8.,  1., 10.,  3.,  2.,  2.,
+         3.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.7980, 0.0000, 2.6268, 4.9024, 2.5639, 4.0651, 0.0000, 5.4493, 4.8031,
+        0.0000, 1.8136, 3.0403, 4.2539, 0.0000, 4.6266, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([9.1740, 0.0000, 4.6382, 9.3795, 3.7278, 6.9805, 0.0000, 8.5676, 8.6689,
+        0.0000, 5.9960, 7.6883, 7.9674, 1.7139, 8.0690, 0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0834, device='cuda:0') tensor(0.9898, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.5147, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.5905, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([263., 519., 447., 358., 338., 350., 357., 224., 283., 248., 452., 769.,
+        312., 323., 269., 247.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([358., 560., 472., 371., 360., 406., 454., 301., 404., 303., 441., 796.,
+        341., 328., 312., 305.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.1678, 3.7099, 4.0978, 3.9966, 3.3685, 3.9023, 3.9704, 2.5827, 3.8041,
+        2.7683, 4.3001, 5.7859, 3.0712, 4.0453, 2.9425, 3.1600],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.4937, 4.6123, 4.9817, 4.9807, 4.5780, 4.8891, 5.0752, 3.9527, 4.8477,
+        4.0473, 5.1579, 6.3937, 4.1271, 5.1480, 4.4167, 4.4092],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.3383, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(17.1624, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([103.,  83., 130., 123., 162., 100., 118.,  96., 159.,  91.,  96.,  56.,
+         99., 106., 123.,  63.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([152., 148., 241., 220., 299., 165., 206., 170., 240., 163., 134., 153.,
+        256., 152., 208., 109.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.9716, 4.2297, 4.6263, 5.2541, 4.6816, 4.7251, 4.9999, 3.1880, 3.6464,
+        3.1931, 4.5721, 7.6362, 5.0658, 4.3606, 3.9816, 3.5343],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 7.2938,  6.9434,  7.3676,  8.2596,  7.6006,  7.0349,  7.6045,  5.0717,
+         6.5372,  5.1369,  8.1478, 11.1428,  7.8526,  7.4359,  6.3177,  5.9258],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.1438, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.9838, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 76., 106., 112.,  71., 137.,  99.,  91.,  85.,  88., 121.,  74.,  95.,
+        134.,  65., 121.,  94.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 68., 100., 107.,  72., 141.,  77.,  88.,  65.,  76., 108.,  61.,  86.,
+        122.,  56., 101.,  78.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([6.4400, 6.3934, 6.4148, 6.4731, 6.8818, 6.1958, 4.8025, 5.8252, 6.4423,
+        4.2618, 6.8837, 7.6294, 6.9662, 6.7147, 5.9592, 4.8386],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([13.3525, 12.6120, 12.8298, 12.0768, 13.4445, 12.1291,  8.8037, 11.3013,
+        13.0090,  8.3161, 13.7507, 14.5750, 13.4374, 13.9072, 11.5573,  9.7788],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(22.0411, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.6855, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([20., 24., 18., 11., 22., 17., 24., 20., 32., 20., 27., 20., 20., 14.,
+        23., 17.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([94., 50., 42., 63., 97., 91., 75., 79., 84., 79., 42., 49., 72., 80.,
+        64., 52.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.4065, 3.3504, 3.6749, 3.1099, 4.2360, 2.6659, 3.2188, 3.3450, 3.5401,
+        2.3256, 4.7928, 2.2881, 3.1940, 3.5588, 3.5669, 3.7947],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([6.8085, 7.0133, 5.3919, 5.3539, 6.7758, 5.1603, 5.8094, 5.4851, 6.4387,
+        3.8420, 8.3597, 4.8431, 6.2774, 6.3161, 5.3547, 6.2707],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.7822, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(7.0261, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 7., 15., 15., 13., 11.,  9.,  7.,  7., 22., 11., 13., 10.,  8., 13.,
+        13.,  7.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 5., 14., 14., 12., 11.,  7.,  7., 11., 15.,  7.,  9., 12.,  7.,  8.,
+        12.,  7.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([1.0208, 1.1006, 1.4478, 0.9277, 1.4427, 1.9731, 0.6054, 0.3900, 1.4107,
+        0.8916, 2.4939, 1.0045, 0.8029, 1.0191, 1.3343, 1.6537],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([1.6908, 2.4595, 2.3130, 1.6833, 2.6554, 3.1618, 1.3602, 0.9452, 2.0919,
+        1.6148, 4.0535, 1.8139, 1.9098, 1.7792, 1.7452, 3.2732],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.2735018730163574 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(13.0347, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.5698, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([  1.,   1., 263., 589., 254., 208., 252.,  14.,   1.,  17., 235., 318.,
+        612., 130.,  15., 191.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([126., 126., 216., 317., 229., 178., 209., 131., 126., 132., 180., 257.,
+        344., 138., 133., 172.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.0000, 0.0000, 5.7124, 5.4012, 4.2827, 3.8059, 5.2621, 4.4116, 0.0000,
+        3.2180, 4.0598, 4.7478, 5.0838, 6.1794, 3.4820, 5.0560],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([3.2737, 2.7310, 7.5764, 6.8251, 6.0338, 5.8277, 7.4766, 7.2931, 2.9624,
+        6.0787, 6.0508, 6.4833, 6.5670, 8.3887, 6.1492, 7.2052],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(38.3773, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(33.6924, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1.,  1., 51., 69., 34., 22., 26.,  7.,  1.,  9., 17., 52., 44., 18.,
+        10., 22.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([  1.,   1., 116., 145.,  69.,  40.,  51.,  16.,   1.,  12.,  56., 115.,
+         95.,  42.,  21.,  41.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000,  0.0000, 17.9703, 17.3264, 15.4450, 15.7307, 18.3458, 14.3302,
+         0.0000, 10.9350, 15.2187, 15.9893, 16.6700, 19.1031, 12.8683, 14.1104],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000,  0.0000, 29.4201, 26.8932, 25.3419, 27.8252, 30.8372, 21.5014,
+         0.0000, 20.4061, 24.4860, 26.4137, 25.9529, 30.4471, 20.1589, 19.5854],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(46.4701, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(51.6787, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([  1.,   1.,  56.,  82.,  64.,  25.,  43.,  14.,   1.,  10.,  71.,  57.,
+        101.,  32.,  15.,  27.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1.,  1., 35., 44., 30., 10., 32., 11.,  1.,  7., 27., 34., 63., 25.,
+        11., 21.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000,  0.0000, 20.9232, 21.2098, 15.6795, 13.9736, 19.6859, 14.6020,
+         0.0000,  9.1131, 14.2552, 18.8102, 15.7982, 23.8180, 13.7827, 15.1861],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000,  0.0000, 36.3655, 39.1029, 31.2609, 23.9808, 35.2750, 27.6068,
+         0.0000, 13.3942, 29.4262, 37.2534, 26.7310, 43.5430, 23.9166, 24.0599],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(33.9945, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(36.3932, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1.,  1., 14.,  3., 19., 13., 12.,  4.,  1.,  8., 45., 10., 13., 13.,
+         5., 13.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 2.,  2., 13., 10., 14.,  6., 15.,  8.,  2.,  6., 18.,  9., 13., 11.,
+        10., 19.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000,  0.0000, 19.9467, 11.2858, 14.2321, 20.2867, 12.8658, 11.9984,
+         0.0000,  9.4910, 15.6484, 12.9767, 14.0986, 13.4123, 12.0403, 15.1099],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 3.2655,  3.2031, 37.0833, 23.1938, 25.5022, 40.9712, 23.9303, 22.3377,
+         2.0550, 17.4945, 33.1674, 23.9358, 23.5228, 28.2369, 22.8704, 28.6336],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.4035, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.6595, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1.,  1.,  7., 14., 15., 10.,  5.,  1.,  1.,  1., 19.,  9., 15.,  2.,
+         1.,  7.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1.,  1.,  9., 10., 13.,  5., 13.,  2.,  1.,  1., 10., 12., 14.,  8.,
+         3., 11.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.0000, 0.0000, 3.0523, 4.0155, 2.4296, 4.0783, 6.4911, 0.0000, 0.0000,
+        0.0000, 4.7439, 3.3862, 3.0378, 2.4485, 0.0000, 5.3478],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000,  0.0000,  7.5660,  6.7775,  5.0451,  9.7101, 11.6039,  1.3770,
+         0.0000,  0.0000,  9.5745,  6.1509,  5.7110,  6.6263,  1.6625,  9.8312],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0956, device='cuda:0') tensor(0.9921, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.8683, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.8060, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([126., 126.,  87., 175., 134.,  70.,  60., 200., 245., 284., 167., 240.,
+        154., 133., 167.,  63.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([290., 356., 245., 457., 303., 256., 279., 391., 504., 719., 512., 612.,
+        450., 331., 450., 269.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.2599, 2.5850, 1.8989, 4.2301, 4.3714, 2.7445, 2.6437, 3.5057, 4.0095,
+        4.9917, 5.0268, 5.4520, 4.6211, 3.7183, 4.3860, 4.3619],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.1095, 3.5675, 3.2159, 5.0282, 5.2481, 4.1865, 4.0815, 4.3469, 4.6880,
+        5.7597, 5.8992, 6.0926, 5.5788, 4.8207, 5.2428, 5.7626],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.9041, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(17.0431, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 80.,  91.,  80.,  59., 109., 101.,  99.,  65.,  84., 104.,  86., 104.,
+         64.,  87.,  90., 140.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([187., 223., 175., 154., 185., 216., 236., 192., 198., 247., 190., 195.,
+        127., 176., 166., 260.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.1277, 4.3014, 3.9730, 3.6930, 4.7784, 3.0474, 3.0110, 3.7554, 4.2412,
+        6.0561, 6.0047, 5.7329, 6.4377, 4.2679, 4.9437, 5.2716],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 6.4837,  6.8777,  6.2123,  6.2578,  8.5198,  4.8692,  4.8940,  6.4044,
+         7.0909,  9.2095,  8.5436, 10.3455, 10.0196,  6.7334,  7.9166,  8.6988],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(32.5764, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(27.6437, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 57.,  73.,  83.,  78.,  44.,  81., 100.,  75.,  66.,  97.,  74.,  40.,
+         69.,  94.,  58.,  53.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([148., 187., 186., 152.,  95., 171., 191., 173., 154., 191., 157., 101.,
+        117., 149., 120., 166.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([7.6399, 5.1780, 4.0728, 4.2456, 7.5265, 4.2349, 4.0072, 5.2697, 5.8376,
+        6.5855, 6.4521, 8.0502, 7.5376, 5.8939, 6.8997, 8.7234],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([13.1744,  9.5000,  7.9479,  8.1166, 13.9294,  8.1433,  8.4413, 10.4770,
+        10.8090, 11.6512, 11.2902, 15.0042, 13.6263, 11.0950, 12.3254, 15.4425],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(19.7112, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.5283, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([30., 56., 46., 33., 39., 48., 36., 48., 35., 67., 43., 23., 29., 33.,
+        27., 36.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 49.,  61.,  60.,  53.,  38.,  98., 107.,  76.,  55.,  71.,  75.,  24.,
+         35.,  66.,  71.,  86.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.2103, 2.9899, 3.2502, 3.0866, 3.7828, 3.1590, 4.0814, 5.1524, 4.1035,
+        3.6017, 2.9179, 2.7445, 3.0828, 3.5939, 3.2176, 3.4252],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.8520, 5.0817, 5.5613, 5.6637, 5.7925, 5.4775, 6.2627, 8.2567, 5.9274,
+        5.8926, 5.2174, 5.0772, 5.7849, 6.8815, 5.2679, 6.0278],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.5668, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(8.0350, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 5., 14.,  9., 13., 14., 16., 15., 10.,  6., 20.,  9., 11.,  6.,  9.,
+        10., 13.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([7., 3., 6., 6., 5., 6., 5., 9., 9., 7., 5., 6., 1., 3., 1., 3.],
+       device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.8336, 0.9348, 0.5315, 1.3349, 1.9334, 1.1851, 1.5599, 1.2195, 0.9988,
+        1.5103, 0.7162, 1.1428, 1.6544, 0.8634, 1.6196, 1.3057],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([1.9210, 1.5478, 1.5124, 1.9906, 3.2493, 2.1020, 2.1108, 2.9067, 2.4533,
+        2.3957, 1.0184, 2.6336, 1.6544, 1.1688, 1.6196, 1.9754],
+  File "lord_exp.py", line 140, in <module>                                                                                                                                                                                                                                         | 12/378 [00:06<02:57,  2.06it/s]
+    main()
+  File "lord_exp.py", line 133, in main
+    args.func(args)
+  File "lord_exp.py", line 114, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 367, in train_ulord
+    loaded_model=load_model
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 431, in train
+    segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 526, in train_URLordModel
+    self.training_model(model_dir, tensorboard_dir)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 703, in training_model
+    reco_loss_epoch, reco_loss_epoch_witha, i)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 386, in do_step_ulord
+    loss.backward()
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/_tensor.py", line 255, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/autograd/__init__.py", line 149, in backward
+    allow_unreachable=True, accumulate_grad=True)  # allow_unreachable flag
+KeyboardInterrupt
+------------ 0.27642035484313965 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(14.1952, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.5698, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([  1., 188., 204.,  97.,   1.,  25.,  49.,   1., 278., 146.,   1.,   1.,
+         68., 309., 152.,   1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([126., 244., 202., 156., 126., 138., 165., 126., 323., 220., 126., 126.,
+        104., 301., 215., 126.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.0000, 4.0561, 5.1512, 4.3249, 0.0000, 5.3045, 4.2783, 0.0000, 5.8507,
+        5.5289, 0.0000, 0.0000, 4.5320, 5.7684, 6.1329, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([1.8672, 5.4162, 6.4551, 6.2214, 2.0116, 7.1392, 6.0348, 1.9344, 6.9303,
+        6.8896, 1.8390, 2.0362, 6.1120, 6.7530, 7.1862, 1.6705],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(39.0159, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(38.4272, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 44., 35., 14.,  1., 19., 19.,  1., 34., 40.,  1.,  1.,  2., 55.,
+        37.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1., 45., 26., 17.,  1., 12., 12.,  1., 51., 48.,  1.,  1.,  1., 69.,
+        38.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000, 15.5397, 15.8499, 12.1064,  0.0000, 16.0148, 13.1568,  0.0000,
+        17.2182, 16.8892,  0.0000,  0.0000,  9.7289, 17.6951, 17.1419,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000, 28.8910, 26.1363, 19.9263,  0.0000, 26.2162, 21.5755,  0.0000,
+        28.0285, 29.6139,  0.0000,  0.0000,  9.7289, 28.6420, 29.7169,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(56.8777, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(52.3942, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 15., 14.,  5.,  1., 16., 20.,  1., 10., 16.,  1.,  1.,  4., 14.,
+        10.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1., 29., 34., 18.,  1., 16., 18.,  1., 25., 37.,  1.,  1.,  7., 37.,
+        20.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000, 16.3009, 20.7767, 17.6169,  0.0000, 14.7839, 14.6833,  0.0000,
+        17.4121, 24.4425,  0.0000,  0.0000,  6.4121, 20.6285, 14.8583,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.0000, 31.6917, 30.1806, 28.6726,  0.0000, 29.8671, 26.7671,  0.0000,
+        31.5617, 41.3860,  0.0000,  0.0000, 20.6417, 36.3450, 28.6847,  0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(32.8925, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.2932, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 17.,  7.,  6.,  1., 20., 10.,  1., 21., 14.,  1.,  1.,  8., 13.,
+        24.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 2., 14., 12., 18.,  2.,  9., 16.,  2., 25.,  9.,  2.,  2.,  5., 25.,
+        20.,  2.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 0.0000, 10.3700, 13.1799, 11.5865,  0.0000, 15.6916, 12.6297,  0.0000,
+        14.7866, 16.0603,  0.0000,  0.0000, 14.4529, 18.0175, 15.6086,  0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 0.6784, 17.6330, 24.9559, 23.3269,  3.7206, 29.2413, 23.6547,  3.2751,
+        28.1511, 31.1361,  3.1578,  2.1425, 24.3317, 32.1317, 29.7827,  3.1470],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.3295, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(8.7763, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 1., 16.,  5.,  2.,  1.,  9.,  8.,  1., 17.,  6.,  1.,  1.,  3., 10.,
+         7.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 1., 20.,  7.,  4.,  1.,  4., 12.,  1., 24., 21.,  1.,  1.,  8., 18.,
+         5.,  1.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([0.0000, 2.7361, 3.3535, 2.1227, 0.0000, 3.3946, 2.2963, 0.0000, 4.3457,
+        4.1043, 0.0000, 0.0000, 3.8252, 3.6892, 5.5268, 0.0000],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([0.0000, 5.8168, 6.3640, 4.9197, 0.0000, 5.7792, 4.2905, 0.0000, 8.6176,
+        6.3916, 0.0000, 0.0000, 6.1491, 6.8054, 8.4250, 0.0000],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.0908, device='cuda:0') tensor(0.9947, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.1180, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.1590, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([878., 451., 614., 504., 428., 529., 436., 627., 265., 420., 336., 384.,
+        253., 553., 402., 537.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([926., 436., 619., 474., 359., 527., 389., 611., 296., 406., 320., 419.,
+        278., 531., 438., 507.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.1782, 2.9483, 4.3531, 3.1334, 3.1772, 3.1894, 2.3863, 3.6453, 2.2584,
+        2.8707, 2.9022, 3.1491, 2.8697, 2.8505, 2.9715, 4.0760],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.6145, 3.5805, 4.8551, 3.7300, 3.9126, 3.8286, 3.0783, 4.1861, 3.2023,
+        3.5300, 3.7642, 3.8170, 3.8486, 3.3680, 3.6131, 4.5693],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(18.7138, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(16.7488, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([136., 135., 162., 120., 106., 153., 122., 117., 152., 190., 154., 166.,
+        119., 129., 171., 162.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([248., 227., 309., 170., 190., 219., 191., 192., 247., 353., 242., 289.,
+        186., 230., 314., 258.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.5378, 4.9567, 5.3847, 4.5378, 6.0402, 4.6891, 4.0017, 5.3711, 2.8669,
+        3.8346, 3.7823, 4.8206, 4.5474, 3.7931, 5.4155, 5.4260],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([8.2763, 7.4610, 8.6607, 7.0545, 8.6879, 7.6754, 6.3121, 8.1149, 4.7470,
+        6.2571, 5.8420, 7.3298, 7.3697, 5.8116, 8.3023, 7.8154],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(33.1247, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(30.0136, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 58.,  93.,  59.,  96.,  88.,  72.,  91.,  43.,  66., 100.,  47.,  60.,
+         77.,  58.,  83.,  60.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 98., 133., 123., 105., 107., 111., 124.,  87., 117., 141.,  62., 111.,
+        113., 102., 134.,  82.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([7.1458, 5.4573, 4.6254, 5.5876, 7.8325, 6.2113, 4.6004, 5.5506, 4.5170,
+        5.5979, 7.7810, 5.2593, 6.8913, 6.0903, 6.5498, 8.1681],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([13.9679, 10.3509,  9.6762, 11.2783, 14.6330, 11.6019,  9.1188, 10.1087,
+         9.2764, 10.4116, 14.6520,  8.7965, 13.1429, 11.1921, 11.8983, 15.4327],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.3212, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.0730, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([35., 39., 31., 31., 29., 31., 34., 33., 33., 53., 31., 39., 34., 43.,
+        39., 30.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 82.,  97.,  57.,  76.,  87.,  75.,  70.,  76.,  97., 101., 139.,  89.,
+        144.,  93.,  86.,  84.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([2.3470, 3.4335, 2.4063, 3.2579, 3.5875, 2.5955, 3.0968, 2.6908, 2.3074,
+        4.0424, 2.2986, 2.7241, 3.2956, 4.1451, 2.6606, 2.0930],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([4.5733, 6.7818, 4.7101, 5.1839, 6.1677, 4.7373, 5.3950, 4.4405, 4.2873,
+        6.9454, 3.9878, 5.2408, 5.3371, 6.9629, 4.5935, 4.4299],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.2509, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.6245, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([36., 14., 11.,  9.,  9., 20., 12., 14., 16., 28.,  7., 10., 11., 23.,
+        15., 12.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([29., 16., 21., 19., 15., 22., 18., 20., 16., 18., 22., 19., 19., 31.,
+        19., 21.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([1.2202, 0.9765, 1.7004, 1.1411, 0.8502, 1.2275, 1.2987, 1.0826, 1.5922,
+        1.2765, 0.7091, 1.2926, 0.6408, 1.3020, 1.0826, 1.2115],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([3.4341, 1.7289, 3.0870, 2.1428, 1.3915, 2.4172, 2.1305, 1.6808, 2.2580,
+        2.3281, 1.4102, 2.2209, 1.3474, 2.7271, 1.8547, 2.3410],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+------------ 0.2744569778442383 backwards -------------------------------
+1 recon_decay
+tensor(0., device='cuda:0') tensor(1., device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(11.2402, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(15.3047, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([201.,   1., 183.,   1.,   1.,  30., 231., 171., 281., 472., 225.,  98.,
+        764., 122., 694., 794.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([167., 127., 149., 127., 127., 137., 174., 161., 182., 227., 175., 159.,
+        288., 114., 296., 322.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.8561, 0.0000, 3.5709, 0.0000, 0.0000, 3.1239, 3.5192, 4.6845, 3.9500,
+        4.3949, 4.0050, 4.7069, 5.2923, 4.6741, 4.6959, 4.8876],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.5766, 0.8105, 4.3188, 0.7364, 1.0968, 3.8066, 4.1081, 5.1096, 4.7453,
+        5.5108, 4.6030, 5.5096, 5.8740, 5.2215, 5.5409, 5.6378],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.9889, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(37.0921, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([18.,  1., 21.,  1.,  1.,  9., 19., 19., 27., 32., 48., 12., 62., 32.,
+        74., 50.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([11.,  1., 19.,  1.,  1., 11., 29., 16., 31., 42., 56., 13., 77., 35.,
+        79., 72.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([20.9641,  0.0000, 13.1223,  0.0000,  0.0000, 13.9540, 12.9750, 20.6609,
+        16.0828, 15.6113, 14.6151, 14.2285, 17.5418, 15.3486, 16.1415, 16.7705],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([34.8956,  0.0000, 23.5748,  0.0000,  0.0000, 22.4925, 20.4427, 33.5820,
+        26.4868, 28.2604, 25.3656, 23.7781, 30.0510, 27.8696, 28.9956, 29.3092],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(48.2064, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(53.0697, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([29.,  1., 22.,  1.,  1., 13., 17., 31., 55., 31., 47., 18., 56., 25.,
+        75., 59.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([11.,  1., 15.,  1.,  1., 10.,  6., 10., 23., 16., 33., 11., 22., 16.,
+        41., 36.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([15.7872,  0.0000, 13.5987,  0.0000,  0.0000, 13.7323, 17.1881, 18.1593,
+        17.0591, 15.5020, 14.7446, 11.3176, 20.1706, 19.6894, 18.0500, 19.9238],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([31.7490,  0.0000, 25.6359,  0.0000,  0.0000, 22.9656, 31.6293, 32.6418,
+        34.1364, 30.8519, 25.1646, 20.8352, 37.3223, 38.6011, 33.6333, 37.2211],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(31.9988, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(34.4521, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([11.,  1., 13.,  1.,  1.,  7., 14., 15., 35., 11., 11., 12., 24., 18.,
+        19., 15.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 8.,  2., 16.,  2.,  2., 14., 18.,  6., 16., 16., 20., 17., 26., 23.,
+        14., 14.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([12.8883,  0.0000, 12.9408,  0.0000,  0.0000, 12.0719, 12.7471, 16.7060,
+        15.2729, 11.9499, 10.8482, 13.3541, 15.7645, 15.3304, 13.9936, 14.3443],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([24.6975,  0.5032, 24.2426,  0.0788,  0.3625, 22.0981, 24.3815, 29.2495,
+        29.2222, 20.5951, 21.3875, 24.1358, 29.7770, 29.0474, 24.9457, 24.3430],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.8433, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(10.3266, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([ 6.,  1.,  7.,  1.,  1.,  2.,  4.,  7.,  7.,  2.,  4.,  1., 21.,  6.,
+         7.,  3.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([ 4.,  1., 11.,  1.,  1.,  5.,  7.,  4.,  6.,  4.,  9.,  2., 23., 14.,
+        12., 11.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.7967, 0.0000, 2.9215, 0.0000, 0.0000, 1.5857, 3.8560, 4.0491, 4.6430,
+        2.9159, 3.0438, 0.0000, 4.6102, 4.1433, 2.8286, 2.1310],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([6.8735, 0.0000, 5.8566, 0.0000, 0.0000, 3.5550, 7.8035, 6.7852, 8.6919,
+        7.0262, 7.2857, 1.7371, 9.1573, 7.6862, 5.2798, 4.1867],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+tensor(0.1191, device='cuda:0') tensor(0.9906, device='cuda:0') min max before 1
+torch.Size([16]) sum mask size 1
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(8.8980, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(9.6177, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([681., 593., 685., 354., 358., 451., 488., 539., 378., 475., 457., 894.,
+        566., 401., 669., 865.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([490., 371., 521., 262., 264., 333., 354., 397., 293., 321., 293., 609.,
+        378., 289., 474., 602.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.8496, 3.8327, 3.8581, 2.0406, 1.6432, 2.1840, 2.7877, 3.1054, 2.9583,
+        2.3231, 2.4794, 3.8020, 2.7251, 1.8749, 2.8155, 3.3329],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([4.2600, 4.1691, 4.1590, 2.4157, 2.1586, 2.6332, 3.2358, 3.3829, 3.4803,
+        2.7053, 2.7090, 4.2285, 3.0551, 2.2786, 3.1771, 3.6253],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(18.5476, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(17.5733, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([118., 137., 162., 198., 190., 154., 122., 122., 135., 163., 113., 146.,
+        141., 149., 134., 102.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([122., 163., 221., 202., 218., 176., 131., 146., 159., 230., 123., 168.,
+        173., 164., 144., 128.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([4.5690, 5.9455, 4.9477, 3.7055, 3.2404, 3.9479, 4.0637, 4.5540, 4.1718,
+        3.6866, 3.6277, 4.7333, 4.2047, 3.4368, 3.8687, 4.7147],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([7.3078, 8.5385, 8.9357, 6.0958, 5.0561, 6.0763, 6.4471, 7.7972, 6.4049,
+        5.9969, 5.6393, 8.1445, 6.1778, 5.2760, 6.2553, 7.0936],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(32.6726, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(28.0572, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([60., 29., 50., 67., 84., 96., 79., 67., 61., 86., 98., 84., 67., 97.,
+        87., 46.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([143.,  99.,  97., 153., 189., 169., 132., 124., 140., 175., 145., 145.,
+        124., 162., 138., 112.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([5.0477, 7.2030, 7.7044, 5.5829, 3.9838, 4.5694, 6.4681, 7.1426, 5.3652,
+        4.7330, 5.7940, 8.1416, 4.3453, 3.8598, 5.7055, 5.0175],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([ 9.3373, 13.2667, 14.7442, 10.5089,  8.1848,  9.3131, 12.1034, 13.0119,
+        10.6753,  9.1101, 11.1574, 15.6800,  7.6211,  7.8449, 11.0824,  9.6214],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(21.9490, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(20.7268, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([13., 12., 36., 13., 29., 16., 16., 32., 16., 28., 18.,  8., 17., 28.,
+        28., 19.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([40., 76., 51., 73., 82., 79., 63., 56., 71., 51., 71., 36., 54., 84.,
+        57., 48.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([3.2556, 2.6649, 5.3792, 3.6887, 3.2571, 1.8850, 2.3393, 5.5736, 3.2540,
+        4.1673, 3.5918, 3.8758, 2.4123, 2.6629, 3.2195, 2.8630],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([5.0299, 5.4227, 9.0178, 5.8277, 5.5382, 5.0240, 4.0803, 9.7530, 5.2575,
+        6.5986, 5.6713, 6.8969, 4.6399, 4.3122, 6.0980, 4.8807],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2
+m_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(6.6183, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+mo_f check
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(5.7762, device='cuda:0', grad_fn=<MaxBackward1>) min max before
+tensor(0., device='cuda:0', grad_fn=<MinBackward1>) tensor(1., device='cuda:0', grad_fn=<MaxBackward1>) min max after
+tensor([12.,  9., 39., 11., 10.,  6.,  7., 23.,  8., 13.,  6.,  6.,  7.,  7.,
+        13., 13.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([19., 16., 28., 17., 18., 17., 19., 16., 16., 20., 19., 31., 15., 17.,
+        13., 23.], device='cuda:0', grad_fn=<AddBackward0>) sum_m_f size
+tensor([1.0874, 0.5347, 2.4092, 1.2454, 1.3863, 1.2225, 0.7868, 1.2738, 0.9388,
+        1.2431, 1.0687, 1.7529, 1.1470, 1.4782, 1.1457, 1.6451],
+       device='cuda:0', grad_fn=<DivBackward0>) layer loss
+tensor([2.3107, 2.0332, 4.5882, 2.1425, 2.4239, 2.5947, 1.9320, 2.5723, 2.2032,
+        2.7602, 2.0455, 3.6542, 2.0199, 2.3052, 2.3410, 2.8285],
+       device='cuda:0', grad_fn=<AddBackward0>) layer loss 2

@@ -1,0 +1,13 @@
+True cuda
+nir
+/mnt/local/nirm/DS_2d/TRAIN/Labeled base dir chech
+imgs_fiesta unique: []
+shape trufi: (0,)
+Traceback (most recent call last):
+  File "lord_unet.py", line 745, in <module>
+    main()
+  File "lord_unet.py", line 738, in main
+    args.func(args)
+  File "lord_unet.py", line 60, in preprocess_onegr
+    imgs, classes, segs = img_dataset.read_images(load_trufi = Trufi, load_fiesta = Fiesta)
+TypeError: cannot unpack non-iterable NoneType object

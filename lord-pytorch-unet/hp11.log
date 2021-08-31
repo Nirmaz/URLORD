@@ -1,0 +1,15 @@
+nir
+True cuda
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/249/exp2d_D_1_2d False urlord2d_242exp2d_D_1_2d D_1_2d_TL D_1_2d_TU D_1_2d_VA D_1_2d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+urlord2d_242exp2d_D_1_2d model name
+dividing....
+(14345, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0. 1.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False True load_model
+/mnt/local/nirm/data_storage/cache/models/urlord2d_242exp2d_D_1_2d modle dir load
+2 30 config['n_classes'], config['class_dim']
+/mnt/local/nirm/data_storage/cache/models/urlord2d_242exp2d_D_1_2d modle dir load
+2 30 config['n_classes'], config['class_dim']
+here not calc
+[ 0.  1.  2.  3.  4.  5.  6.  7.  8.  9. 10. 11. 12. 13. 14. 15. 16.] unique pred
+here

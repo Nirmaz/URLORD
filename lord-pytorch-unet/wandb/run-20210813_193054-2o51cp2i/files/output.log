@@ -1,0 +1,43 @@
+True cuda
+nir
+here2
+here3
+exp_dict {'exp_name': 'exp1_dat1', 'data_l_name': 'DSRA13d_TL', 'data_u_name': 'DSRA13d_TU', 'data_v_name': 'DSRA13d_VA', 'data_t_name': 'DSRA13d_TE', 'path_d': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA13d', 'path_d_dict': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/TRUFI', 'base_dir': '/cs/casmip/nirm/embryo_project_version1/embryo_data', 'models_path': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d/data_1/', 'models': ['ULord3D_dict.jason', 'URLord3D_dict.jason', 'UNet3D_dict.jason', 'UCLord3D_dict.jason']}
+here4
+{'model_id': 'ULord', 'dim': 3, 'add_num_exp': False, 'load_model': True, 'model_name': 'ulord3d_144', 'train_model': False, 'evaluate_model': True, 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d'} model dict
+model_dict['model_name'] ulord3d_144
+args: None ULord ULord_3 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/145/exp1_dat1 False ulord3d_144 DSRA13d_TL DSRA13d_TU DSRA13d_VA DSRA13d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d
+dividing....
+False True load_model
+here6
+dict_keys([])
+0 post_processing.max_over_lap
+here7
+{'model_id': 'URLord', 'dim': 3, 'add_num_exp': False, 'load_model': True, 'model_name': 'urlord3d_144', 'train_model': False, 'evaluate_model': True, 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d'} model dict
+model_dict['model_name'] urlord3d_144
+args: None URLord URLord_3 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/145/exp1_dat1 False urlord3d_144 DSRA13d_TL DSRA13d_TU DSRA13d_VA DSRA13d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d
+dividing....
+False True load_model
+here6
+dict_keys([])
+0 post_processing.max_over_lap
+here7
+{'model_id': 'UNet', 'dim': 3, 'add_num_exp': False, 'load_model': True, 'model_name': 'testing_unet3d_144', 'train_model': False, 'evaluate_model': True, 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d'} model dict
+model_dict['model_name'] testing_unet3d_144
+args: None UNet UNet_3 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/145/exp1_dat1 False testing_unet3d_144 DSRA13d_TL DSRA13d_TU DSRA13d_VA DSRA13d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d
+dividing....
+False True load_model
+here6
+dict_keys([])
+0 post_processing.max_over_lap
+here7
+{'model_id': 'UCLord', 'dim': 3, 'add_num_exp': False, 'load_model': True, 'model_name': 'uclord3d_144', 'train_model': False, 'evaluate_model': True, 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d'} model dict
+model_dict['model_name'] uclord3d_144
+args: None UCLord UCLord_3 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/145/exp1_dat1 False uclord3d_144 DSRA13d_TL DSRA13d_TU DSRA13d_VA DSRA13d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_3d
+dividing....
+False True load_model
+here6
+dict_keys([])
+0 post_processing.max_over_lap
+here7
+here

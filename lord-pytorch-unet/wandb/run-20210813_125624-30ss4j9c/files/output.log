@@ -1,0 +1,24 @@
+True cuda
+nir
+here2
+here3
+exp_dict {'exp_name': 'exp2d_dat1', 'data_l_name': 'DSRA12d_TL', 'data_u_name': 'DSRA12d_TU', 'data_v_name': 'DSRA12d_VA', 'data_t_name': 'DSRA12d_TE', 'path_d': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d', 'path_d_dict': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/TRUFI', 'base_dir': '/cs/casmip/nirm/embryo_project_version1/embryo_data', 'models_path': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/data_1/', 'models': ['URLord2D_dict.jason']}
+here4
+{'model_id': 'URLord', 'dim': 2, 'add_num_exp': False, 'load_model': True, 'model_name': 'urlord2d_120', 'train_model': False, 'evaluate_model': True, 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d'} model dict
+model_dict['model_name'] urlord2d_120
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/125/exp2d_dat1 False urlord2d_120 DSRA12d_TL DSRA12d_TU DSRA12d_VA DSRA12d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+Traceback (most recent call last):
+  File "lord_exp.py", line 152, in <module>
+    main()
+  File "lord_exp.py", line 145, in main
+    args.func(args)
+  File "lord_exp.py", line 127, in run_exp
+    evaluate_model(model_dict, path_new_exp, model_name, exp_dict['base_dir'], data_with_gt, data_param)
+  File "lord_exp.py", line 55, in evaluate_model
+    lord3d.evaluate(model_dict, path_to_weights, data_param, data_with_gt, path_results)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 183, in evaluate
+    self.ulord_model.load_state_dict(torch.load(path_to_weights))
+AttributeError: 'NoneType' object has no attribute 'load_state_dict'
+False True load_model
+here6

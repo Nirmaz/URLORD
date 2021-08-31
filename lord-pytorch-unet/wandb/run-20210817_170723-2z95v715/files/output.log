@@ -1,0 +1,464 @@
+True cuda
+args: None UNet UNet_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/221/exp2d_DF_3_2d False unet2d_185 DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False True load_model
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+184 subject id
+139 dif cols diff_row 76
+x:48:124 y:71:210 z:26:92
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(54, 128, 128, 16) patch shape
+torch.Size([864, 1, 128, 128]) patches torch
+864 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+576 iiiiiii
+592 iiiiiii
+608 iiiiiii
+624 iiiiiii
+640 iiiiiii
+656 iiiiiii
+672 iiiiiii
+688 iiiiiii
+704 iiiiiii
+720 iiiiiii
+736 iiiiiii
+752 iiiiiii
+768 iiiiiii
+784 iiiiiii
+800 iiiiiii
+816 iiiiiii
+832 iiiiiii
+848 iiiiiii
+torch.Size([864, 1, 128, 128]) prediction size
+(864, 128, 128, 1) prediction shape  54 16
+[3.0249865e-08 3.6732278e-08 3.9672091e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(54, 128, 128, 16) prediction shape
+200 subject id
+119 dif cols diff_row 163
+x:63:226 y:80:199 z:21:78
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(45, 128, 128, 16) patch shape
+torch.Size([720, 1, 128, 128]) patches torch
+720 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+576 iiiiiii
+592 iiiiiii
+608 iiiiiii
+624 iiiiiii
+640 iiiiiii
+656 iiiiiii
+672 iiiiiii
+688 iiiiiii
+704 iiiiiii
+torch.Size([720, 1, 128, 128]) prediction size
+(720, 128, 128, 1) prediction shape  45 16
+[4.3332747e-08 5.1751240e-08 5.4294041e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(45, 128, 128, 16) prediction shape
+203 subject id
+135 dif cols diff_row 136
+x:43:179 y:34:169 z:12:36
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(36, 128, 128, 16) patch shape
+torch.Size([576, 1, 128, 128]) patches torch
+576 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+torch.Size([576, 1, 128, 128]) prediction size
+(576, 128, 128, 1) prediction shape  36 16
+[3.2152759e-08 3.2249002e-08 3.4872741e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(36, 128, 128, 16) prediction shape
+209 subject id
+145 dif cols diff_row 76
+x:103:179 y:106:251 z:22:81
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(54, 128, 128, 16) patch shape
+torch.Size([864, 1, 128, 128]) patches torch
+864 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+576 iiiiiii
+592 iiiiiii
+608 iiiiiii
+624 iiiiiii
+640 iiiiiii
+656 iiiiiii
+672 iiiiiii
+688 iiiiiii
+704 iiiiiii
+720 iiiiiii
+736 iiiiiii
+752 iiiiiii
+768 iiiiiii
+784 iiiiiii
+800 iiiiiii
+816 iiiiiii
+832 iiiiiii
+848 iiiiiii
+torch.Size([864, 1, 128, 128]) prediction size
+(864, 128, 128, 1) prediction shape  54 16
+[3.6503895e-08 3.7961740e-08 3.8418669e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(54, 128, 128, 16) prediction shape
+211 subject id
+166 dif cols diff_row 90
+x:102:192 y:61:227 z:3:58
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(27, 128, 128, 16) patch shape
+torch.Size([432, 1, 128, 128]) patches torch
+432 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+torch.Size([432, 1, 128, 128]) prediction size
+(432, 128, 128, 1) prediction shape  27 16
+[4.6326821e-08 4.7972758e-08 4.8162903e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(27, 128, 128, 16) prediction shape
+225 subject id
+144 dif cols diff_row 98
+x:118:216 y:108:252 z:13:64
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(45, 128, 128, 16) patch shape
+torch.Size([720, 1, 128, 128]) patches torch
+720 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+576 iiiiiii
+592 iiiiiii
+608 iiiiiii
+624 iiiiiii
+640 iiiiiii
+656 iiiiiii
+672 iiiiiii
+688 iiiiiii
+704 iiiiiii
+torch.Size([720, 1, 128, 128]) prediction size
+(720, 128, 128, 1) prediction shape  45 16
+[3.7956525e-08 4.2191353e-08 4.8133238e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(45, 128, 128, 16) prediction shape
+228 subject id
+126 dif cols diff_row 128
+x:99:227 y:80:206 z:35:64
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(36, 128, 128, 16) patch shape
+torch.Size([576, 1, 128, 128]) patches torch
+576 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+torch.Size([576, 1, 128, 128]) prediction size
+(576, 128, 128, 1) prediction shape  36 16
+[3.4254317e-08 3.5527325e-08 3.7266350e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(36, 128, 128, 16) prediction shape
+234 subject id
+131 dif cols diff_row 124
+x:81:205 y:63:194 z:47:72
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(36, 128, 128, 16) patch shape
+torch.Size([576, 1, 128, 128]) patches torch
+576 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+torch.Size([576, 1, 128, 128]) prediction size
+(576, 128, 128, 1) prediction shape  36 16
+[5.3802513e-08 5.5324570e-08 5.8012176e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(36, 128, 128, 16) prediction shape
+4.0 post_processing.max_over_lap
+[0. 1. 2. 3. 4.] unique pred
+here

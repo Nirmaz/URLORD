@@ -1,0 +1,134 @@
+True cuda
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/209/exp2d_DF_3_2d True urlord2d_209exp2d_DF_3_2d DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+2 30 config['n_classes'], config['class_dim']
+here seg decay
+here recon_loss
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py:356: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  tensor = torch.tensor(x, requires_grad = False)
+  0%|                                                                                                                                                                                                                                                                                        | 0/378 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                        | 0/378 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                         | 0/45 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/126 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+epoch #0:   1%|██▋                                                                                                                                                                                                                                                         | 4/378 [00:01<01:57,  3.17it/s, loss=3.8]
+  1%|██▉                                                                                                                                                                                                                                                                             | 4/378 [00:01<01:57,  3.17it/s]
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04709792137145996 loss -------------------------------
+------------ 0.17052507400512695 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04026293754577637 loss -------------------------------
+------------ 0.1539013385772705 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03865861892700195 loss -------------------------------
+------------ 0.1517040729522705 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03861236572265625 loss -------------------------------
+------------ 0.15072083473205566 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03867530822753906 loss -------------------------------
+------------ 0.15397238731384277 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03872227668762207 loss -------------------------------
+------------ 0.15137600898742676 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03888583183288574 loss -------------------------------
+------------ 0.15172457695007324 backwards -------------------------------
+
+  3%|█████████▎                                                                                                                                                                                                                                                                     | 13/378 [00:03<01:28,  4.12it/s]
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03881263732910156 loss -------------------------------
+------------ 0.15216422080993652 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03898477554321289 loss -------------------------------
+------------ 0.15192389488220215 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03876328468322754 loss -------------------------------
+------------ 0.15264391899108887 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04005289077758789 loss -------------------------------
+------------ 0.1514263153076172 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04300689697265625 loss -------------------------------
+------------ 0.15169095993041992 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03986978530883789 loss -------------------------------
+------------ 0.15228843688964844 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.039099693298339844 loss -------------------------------
+------------ 0.15229201316833496 backwards -------------------------------
+  File "lord_exp.py", line 140, in <module>                                                                                                                                                                                                                                         | 14/378 [00:03<01:27,  4.15it/s]
+    main()
+  File "lord_exp.py", line 133, in main
+    args.func(args)
+  File "lord_exp.py", line 114, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 367, in train_ulord
+    loaded_model=load_model
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 434, in train
+    segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 529, in train_URLordModel
+    self.training_model(model_dir, tensorboard_dir)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 706, in training_model
+    reco_loss_epoch, reco_loss_epoch_witha, i)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 375, in do_step_ulord
+    batch_u['img'], batch_u['class_id'])
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py", line 296, in forward
+    generated_img_u = self.generator(inp_gen_u, class_adain_params_u)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py", line 429, in forward
+    x = self.adain_conv_layers(x)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/container.py", line 139, in forward
+    input = module(input)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py", line 532, in forward
+    weight=weight, bias=bias, training=True
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py", line 2282, in batch_norm
+    input, weight, bias, running_mean, running_var, training, momentum, eps, torch.backends.cudnn.enabled
+KeyboardInterrupt

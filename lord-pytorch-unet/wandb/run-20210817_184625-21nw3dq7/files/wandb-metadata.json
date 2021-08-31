@@ -1,0 +1,38 @@
+{
+    "os": "Linux-5.10.46-aufs-1-x86_64-with-debian-10.5",
+    "python": "3.7.3",
+    "heartbeatAt": "2021-08-17T15:46:26.998126",
+    "startedAt": "2021-08-17T15:46:25.902657",
+    "docker": null,
+    "gpu": "GeForce RTX 3090",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [
+        "--base-dir",
+        "/mnt/local/nirm/data_storage",
+        "preprocess_onegr",
+        "--dataset-id",
+        "embryos_dataset_onegr",
+        "--dataset-path",
+        "/mnt/local/nirm/DF_1_2d/TRAIN/ULabeled",
+        "--data-name",
+        "DF_1_2d_TU",
+        "--t",
+        "1",
+        "--f",
+        "1"
+    ],
+    "state": "running",
+    "program": "lord_unet.py",
+    "codePath": "lord-pytorch-unet/lord_unet.py",
+    "git": {
+        "remote": "https://github.com/Nirmaz/embryo_project_version1.git",
+        "commit": "3bd02b044b391378107e0c1655421fc912527079"
+    },
+    "email": "nir5591@gmail.com",
+    "root": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes",
+    "host": "cas605",
+    "username": "nirm",
+    "executable": "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/bin/python"
+}

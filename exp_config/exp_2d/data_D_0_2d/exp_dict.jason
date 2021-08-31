@@ -9,4 +9,4 @@
 "path_dataset":"/mnt/local/nirm/D_0_2d",
 "test_key":"cases_test_T",
 "models_path":"/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/data_D_0_2d/",
-"models": ["UNet2D_dict.jason", "URLord2D_dict.jason", "ULord2D_dict.jason","UNetC2D_dict.jason"]}
+"models": ["URLord2D_dict.jason"]}
