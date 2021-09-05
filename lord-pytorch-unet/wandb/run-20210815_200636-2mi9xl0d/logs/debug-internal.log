@@ -1,5 +1,0 @@
-2021-08-15 20:06:37,367 INFO    MainThread:32316 [internal.py:wandb_internal():91] W&B internal server running at pid: 32316, started at: 2021-08-15 20:06:37.365649
-2021-08-15 20:06:37,368 DEBUG   HandlerThread:32316 [handler.py:handle_request():124] handle_request: check_version
-2021-08-15 20:06:37,368 INFO    WriterThread:32316 [datastore.py:open_for_write():80] open: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210815_200636-2mi9xl0d/run-2mi9xl0d.wandb
-2021-08-15 20:06:37,371 DEBUG   SenderThread:32316 [sender.py:send():179] send: header
-2021-08-15 20:06:37,371 DEBUG   SenderThread:32316 [sender.py:send_request():193] send_request: check_version

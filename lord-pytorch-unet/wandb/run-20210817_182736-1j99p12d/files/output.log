@@ -1,6 +1,0 @@
-True cuda
-nir
-usage: lord_unet.py [-h] -bd BASE_DIR
-                    {preprocess,preprocess_onegr,split-classes,split-samples,split-samples-ulord,train_ulord,train_ulord3d,train_ulm,train-encoders}
-                    ...
-lord_unet.py: error: unrecognized arguments: --dataset-patth /mnt/local/nirm/DF_2_2d/TRAIN/ULabeled

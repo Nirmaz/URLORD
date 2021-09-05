@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df361a35-1187-4c3d-aefe-495e07e4962a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/ana_results_brain.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lord-pytorch-unet/analysis_results.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR10S1.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR10S1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR10S2.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR10S2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR10S3.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR10S3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR3S1.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR3S1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR3S2.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR3S2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR3S3.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/configuration/sdnet_config_DFR3S3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/anatomy_modality_decomposition-master/model_executors/embryo_sdnet_exec.py" beforeDir="false" afterPath="$PROJECT_DIR$/anatomy_modality_decomposition-master/model_executors/embryo_sdnet_exec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/embryo_main/configd_brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/configd_brain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/embryo_main/create_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/embryo_main/create_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_config/exp_3d/exp_dict.jason" beforeDir="false" afterPath="$PROJECT_DIR$/exp_config/exp_3d/exp_dict.jason" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/dataset_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/model/training_unet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp2.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lord-pytorch-unet/run_exp_brain.sh" beforeDir="false" afterPath="$PROJECT_DIR$/lord-pytorch-unet/run_exp_brain.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -474,7 +464,7 @@
       <workItem from="1630394806858" duration="9417000" />
       <workItem from="1630436840557" duration="31696000" />
       <workItem from="1630607474183" duration="28871000" />
-      <workItem from="1630689934225" duration="21082000" />
+      <workItem from="1630689934225" duration="21905000" />
     </task>
     <task id="LOCAL-00001" summary="all">
       <created>1625765445775</created>
@@ -553,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630397432208</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="final">
+      <created>1630873266609</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630873266609</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,7 +576,8 @@
     <MESSAGE value="config" />
     <MESSAGE value="full pipeline" />
     <MESSAGE value="alllllllllll" />
-    <option name="LAST_COMMIT_MESSAGE" value="alllllllllll" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="40" width="1510" height="549" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1630679145021">
@@ -598,12 +596,12 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="950" y="325" width="326" height="442" key="#com.intellij.ide.macro.MacrosDialog/0.25.1920.1030@0.25.1920.1030" timestamp="1624871109185" />
-    <state x="407" y="25" width="942" height="767" key="CommitChangelistDialog2" timestamp="1630397412794">
+    <state x="479" y="25" width="1126" height="750" key="CommitChangelistDialog2" timestamp="1630873264295">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="182" y="31" width="942" height="767" key="CommitChangelistDialog2/0.0.1344.840@0.0.1344.840" timestamp="1629269106022" />
     <state x="353" y="31" width="879" height="732" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494730201" />
-    <state x="407" y="25" width="1126" height="1030" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1630397412794" />
+    <state x="479" y="25" width="1126" height="750" key="CommitChangelistDialog2/0.25.1920.1030@0.25.1920.1030" timestamp="1630873264295" />
     <state x="796" y="356" width="607" height="488" key="FileChooserDialogImpl" timestamp="1630689245519">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
@@ -660,12 +658,12 @@
       <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="145" y="136" width="788" height="552" key="SettingsEditor/0.25.1920.1030@0.25.1920.1030" timestamp="1630693002365" />
-    <state x="260" y="31" width="560" height="504" key="Vcs.Push.Dialog.v2" timestamp="1629269131516">
-      <screen x="0" y="0" width="1344" height="840" />
+    <state x="655" y="339" width="560" height="504" key="Vcs.Push.Dialog.v2" timestamp="1630873277178">
+      <screen x="0" y="25" width="1920" height="1030" />
     </state>
     <state x="260" y="31" width="560" height="504" key="Vcs.Push.Dialog.v2/0.0.1344.840@0.0.1344.840" timestamp="1629269131516" />
     <state x="524" y="263" width="515" height="338" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1628494832058" />
-    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1628680177463" />
+    <state x="655" y="339" width="608" height="402" key="Vcs.Push.Dialog.v2/0.25.1920.1030@0.25.1920.1030" timestamp="1630873277178" />
     <state width="964" height="516" key="XDebugger.FullValuePopup" timestamp="1628001078286">
       <screen x="0" y="25" width="1920" height="1030" />
     </state>

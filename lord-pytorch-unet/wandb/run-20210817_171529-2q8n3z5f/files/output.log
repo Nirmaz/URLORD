@@ -1,4 +1,0 @@
-
-True cuda
-usage: lord_exp.py [-h] -bd BASE_DIR {run_exp} ...
-lord_exp.py: error: argument action: invalid choice: 'lord_exp.py' (choose from 'run_exp')
