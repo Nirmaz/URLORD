@@ -1,0 +1,143 @@
+True cuda
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/211/exp2d_DF_3_2d True urlord2d_211exp2d_DF_3_2d DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+2 30 config['n_classes'], config['class_dim']
+here seg decay
+here recon_loss
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py:356: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  tensor = torch.tensor(x, requires_grad = False)
+  0%|                                                                                                                                                                                                                                                                                        | 0/378 [00:00<?, ?it/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+  0%|                                                                                                                                                                                                                                                                                        | 0/378 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                         | 0/45 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                        | 0/126 [00:00<?, ?it/s]
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.05190610885620117 loss -------------------------------
+------------ 0.16743922233581543 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03912687301635742 loss -------------------------------
+------------ 0.15050196647644043 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.038426876068115234 loss -------------------------------
+------------ 0.1519310474395752 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04213142395019531 loss -------------------------------
+------------ 0.14990472793579102 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.038084983825683594 loss -------------------------------
+------------ 0.15137958526611328 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.041869163513183594 loss -------------------------------
+------------ 0.14981937408447266 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03801679611206055 loss -------------------------------
+------------ 0.15165090560913086 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/126 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+epoch #0:   1%|███▎                                                                                                                                                                                                                                                        | 5/378 [00:01<01:48,  3.45it/s, loss=3.8]
+  1%|███▌                                                                                                                                                                                                                                                                            | 5/378 [00:01<01:48,  3.45it/s]
+------------ 0.15050554275512695 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03838968276977539 loss -------------------------------
+------------ 0.1514270305633545 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03941988945007324 loss -------------------------------
+------------ 0.150465726852417 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03716111183166504 loss -------------------------------
+------------ 0.15008211135864258 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03915262222290039 loss -------------------------------
+------------ 0.15120196342468262 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.038811445236206055 loss -------------------------------
+------------ 0.1509075164794922 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+
+  3%|█████████▎                                                                                                                                                                                                                                                                     | 13/378 [00:03<01:27,  4.18it/s]
+------------ 0.15094637870788574 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03925967216491699 loss -------------------------------
+------------ 0.15135908126831055 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03849625587463379 loss -------------------------------
+------------ 0.15308475494384766 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03895449638366699 loss -------------------------------
+------------ 0.15137124061584473 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.038849830627441406 loss -------------------------------
+------------ 0.15218019485473633 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+  File "lord_exp.py", line 140, in <module>                                                                                                                                                                                                                                         | 18/378 [00:04<01:25,  4.19it/s]
+    main()
+  File "lord_exp.py", line 133, in main
+    args.func(args)
+  File "lord_exp.py", line 114, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 367, in train_ulord
+    loaded_model=load_model
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 434, in train
+    segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 529, in train_URLordModel
+    self.training_model(model_dir, tensorboard_dir)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 706, in training_model
+    reco_loss_epoch, reco_loss_epoch_witha, i)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 389, in do_step_ulord
+    loss.backward()
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/_tensor.py", line 255, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/autograd/__init__.py", line 149, in backward
+    allow_unreachable=True, accumulate_grad=True)  # allow_unreachable flag
+KeyboardInterrupt

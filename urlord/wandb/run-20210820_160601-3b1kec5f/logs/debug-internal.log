@@ -1,0 +1,47 @@
+2021-08-20 16:06:02,031 INFO    MainThread:3061 [internal.py:wandb_internal():91] W&B internal server running at pid: 3061, started at: 2021-08-20 16:06:02.030136
+2021-08-20 16:06:02,032 DEBUG   HandlerThread:3061 [handler.py:handle_request():124] handle_request: check_version
+2021-08-20 16:06:02,032 INFO    WriterThread:3061 [datastore.py:open_for_write():80] open: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/run-3b1kec5f.wandb
+2021-08-20 16:06:02,033 DEBUG   SenderThread:3061 [sender.py:send():179] send: header
+2021-08-20 16:06:02,033 DEBUG   SenderThread:3061 [sender.py:send_request():193] send_request: check_version
+2021-08-20 16:06:02,279 DEBUG   SenderThread:3061 [sender.py:send():179] send: run
+2021-08-20 16:06:02,637 INFO    SenderThread:3061 [dir_watcher.py:__init__():168] watching files in: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files
+2021-08-20 16:06:02,637 INFO    SenderThread:3061 [sender.py:_start_run_threads():719] run started: 3b1kec5f with start time 1629464761
+2021-08-20 16:06:02,637 DEBUG   SenderThread:3061 [sender.py:send():179] send: summary
+2021-08-20 16:06:02,637 DEBUG   HandlerThread:3061 [handler.py:handle_request():124] handle_request: run_start
+2021-08-20 16:06:02,639 DEBUG   HandlerThread:3061 [meta.py:__init__():39] meta init
+2021-08-20 16:06:02,639 DEBUG   HandlerThread:3061 [meta.py:__init__():53] meta init done
+2021-08-20 16:06:02,639 DEBUG   HandlerThread:3061 [meta.py:probe():210] probe
+2021-08-20 16:06:02,640 INFO    SenderThread:3061 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-20 16:06:02,645 DEBUG   HandlerThread:3061 [meta.py:_setup_git():200] setup git
+2021-08-20 16:06:02,657 DEBUG   HandlerThread:3061 [meta.py:_setup_git():207] setup git done
+2021-08-20 16:06:02,657 DEBUG   HandlerThread:3061 [meta.py:_save_pip():57] save pip
+2021-08-20 16:06:02,660 DEBUG   HandlerThread:3061 [meta.py:_save_pip():71] save pip done
+2021-08-20 16:06:02,660 DEBUG   HandlerThread:3061 [meta.py:probe():252] probe done
+2021-08-20 16:06:02,690 DEBUG   SenderThread:3061 [sender.py:send():179] send: files
+2021-08-20 16:06:02,690 INFO    SenderThread:3061 [sender.py:_save_file():841] saving file wandb-metadata.json with policy now
+2021-08-20 16:06:02,693 DEBUG   HandlerThread:3061 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-20 16:06:02,693 DEBUG   SenderThread:3061 [sender.py:send_request():193] send_request: stop_status
+2021-08-20 16:06:03,517 INFO    Thread-11 :3061 [upload_job.py:push():137] Uploaded file /tmp/tmptqtepbf9wandb/31a681pv-wandb-metadata.json
+2021-08-20 16:06:03,639 INFO    Thread-8  :3061 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/wandb-metadata.json
+2021-08-20 16:06:03,639 INFO    Thread-8  :3061 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/wandb-summary.json
+2021-08-20 16:06:03,639 INFO    Thread-8  :3061 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/requirements.txt
+2021-08-20 16:06:03,639 INFO    Thread-8  :3061 [dir_watcher.py:_on_file_created():216] file/dir created: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/output.log
+2021-08-20 16:06:03,975 WARNING MainThread:3061 [internal.py:wandb_internal():147] Internal process interrupt: 1
+2021-08-20 16:06:11,982 WARNING MainThread:3061 [internal.py:is_dead():367] Internal process exiting, parent pid 3006 disappeared
+2021-08-20 16:06:11,982 ERROR   MainThread:3061 [internal.py:wandb_internal():143] Internal process shutdown.
+2021-08-20 16:06:12,006 INFO    SenderThread:3061 [sender.py:finish():945] shutting down sender
+2021-08-20 16:06:12,006 INFO    SenderThread:3061 [dir_watcher.py:finish():282] shutting down directory watcher
+2021-08-20 16:06:12,641 INFO    SenderThread:3061 [dir_watcher.py:finish():312] scan: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files
+2021-08-20 16:06:12,641 INFO    SenderThread:3061 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/config.yaml config.yaml
+2021-08-20 16:06:12,642 INFO    SenderThread:3061 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/wandb-metadata.json wandb-metadata.json
+2021-08-20 16:06:12,642 INFO    SenderThread:3061 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/requirements.txt requirements.txt
+2021-08-20 16:06:12,642 INFO    SenderThread:3061 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/output.log output.log
+2021-08-20 16:06:12,642 INFO    SenderThread:3061 [dir_watcher.py:finish():318] scan save: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/wandb-summary.json wandb-summary.json
+2021-08-20 16:06:12,642 INFO    SenderThread:3061 [file_pusher.py:finish():177] shutting down file pusher
+2021-08-20 16:06:12,642 INFO    SenderThread:3061 [file_pusher.py:join():182] waiting for file pusher
+2021-08-20 16:06:12,691 INFO    WriterThread:3061 [datastore.py:close():288] close: /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/run-3b1kec5f.wandb
+2021-08-20 16:06:12,704 INFO    HandlerThread:3061 [handler.py:finish():638] shutting down handler
+2021-08-20 16:06:13,460 INFO    Thread-14 :3061 [upload_job.py:push():137] Uploaded file /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/wandb-summary.json
+2021-08-20 16:06:13,493 INFO    Thread-13 :3061 [upload_job.py:push():137] Uploaded file /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/requirements.txt
+2021-08-20 16:06:13,522 INFO    Thread-12 :3061 [upload_job.py:push():137] Uploaded file /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/wandb/run-20210820_160601-3b1kec5f/files/config.yaml
+2021-08-20 16:06:14,333 INFO    MainThread:3061 [internal.py:handle_exit():78] Internal process exited

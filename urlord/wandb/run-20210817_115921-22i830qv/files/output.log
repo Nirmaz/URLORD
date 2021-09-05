@@ -1,0 +1,160 @@
+True cuda
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/208/exp2d_DF_3_2d True urlord2d_208exp2d_DF_3_2d DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+2 30 config['n_classes'], config['class_dim']
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py:356: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  tensor = torch.tensor(x, requires_grad = False)
+here seg decay
+here recon_loss
+  0%|                                                                                                                                                                                                                                                                                        | 0/378 [00:00<?, ?it/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/378 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                              | 0/45 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/126 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+epoch #0:   1%|███▎                                                                                                                                                                                                                                                       | 5/378 [00:01<01:48,  3.42it/s, loss=3.85]
+  1%|███▌                                                                                                                                                                                                                                                                            | 5/378 [00:01<01:48,  3.42it/s]
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04796957969665527 loss -------------------------------
+------------ 0.16866159439086914 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04146218299865723 loss -------------------------------
+------------ 0.15027594566345215 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03837394714355469 loss -------------------------------
+------------ 0.15171146392822266 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.04266500473022461 loss -------------------------------
+------------ 0.15160655975341797 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03879904747009277 loss -------------------------------
+------------ 0.15155792236328125 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+
+  3%|█████████▎                                                                                                                                                                                                                                                                     | 13/378 [00:03<01:27,  4.18it/s]
+------------ 0.15198993682861328 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03860163688659668 loss -------------------------------
+------------ 0.1516716480255127 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03870534896850586 loss -------------------------------
+------------ 0.15165114402770996 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03853726387023926 loss -------------------------------
+------------ 0.1515662670135498 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03853726387023926 loss -------------------------------
+------------ 0.15244174003601074 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03895998001098633 loss -------------------------------
+------------ 0.15169620513916016 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.0385897159576416 loss -------------------------------
+------------ 0.15233993530273438 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03826260566711426 loss -------------------------------
+------------ 0.1514747142791748 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+  File "lord_exp.py", line 140, in <module>                                                                                                                                                                                                                                         | 19/378 [00:05<01:25,  4.19it/s]
+    main()
+  File "lord_exp.py", line 133, in main
+    args.func(args)
+  File "lord_exp.py", line 114, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 367, in train_ulord
+    loaded_model=load_model
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 434, in train
+    segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 529, in train_URLordModel
+    self.training_model(model_dir, tensorboard_dir)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 706, in training_model
+    reco_loss_epoch, reco_loss_epoch_witha, i)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 381, in do_step_ulord
+    reco_loss_l, reco_loss_u = self.calc_rec_loss(out, batch_t, batch_u, criterion)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 313, in calc_rec_loss_urord
+    reco_loss_u = criterion(out['img_u'], batch_u['img'] * seg1, None)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py", line 583, in forward
+    f1 = self.vgg(I1)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py", line 563, in forward
+    x = self.vggnet.features[i](x)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/modules/pooling.py", line 164, in forward
+    self.return_indices)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/_jit_internal.py", line 405, in fn
+    return if_false(*args, **kwargs)
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py", line 718, in _max_pool2d
+    return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+KeyboardInterrupt
+------------ 0.152327299118042 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03834128379821777 loss -------------------------------
+------------ 0.15120506286621094 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03877878189086914 loss -------------------------------
+------------ 0.15241074562072754 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.0381321907043457 loss -------------------------------
+------------ 0.15103554725646973 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03679776191711426 loss -------------------------------
+------------ 0.15111064910888672 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss
+torch.Size([16]) losssss
+------------ 0.03844165802001953 loss -------------------------------
+------------ 0.15067052841186523 backwards -------------------------------
+1 recon_decay
+torch.Size([16]) losssss

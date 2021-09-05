@@ -1,0 +1,1254 @@
+True cuda
+nir
+here2
+here3
+exp_dict {'exp_name': 'exp2d_dat1', 'data_l_name': 'D_0_2d_TL', 'data_u_name': 'D_0_2d_TU', 'data_v_name': 'D_0_2d_VA', 'data_t_name': 'D_0_2d_TE', 'path_d': '/mnt/local/nirm/TRUFI', 'path_d_dict': '/mnt/local/nirm/patch2D', 'base_dir': '/mnt/local/nirm/data_storage', 'models_path': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/data_D_0_2d/', 'models': ['URLord2D_dict.jason', 'ULord2D_dict.jason', 'UNet2D_dict.jason']}
+here4
+{'model_id': 'URLord', 'dim': 2, 'add_num_exp': True, 'load_model': False, 'train_model': True, 'evaluate_model': True, 'model_name': 'urlord2d_120', 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d'} model dict
+enterrrr
+model_dict['model_name'] urlord2d_120_156
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/156/exp2d_dat1 True urlord2d_120_156 D_0_2d_TL D_0_2d_TU D_0_2d_VA D_0_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(6048, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False False load_model
+arrive train
+2 30 config['n_classes'], config['class_dim']
+here seg decay
+here recon_loss
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py:358: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  tensor = torch.tensor(x, requires_grad = False)
+  0%|                                                                                                                                                                                                                                                                                         | 0/531 [00:00<?, ?it/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                              | 0/531 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                              | 0/144 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                              | 0/378 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([1], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([1], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([1], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([1], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([1], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+tensor([0], device='cuda:0') class_id
+torch.Size([1, 1, 128, 128]) img.size()
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+epoch #0:   2%|█████▋                                                                                                                                                                                                                                                     | 12/531 [00:03<01:15,  6.84it/s, loss=2.85]
+  2%|██████▏                                                                                                                                                                                                                                                                         | 12/531 [00:03<01:15,  6.83it/s]
+------------ 0.8670816421508789 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08843016624450684 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08568429946899414 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08581352233886719 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08580923080444336 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08466958999633789 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08574342727661133 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08537888526916504 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0853891372680664 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08589959144592285 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08736848831176758 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08518409729003906 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+  5%|█████████████▎                                                                                                                                                                                                                                                                  | 26/531 [00:05<01:10,  7.14it/s]
+------------ 0.08488655090332031 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0852048397064209 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0856025218963623 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08571791648864746 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08493280410766602 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08759617805480957 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08469390869140625 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08473539352416992 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08519220352172852 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08641672134399414 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08516216278076172 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08463788032531738 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08607101440429688 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08574104309082031 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+  8%|█████████████████████                                                                                                                                                                                                                                                           | 41/531 [00:07<01:07,  7.28it/s]
+------------ 0.08611440658569336 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08513855934143066 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08660626411437988 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08745288848876953 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0850062370300293 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08524155616760254 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08568739891052246 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09051680564880371 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08526253700256348 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08677053451538086 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08470892906188965 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08561563491821289 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08524394035339355 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08680176734924316 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 10%|████████████████████████████▏                                                                                                                                                                                                                                                   | 55/531 [00:09<01:06,  7.18it/s]
+------------ 0.08507323265075684 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08486819267272949 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08504652976989746 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08510303497314453 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0848233699798584 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08525705337524414 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08800768852233887 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08479762077331543 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08545613288879395 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08526301383972168 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08522629737854004 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08525657653808594 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08495450019836426 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08640050888061523 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0848243236541748 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08669066429138184 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08481764793395996 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08592438697814941 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08659124374389648 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08506250381469727 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08464884757995605 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08527374267578125 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08527970314025879 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08498501777648926 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0868368148803711 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08481264114379883 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0861508846282959 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08484697341918945 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08613872528076172 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 13%|███████████████████████████████████▊                                                                                                                                                                                                                                            | 70/531 [00:11<01:03,  7.25it/s]
+------------ 0.08535051345825195 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08530449867248535 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08515644073486328 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08466362953186035 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08600735664367676 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08472442626953125 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08683490753173828 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0848226547241211 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08803415298461914 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0849003791809082 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08536314964294434 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10442781448364258 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08552074432373047 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08753442764282227 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+
+ 18%|██████████████████████████████████████████████████▏                                                                                                                                                                                                                             | 98/531 [00:15<01:03,  6.84it/s]
+------------ 0.10599565505981445 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08569145202636719 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08513808250427246 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08635687828063965 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08523058891296387 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.1043691635131836 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09276175498962402 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08727216720581055 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0901181697845459 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10280728340148926 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08493804931640625 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08565402030944824 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09756112098693848 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09118819236755371 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08527565002441406 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08582806587219238 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08772706985473633 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08559346199035645 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08627724647521973 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08523797988891602 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10344338417053223 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08525943756103516 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08620405197143555 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08812308311462402 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08613705635070801 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08621907234191895 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08519792556762695 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08689117431640625 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+
+ 21%|█████████████████████████████████████████████████████████▋                                                                                                                                                                                                                     | 113/531 [00:17<01:00,  6.89it/s]
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0915839672088623 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08753371238708496 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.098358154296875 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0857992172241211 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08563899993896484 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09188032150268555 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08545398712158203 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10291004180908203 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08676433563232422 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.1092686653137207 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08627724647521973 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10577154159545898 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08648872375488281 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 24%|████████████████████████████████████████████████████████████████▎                                                                                                                                                                                                              | 126/531 [00:19<01:03,  6.36it/s]
+------------ 0.11502575874328613 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08735799789428711 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10486388206481934 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08593058586120605 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0861966609954834 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09760928153991699 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08805441856384277 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11073946952819824 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0875086784362793 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08637356758117676 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09117245674133301 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08667898178100586 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0869450569152832 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 26%|███████████████████████████████████████████████████████████████████████▍                                                                                                                                                                                                       | 140/531 [00:21<00:56,  6.97it/s]
+------------ 0.08625411987304688 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08688497543334961 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10727596282958984 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.13059210777282715 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08623409271240234 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08793783187866211 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08614397048950195 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08608365058898926 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08649396896362305 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08644556999206543 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.1139075756072998 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08656430244445801 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0933384895324707 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08573222160339355 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 29%|██████████████████████████████████████████████████████████████████████████████                                                                                                                                                                                                 | 153/531 [00:23<00:55,  6.85it/s]
+------------ 0.08711647987365723 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11530041694641113 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08605694770812988 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11067819595336914 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08650994300842285 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08565783500671387 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10831952095031738 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0861659049987793 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10590648651123047 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08609414100646973 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09760236740112305 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09192657470703125 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08604812622070312 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+
+ 34%|███████████████████████████████████████████████████████████████████████████████████████████▊                                                                                                                                                                                   | 180/531 [00:27<00:51,  6.85it/s]
+------------ 0.10895490646362305 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09022688865661621 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10338115692138672 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0868070125579834 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08581972122192383 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08715057373046875 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08605408668518066 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08592629432678223 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08538818359375 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08613705635070801 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11349797248840332 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08518838882446289 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08753037452697754 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0962681770324707 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 37%|███████████████████████████████████████████████████████████████████████████████████████████████████                                                                                                                                                                            | 194/531 [00:29<00:49,  6.81it/s]
+------------ 0.08516788482666016 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11420583724975586 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08569622039794922 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0862884521484375 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0953989028930664 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08514070510864258 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09131550788879395 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0968484878540039 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0874178409576416 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09725141525268555 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09093308448791504 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0871589183807373 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10942673683166504 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 39%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▏                                                                                                                                                                    | 208/531 [00:31<00:46,  7.01it/s]
+------------ 0.08615255355834961 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0863344669342041 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10219025611877441 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08619832992553711 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09209322929382324 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0920722484588623 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08548736572265625 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08818697929382324 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10162353515625 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08594965934753418 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08608627319335938 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08554649353027344 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0876929759979248 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08572983741760254 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 42%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                                                                                                                                              | 221/531 [00:33<00:47,  6.50it/s]
+------------ 0.08851933479309082 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08884882926940918 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08564877510070801 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08622121810913086 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0858759880065918 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09396672248840332 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11802983283996582 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11711525917053223 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09990620613098145 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08538413047790527 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08614087104797363 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08786869049072266 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08657431602478027 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 44%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉                                                                                                                                                       | 235/531 [00:35<00:43,  6.81it/s]
+------------ 0.08612585067749023 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.11885261535644531 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08597302436828613 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0859525203704834 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.10729050636291504 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08787679672241211 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0926980972290039 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0865330696105957 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08746743202209473 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08561825752258301 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09368014335632324 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08570694923400879 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09073495864868164 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 47%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                                                                                                | 249/531 [00:37<00:39,  7.07it/s]
+------------ 0.11652255058288574 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08594465255737305 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08712434768676758 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08624553680419922 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08641600608825684 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08671689033508301 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09075641632080078 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08608675003051758 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08595490455627441 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08811712265014648 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0860598087310791 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0865325927734375 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08592748641967773 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08745312690734863 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08560490608215332 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 49%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏                                                                                                                                         | 261/531 [00:39<00:41,  6.44it/s]
+------------ 0.08629035949707031 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08696293830871582 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08596038818359375 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09219217300415039 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08629298210144043 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08858323097229004 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08661127090454102 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08601713180541992 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.14081454277038574 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08725380897521973 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08617329597473145 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 52%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                                                                                                                                  | 275/531 [00:41<00:36,  6.97it/s]
+------------ 0.08630871772766113 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08617305755615234 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08717203140258789 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08581733703613281 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08566141128540039 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08567404747009277 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08584403991699219 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08551263809204102 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08623337745666504 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0901484489440918 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0909121036529541 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08634495735168457 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08722710609436035 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08943033218383789 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.09174180030822754 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+
+ 55%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                                                                           | 290/531 [00:43<00:33,  7.28it/s]
+------------ 0.0886542797088623 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08923149108886719 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.1128392219543457 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.0869901180267334 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08584451675415039 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08634114265441895 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08651089668273926 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08586549758911133 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08693742752075195 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08651447296142578 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08894658088684082 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08672547340393066 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08761811256408691 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id
+torch.Size([16, 1, 128, 128]) img.size()
+------------ 0.08715987205505371 backwards -------------------------------
+10 recon_decay
+tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0') class_id

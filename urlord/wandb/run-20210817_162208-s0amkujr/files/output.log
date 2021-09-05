@@ -1,0 +1,523 @@
+True cuda
+args: None UNet UNet_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/219/exp2d_DF_3_2d False unet2d_185 DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(2016, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+False True load_model
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+184 subject id
+139 dif cols diff_row 76
+x:48:124 y:71:210 z:26:92
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(54, 128, 128, 16) patch shape
+torch.Size([864, 1, 128, 128]) patches torch
+864 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+576 iiiiiii
+592 iiiiiii
+608 iiiiiii
+624 iiiiiii
+640 iiiiiii
+656 iiiiiii
+672 iiiiiii
+688 iiiiiii
+704 iiiiiii
+720 iiiiiii
+736 iiiiiii
+752 iiiiiii
+768 iiiiiii
+784 iiiiiii
+800 iiiiiii
+816 iiiiiii
+832 iiiiiii
+848 iiiiiii
+torch.Size([864, 1, 128, 128]) prediction size
+(864, 128, 128, 1) prediction shape  54 16
+[3.0249865e-08 3.6732278e-08 3.9672091e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(54, 128, 128, 16) prediction shape
+200 subject id
+119 dif cols diff_row 163
+x:63:226 y:80:199 z:21:78
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(45, 128, 128, 16) patch shape
+torch.Size([720, 1, 128, 128]) patches torch
+720 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+576 iiiiiii
+592 iiiiiii
+608 iiiiiii
+624 iiiiiii
+640 iiiiiii
+656 iiiiiii
+672 iiiiiii
+688 iiiiiii
+704 iiiiiii
+torch.Size([720, 1, 128, 128]) prediction size
+(720, 128, 128, 1) prediction shape  45 16
+[4.3332747e-08 5.1751240e-08 5.4294041e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(45, 128, 128, 16) prediction shape
+203 subject id
+135 dif cols diff_row 136
+x:43:179 y:34:169 z:12:36
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(36, 128, 128, 16) patch shape
+torch.Size([576, 1, 128, 128]) patches torch
+576 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+torch.Size([576, 1, 128, 128]) prediction size
+(576, 128, 128, 1) prediction shape  36 16
+[3.2152759e-08 3.2249002e-08 3.4872741e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(36, 128, 128, 16) prediction shape
+209 subject id
+145 dif cols diff_row 76
+x:103:179 y:106:251 z:22:81
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(54, 128, 128, 16) patch shape
+torch.Size([864, 1, 128, 128]) patches torch
+864 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+432 iiiiiii
+448 iiiiiii
+464 iiiiiii
+480 iiiiiii
+496 iiiiiii
+512 iiiiiii
+528 iiiiiii
+544 iiiiiii
+560 iiiiiii
+576 iiiiiii
+592 iiiiiii
+608 iiiiiii
+624 iiiiiii
+640 iiiiiii
+656 iiiiiii
+672 iiiiiii
+688 iiiiiii
+704 iiiiiii
+720 iiiiiii
+736 iiiiiii
+752 iiiiiii
+768 iiiiiii
+784 iiiiiii
+800 iiiiiii
+816 iiiiiii
+832 iiiiiii
+848 iiiiiii
+torch.Size([864, 1, 128, 128]) prediction size
+(864, 128, 128, 1) prediction shape  54 16
+[3.6503895e-08 3.7961740e-08 3.8418669e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(54, 128, 128, 16) prediction shape
+211 subject id
+166 dif cols diff_row 90
+x:102:192 y:61:227 z:3:58
+hereeeeee
+[128, 128, 16] [64, 64, 16]
+dim2
+(27, 128, 128, 16) patch shape
+torch.Size([432, 1, 128, 128]) patches torch
+432 patches size
+16 batch size
+0 iiiiiii
+16 iiiiiii
+32 iiiiiii
+48 iiiiiii
+64 iiiiiii
+80 iiiiiii
+96 iiiiiii
+112 iiiiiii
+128 iiiiiii
+144 iiiiiii
+160 iiiiiii
+176 iiiiiii
+192 iiiiiii
+208 iiiiiii
+224 iiiiiii
+240 iiiiiii
+256 iiiiiii
+272 iiiiiii
+288 iiiiiii
+304 iiiiiii
+320 iiiiiii
+336 iiiiiii
+352 iiiiiii
+368 iiiiiii
+384 iiiiiii
+400 iiiiiii
+416 iiiiiii
+torch.Size([432, 1, 128, 128]) prediction size
+(432, 128, 128, 1) prediction shape  27 16
+[4.6326821e-08 4.7972758e-08 4.8162903e-08 ... 9.9999976e-01 9.9999988e-01
+ 1.0000000e+00] prediction unique check if we are really rounding the score
+(27, 128, 128, 16) prediction shape
+4.0 post_processing.max_over_lap
+[0. 1. 2. 3. 4.] unique pred
+[0. 1. 2. 3. 4.] unique pred
+[0. 1. 2. 3. 4.] unique pred
+[0. 1. 2. 3. 4.] unique pred
+[0. 1. 2. 3. 4.] unique pred
+[0. 1. 2. 3. 4.] unique pred
+[0. 1. 2. 3. 4.] unique pred
+[0. 1. 2. 3. 4.] unique pred
+args: None UNet UNet_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/219/exp2d_D_0_2d True unet2d_219exp2d_D_0_2d D_0_2d_TL D_0_2d_TU D_0_2d_VA D_0_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+(6048, 128, 128, 1) imaggggggeeeeeeeeeeeeeeee shape
+[0.] unique claseesssssssssssssssssssssssssssssssssssssssssssssssss
+epoch #0:   2%|████▌                                                                                                                                                                                                                                                         | 7/387 [00:00<00:28, 13.23it/s, loss=0]
+  0%|                                                                                                                                                                                                                                                                                        | 0/386 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                        | 0/104 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                        | 0/274 [00:00<?, ?it/s]
+False False load_model
+arrive train
+arrive location
+here opt
+here seg decay
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/274 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 104/104 [00:18<00:00,  5.69it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋                               | 92/104 [00:18<00:00, 22.81it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+ 95%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏            | 261/274 [00:20<00:00, 121.93it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/274 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+done
+------------ 20.86630916595459 seg time alll epoch -------------------------------
+saving model......................................................
+here1
+[W accumulate_grad.h:185] Warning: grad and param do not obey the gradient layout contract. This is not an error, but may impair performance.
+grad.sizes() = [64, 128, 1, 1], strides() = [128, 1, 1, 1]
+param.sizes() = [64, 128, 1, 1], strides() = [128, 1, 128, 128] (function operator())
+
+
+
+
+
+
+
+
+
+
+
+
+epoch #1: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 387/387 [00:26<00:00, 14.41it/s, loss=0]
+  0%|                                                                                                                                                                                                                                                                                        | 0/386 [00:26<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 104/104 [00:28<00:00,  3.70it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍  | 103/104 [00:28<00:00, 26.02it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+ 74%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                       | 202/274 [00:30<00:00, 93.19it/s]
+saving model......................................................
+------------ 30.846983909606934 seg time alll epoch -------------------------------
+saving model......................................................
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/274 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+
+
+
+
+
+
+
+
+
+
+
+epoch #2: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 387/387 [00:26<00:00, 14.36it/s, loss=0]
+  0%|                                                                                                                                                                                                                                                                                        | 0/386 [00:26<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏       | 101/104 [00:28<00:00, 25.41it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+ 19%|███████████████████████████████████████████████████▍                                                                                                                                                                                                                           | 52/274 [00:28<00:37,  5.86it/s]
+saving model......................................................
+------------ 31.06264638900757 seg time alll epoch -------------------------------
+saving model......................................................
+
+  0%|                                                                                                                                                                                                                                                                                        | 0/387 [00:00<?, ?it/s][W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/386 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/274 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+
+
+
+
+
+
+
+
+
+
+
+
+epoch #3: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 387/387 [00:27<00:00, 14.30it/s, loss=0]
+  0%|                                                                                                                                                                                                                                                                                        | 0/386 [00:27<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 104/104 [00:28<00:00,  3.67it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍  | 103/104 [00:28<00:00, 25.83it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+ 85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                         | 232/274 [00:30<00:00, 103.44it/s]
+ 85%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                         | 232/274 [00:30<00:00, 103.44it/s]
+saving model......................................................
+------------ 31.11060905456543 seg time alll epoch -------------------------------
+saving model......................................................
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+saving model......................................................
+------------ 31.458714246749878 seg time alll epoch -------------------------------
+saving model......................................................
+here1
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)hreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)hreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)hreadpool)                                                                                                                                                                                             | 0/104 [00:00<?, ?it/s]

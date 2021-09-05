@@ -1,0 +1,17 @@
+
+True cuda
+args: None UNetC UNetC_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/175/exp2d_DF_3_2d True unet2dC_175 DF_3_2d_TL DF_3_2d_TU DF_3_2d_VA DF_3_2d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+Traceback (most recent call last):
+  File "lord_exp.py", line 140, in <module>
+    main()
+  File "lord_exp.py", line 133, in main
+    args.func(args)
+  File "lord_exp.py", line 114, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 247, in train_ulord
+    data = np.load(assets.get_preprocess_file_path(data_l_name))
+  File "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/numpy/lib/npyio.py", line 417, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/cache/preprocess/DF_3_2d_TL.npz'

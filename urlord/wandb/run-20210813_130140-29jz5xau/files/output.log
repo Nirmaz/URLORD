@@ -1,0 +1,15 @@
+True cuda
+nir
+here2
+here3
+exp_dict {'exp_name': 'exp2d_dat1', 'data_l_name': 'DSRA12d_TL', 'data_u_name': 'DSRA12d_TU', 'data_v_name': 'DSRA12d_VA', 'data_t_name': 'DSRA12d_TE', 'path_d': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d', 'path_d_dict': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/TRUFI', 'base_dir': '/cs/casmip/nirm/embryo_project_version1/embryo_data', 'models_path': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/data_1/', 'models': ['URLord2D_dict.jason']}
+here4
+{'model_id': 'URLord', 'dim': 2, 'add_num_exp': False, 'load_model': True, 'model_name': 'urlord2d_120', 'train_model': False, 'evaluate_model': True, 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d'} model dict
+model_dict['model_name'] urlord2d_120
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/127/exp2d_dat1 False urlord2d_120 DSRA12d_TL DSRA12d_TU DSRA12d_VA DSRA12d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+False True load_model
+here6
+0 post_processing.max_over_lap
+here7
+here

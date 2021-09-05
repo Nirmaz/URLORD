@@ -1,0 +1,119 @@
+True cuda
+nir
+here2
+here3
+exp_dict {'exp_name': 'exp2d_dat1', 'data_l_name': 'DSRA12d_TL', 'data_u_name': 'DSRA12d_TU', 'data_v_name': 'DSRA12d_VA', 'data_t_name': 'DSRA12d_TE', 'path_d': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d', 'path_d_dict': '/mnt/local/nirm/TRUFI', 'base_dir': '/cs/casmip/nirm/embryo_project_version1/embryo_data', 'models_path': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/data_1/', 'models': ['URLord2D_dict.jason', 'ULord2D_dict.jason', 'UNet2D_dict.jason', 'UCLord2D_dict.jason']}
+here4
+{'model_id': 'URLord', 'dim': 2, 'add_num_exp': True, 'load_model': False, 'train_model': True, 'evaluate_model': True, 'model_name': 'urlord2d_120', 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d'} model dict
+enterrrr
+model_dict['model_name'] urlord2d_120_140
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/140/exp2d_dat1 True urlord2d_120_140 DSRA12d_TL DSRA12d_TU DSRA12d_VA DSRA12d_TE False True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+False False load_model
+arrive train
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py:355: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  tensor = torch.tensor(x, requires_grad = False)
+  0%|                                                                                                                                                                                                                                                                                        | 0/696 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                        | 0/696 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                        | 0/127 [00:00<?, ?it/s]
+  0%|                                                                                                                                                                                                                                                                                        | 0/479 [00:00<?, ?it/s]
+here seg decay
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)                                                                                                                                                                                             | 0/479 [00:00<?, ?it/s]
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+[W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+epoch #0:   2%|█████                                                                                                                                                                                                                                                      | 14/696 [00:02<01:20,  8.49it/s, loss=1.2]
+  2%|█████▍                                                                                                                                                                                                                                                                         | 14/696 [00:02<01:20,  8.49it/s]
+3 recon_decay
+------------ 0.07359457015991211 backwards -------------------------------
+3 recon_decay
+------------ 0.061223506927490234 backwards -------------------------------
+3 recon_decay
+------------ 0.05973482131958008 backwards -------------------------------
+3 recon_decay
+------------ 0.05890846252441406 backwards -------------------------------
+3 recon_decay
+------------ 0.0592350959777832 backwards -------------------------------
+3 recon_decay
+------------ 0.059082984924316406 backwards -------------------------------
+3 recon_decay
+------------ 0.05945396423339844 backwards -------------------------------
+3 recon_decay
+------------ 0.059381723403930664 backwards -------------------------------
+3 recon_decay
+------------ 0.05924201011657715 backwards -------------------------------
+3 recon_decay
+------------ 0.059812307357788086 backwards -------------------------------
+3 recon_decay
+------------ 0.0592193603515625 backwards -------------------------------
+3 recon_decay
+------------ 0.06004071235656738 backwards -------------------------------
+3 recon_decay
+------------ 0.0591275691986084 backwards -------------------------------
+3 recon_decay
+------------ 0.05951094627380371 backwards -------------------------------
+
+  4%|████████████                                                                                                                                                                                                                                                                   | 31/696 [00:04<01:18,  8.46it/s]
+------------ 0.06037116050720215 backwards -------------------------------
+3 recon_decay
+------------ 0.059087276458740234 backwards -------------------------------
+3 recon_decay
+------------ 0.059970855712890625 backwards -------------------------------
+3 recon_decay
+------------ 0.05921673774719238 backwards -------------------------------
+3 recon_decay
+------------ 0.05973029136657715 backwards -------------------------------
+3 recon_decay
+------------ 0.05960988998413086 backwards -------------------------------
+3 recon_decay
+------------ 0.05927085876464844 backwards -------------------------------
+3 recon_decay
+------------ 0.05984759330749512 backwards -------------------------------
+3 recon_decay
+------------ 0.059214115142822266 backwards -------------------------------
+3 recon_decay
+------------ 0.05916857719421387 backwards -------------------------------
+3 recon_decay
+------------ 0.059487104415893555 backwards -------------------------------
+3 recon_decay
+------------ 0.059403419494628906 backwards -------------------------------
+3 recon_decay
+------------ 0.06740951538085938 backwards -------------------------------
+3 recon_decay
+------------ 0.05994153022766113 backwards -------------------------------
+3 recon_decay
+------------ 0.060840606689453125 backwards -------------------------------
+3 recon_decay
+------------ 0.060106515884399414 backwards -------------------------------
+3 recon_decay
+------------ 0.0610346794128418 backwards -------------------------------
+3 recon_decay
+------------ 0.059266090393066406 backwards -------------------------------
+3 recon_decay
+------------ 0.059644222259521484 backwards -------------------------------
+  File "lord_exp.py", line 152, in <module>                                                                                                                                                                                                                                         | 33/696 [00:04<01:18,  8.50it/s]
+    main()
+  File "lord_exp.py", line 145, in main
+    args.func(args)
+  File "lord_exp.py", line 124, in run_exp
+    train_model(model_dict, path_new_exp, model_name, exp_dict['data_l_name'], exp_dict['data_u_name'], exp_dict['data_v_name'], exp_dict['data_t_name'], exp_dict['base_dir'])
+  File "lord_exp.py", line 31, in train_model
+    take_from_arg = False)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_unet.py", line 364, in train_ulord
+    loaded_model=load_model
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 399, in train
+    segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 489, in train_URLordModel
+    self.training_model(model_dir, tensorboard_dir)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 655, in training_model
+    reco_loss_epoch, reco_loss_epoch_witha, i)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 347, in do_step_ulord
+    reco_loss_l, reco_loss_u = self.calc_rec_loss(out, batch_t, batch_u, criterion)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 287, in calc_rec_loss_urord
+    seg = batch_t['seg'].type(torch.IntTensor).to(self.device)
+KeyboardInterrupt

@@ -1,0 +1,30 @@
+{
+    "os": "Linux-5.10.46-aufs-1-x86_64-with-debian-10.5",
+    "python": "3.7.3",
+    "heartbeatAt": "2021-08-15T17:05:30.069048",
+    "startedAt": "2021-08-15T17:05:28.547209",
+    "docker": null,
+    "gpu": "GeForce GTX 1080 Ti",
+    "gpu_count": 2,
+    "cpu_count": 20,
+    "cuda": null,
+    "args": [
+        "--base-dir",
+        "/cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2",
+        "run_exp",
+        "--exp-dict-dir",
+        "/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d_remote/"
+    ],
+    "state": "running",
+    "program": "lord_exp.py",
+    "codePath": "lord-pytorch-unet/lord_exp.py",
+    "git": {
+        "remote": "https://github.com/Nirmaz/embryo_project_version1.git",
+        "commit": "3bd02b044b391378107e0c1655421fc912527079"
+    },
+    "email": "nir5591@gmail.com",
+    "root": "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes",
+    "host": "cas603",
+    "username": "nirm",
+    "executable": "/cs/casmip/nirm/embryo_project_version1/venu-pytorch/bin/python"
+}

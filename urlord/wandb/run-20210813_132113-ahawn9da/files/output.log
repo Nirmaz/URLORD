@@ -1,0 +1,41 @@
+True cuda
+nir
+here2
+here3
+exp_dict {'exp_name': 'exp2d_dat1', 'data_l_name': 'DSRA12d_TL', 'data_u_name': 'DSRA12d_TU', 'data_v_name': 'DSRA12d_VA', 'data_t_name': 'DSRA12d_TE', 'path_d': '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/after_preprocess/DRSA12d', 'path_d_dict': '/mnt/local/nirm/TRUFI', 'base_dir': '/cs/casmip/nirm/embryo_project_version1/embryo_data', 'models_path': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/data_1/', 'models': ['URLord2D_dict.jason']}
+here4
+{'model_id': 'URLord', 'dim': 2, 'add_num_exp': False, 'load_model': True, 'model_name': 'urlord2d_120', 'train_model': False, 'evaluate_model': True, 'config_model': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d', 'config_unet': '/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d'} model dict
+model_dict['model_name'] urlord2d_120
+args: None URLord URLord_2 /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2/131/exp2d_dat1 False urlord2d_120 DSRA12d_TL DSRA12d_TU DSRA12d_VA DSRA12d_TE True True /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d /cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/models_config/config_2d
+dividing....
+False True load_model
+here6
+here loop: AH
+AH subject id
+133 dif cols diff_row 90
+x:83:173 y:89:222 z:14:100
+in BB :) :)
+hereeeeee
+[128, 128, 16] [32, 32, 16]
+dim2
+(175, 128, 128, 16) patch shape
+torch.Size([2800, 1, 128, 128]) patches torch
+torch.Size([16, 1, 128, 128]) patch size
+/cs/casmip/nirm/embryo_project_version1/venu-pytorch/lib/python3.7/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
+/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/modules_unet.py:355: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  tensor = torch.tensor(x, requires_grad = False)
+Traceback (most recent call last):
+  File "/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_exp.py", line 152, in <module>
+    main()
+  File "/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_exp.py", line 145, in main
+    args.func(args)
+  File "/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_exp.py", line 127, in run_exp
+    evaluate_model(model_dict, path_new_exp, model_name, exp_dict['base_dir'], data_with_gt, data_param)
+  File "/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/lord_exp.py", line 55, in evaluate_model
+    lord3d.evaluate(model_dict, path_to_weights, data_param, data_with_gt, path_results)
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/model/training_unet.py", line 200, in evaluate
+    unet=self.is_unet, bb=param_data['patches_params']['from_bb'], dim = model_dict['dim'])
+  File "/cs/labs/josko/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet/post_pro.py", line 156, in __init__
+    self.predict_on_validation(data_gt_pre)
+KeyboardInterrupt
