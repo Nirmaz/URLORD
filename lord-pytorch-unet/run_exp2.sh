@@ -2,7 +2,7 @@
 cd /cs/casmip/nirm/embryo_project_version1/venu-pytorch/bin
 source activate.csh
 cd /cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/lord-pytorch-unet
-
+#module load torch
 #nohup python lord_exp.py --base-dir /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp_fp2 run_exp --exp-dict-dir /cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_2d/
 #python3 lord_exp.py --base-dir /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp3d_remote run_exp --exp-dict-dir /cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d_remote
 python3 lord_exp.py --base-dir /cs/casmip/nirm/embryo_project_version1/EXP_FOLDER/exp3d_plac run_exp --exp-dict-dir /cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d

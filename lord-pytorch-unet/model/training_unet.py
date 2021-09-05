@@ -31,6 +31,15 @@ from sklearn.metrics import recall_score, precision_score
 import torchvision.transforms.functional as TF
 import nibabel as nib
 
+def get_n_params(model):
+    pp=0
+    for p in list(model.parameters()):
+        nn=1
+        for s in list(p.size()):
+            nn = nn*s
+        pp += nn
+    return pp
+
 def define_logger(loger_name, file_path):
     logger = logging.getLogger(loger_name)
     logger.setLevel(logging.INFO)
@@ -227,7 +236,7 @@ class Lord:
     def evaluate(self, model_dict, exp_dict, path_to_weights, param_data, data_with_gt, path_result, split_dict):
         # print(data_with_gt.keys())
         self.ulord_model.load_state_dict(torch.load(path_to_weights))
-
+        print(get_n_params(self.ulord_model), "number paraqms")
         print("stat evaluate ------------------------------------------------------------------------------------")
         if os.path.exists(join(self.model_dir,'dict_pre.h5')) and model_dict['load_pre']:
             print("here not calc")
@@ -245,6 +254,7 @@ class Lord:
             post_processing.predict_on_validation(dict_prediction)
             dict_prediction['max_overlap'] = post_processing.max_over_lap
             out_dict_pre_file = join(self.model_dir, 'dict_pre.h5')
+
             pickle_dump(dict_prediction, out_dict_pre_file)
 
 
@@ -304,6 +314,7 @@ class Lord:
 
 
         for i, subject_id in enumerate(dict_prediction.keys()):
+
             if 'cases_val_H' not in split_dict:
                 if (subject_id not in split_dict['cases_test_T']) and (subject_id not in split_dict['cases_test_F']):
                     continue
@@ -316,6 +327,7 @@ class Lord:
             res = np.zeros_like(pred)
             res[pred > best_th] = 1
             dice_2 = dice_func(gt, res)
+            res_old = res.copy()
             res = postprocess_prediction(res)
             dice = dice_func(gt, res)
             res_1d = res.flatten()
@@ -325,22 +337,45 @@ class Lord:
             dice_score.update(dice)
             pre_score.update(pre)
             rec_score.update(rec)
-            if model_dict["take_pred"]:
+            if True:
+                print(f'subject_id:{subject_id}')
                 gt = dict_prediction[subject_id]['truth']
                 pred = dict_prediction[subject_id]['pred']
+                print(pred.shape)
                 if i == 0:
                     print(np.unique(pred), "unique pred")
 
                 if os.path.exists(join(exp_dict["path_scans"], subject_id, 'volume.nii')):
                     pred_scan = nib.load(join(exp_dict["path_scans"], subject_id, 'volume.nii'))
+                    print(pred_scan.get_fdata().shape, "real shapeeeee")
+                    print(pred.shape, "new shapeeeee")
+
                 else:
+                    # path = '/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/placenta/93/volume.nii.gz'
                     pred_scan = nib.load(join(exp_dict["path_scans"], subject_id, 'volume.nii.gz'))
-                _, min_index = move_smallest_axis_to_z(pred_scan.get_fdata())
+
+                # pred_scan = nib.load(join(exp_dict["path_scans"], subject_id, 'volume.nii.gz')
+                _, min_index = move_smallest_axis_to_z(pred_scan.get_fdata().copy())
                 res = swap_to_original_axis(min_index, res)
-                nib.save(nib.Nifti1Image(res.astype(dtype=np.uint64), pred_scan.affine),join(self.model_dir, f'{subject_id}_pres.nii.gz'))
+                print(res.shape, "res shapeeeee")
+                print(np.unique(res), "res unique")
+                print(np.unique(res.astype(dtype=np.float32)), "res unique2")
+                print(res.astype(dtype=np.uint32).shape, "res shape")
+                print(np.where(np.isnan(res.astype(dtype=np.float32)) == True), "nan")
+                print(np.where(np.isinf(res.astype(dtype=np.float32)) == True), "inf")
+                _ =  np.linalg.svd(res.astype(dtype=np.float32))
+                print(np.unique(pred_scan))
+                # print()
+                # if i > 0:
+                # print(np.min(res.get_fdata()),np.max(pred_scan.get_fdata()) )
+                try:
+                    a = nib.Nifti1Image(res.astype(dtype=np.float32), pred_scan.affine)
+                    nib.save(a,join(self.model_dir, f'{subject_id}_pred.nii.gz'))
+                    nib.save(nib.Nifti1Image(res_old.astype(dtype=np.float32), pred_scan.affine),join(self.model_dir, f'{subject_id}_pred_old.nii.gz'))
+                except:
+                    print("nononon")
 
             logger_dice.info(f'subject id {subject_id} dice score A {dice},dice score B {dice_2} , recall score: {rec}, precision score: {pre} ')
-
         logger_dice.info(f'avg dice score {dice_score.avg} , avg recall score: {rec_score.avg}, precision score: {pre_score.avg}')
 
 
@@ -402,10 +437,9 @@ class Lord:
             reco_loss_seg = (self.config['rec_seg_c']*criterion(out['img']*seg.detach(), batch_t['img']*seg.detach()))
             rec_loss_c = (self.config['rec_all_c']*criterion(out['img'], batch_t['img']))
 
-
             # calc for ulabled
             reco_loss_seg_u = (self.config['rec_seg_c_u'] * criterion(out['img_u'] * seg_u.detach() , batch_u['img'] * seg_u.detach()))
-            reco_loss_c_u = (self.config['rec_all_c_u'] * criterion(out['img_u'] * seg_u_out, batch_u['img'] * seg_u_out))
+            reco_loss_c_u = (self.config['rec_all_c_u'] * criterion(out['img_u'], batch_u['img']))
             print(f'reco_loss_seg: {reco_loss_seg.item()}',f"rec_loss_c {rec_loss_c.item()}", f"reco_loss_seg_u: {reco_loss_seg_u.item()}", f"reco_loss_c_u: {reco_loss_c_u.item()}")
             print(
                 "------------ %s loss -------------------------------" % (
@@ -870,6 +904,8 @@ class Lord:
             loss_list.append(train_loss.avg)
 
             self.ulord_model.eval()
+            print("------------ %s time all -------------------------------" % (time.time() - start_time0))
+            exit()
             for batch_v in pbar_val:
                 # print("here")
 
@@ -927,7 +963,7 @@ class Lord:
                 plt.savefig(join(path_result_loss, f'loss_for_epoch_allloss{epoch}.jpeg'))
                 print('done')
 
-            print("------------ %s seg time alll epoch -------------------------------" % (time.time() - start_time0))
+
             self.save(model_dir)
             summary.add_scalar(tag='loss', scalar_value=train_loss.avg, global_step=epoch)
             print("here1")
@@ -1749,3 +1785,5 @@ class Lord:
 # 		plt.figure()
 # 		plt.title(f"epoch number: {epoch}")
 # 		plt.ba
+
+import os

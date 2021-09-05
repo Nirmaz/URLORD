@@ -16,7 +16,7 @@ import pickle
 from math import ceil
 from configd import DF_3_3d_S1_dict, DF_3_3d_S2_dict ,DF_3_3d_S3_dict, DF_5_3d_S1_dict, DF_5_3d_S2_dict ,DF_5_3d_S3_dict,  DF_8_3d_S1_dict, DF_8_3d_S2_dict ,DF_8_3d_S3_dict,  \
     DF_21_3d_dict,DT_5_3d_dict, D_5_3d_dict, DS_2d_dict, D_0_2d_dict, D_1_2d_dict, config_patches3d, DF_16_3d_S1_dict, DF_16_3d_S2_dict, DF_16_3d_S3_dict
-from configd_brain import config_patches2d_brain, config_patches3d_brain, DFR_24_2d_dict, DFR_3_2d_S1_dict,DFR_3_2d_S2_dict,DFR_3_2d_S3_dict, DFR_10_2d_S1_dict, DFR_10_2d_S2_dict, DFR_10_2d_S3_dict, DFR_5_2d_S1_dict,DFR_5_2d_S2_dict,DFR_5_2d_S3_dict
+from configd_brain import DFR_1_2d_S1_dict,DFR_1_2d_S2_dict, DFR_1_2d_S3_dict,config_patches2d_brain, config_patches3d_brain, DFR_3_2d_S1_dict,DFR_3_2d_S2_dict,DFR_3_2d_S3_dict, DFR_10_2d_S1_dict, DFR_10_2d_S2_dict, DFR_10_2d_S3_dict, DFR_5_2d_S1_dict, DFR_5_2d_S2_dict, DFR_5_2d_S3_dict, DFR_24_2d_S1_dict, DFR_24_2d_S2_dict, DFR_24_2d_S3_dict, DFR_44_2d_dict
 from os import listdir, mkdir
 
 def fetch_data_files(scans_dir, train_modalities, ext, return_subject_ids=False):
@@ -1174,11 +1174,12 @@ if __name__ == '__main__':
         """
 
         # dataset brain =================================
-        """
-        build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_5_2d_S1_dict, 3)
-        build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_5_2d_S2_dict, 3)
-        build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_5_2d_S3_dict, 3)
 
+        build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_1_2d_S1_dict, 3)
+        build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_1_2d_S2_dict, 3)
+        build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_1_2d_S3_dict, 3)
+        # build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_44_2d_dict, 3)
+        """
         # build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_10_2d_S1_dict, 3)
         # build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_10_2d_S2_dict, 3)
         # build_data_set_brain(path_brain_2d, path_brain_2d_data_set, DFR_10_2d_S3_dict, 3)
@@ -1226,4 +1227,3 @@ if __name__ == '__main__':
         print("finish 7")
         # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/placenta' ,scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/placenta', train_modalities = [ "volume", "truth"], ext ="",overwrite =True, preprocess = "window_1_99", scale = None, train = True, store_patches= True)
         # create_load_hdf5(normalization = "all", data_dir = '/cs/casmip/nirm/embryo_project_version1/DATA_NEW/TRUFI', scans_dir = '/cs/casmip/nirm/embryo_project_version1/DATA-RAW/TRUFI', train_modalities = [ "volume", "truth"], ext = "", overwrite = True, preprocess = "window_1_99", scale = [0.5, 0.5, 1],rescale_res = [1.56,.56,3], metadata_path = None, train = True, store_patches= True)
-

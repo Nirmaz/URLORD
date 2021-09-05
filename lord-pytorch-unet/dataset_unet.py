@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 import numpy as np
 import imageio
-import cv2
+
 import dlib
 import h5py
 import torchvision.datasets as dset

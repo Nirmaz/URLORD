@@ -6,7 +6,7 @@ import numpy as np
 from keras.callbacks import CSVLogger, EarlyStopping
 from keras.preprocessing.image import ImageDataGenerator
 from keras.utils import Progbar
-
+import time
 import costs
 import utils.data_utils
 from callbacks.loss_callback import SaveLoss
@@ -182,6 +182,7 @@ class EmbSDNetExecutor(Executor):
 
         progress_bar = Progbar(target=self.conf.batches * self.conf.batch_size)
 
+        start_time0 = time.time()
         for self.epoch in range(self.conf.epochs):
             log.info('Epoch %d/%d' % (self.epoch, self.conf.epochs))
 
@@ -205,6 +206,8 @@ class EmbSDNetExecutor(Executor):
 
             self.validate(epoch_loss)
 
+            print("------------ %s time all -------------------------------" % (time.time() - start_time0))
+            exit()
             for n in loss_names:
                 epoch_loss_list.append((n, np.mean(epoch_loss[n])))
                 total_loss[n].append(np.mean(epoch_loss[n]))

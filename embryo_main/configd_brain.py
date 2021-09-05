@@ -36,6 +36,104 @@ config_patches2d_brain =dict(
 )
 
 # ============================= 2D =====================================================================================
+DFR_1_2d_S1_dict =dict(
+	data_set_name = 'DFR_1_2d_S1',
+	data_set_name_patches_name = 'patch2D_merge3',
+	cases_train_H_l = [],
+	cases_train_T_l = [],
+	cases_train_F_l = ['Pat109_Se13_Res0.7422_0.7422_Spac3.0'],
+	cases_train_H_u = [],
+	cases_train_T_u = [],
+	cases_train_F_u = ['Pat10_Se17_Res0.7422_0.7422_Spac3', 'Pat100_Se10_Res0.7422_0.7422_Spac3.5', 'Pat69_Se08_Res0.7422_0.7422_Spac4.0','Pat133_Se11_Res0.7813_0.7813_Spac3.0', 'Pat210_Se11_Res0.7813_0.7813_Spac3', 'Pat106_Se11_Res0.7422_0.7422_Spac5',
+	 					'Pat20_Se18_Res0.7422_0.7422_Spac4', 'Pat26_Se19_Res0.8203_0.8203_Spac4', 'Pat194_Se13_Res0.7813_0.7813_Spac3',
+	 					'Fetus64_St13_Se08_Cor', 'Pat95_Se08_Res0.7422_0.7422_Spac4', 'Pat156_Se10_Res0.7813_0.7813_Spac3', 'Pat27_Se12_Res0.7422_0.7422_Spac3', 'Pat143_Se13_Res0.7813_0.7813_Spac4.0', 'Pat09_Se08_Res0.7422_0.7422_Spac4',
+	 					'Pat18_Se17_Res0.7422_0.7422_Spac3', 'Pat139_Se15_Res0.7813_0.7813_Spac3.5', 'Pat120_Se07_Res0.7813_0.7813_Spac5.0', 'Pat140_Se12_Res0.7813_0.7813_Spac3.0',
+	 					'Pat07_Se10_Res0.7422_0.7422_Spac3', 'Pat102_Se09_Res0.7422_0.7422_Spac4', 'Pat46_Se14_Res0.7422_0.7422_Spac3', 'Pat216_Se13_Res0.7813_0.7813_Spac3',
+	 					'Pat40_Se13_Res0.7422_0.7422_Spac3', 'Pat08_Se14_Res0.7422_0.7422_Spac3', 'Pat93_Se12_Res0.7813_0.7813_Spac3', 'Pat182_Se06_Res0.5859_0.5859_Spac3',
+	 					'Pat105_Se07_Res0.7422_0.7422_Spac5', 'Pat76_Se12_Res0.7422_0.7422_Spac3', 'Pat52_Se13_Res0.7422_0.7422_Spac3', 'Pat247_Se20_Res0.8203_0.8203_Spac5',
+	 					'Pat101_Se12_Res0.7422_0.7422_Spac3.0', 'Pat104_Se08_Res0.7422_0.7422_Spac4', 'Pat103_Se10_Res0.8203_0.8203_Spac4', 'Pat108_Se09_Res0.7422_0.7422_Spac4',
+	 					'Pat39_Se12_Res0.7422_0.7422_Spac3.0', 'Pat59_Se13_Res0.8203_0.8203_Spac3.0', 'Pat146_Se18_Res0.7813_0.7813_Spac3.5', 'Pat11_Se05_Res0.7422_0.7422_Spac5',
+	 					'Pat28_Se17_Res0.8203_0.8203_Spac3', 'Pat29_Se05_Res0.7422_0.7422_Spac5'],
+	cases_val_H = [],
+	cases_val_T = [],
+	cases_val_F = ['Pat06_Se11_Res0.7422_0.7422_Spac3', 'Pat152_Se26_Res0.7813_0.7813_Spac3.0',
+	 'Pat222_Se13_Res0.7813_0.7813_Spac3', 'Pat165_Se13_Res0.7813_0.7813_Spac3', 'Pat12_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat119_Se11_Res0.7813_0.7813_Spac3', 'Pat02_Se12_Res0.7422_0.7422_Spac4', 'Pat03_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat151_Se07_Res0.625_0.625_Spac4.0', 'Pat87_Se09_Res0.7422_0.7422_Spac7'],
+	cases_test_H = [],
+	cases_test_T = [],
+	cases_test_F = ['Pat195_Se10_Res0.7813_0.7813_Spac3', 'Pat94_Se05_Res0.7422_0.7422_Spac4.0', 'Pat127_Se09_Res0.7813_0.7813_Spac4.0',
+	 'Pat01_Se05_Res0.7422_0.7422_Spac5', 'Pat135_Se12_Res0.7813_0.7813_Spac3', 'Pat54_Se24_Res0.7422_0.7422_Spac4.0',
+	 'Pat21_Se11_Res0.7422_0.7422_Spac3', 'Pat172_Se12_Res0.7813_0.7813_Spac3', 'Pat150_Se12_Res0.7813_0.7813_Spac3.0',
+	 'Pat05_Se05_Res0.7422_0.7422_Spac5']
+)
+
+DFR_1_2d_S2_dict =dict(
+	data_set_name = 'DFR_1_2d_S2',
+	data_set_name_patches_name = 'patch2D_merge3',
+	cases_train_H_l = [],
+	cases_train_T_l = [],
+	cases_train_F_l = ['Pat146_Se18_Res0.7813_0.7813_Spac3.5'],
+	cases_train_H_u = [],
+	cases_train_T_u = [],
+	cases_train_F_u = ['Pat60_Se13_Res0.7422_0.7422_Spac3.0', 'Pat109_Se13_Res0.7422_0.7422_Spac3.0' ,'Pat141_Se05_Res0.5859_0.5859_Spac3.5', 'Pat10_Se17_Res0.7422_0.7422_Spac3', 'Pat100_Se10_Res0.7422_0.7422_Spac3.5', 'Pat69_Se08_Res0.7422_0.7422_Spac4.0','Pat133_Se11_Res0.7813_0.7813_Spac3.0', 'Pat210_Se11_Res0.7813_0.7813_Spac3', 'Pat106_Se11_Res0.7422_0.7422_Spac5',
+	 					'Pat20_Se18_Res0.7422_0.7422_Spac4', 'Pat26_Se19_Res0.8203_0.8203_Spac4', 'Pat194_Se13_Res0.7813_0.7813_Spac3',
+	 					'Fetus64_St13_Se08_Cor', 'Pat95_Se08_Res0.7422_0.7422_Spac4', 'Pat156_Se10_Res0.7813_0.7813_Spac3', 'Pat27_Se12_Res0.7422_0.7422_Spac3', 'Pat143_Se13_Res0.7813_0.7813_Spac4.0', 'Pat09_Se08_Res0.7422_0.7422_Spac4',
+	 					'Pat18_Se17_Res0.7422_0.7422_Spac3', 'Pat139_Se15_Res0.7813_0.7813_Spac3.5', 'Pat120_Se07_Res0.7813_0.7813_Spac5.0', 'Pat140_Se12_Res0.7813_0.7813_Spac3.0',
+	 					'Pat07_Se10_Res0.7422_0.7422_Spac3', 'Pat102_Se09_Res0.7422_0.7422_Spac4', 'Pat46_Se14_Res0.7422_0.7422_Spac3', 'Pat216_Se13_Res0.7813_0.7813_Spac3',
+	 					'Pat40_Se13_Res0.7422_0.7422_Spac3', 'Pat08_Se14_Res0.7422_0.7422_Spac3', 'Pat93_Se12_Res0.7813_0.7813_Spac3', 'Pat182_Se06_Res0.5859_0.5859_Spac3',
+	 					'Pat105_Se07_Res0.7422_0.7422_Spac5', 'Pat76_Se12_Res0.7422_0.7422_Spac3', 'Pat52_Se13_Res0.7422_0.7422_Spac3', 'Pat247_Se20_Res0.8203_0.8203_Spac5',
+	 					'Pat101_Se12_Res0.7422_0.7422_Spac3.0', 'Pat104_Se08_Res0.7422_0.7422_Spac4', 'Pat103_Se10_Res0.8203_0.8203_Spac4', 'Pat108_Se09_Res0.7422_0.7422_Spac4',
+	 					'Pat39_Se12_Res0.7422_0.7422_Spac3.0', 'Pat59_Se13_Res0.8203_0.8203_Spac3.0', 'Pat29_Se05_Res0.7422_0.7422_Spac5'],
+	cases_val_H = [],
+	cases_val_T = [],
+	cases_val_F = ['Pat06_Se11_Res0.7422_0.7422_Spac3', 'Pat152_Se26_Res0.7813_0.7813_Spac3.0',
+	 'Pat222_Se13_Res0.7813_0.7813_Spac3', 'Pat165_Se13_Res0.7813_0.7813_Spac3', 'Pat12_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat119_Se11_Res0.7813_0.7813_Spac3', 'Pat02_Se12_Res0.7422_0.7422_Spac4', 'Pat03_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat151_Se07_Res0.625_0.625_Spac4.0', 'Pat87_Se09_Res0.7422_0.7422_Spac7'],
+	cases_test_H = [],
+	cases_test_T = [],
+	cases_test_F = ['Pat195_Se10_Res0.7813_0.7813_Spac3', 'Pat94_Se05_Res0.7422_0.7422_Spac4.0', 'Pat127_Se09_Res0.7813_0.7813_Spac4.0',
+	 'Pat01_Se05_Res0.7422_0.7422_Spac5', 'Pat135_Se12_Res0.7813_0.7813_Spac3', 'Pat54_Se24_Res0.7422_0.7422_Spac4.0',
+	 'Pat21_Se11_Res0.7422_0.7422_Spac3', 'Pat172_Se12_Res0.7813_0.7813_Spac3', 'Pat150_Se12_Res0.7813_0.7813_Spac3.0',
+	 'Pat05_Se05_Res0.7422_0.7422_Spac5']
+)
+
+DFR_1_2d_S3_dict =dict(
+	data_set_name = 'DFR_1_2d_S3',
+	data_set_name_patches_name = 'patch2D_merge3',
+	cases_train_H_l = [],
+	cases_train_T_l = [],
+	cases_train_F_l = ['Pat27_Se12_Res0.7422_0.7422_Spac3'],
+	cases_train_H_u = [],
+	cases_train_T_u = [],
+	cases_train_F_u = ['Pat95_Se08_Res0.7422_0.7422_Spac4', 'Pat60_Se13_Res0.7422_0.7422_Spac3.0', 'Pat109_Se13_Res0.7422_0.7422_Spac3.0' ,'Pat141_Se05_Res0.5859_0.5859_Spac3.5', 'Pat10_Se17_Res0.7422_0.7422_Spac3', 'Pat100_Se10_Res0.7422_0.7422_Spac3.5', 'Pat69_Se08_Res0.7422_0.7422_Spac4.0','Pat133_Se11_Res0.7813_0.7813_Spac3.0', 'Pat210_Se11_Res0.7813_0.7813_Spac3', 'Pat106_Se11_Res0.7422_0.7422_Spac5',
+	 					'Pat20_Se18_Res0.7422_0.7422_Spac4', 'Pat26_Se19_Res0.8203_0.8203_Spac4', 'Pat194_Se13_Res0.7813_0.7813_Spac3',
+	 					'Fetus64_St13_Se08_Cor', 'Pat156_Se10_Res0.7813_0.7813_Spac3',
+	 					'Pat18_Se17_Res0.7422_0.7422_Spac3', 'Pat139_Se15_Res0.7813_0.7813_Spac3.5', 'Pat120_Se07_Res0.7813_0.7813_Spac5.0', 'Pat140_Se12_Res0.7813_0.7813_Spac3.0',
+	 					'Pat07_Se10_Res0.7422_0.7422_Spac3', 'Pat102_Se09_Res0.7422_0.7422_Spac4', 'Pat46_Se14_Res0.7422_0.7422_Spac3', 'Pat216_Se13_Res0.7813_0.7813_Spac3',
+	 					'Pat40_Se13_Res0.7422_0.7422_Spac3', 'Pat08_Se14_Res0.7422_0.7422_Spac3', 'Pat93_Se12_Res0.7813_0.7813_Spac3', 'Pat182_Se06_Res0.5859_0.5859_Spac3',
+	 					'Pat105_Se07_Res0.7422_0.7422_Spac5', 'Pat76_Se12_Res0.7422_0.7422_Spac3', 'Pat52_Se13_Res0.7422_0.7422_Spac3', 'Pat247_Se20_Res0.8203_0.8203_Spac5',
+	 					'Pat101_Se12_Res0.7422_0.7422_Spac3.0', 'Pat104_Se08_Res0.7422_0.7422_Spac4', 'Pat103_Se10_Res0.8203_0.8203_Spac4', 'Pat108_Se09_Res0.7422_0.7422_Spac4',
+	 					'Pat39_Se12_Res0.7422_0.7422_Spac3.0', 'Pat59_Se13_Res0.8203_0.8203_Spac3.0', 'Pat146_Se18_Res0.7813_0.7813_Spac3.5', 'Pat11_Se05_Res0.7422_0.7422_Spac5',
+	 					'Pat28_Se17_Res0.8203_0.8203_Spac3', 'Pat29_Se05_Res0.7422_0.7422_Spac5'],
+	cases_val_H = [],
+	cases_val_T = [],
+	cases_val_F = ['Pat06_Se11_Res0.7422_0.7422_Spac3', 'Pat152_Se26_Res0.7813_0.7813_Spac3.0',
+	 'Pat222_Se13_Res0.7813_0.7813_Spac3', 'Pat165_Se13_Res0.7813_0.7813_Spac3', 'Pat12_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat119_Se11_Res0.7813_0.7813_Spac3', 'Pat02_Se12_Res0.7422_0.7422_Spac4', 'Pat03_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat151_Se07_Res0.625_0.625_Spac4.0', 'Pat87_Se09_Res0.7422_0.7422_Spac7'],
+	cases_test_H = [],
+	cases_test_T = [],
+	cases_test_F = ['Pat195_Se10_Res0.7813_0.7813_Spac3', 'Pat94_Se05_Res0.7422_0.7422_Spac4.0', 'Pat127_Se09_Res0.7813_0.7813_Spac4.0',
+	 'Pat01_Se05_Res0.7422_0.7422_Spac5', 'Pat135_Se12_Res0.7813_0.7813_Spac3', 'Pat54_Se24_Res0.7422_0.7422_Spac4.0',
+	 'Pat21_Se11_Res0.7422_0.7422_Spac3', 'Pat172_Se12_Res0.7813_0.7813_Spac3', 'Pat150_Se12_Res0.7813_0.7813_Spac3.0',
+	 'Pat05_Se05_Res0.7422_0.7422_Spac5']
+)
+
+
+
+
 
 DFR_3_2d_S1_dict =dict(
 	data_set_name = 'DFR_3_2d_S1',
@@ -324,40 +422,7 @@ DFR_10_2d_S3_dict =dict(
 )
 
 
-DFR_24_2d_dict =dict(
-	data_set_name = 'DFR_24_2d',
-	data_set_name_patches_name = 'patch2D_merge3',
-	cases_train_H_l = [],
-	cases_train_T_l = [],
-	cases_train_F_l = ['Pat109_Se13_Res0.7422_0.7422_Spac3.0',
-	 					'Pat60_Se13_Res0.7422_0.7422_Spac3.0', 'Pat141_Se05_Res0.5859_0.5859_Spac3.5', 'Pat133_Se11_Res0.7813_0.7813_Spac3.0',
-	 					'Pat210_Se11_Res0.7813_0.7813_Spac3', 'Pat106_Se11_Res0.7422_0.7422_Spac5', 'Pat69_Se08_Res0.7422_0.7422_Spac4.0',
-	 					'Pat20_Se18_Res0.7422_0.7422_Spac4', 'Pat26_Se19_Res0.8203_0.8203_Spac4', 'Pat194_Se13_Res0.7813_0.7813_Spac3',
-	 					'Fetus64_St13_Se08_Cor', 'Pat95_Se08_Res0.7422_0.7422_Spac4','Pat10_Se17_Res0.7422_0.7422_Spac3', 'Pat100_Se10_Res0.7422_0.7422_Spac3.5',
-	 'Pat156_Se10_Res0.7813_0.7813_Spac3', 'Pat27_Se12_Res0.7422_0.7422_Spac3', 'Pat143_Se13_Res0.7813_0.7813_Spac4.0', 'Pat09_Se08_Res0.7422_0.7422_Spac4',
-	 'Pat18_Se17_Res0.7422_0.7422_Spac3', 'Pat139_Se15_Res0.7813_0.7813_Spac3.5', 'Pat120_Se07_Res0.7813_0.7813_Spac5.0', 'Pat140_Se12_Res0.7813_0.7813_Spac3.0','Pat07_Se10_Res0.7422_0.7422_Spac3', 'Pat102_Se09_Res0.7422_0.7422_Spac4'],
-	cases_train_H_u = [],
-	cases_train_T_u = [],
-	cases_train_F_u = [
-	  'Pat46_Se14_Res0.7422_0.7422_Spac3', 'Pat216_Se13_Res0.7813_0.7813_Spac3',
-	 'Pat40_Se13_Res0.7422_0.7422_Spac3', 'Pat08_Se14_Res0.7422_0.7422_Spac3', 'Pat93_Se12_Res0.7813_0.7813_Spac3', 'Pat182_Se06_Res0.5859_0.5859_Spac3',
-	 'Pat105_Se07_Res0.7422_0.7422_Spac5', 'Pat76_Se12_Res0.7422_0.7422_Spac3', 'Pat52_Se13_Res0.7422_0.7422_Spac3', 'Pat247_Se20_Res0.8203_0.8203_Spac5',
-	 'Pat101_Se12_Res0.7422_0.7422_Spac3.0', 'Pat104_Se08_Res0.7422_0.7422_Spac4', 'Pat103_Se10_Res0.8203_0.8203_Spac4', 'Pat108_Se09_Res0.7422_0.7422_Spac4',
-	 'Pat39_Se12_Res0.7422_0.7422_Spac3.0', 'Pat59_Se13_Res0.8203_0.8203_Spac3.0', 'Pat146_Se18_Res0.7813_0.7813_Spac3.5', 'Pat11_Se05_Res0.7422_0.7422_Spac5',
-	 'Pat28_Se17_Res0.8203_0.8203_Spac3', 'Pat29_Se05_Res0.7422_0.7422_Spac5'],
-	cases_val_H = [],
-	cases_val_T = [],
-	cases_val_F = ['Pat06_Se11_Res0.7422_0.7422_Spac3', 'Pat152_Se26_Res0.7813_0.7813_Spac3.0',
-	 'Pat222_Se13_Res0.7813_0.7813_Spac3', 'Pat165_Se13_Res0.7813_0.7813_Spac3', 'Pat12_Se05_Res0.7422_0.7422_Spac5',
-	 'Pat119_Se11_Res0.7813_0.7813_Spac3', 'Pat02_Se12_Res0.7422_0.7422_Spac4', 'Pat03_Se05_Res0.7422_0.7422_Spac5',
-	 'Pat151_Se07_Res0.625_0.625_Spac4.0', 'Pat87_Se09_Res0.7422_0.7422_Spac7'],
-	cases_test_H = [],
-	cases_test_T = [],
-	cases_test_F = ['Pat195_Se10_Res0.7813_0.7813_Spac3', 'Pat94_Se05_Res0.7422_0.7422_Spac4.0', 'Pat127_Se09_Res0.7813_0.7813_Spac4.0',
-	 'Pat01_Se05_Res0.7422_0.7422_Spac5', 'Pat135_Se12_Res0.7813_0.7813_Spac3', 'Pat54_Se24_Res0.7422_0.7422_Spac4.0',
-	 'Pat21_Se11_Res0.7422_0.7422_Spac3', 'Pat172_Se12_Res0.7813_0.7813_Spac3', 'Pat150_Se12_Res0.7813_0.7813_Spac3.0',
-	 'Pat05_Se05_Res0.7422_0.7422_Spac5']
-)
+
 
 DFR_24_2d_S1_dict =dict(
 	data_set_name = 'DFR_24_2d_S1',
@@ -394,27 +459,28 @@ DFR_24_2d_S1_dict =dict(
 	 'Pat05_Se05_Res0.7422_0.7422_Spac5']
 )
 
-DFR_24_2d_S1_dict =dict(
-	data_set_name = 'DFR_24_2d_S1',
+DFR_24_2d_S2_dict =dict(
+	data_set_name = 'DFR_24_2d_S2',
 	data_set_name_patches_name = 'patch2D_merge3',
 	cases_train_H_l = [],
 	cases_train_T_l = [],
-	cases_train_F_l = ['Pat109_Se13_Res0.7422_0.7422_Spac3.0',
-	 					'Pat60_Se13_Res0.7422_0.7422_Spac3.0', 'Pat141_Se05_Res0.5859_0.5859_Spac3.5', 'Pat133_Se11_Res0.7813_0.7813_Spac3.0',
-	 					'Pat210_Se11_Res0.7813_0.7813_Spac3', 'Pat106_Se11_Res0.7422_0.7422_Spac5', 'Pat69_Se08_Res0.7422_0.7422_Spac4.0',
-	 					'Pat20_Se18_Res0.7422_0.7422_Spac4', 'Pat26_Se19_Res0.8203_0.8203_Spac4', 'Pat194_Se13_Res0.7813_0.7813_Spac3',
-	 					'Fetus64_St13_Se08_Cor', 'Pat95_Se08_Res0.7422_0.7422_Spac4','Pat10_Se17_Res0.7422_0.7422_Spac3', 'Pat100_Se10_Res0.7422_0.7422_Spac3.5',
-	 'Pat156_Se10_Res0.7813_0.7813_Spac3', 'Pat27_Se12_Res0.7422_0.7422_Spac3', 'Pat143_Se13_Res0.7813_0.7813_Spac4.0', 'Pat09_Se08_Res0.7422_0.7422_Spac4',
-	 'Pat18_Se17_Res0.7422_0.7422_Spac3', 'Pat139_Se15_Res0.7813_0.7813_Spac3.5', 'Pat120_Se07_Res0.7813_0.7813_Spac5.0', 'Pat140_Se12_Res0.7813_0.7813_Spac3.0','Pat07_Se10_Res0.7422_0.7422_Spac3', 'Pat102_Se09_Res0.7422_0.7422_Spac4'],
-	cases_train_H_u = [],
-	cases_train_T_u = [],
-	cases_train_F_u = [
-	  'Pat46_Se14_Res0.7422_0.7422_Spac3', 'Pat216_Se13_Res0.7813_0.7813_Spac3',
+	cases_train_F_l = [ 'Pat109_Se13_Res0.7422_0.7422_Spac3.0',
+	 					'Pat60_Se13_Res0.7422_0.7422_Spac3.0', 'Pat141_Se05_Res0.5859_0.5859_Spac3.5', 'Pat133_Se11_Res0.7813_0.7813_Spac3.0', 'Pat46_Se14_Res0.7422_0.7422_Spac3', 'Pat216_Se13_Res0.7813_0.7813_Spac3',
 	 'Pat40_Se13_Res0.7422_0.7422_Spac3', 'Pat08_Se14_Res0.7422_0.7422_Spac3', 'Pat93_Se12_Res0.7813_0.7813_Spac3', 'Pat182_Se06_Res0.5859_0.5859_Spac3',
 	 'Pat105_Se07_Res0.7422_0.7422_Spac5', 'Pat76_Se12_Res0.7422_0.7422_Spac3', 'Pat52_Se13_Res0.7422_0.7422_Spac3', 'Pat247_Se20_Res0.8203_0.8203_Spac5',
 	 'Pat101_Se12_Res0.7422_0.7422_Spac3.0', 'Pat104_Se08_Res0.7422_0.7422_Spac4', 'Pat103_Se10_Res0.8203_0.8203_Spac4', 'Pat108_Se09_Res0.7422_0.7422_Spac4',
 	 'Pat39_Se12_Res0.7422_0.7422_Spac3.0', 'Pat59_Se13_Res0.8203_0.8203_Spac3.0', 'Pat146_Se18_Res0.7813_0.7813_Spac3.5', 'Pat11_Se05_Res0.7422_0.7422_Spac5',
-	 'Pat28_Se17_Res0.8203_0.8203_Spac3', 'Pat29_Se05_Res0.7422_0.7422_Spac5'],
+	 'Pat28_Se17_Res0.8203_0.8203_Spac3', 'Pat29_Se05_Res0.7422_0.7422_Spac5'
+						],
+	cases_train_H_u = [],
+	cases_train_T_u = [],
+	cases_train_F_u = [
+	 					'Pat210_Se11_Res0.7813_0.7813_Spac3', 'Pat106_Se11_Res0.7422_0.7422_Spac5', 'Pat69_Se08_Res0.7422_0.7422_Spac4.0',
+	 					'Pat20_Se18_Res0.7422_0.7422_Spac4', 'Pat26_Se19_Res0.8203_0.8203_Spac4', 'Pat194_Se13_Res0.7813_0.7813_Spac3',
+	 					'Fetus64_St13_Se08_Cor', 'Pat95_Se08_Res0.7422_0.7422_Spac4','Pat10_Se17_Res0.7422_0.7422_Spac3', 'Pat100_Se10_Res0.7422_0.7422_Spac3.5',
+	 'Pat156_Se10_Res0.7813_0.7813_Spac3', 'Pat27_Se12_Res0.7422_0.7422_Spac3', 'Pat143_Se13_Res0.7813_0.7813_Spac4.0', 'Pat09_Se08_Res0.7422_0.7422_Spac4',
+	 'Pat18_Se17_Res0.7422_0.7422_Spac3', 'Pat139_Se15_Res0.7813_0.7813_Spac3.5', 'Pat120_Se07_Res0.7813_0.7813_Spac5.0', 'Pat140_Se12_Res0.7813_0.7813_Spac3.0','Pat07_Se10_Res0.7422_0.7422_Spac3', 'Pat102_Se09_Res0.7422_0.7422_Spac4'
+	],
 	cases_val_H = [],
 	cases_val_T = [],
 	cases_val_F = ['Pat06_Se11_Res0.7422_0.7422_Spac3', 'Pat152_Se26_Res0.7813_0.7813_Spac3.0',
@@ -430,8 +496,42 @@ DFR_24_2d_S1_dict =dict(
 )
 
 
-DFR_44_2d_S3_dict =dict(
-	data_set_name = 'DFR_44_2d_S3',
+DFR_24_2d_S3_dict =dict(
+	data_set_name = 'DFR_24_2d_S3',
+	data_set_name_patches_name = 'patch2D_merge3',
+	cases_train_H_l = [],
+	cases_train_T_l = [],
+	cases_train_F_l = [	 'Pat101_Se12_Res0.7422_0.7422_Spac3.0', 'Pat104_Se08_Res0.7422_0.7422_Spac4', 'Pat103_Se10_Res0.8203_0.8203_Spac4', 'Pat108_Se09_Res0.7422_0.7422_Spac4',
+	 'Pat39_Se12_Res0.7422_0.7422_Spac3.0', 'Pat59_Se13_Res0.8203_0.8203_Spac3.0', 'Pat146_Se18_Res0.7813_0.7813_Spac3.5', 'Pat11_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat28_Se17_Res0.8203_0.8203_Spac3', 'Pat29_Se05_Res0.7422_0.7422_Spac5', 'Fetus64_St13_Se08_Cor', 'Pat95_Se08_Res0.7422_0.7422_Spac4','Pat10_Se17_Res0.7422_0.7422_Spac3', 'Pat100_Se10_Res0.7422_0.7422_Spac3.5',
+	 'Pat156_Se10_Res0.7813_0.7813_Spac3', 'Pat27_Se12_Res0.7422_0.7422_Spac3', 'Pat143_Se13_Res0.7813_0.7813_Spac4.0', 'Pat09_Se08_Res0.7422_0.7422_Spac4',
+	 'Pat18_Se17_Res0.7422_0.7422_Spac3', 'Pat139_Se15_Res0.7813_0.7813_Spac3.5', 'Pat120_Se07_Res0.7813_0.7813_Spac5.0', 'Pat140_Se12_Res0.7813_0.7813_Spac3.0','Pat07_Se10_Res0.7422_0.7422_Spac3', 'Pat102_Se09_Res0.7422_0.7422_Spac4'],
+	cases_train_H_u = [],
+	cases_train_T_u = [],
+	cases_train_F_u = ['Pat109_Se13_Res0.7422_0.7422_Spac3.0', 'Pat60_Se13_Res0.7422_0.7422_Spac3.0', 'Pat141_Se05_Res0.5859_0.5859_Spac3.5',  'Pat133_Se11_Res0.7813_0.7813_Spac3.0','Pat210_Se11_Res0.7813_0.7813_Spac3',
+					   'Pat106_Se11_Res0.7422_0.7422_Spac5', 'Pat69_Se08_Res0.7422_0.7422_Spac4.0', 'Pat20_Se18_Res0.7422_0.7422_Spac4', 'Pat26_Se19_Res0.8203_0.8203_Spac4', 'Pat194_Se13_Res0.7813_0.7813_Spac3',
+	  'Pat46_Se14_Res0.7422_0.7422_Spac3', 'Pat216_Se13_Res0.7813_0.7813_Spac3',
+	 'Pat40_Se13_Res0.7422_0.7422_Spac3', 'Pat08_Se14_Res0.7422_0.7422_Spac3', 'Pat93_Se12_Res0.7813_0.7813_Spac3', 'Pat182_Se06_Res0.5859_0.5859_Spac3',
+	 'Pat105_Se07_Res0.7422_0.7422_Spac5', 'Pat76_Se12_Res0.7422_0.7422_Spac3', 'Pat52_Se13_Res0.7422_0.7422_Spac3', 'Pat247_Se20_Res0.8203_0.8203_Spac5'],
+	cases_val_H = [],
+	cases_val_T = [],
+	cases_val_F = ['Pat06_Se11_Res0.7422_0.7422_Spac3', 'Pat152_Se26_Res0.7813_0.7813_Spac3.0',
+	 'Pat222_Se13_Res0.7813_0.7813_Spac3', 'Pat165_Se13_Res0.7813_0.7813_Spac3', 'Pat12_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat119_Se11_Res0.7813_0.7813_Spac3', 'Pat02_Se12_Res0.7422_0.7422_Spac4', 'Pat03_Se05_Res0.7422_0.7422_Spac5',
+	 'Pat151_Se07_Res0.625_0.625_Spac4.0', 'Pat87_Se09_Res0.7422_0.7422_Spac7'],
+	cases_test_H = [],
+	cases_test_T = [],
+	cases_test_F = ['Pat195_Se10_Res0.7813_0.7813_Spac3', 'Pat94_Se05_Res0.7422_0.7422_Spac4.0', 'Pat127_Se09_Res0.7813_0.7813_Spac4.0',
+	 'Pat01_Se05_Res0.7422_0.7422_Spac5', 'Pat135_Se12_Res0.7813_0.7813_Spac3', 'Pat54_Se24_Res0.7422_0.7422_Spac4.0',
+	 'Pat21_Se11_Res0.7422_0.7422_Spac3', 'Pat172_Se12_Res0.7813_0.7813_Spac3', 'Pat150_Se12_Res0.7813_0.7813_Spac3.0',
+	 'Pat05_Se05_Res0.7422_0.7422_Spac5']
+)
+
+
+
+
+DFR_44_2d_dict =dict(
+	data_set_name = 'DFR_44_2d',
 	data_set_name_patches_name = 'patch2D_merge3',
 	cases_train_H_l = [],
 	cases_train_T_l = [],
