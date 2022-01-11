@@ -324,6 +324,104 @@ class ULordModel(nn.Module):
 			nn.init.uniform_(m.weight, a=-0.05, b=0.05)
 			# nn.init.uniform_(m.weight, a = 0.45, b = 0.55)
 
+class ULordModelNew(nn.Module):
+
+	def __init__(self, config, config_unet, dim):
+
+		super().__init__()
+		self.config_unet = config_unet
+		self.config = config
+		self.dim = dim
+		self.modulation = Modulation(config['class_dim'], config['n_adain_layers'], config['adain_dim'])
+		# print(config['class_dim'], config['n_adain_layers'], config['adain_dim'] , "config['class_dim'], config['n_adain_layers'], config['adain_dim']")
+		if self.dim == 3:
+			self.generator_antomy = UNet(self.config_unet, 3)
+			self.segmentor = Segmentntor(self.config_unet, 3)
+			self.generator = GeneratorS3D(1, self.config_unet['out_channels'])
+		else:
+			self.generator = GeneratorS2D(1, self.config_unet['out_channels'])
+			self.generator_antomy = UNet(self.config_unet, 2)
+			self.segmentor = Segmentntor(self.config_unet, 2)
+
+		self.rounding = Rounding()
+		self.flatten = nn.Flatten()
+		# print(config['n_classes'], config['class_dim'], "config['n_classes'], config['class_dim']")
+		self.class_embedding = nn.Embedding(config['n_classes'], config['class_dim'])
+
+	def forward(self, img, class_id, img_u, class_id_u):
+
+		depth = img.size()[2]
+		if self.dim == 3:
+			class_id = class_id.repeat_interleave(depth)
+			class_id_u = class_id_u.repeat_interleave(depth)
+
+		# print(img.size(), "img.size()")
+		anatomy_img = self.generator_antomy(img)
+		class_code = self.class_embedding(class_id)
+		# print(f"class code shape {class_code.size()}")
+		anatomy_img_u = self.generator_antomy(img_u)
+		class_code_u = self.class_embedding(class_id_u)
+
+		# apply rounding
+		if self.config['round']:
+			anatomy_img = self.rounding(anatomy_img)
+			anatomy_img_u = self.rounding(anatomy_img_u)
+
+		# get the full image
+		content_code = self.flatten(anatomy_img)
+		content_code_u = self.flatten(anatomy_img_u)
+
+		# class_adain_params = self.modulation(class_code)
+		# class_adain_params_u = self.modulation(class_code_u)
+		list_of_size = [anatomy_img.size()[0], class_code.T.size()[0], class_code.T.size()[1], 1, 1]
+		# print(f' list of the size is {[anatomy_img.size()[0] , class_code.T.size()[0], class_code.T.size()[1], 1, 1]}')
+		# print("wwww")
+
+
+		anatomy_img = anatomy_img * class_code.T.contiguous().view(anatomy_img.size()[0] , anatomy_img.size()[1], anatomy_img.size()[2], 1, 1)
+		anatomy_img_u = anatomy_img_u * class_code_u.T.contiguous().view(anatomy_img.size()[0], anatomy_img.size()[1], anatomy_img.size()[2], 1, 1)
+
+		# print(anatomy_img.size())
+
+		if self.config['segmentor_gard']:
+			inp_gen = anatomy_img
+			inp_gen_u = anatomy_img_u
+		else:
+			inp_gen  = anatomy_img.detach()
+			inp_gen_u  = anatomy_img_u.detach()
+
+
+		generated_img = self.generator(inp_gen)
+		generated_img_u = self.generator(inp_gen_u)
+
+		segmentor_input = anatomy_img
+		segmentor_input_u = anatomy_img_u
+
+		mask = self.segmentor(segmentor_input)
+		mask_u = self.segmentor(segmentor_input_u)
+
+		return {
+			'img': generated_img,
+			'img_u': generated_img_u,
+			'anatomy_img': anatomy_img,
+			'anatomy_img_u': anatomy_img_u,
+			'mask': mask,
+			'mask_u': mask_u,
+			'class_code': class_code,
+			'class_code_u': class_code_u,
+			'content_code': content_code,
+			'content_code_u': content_code_u
+		}
+
+	def init(self):
+		self.apply(self.weights_init)
+
+	@staticmethod
+	def weights_init(m):
+		if isinstance(m, nn.Embedding):
+			nn.init.uniform_(m.weight, a=-0.05, b=0.05)
+			# nn.init.uniform_(m.weight, a = 0.45, b = 0.55)
+
 
 
 class RegularizedEmbedding(nn.Module):
@@ -363,8 +461,6 @@ class Rounding(nn.Module):
 
 		return x
 
-
-
 class Modulation(nn.Module):
 
 	def __init__(self, code_dim, n_adain_layers, adain_dim):
@@ -388,8 +484,81 @@ class Modulation(nn.Module):
 
 		return adain_params
 
+class GeneratorS2D(nn.Module):
+	"""
+	generator really simple one conv layer
+	"""
+
+	def __init__(self, out_channel, in_channel):
+		super().__init__()
+
+		self.conv_layer = nn.Conv3d(in_channels= in_channel, out_channels = out_channel, padding=2, kernel_size = 1)
+
+	def forward(self, x):
+
+		x = self.conv_layer(x)
+		return x
+
+
+class GeneratorS3D(nn.Module):
+	"""
+	generator really simple one conv layer
+	"""
+
+	def __init__(self, out_channel, in_channel):
+		super().__init__()
+
+		self.conv_layer = nn.Conv3d(in_channels= in_channel, out_channels = out_channel, padding = 0, kernel_size = 1)
+
+	def forward(self, x):
+
+		x = self.conv_layer(x)
+		return x
+
 
 class Generator(nn.Module):
+
+	def __init__(self, n_adain_layers, adain_dim, out_channel, in_channel):
+		super().__init__()
+
+		self.__adain_dim = adain_dim
+
+		self.adain_conv_layers = nn.ModuleList()
+		for i in range(n_adain_layers):
+			if i == 0:
+				in_channels_adain = in_channel
+			else:
+				in_channels_adain = adain_dim
+
+			self.adain_conv_layers += [
+				nn.Conv2d(in_channels = in_channels_adain, out_channels=adain_dim, padding= 1, kernel_size=3),
+				nn.LeakyReLU(),
+				AdaptiveInstanceNorm2d(adain_layer_idx = i)
+			]
+
+		self.adain_conv_layers = nn.Sequential(*self.adain_conv_layers)
+
+		self.last_conv_layers = nn.Sequential(
+			nn.Conv2d(in_channels = adain_dim, out_channels = 64, padding = 2, kernel_size = 5),
+			nn.LeakyReLU(),
+
+			nn.Conv2d(in_channels = 64, out_channels = out_channel, padding = 3, kernel_size = 7),
+			nn.Sigmoid()
+		)
+
+	def assign_adain_params(self, adain_params):
+		for m in self.adain_conv_layers.modules():
+			if m.__class__.__name__ == "AdaptiveInstanceNorm2d":
+				m.bias = adain_params[:, m.adain_layer_idx, :, 0]
+				m.weight = adain_params[:, m.adain_layer_idx, :, 1]
+
+	def forward(self, x, class_adain_params):
+		self.assign_adain_params(class_adain_params)
+		x = self.adain_conv_layers(x)
+		x = self.last_conv_layers(x)
+		return x
+
+class GeneratorNew(nn.Module):
 
 	def __init__(self, n_adain_layers, adain_dim, out_channel, in_channel):
 		super().__init__()
@@ -472,6 +641,50 @@ class Generator3D(nn.Module):
 		x = self.adain_conv_layers(x)
 		x = self.last_conv_layers(x)
 		return x
+
+class GeneratorNew3D(nn.Module):
+
+	def __init__(self, n_adain_layers, adain_dim, out_channel, in_channel, film_layer):
+		super().__init__()
+
+		self.__adain_dim = adain_dim
+
+		self.adain_conv_layers = nn.ModuleList()
+		for i in range(n_adain_layers):
+			if i == 0:
+				in_channels_adain = in_channel
+			else:
+				in_channels_adain = adain_dim
+
+			self.adain_conv_layers += [
+				nn.Conv3d(in_channels=in_channels_adain, out_channels=adain_dim, padding=1, kernel_size = 3),
+				nn.LeakyReLU(),
+				AdaptiveInstanceNorm3d(adain_layer_idx=i, film_layer = film_layer)
+			]
+
+		self.adain_conv_layers = nn.Sequential(*self.adain_conv_layers)
+
+		self.last_conv_layers = nn.Sequential(
+			nn.Conv3d(in_channels=adain_dim, out_channels = 64, padding=2, kernel_size=5),
+			nn.LeakyReLU(),
+
+			nn.Conv3d(in_channels = 64, out_channels = out_channel, padding=3, kernel_size=7),
+			nn.Sigmoid()
+		)
+
+	def assign_adain_params(self, adain_params):
+		for m in self.adain_conv_layers.modules():
+			if m.__class__.__name__ == "AdaptiveInstanceNorm3d":
+				m.bias = adain_params[:, m.adain_layer_idx, :, 0]
+				m.weight = adain_params[:, m.adain_layer_idx, :, 1]
+
+	def forward(self, x, class_adain_params):
+		self.assign_adain_params(class_adain_params)
+		x = self.adain_conv_layers(x)
+		x = self.last_conv_layers(x)
+		return x
+
+
 
 class AdaptiveInstanceNorm3d(nn.Module):
 

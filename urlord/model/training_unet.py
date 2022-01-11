@@ -11,7 +11,7 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 import torch.nn.functional as F
-from model.modules_unet import VGGDistance, ULordModel, UNetS, UCLordModel, UNetSC, KnnDistance, NetVGGFeatures
+from model.modules_unet import VGGDistance, ULordModel, UNetS, UCLordModel, UNetSC, KnnDistance, NetVGGFeatures, ULordModelNew
 from model.utils_unet import AverageMeter, NamedTensorDataset, ImbalancedDatasetSampler, MyRotationTransform, \
     MyRotationTransform3D
 from PIL import Image
@@ -26,10 +26,13 @@ CUDA_LAUNCH_BLOCKING = 1
 import wandb
 import logging
 import time
-from measure import dice_func, dice_loss
+from measure import dice_func, dice_loss, BootstrappedCE
 from sklearn.metrics import recall_score, precision_score
 import torchvision.transforms.functional as TF
 import nibabel as nib
+
+
+
 
 def get_n_params(model):
     pp=0
@@ -96,7 +99,7 @@ class Lord:
         self.config_unet = config_unet
         self.config = config
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
+        self.loss_cross_entropy = BootstrappedCE()
         self.ulord_model = None
         self.genrate_sample_func = None
         self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = None, None, None, None, None, None, None, None, None, None, None, None
@@ -187,7 +190,7 @@ class Lord:
             jason_dump(self.config, path_config)
             jason_dump(self.config_unet, path_config_unet)
 
-        if model_id == 'ULord' or model_id == 'URLord':
+        if model_id == 'ULord' or model_id == 'URLord' or model_id == 'URLordNew':
             self.is_unet = False
             self.ulord_model = ULordModel(self.config, self.config_unet, dim)
             self.ulord_model.load_state_dict(torch.load(os.path.join(model_dir, 'ulord.pth')))
@@ -363,7 +366,7 @@ class Lord:
                 print(res.astype(dtype=np.uint32).shape, "res shape")
                 print(np.where(np.isnan(res.astype(dtype=np.float32)) == True), "nan")
                 print(np.where(np.isinf(res.astype(dtype=np.float32)) == True), "inf")
-                _ =  np.linalg.svd(res.astype(dtype=np.float32))
+                # _ =  np.linalg.svd(res.astype(dtype=np.float32))
                 print(np.unique(pred_scan))
                 # print()
                 # if i > 0:
@@ -373,7 +376,11 @@ class Lord:
                     nib.save(a,join(self.model_dir, f'{subject_id}_pred.nii.gz'))
                     nib.save(nib.Nifti1Image(res_old.astype(dtype=np.float32), pred_scan.affine),join(self.model_dir, f'{subject_id}_pred_old.nii.gz'))
                 except:
-                    print("nononon")
+                    a = nib.Nifti1Image(res.astype(dtype=np.float32), np.eye(4))
+                    nib.save(a, join(self.model_dir, f'{subject_id}_pred.nii.gz'))
+                    nib.save(nib.Nifti1Image(res_old.astype(dtype=np.float32), np.eye(4)),
+                             join(self.model_dir, f'{subject_id}_pred_old.nii.gz'))
+
 
             logger_dice.info(f'subject id {subject_id} dice score A {dice},dice score B {dice_2} , recall score: {rec}, precision score: {pre} ')
         logger_dice.info(f'avg dice score {dice_score.avg} , avg recall score: {rec_score.avg}, precision score: {pre_score.avg}')
@@ -420,6 +427,7 @@ class Lord:
     def calc_rec_loss_unet(self, out, batch_t, batch_u, criterion, epoch):
         reco_loss = criterion(batch_t['img'], batch_t['img'])
         reco_loss_u = criterion(batch_t['img'], batch_t['img'])
+
         return reco_loss, reco_loss_u
 
     def calc_rec_loss_ulord(self, out, batch_t, batch_u, criterion, epoch):
@@ -477,6 +485,35 @@ class Lord:
         # seg_u = batch_u['seg'].detach()
         # dice_loss_u = dice_loss(mask_u, seg_u)
         return dice_loss_l,  dice_loss_u
+
+    def calc_dice_loss_unet(self, out, batch_t, epoch):
+        dice_loss_l = dice_loss(out['mask'], batch_t['seg'])
+        dice_loss_u = dice_loss(batch_t['seg'], batch_t['seg'])
+        # mask_u = out['mask_u'].detach()
+        # seg_u = batch_u['seg'].detach()
+        # dice_loss_u = dice_loss(mask_u, seg_u)
+        return dice_loss_l, dice_loss_l, dice_loss_l
+
+    def calc_dice_loss_unet_croosentropy(self, out, batch_t, epoch):
+        dice_loss_l = dice_loss(out['mask'], batch_t['seg'])
+        dice_loss_l_c, _ =  self.loss_cross_entropy(out['mask'], batch_t['seg'], epoch)
+
+        # mask_u = out['mask_u'].detach()
+        # seg_u = batch_u['seg'].detach()
+        # dice_loss_u = dice_loss(mask_u, seg_u)
+        return (0.8 * dice_loss_l_c) + (0.0 * dice_loss_l), dice_loss_l_c, dice_loss_l
+
+
+    def calc_dice_loss_ulord_croosentropy(self, out, batch_t, batch_u, epoch):
+        dice_loss_l = dice_loss(out['mask'], batch_t['seg'])
+        dice_loss_u = dice_loss(batch_t['seg'], batch_t['seg'])
+        dice_loss_l_c, _ = self.loss_cross_entropy(out['mask'], batch_t['seg'], epoch)
+        dice_loss_l_c_u, _ = self.loss_cross_entropy(out['mask'], batch_t['seg'], epoch)
+        # mask_u = out['mask_u'].detach()
+        # seg_u = batch_u['seg'].detach()
+        # dice_loss_u = dice_loss(mask_u, seg_u)
+
+        return (0.5 * dice_loss_l_c) + (0.5 * dice_loss_l),  (0.5 * dice_loss_l_c_u) + (0.5 * dice_loss_u)
 
     def calc_dice_loss_uclord(self, out, batch_t, batch_u, epoch):
         dice_loss_l = dice_loss(out['mask'], batch_t['seg'])
@@ -551,7 +588,7 @@ class Lord:
         reco_loss_epoch.update(reco_loss.item())
         reco_loss_epoch_witha.update(reco_loss_decay.item())
 
-    def do_step_unet(self, epoch,dice_u_loss_epoch_train, recon_decay, batch, optimizer, criterion,
+    def do_step_unet(self, dice_u_loss_epoch_train, epoch, recon_decay, batch, optimizer, criterion,
                      seg_decay, class_decay, content_decay, scheduler,
                      train_loss, dice_loss_epoch_train, dice_loss_epoch_witha,
                      reco_loss_epoch, reco_loss_epoch_witha, num_step):
@@ -560,18 +597,25 @@ class Lord:
         optimizer.zero_grad()
         # print(batch['img'].size(), batch['seg'].size(), "batch seg id")
         out = self.ulord_model(batch['img'])
-        loss = dice_loss(out['mask'], batch['seg'])
+        # print(f"aaa {epoch}")
+        loss, loss1, loss2  = self.calc_dice_loss(out, batch, epoch)
+        # dice_loss.register_hook(lambda grad: print(grad))
+        # self.loss_n.register_hook(lambda grad: print(grad))
         # print(f"loss{loss}")
         loss.backward()
         optimizer.step()
+
+        # gradient, *_ = loss1.grad.data
+        # print(f"Gradient of w los1w.r.t to L: {gradient}")
+
 
         if self.config['sch']:
             scheduler.step()
 
         train_loss.update(0)
         dice_loss_epoch_train.update(loss.item())
-        dice_loss_epoch_witha.update(0)
-        reco_loss_epoch.update(0)
+        dice_loss_epoch_witha.update(loss1)
+        reco_loss_epoch.update(loss2)
         reco_loss_epoch_witha.update(0)
 
     def train(self, model_id, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,
@@ -583,6 +627,10 @@ class Lord:
                                   segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
         elif model_id == 'URLord':
             self.train_URLordModel(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
+                                  segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
+
+        elif model_id == 'URLordNew':
+            self.train_URLordModelNew(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
                                   segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim)
         elif model_id == 'UCLord':
             self.train_UCLordModel(imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
@@ -679,7 +727,28 @@ class Lord:
         self.init_lord()
         self.calc_rec_loss = self.calc_rec_loss_urord
         self.calc_dice_loss = self.calc_dice_loss_ulord
+        if self.config['loss_func'] == 'Dice':
+            self.calc_dice_loss = self.calc_dice_loss_ulord
+        elif self.config['loss_func'] == 'cross_entropy':
+            self.calc_dice_loss = self.calc_dice_loss_ulord_croosentropy
+
         self.training_model(model_dir, tensorboard_dir)
+
+    def train_URLordModelNew(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
+                          segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim):
+        self.dim = dim
+        self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
+        if dim == 3:
+            self.init_model3d()
+        else:
+            self.init_model2d()
+        if not loaded_model:
+            self.ulord_model = ULordModelNew(self.config, self.config_unet, dim)
+        self.init_lord()
+        self.calc_rec_loss = self.calc_rec_loss_urord
+        self.calc_dice_loss = self.calc_dice_loss_ulord
+        self.training_model(model_dir, tensorboard_dir)
+
 
     def train_ULordModel(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t,
                          segs_t, classes_t, model_dir, tensorboard_dir, loaded_model, dim):
@@ -699,6 +768,7 @@ class Lord:
     def train_UNet(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,
                    classes_t, model_dir, tensorboard_dir, loaded_model, dim):
         self.dim = dim
+
         self.imgs, self.segs, self.classes, self.imgs_u, self.segs_u, self.classes_u, self.imgs_v, self.segs_v, self.classes_v, self.imgs_t, self.segs_t, self.classes_t = imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t, classes_t
         if dim == 3:
             self.init_model3d()
@@ -707,7 +777,14 @@ class Lord:
         if not loaded_model:
             self.ulord_model = UNetS(self.config_unet, dim)
         self.init_unet()
+
+        if self.config['loss_func'] == 'Dice':
+            self.calc_dice_loss = self.calc_dice_loss_unet
+        elif self.config['loss_func'] == 'cross_entropy':
+            self.calc_dice_loss = self.calc_dice_loss_unet_croosentropy
+
         self.training_model(model_dir, tensorboard_dir)
+
 
     def train_UNetK(self, imgs, segs, classes, imgs_u, segs_u, classes_u, imgs_v, segs_v, classes_v, imgs_t, segs_t,
                    classes_t, model_dir, tensorboard_dir, loaded_model, dim):
@@ -869,7 +946,9 @@ class Lord:
 
         min_dice_loss = 1
         early_stop = 0
+        # print(self.config['train']['n_epochs'], "number of epochsssss")
         for epoch in range(self.config['train']['n_epochs']):
+            print(epoch, "epoch")
             self.ulord_model.train()
             train_loss.reset()
             dice_loss_epoch_val.reset()
@@ -884,7 +963,7 @@ class Lord:
             for i, batch in enumerate(self.train_iter):
                 # print(batch, 'batch')
                 start_time_preprocees = time.time()
-                self.do_step(dice_u_loss_epoch_train,epoch, recon_decay, batch, self.optimizer, criterion, seg_decay, class_decay,
+                self.do_step(dice_u_loss_epoch_train, epoch,  recon_decay, batch, self.optimizer, criterion, seg_decay, class_decay,
                              content_decay, scheduler, train_loss, dice_loss_epoch_train, dice_loss_epoch_witha,
                              reco_loss_epoch, reco_loss_epoch_witha, i)
 
@@ -905,7 +984,7 @@ class Lord:
 
             self.ulord_model.eval()
             print("------------ %s time all -------------------------------" % (time.time() - start_time0))
-            exit()
+
             for batch_v in pbar_val:
                 # print("here")
 
@@ -1061,7 +1140,7 @@ class Lord:
                     classes[k] = 1
 
             # the number of slice to take from the event
-            num_slice = 10
+            num_slice = 6
             if epoch == 0:
                 os.makedirs(path_results_output, exist_ok=True)
                 os.makedirs(path_results_anatomy, exist_ok=True)

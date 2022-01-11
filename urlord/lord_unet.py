@@ -561,7 +561,7 @@ def train_encoders(args):
 
 def main():
 	print(torch.cuda.is_available(), "cuda")
-	print("nir")
+	# print("nir")
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-bd', '--base-dir', type=str, required=True)
 

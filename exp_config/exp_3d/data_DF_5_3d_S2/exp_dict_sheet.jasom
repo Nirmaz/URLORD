@@ -1,0 +1,13 @@
+{"exp_name": "exp3d_DF_5_S2_3d",
+"data_l_name": "DF_5_3d_S2_TL",
+"data_u_name": "DF_5_3d_S2_TU",
+"data_v_name": "DF_5_3d_S2_VA",
+"data_t_name": "DF_5_3d_S2_TE",
+"path_d": "/mnt/local/nirm/placenta_data/placenta",
+"path_d_dict": "/mnt/local/nirm/placenta_data/patch3D",
+"base_dir":"/mnt/local/nirm/placenta_data/data_storage",
+"path_scans": "/cs/casmip/nirm/embryo_project_version1/embryo_data_raw/before_preprocess/placenta",
+"path_dataset":"/mnt/local/nirm/placenta_data/split_dataset/DF_5_3d_S2",
+"test_key":"cases_test_F",
+"models_path":"/cs/casmip/nirm/embryo_project_version1/embyo_projects_codes/exp_config/exp_3d/data_DF_5_3d_S2",
+"models": ["URLord3D_dict.jason", "UNet3D_dict.jason"]}
